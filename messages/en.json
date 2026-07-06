@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "whyUs": "Why Us",
+    "contact": "Contact",
+    "startProject": "Start Project"
+  },
+  "hero": {
+    "eyebrow": "PREMIERA LIVE",
+    "headline": "Marketing that makes your brand impossible to ignore.",
+    "headlineAr": "نصنع علامات تجارية لا يمكن تجاهلها",
+    "sub": "Launching in Saudi Arabia",
+    "subAr": "قريباً في السعودية"
+  },
+  "services": {
+    "eyebrow": "WHAT WE DO",
+    "heading": "Everything Your Brand Needs. One Studio.",
+    "items": [
+      { "name": "Marketing Retainers", "nameAr": "حسابات التسويق", "desc": "Your full marketing department, without the headcount.", "descAr": "قسم التسويق الكامل الخاص بك، بدون زيادات في الفريق." },
+      { "name": "Websites", "nameAr": "المواقع الإلكترونية", "desc": "100% coded and custom-built from scratch. No templates.", "descAr": "مصمم ومبرمج بالكامل من الصفر. بدون قوالب." },
+      { "name": "Software & Apps", "nameAr": "البرمجيات والتطبيقات", "desc": "Custom web apps, mobile apps & internal tools — built from scratch.", "descAr": "تطبيقات ويب مخصصة، تطبيقات جوال وأدوات داخلية — مبنية من الصفر." },
+      { "name": "Social Media Management", "nameAr": "إدارة السوشيال ميديا", "desc": "Consistent, professional, always-on.", "descAr": "محتوى احترافي متسق، متاح دائماً." },
+      { "name": "Animation & 3D", "nameAr": "الأنيميشن والتصميم ثلاثي الأبعاد", "desc": "Worlds built from imagination.", "descAr": "عالم مبني من خيالنا." },
+      { "name": "Video Production & Photography", "nameAr": "إنتاج الفيديو والتصوير", "desc": "Cinema-grade films and stills that sell.", "descAr": "أفلام وصور فوتوغرافية بجودة سينمائية تُبيع." },
+      { "name": "Branding & Design", "nameAr": "الهوية البصرية والتصميم", "desc": "Logos, identity systems and print — a brand that looks the part.", "descAr": "شعارات وأنظمة هوية وتصميم مطبوعة — علامة تجارية بملامح احترافية." },
+      { "name": "Podcast Filming", "nameAr": "تصوير البودكاست", "desc": "Studio-grade podcast production, filmed and edited.", "descAr": "إنتاج بودكاست بجودة الاستوديو، مصور ومونتاج." },
+      { "name": "Multi-Camera Live Streaming", "nameAr": "البث المباشر متعدد الكاميرات", "desc": "Live event broadcasting with high-end cinema cameras.", "descAr": "بث مباشر للفعاليات بكاميرات سينمائية عالية المستوى." }
+    ]
+  },
+  "work": {
+    "eyebrow": "SELECTED WORK",
+    "heading": "Brands We've Brought to Life",
+    "comingSoon": "Coming Soon",
+    "comingSoonAr": "قريباً"
+  },
+  "whyUs": {
+    "eyebrow": "WHY PREMIERA LIVE",
+    "heading": "Built Different. Delivered Faster.",
+    "stats": [
+      { "value": "15+", "label": "Years of Experience", "labelAr": "سنوات خبرة" },
+      { "value": "1,000+", "label": "Projects Delivered", "labelAr": "مشروع منجز" },
+      { "value": "25+", "label": "Platforms Mastered", "labelAr": "منصة مُتقنة" },
+      { "value": "20+", "label": "Global Brands", "labelAr": "علامة تجارية عالمية" }
+    ]
+  },
+  "contact": {
+    "heading": "Ready to start?",
+    "sub": "Message us on WhatsApp — we respond fast.",
+    "subAr": "راسلنا على واتساب — نرد بسرعة.",
+    "btn": "Chat on WhatsApp"
+  },
+  "footer": {
+    "tagline": "Launching in Saudi Arabia — serving clients across the Gulf.",
+    "taglineAr": "قريباً في السعودية — نخدم العملاء في جميع أنحاء الخليج.",
+    "copyright": "© 2026 Premiera Live. All rights reserved."
+  }
+}
