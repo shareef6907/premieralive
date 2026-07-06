@@ -1,0 +1,35 @@
+{
+  "name": "premieralive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shareef6907/premieralive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shareef6907/premieralive/issues"
+  },
+  "homepage": "https://github.com/shareef6907/premieralive#readme",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.2.17",
+    "autoprefixer": "^10.5.2",
+    "next": "^16.2.10",
+    "next-intl": "^4.13.1",
+    "postcss": "^8.5.16",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^6.0.3"
+  }
+}
