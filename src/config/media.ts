@@ -1,7 +1,8 @@
-const M = process.env.NEXT_PUBLIC_MEDIA_URL!;
+const M = process.env.NEXT_PUBLIC_MEDIA_URL ?? 'https://premiera-live-media.s3.us-east-1.amazonaws.com';
 
 export const media = {
   heroScrub: `${M}/premiera-scrub-optimized.mp4`,
+  heroPoster: `${M}/hero-poster.jpg`,
   folders: {
     horizontal:  `${M}/horizontal`,
     animations:  `${M}/animations`,
