@@ -5,6 +5,7 @@ export const media = {
   heroHeader: `${M}/Horizontal%20Videos/Al%20Hamra%20Jewellery%20Final%20for%20Bn.MP4`,
   heroScrub: `${M}/premiera-scrub-hq.mp4`,
   heroPoster: `${M}/hero-poster.jpg`,
+  animationShowreel: `${M}/Animation/Premiera%20-%20animation%20showcase.mp4`,
   folders: {
     horizontal:   `${M}/Horizontal%20Videos`,
     shorts:       `${M}/Shorts-reel`,

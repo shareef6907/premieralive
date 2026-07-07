@@ -105,7 +105,6 @@ export default function HeroVideo({ locale }: { locale: string }) {
       <video
         ref={videoRef}
         src={media.heroHeader}
-        poster={media.heroPoster}
         autoPlay
         loop
         muted
