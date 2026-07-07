@@ -115,15 +115,14 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
           const label = labelRef.current;
           if (label) {
             label.style.opacity = '0';
-            // Force reflow so cross-fade is clean
             void label.offsetWidth;
-            label.style.opacity = '1';
             label.textContent = isArabic
               ? LABELS[idx]?.ar ?? LABELS[0].ar
               : LABELS[idx]?.en ?? LABELS[0].en;
-            // Swap font-size class via data-attr
+            // Large labels: opening + closing frames
             const isLarge = idx === 0 || idx === LABELS.length - 1;
-            label.dataset.large = String(isLarge);
+            label.classList.toggle('lg:text-8xl', isLarge);
+            label.style.opacity = '1';
           }
         }
       }
@@ -160,12 +159,12 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <h2
             ref={labelRef}
-            className="text-center font-display text-[#C9A24B] text-3xl md:text-6xl lg:text-7xl transition-opacity duration-500"
+            className="text-center font-display text-white text-3xl md:text-6xl lg:text-7xl transition-opacity duration-500"
             style={{
-              textShadow: '0 2px 24px rgba(0,0,0,.85), 0 0 2px rgba(255,255,255,.35)',
-              background: 'rgba(10,10,11,.28)',
+              textShadow: '0 2px 6px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.6)',
+              background: 'rgba(10,10,11,0.45)',
               borderRadius: '0.15em',
-              padding: '0.1em 0.35em',
+              padding: '0.15em 0.5em',
               display: 'inline-block',
             }}
           >
