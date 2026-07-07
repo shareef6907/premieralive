@@ -2,7 +2,9 @@ import { setRequestLocale } from 'next-intl/server'
 import ScrollScrubHero from '@/components/ScrollScrubHero'
 import Marquee from '@/components/Marquee'
 import Services from '@/components/Services'
-import SelectedWork from '@/components/SelectedWork'
+import BrandFilms from '@/components/BrandFilms'
+import ShortsReels from '@/components/ShortsReels'
+import AnimationShowcase from '@/components/AnimationShowcase'
 import WhyUs from '@/components/WhyUs'
 import Contact from '@/components/Contact'
 
@@ -19,7 +21,9 @@ export default async function Page({
       <ScrollScrubHero locale={locale} />
       <Marquee />
       <Services />
-      <SelectedWork />
+      <BrandFilms />
+      <ShortsReels />
+      <AnimationShowcase />
       <WhyUs />
       <Contact />
     </>
