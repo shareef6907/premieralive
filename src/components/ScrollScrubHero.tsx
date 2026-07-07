@@ -1,19 +1,19 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import { media } from "@/config/media";
+'use client';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { media } from '@/config/media';
 
 const LABELS = [
-  { s: 0.00, e: 0.10, en: "Marketing that makes your brand impossible to ignore.", ar: "نصنع علامات تجارية لا يمكن تجاهلها" },
-  { s: 0.10, e: 0.19, en: "Marketing Retainers",                                           ar: "عقود تسويق شهرية" },
-  { s: 0.19, e: 0.28, en: "Websites",                                                       ar: "مواقع إلكترونية" },
-  { s: 0.28, e: 0.37, en: "Software & Apps",                                                ar: "برمجيات وتطبيقات" },
-  { s: 0.37, e: 0.46, en: "Social Media Management",                                       ar: "إدارة وسائل التواصل" },
-  { s: 0.46, e: 0.55, en: "Animation & 3D",                                                ar: "أنيميشن وثري دي" },
-  { s: 0.55, e: 0.64, en: "Video Production & Photography",                                 ar: "إنتاج الفيديو والتصوير" },
-  { s: 0.64, e: 0.73, en: "Branding & Design",                                               ar: "الهوية والتصميم" },
-  { s: 0.73, e: 0.82, en: "Podcast Filming",                                                ar: "تصوير البودكاست" },
-  { s: 0.82, e: 0.93, en: "Multi-Camera Live Streaming",                                    ar: "بث مباشر متعدد الكاميرات" },
-  { s: 0.93, e: 1.00, en: "One team. Launching in Saudi Arabia.",                           ar: "فريق واحد — قريباً في السعودية" },
+  { s: 0.00, e: 0.10, en: 'Marketing that makes your brand impossible to ignore.',       ar: 'نصنع علامات تجارية لا يمكن تجاهلها' },
+  { s: 0.10, e: 0.19, en: 'Marketing Retainers',                                         ar: 'عقود تسويق شهرية' },
+  { s: 0.19, e: 0.28, en: 'Websites',                                                   ar: 'مواقع إلكترونية' },
+  { s: 0.28, e: 0.37, en: 'Software & Apps',                                            ar: 'برمجيات وتطبيقات' },
+  { s: 0.37, e: 0.46, en: 'Social Media Management',                                    ar: 'إدارة وسائل التواصل' },
+  { s: 0.46, e: 0.55, en: 'Animation & 3D',                                             ar: 'أنيميشن وثري دي' },
+  { s: 0.55, e: 0.64, en: 'Video Production & Photography',                             ar: 'إنتاج الفيديو والتصوير' },
+  { s: 0.64, e: 0.73, en: 'Branding & Design',                                          ar: 'الهوية والتصميم' },
+  { s: 0.73, e: 0.82, en: 'Podcast Filming',                                            ar: 'تصوير البودكاست' },
+  { s: 0.82, e: 0.93, en: 'Multi-Camera Live Streaming',                                ar: 'بث مباشر متعدد الكاميرات' },
+  { s: 0.93, e: 1.00, en: 'One team. Launching in Saudi Arabia.',                       ar: 'فريق واحد — قريباً في السعودية' },
 ];
 
 function MobileHero({ locale }: { locale: string }) {
@@ -26,12 +26,14 @@ function MobileHero({ locale }: { locale: string }) {
         loop
         muted
         playsInline
+        preload="none"
+        poster={media.heroPoster}
         className="h-full w-full object-cover opacity-60"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
       <div className="absolute inset-0 flex items-center justify-center">
         <h2 className="text-center font-display text-4xl text-[#C9A24B] drop-shadow-2xl md:text-7xl px-6">
-          {locale === "ar" ? l.ar : l.en}
+          {locale === 'ar' ? l.ar : l.en}
         </h2>
       </div>
     </section>
@@ -45,14 +47,37 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
   const [progress, setProgress] = useState(0);
   const [mouse, setMouse]       = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const lazyLoadedRef = useRef(false);
 
   useEffect(() => {
-    setIsMobile(window.matchMedia("(max-width: 767px)").matches);
-    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    const mq = window.matchMedia('(max-width: 767px)');
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
   }, []);
+
+  // IntersectionObserver: load scrub video only when approaching the section
+  useEffect(() => {
+    if (isMobile) return;
+    const section = sectionRef.current;
+    const video = videoRef.current;
+    if (!section || !video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !lazyLoadedRef.current) {
+          lazyLoadedRef.current = true;
+          video.preload = 'auto';
+          video.play().catch(() => {});
+        }
+      },
+      { rootMargin: '150% 0px' }  // trigger 1.5 viewport-heights before section enters
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   useEffect(() => {
     if (isMobile) return;
@@ -79,13 +104,13 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
       }
       raf = requestAnimationFrame(tick);
     };
-    addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("mousemove", onMouse, { passive: true });
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('mousemove', onMouse, { passive: true });
     onScroll();
     raf = requestAnimationFrame(tick);
     return () => {
-      removeEventListener("scroll", onScroll);
-      removeEventListener("mousemove", onMouse);
+      removeEventListener('scroll', onScroll);
+      removeEventListener('mousemove', onMouse);
       cancelAnimationFrame(raf);
     };
   }, [isMobile]);
@@ -101,11 +126,9 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
           poster={media.heroPoster}
           muted
           playsInline
-          preload="auto"
+          preload="none"      // intentionally none — IO lazy-loads it near viewport
           className="h-full w-full object-cover will-change-transform"
-          style={{
-            transform: `scale(1.06) translate(${mouse.x * -12}px, ${mouse.y * -8}px)`,
-          }}
+          style={{ transform: `scale(1.06) translate(${mouse.x * -12}px, ${mouse.y * -8}px)` }}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
 
@@ -118,22 +141,31 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
               style={{
                 opacity: active ? 1 : 0,
                 transform: `translate(${mouse.x * 18}px, ${mouse.y * 12}px)`,
-                transitionDelay: active ? "0ms" : "0ms",
               }}
             >
               <h2
-                className={`text-center font-display text-[#C9A24B] drop-shadow-2xl ${
+                className={`text-center font-display text-[#C9A24B] ${
                   i === 0 || i === LABELS.length - 1
-                    ? "max-w-5xl text-5xl md:text-8xl"
-                    : "text-4xl md:text-7xl"
+                    ? 'text-4xl md:text-7xl lg:text-8xl'
+                    : 'text-3xl md:text-6xl lg:text-7xl'
                 }`}
+                style={{
+                  // Cinematic legibility: dark plate + backdrop blur + text shadow
+                  textShadow: '0 2px 24px rgba(0,0,0,.85), 0 0 2px rgba(255,255,255,.35)',
+                  background: 'rgba(10,10,11,.28)',
+                  backdropFilter: 'blur(2px)',
+                  borderRadius: '0.15em',
+                  padding: '0.1em 0.35em',
+                  display: 'inline-block',
+                }}
               >
-                {locale === "ar" ? l.ar : l.en}
+                {locale === 'ar' ? l.ar : l.en}
               </h2>
             </div>
           );
         })}
 
+        {/* Gold progress bar */}
         <div className="absolute bottom-8 left-1/2 h-[2px] w-40 -translate-x-1/2 bg-white/15">
           <div className="h-full bg-[#C9A24B]" style={{ width: `${progress * 100}%` }} />
         </div>
