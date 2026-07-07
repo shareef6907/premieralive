@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Redirect root only to /en — do NOT redirect /ar or /en
+  // Redirect root to /en
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/en', request.url))
   }
