@@ -2,57 +2,159 @@
   "nav": {
     "work": "Work",
     "services": "Services",
-    "whyUs": "Why Us",
+    "ai": "AI",
+    "process": "Process",
     "contact": "Contact",
-    "startProject": "Start Project"
+    "bookSession": "Book a Strategy Session"
   },
   "hero": {
-    "eyebrow": "PREMIERA LIVE",
-    "headline": "Marketing that makes your brand impossible to ignore.",
-    "headlineAr": "نصنع علامات تجارية لا يمكن تجاهلها",
-    "sub": "Launching in Saudi Arabia",
-    "subAr": "قريباً في السعودية"
+    "eyebrow": "CREATIVE \u00b7 TECHNOLOGY \u00b7 AI \u00b7 GROWTH",
+    "headline": "WE BUILD BRANDS PEOPLE REMEMBER",
+    "sub": "Cinematic storytelling, AI-powered systems, and digital experiences — engineered to grow leads, sales, and brand value across Saudi Arabia and the Gulf.",
+    "seeWork": "See Our Work",
+    "bookSession": "Book a Strategy Session"
   },
-  "services": {
+  "stats": {
+    "years": "15+ Years of Experience",
+    "projects": "1,000+ Projects Delivered",
+    "brands": "20+ Global Brands",
+    "platforms": "25+ Platforms Mastered"
+  },
+  "brandMarquee": {
+    "eyebrow": "TRUSTED BY GLOBAL BRANDS"
+  },
+  "fourPillars": {
     "eyebrow": "WHAT WE DO",
-    "heading": "Everything Your Brand Needs. One Studio.",
-    "items": [
-      { "name": "Marketing Retainers", "nameAr": "حسابات التسويق", "desc": "Your full marketing department, without the headcount.", "descAr": "قسم التسويق الكامل الخاص بك، بدون زيادات في الفريق." },
-      { "name": "Websites", "nameAr": "المواقع الإلكترونية", "desc": "100% coded and custom-built from scratch. No templates.", "descAr": "مصمم ومبرمج بالكامل من الصفر. بدون قوالب." },
-      { "name": "Software & Apps", "nameAr": "البرمجيات والتطبيقات", "desc": "Custom web apps, mobile apps & internal tools — built from scratch.", "descAr": "تطبيقات ويب مخصصة، تطبيقات جوال وأدوات داخلية — مبنية من الصفر." },
-      { "name": "Social Media Management", "nameAr": "إدارة السوشيال ميديا", "desc": "Consistent, professional, always-on.", "descAr": "محتوى احترافي متسق، متاح دائماً." },
-      { "name": "Animation & 3D", "nameAr": "الأنيميشن والتصميم ثلاثي الأبعاد", "desc": "Worlds built from imagination.", "descAr": "عالم مبني من خيالنا." },
-      { "name": "Video Production & Photography", "nameAr": "إنتاج الفيديو والتصوير", "desc": "Cinema-grade films and stills that sell.", "descAr": "أفلام وصور فوتوغرافية بجودة سينمائية تُبيع." },
-      { "name": "Branding & Design", "nameAr": "الهوية البصرية والتصميم", "desc": "Logos, identity systems and print — a brand that looks the part.", "descAr": "شعارات وأنظمة هوية وتصميم مطبوعة — علامة تجارية بملامح احترافية." },
-      { "name": "Podcast Filming", "nameAr": "تصوير البودكاست", "desc": "Studio-grade podcast production, filmed and edited.", "descAr": "إنتاج بودكاست بجودة الاستوديو، مصور ومونتاج." },
-      { "name": "Multi-Camera Live Streaming", "nameAr": "البث المباشر متعدد الكاميرات", "desc": "Live event broadcasting with high-end cinema cameras.", "descAr": "بث مباشر للفعاليات بكاميرات سينمائية عالية المستوى." }
-    ]
+    "heading": "ONE PARTNER. FOUR DISCIPLINES.",
+    "creative": {
+      "title": "CREATIVE",
+      "desc": "Brand identities and campaigns built to be remembered.",
+      "services": ["Branding & Design", "Social Media Management", "Campaign Strategy", "Content Direction"]
+    },
+    "content": {
+      "title": "CONTENT",
+      "desc": "Cinema-grade film, photography, and animation.",
+      "services": ["Video Production & Photography", "Animation & 3D", "Podcast Filming", "Multi-Camera Live Streaming"]
+    },
+    "technology": {
+      "title": "TECHNOLOGY",
+      "desc": "Websites and software engineered like products.",
+      "services": ["Websites & Platforms", "Software & Apps", "E-commerce", "Booking & CRM Systems"]
+    },
+    "aiGrowth": {
+      "title": "AI & GROWTH",
+      "desc": "Intelligent systems that sell while you sleep.",
+      "services": ["AI Employees & Chatbots", "Marketing Retainers", "Performance Marketing", "Analytics & Reporting"]
+    }
+  },
+  "goalPicker": {
+    "eyebrow": "START WITH YOUR GOAL",
+    "heading": "WHAT DO YOU WANT TO ACHIEVE?",
+    "increaseSales": {
+      "title": "Increase Sales",
+      "answer": "We combine conversion-focused websites, performance marketing, and AI sales automation so every riyal you spend is tracked to revenue. You'll see exactly what's working — and we cut what isn't.",
+      "cta": "Talk to us about this"
+    },
+    "generateLeads": {
+      "title": "Generate Leads",
+      "answer": "We build landing experiences, ad campaigns, and WhatsApp AI assistants that capture, qualify, and follow up with leads automatically — 24/7, in Arabic and English.",
+      "cta": "Talk to us about this"
+    },
+    "launchBrand": {
+      "title": "Launch a New Brand",
+      "answer": "We take you from name to market: identity, cinematic launch content, website, and the first 90 days of marketing — one team, one timeline, one standard.",
+      "cta": "Talk to us about this"
+    },
+    "automateBusiness": {
+      "title": "Automate My Business",
+      "answer": "We build AI employees, internal chatbots, and document automation that remove repetitive work from your team's day — so headcount grows slower than revenue.",
+      "cta": "Talk to us about this"
+    },
+    "betterContent": {
+      "title": "Create Better Content",
+      "answer": "We shoot, edit, and animate at cinema grade — film, photography, 3D, and podcasts — then package it for every platform your customers actually use.",
+      "cta": "Talk to us about this"
+    },
+    "buildWebsite": {
+      "title": "Build a Website",
+      "answer": "We engineer websites like products: fast, bilingual, conversion-focused, and connected to booking, ordering, or CRM systems that run your operations.",
+      "cta": "Talk to us about this"
+    }
+  },
+  "scrollScrub": {
+    "eyebrow": "SIGNATURE"
   },
   "work": {
     "eyebrow": "SELECTED WORK",
-    "heading": "Brands We've Brought to Life",
-    "comingSoon": "Coming Soon",
-    "comingSoonAr": "قريباً"
+    "heading": "PROOF, NOT PROMISES.",
+    "brandFilms": "Brand Films",
+    "shorts": "Shorts",
+    "cgi": "CGI & Animation",
+    "cgiHeading": "CGI THAT SELLS THE UNSHOOTABLE"
   },
-  "whyUs": {
-    "eyebrow": "WHY PREMIERA LIVE",
-    "heading": "Built Different. Delivered Faster.",
-    "stats": [
-      { "value": "15+", "label": "Years of Experience", "labelAr": "سنوات خبرة" },
-      { "value": "1,000+", "label": "Projects Delivered", "labelAr": "مشروع منجز" },
-      { "value": "25+", "label": "Platforms Mastered", "labelAr": "منصة مُتقنة" },
-      { "value": "20+", "label": "Global Brands", "labelAr": "علامة تجارية عالمية" }
-    ]
+  "aiSystems": {
+    "eyebrow": "AI SYSTEMS",
+    "heading": "THE FUTURE OF MARKETING IS ALREADY WORKING HERE.",
+    "intro": "Most agencies talk about AI. We build it — real systems, deployed for real businesses.",
+    "aiEmployees": {
+      "title": "AI Employees",
+      "desc": "Trained on your business, answering customers 24/7."
+    },
+    "whatsappAi": {
+      "title": "WhatsApp AI Assistants",
+      "desc": "Capture, qualify, and book — inside the app Saudis already use."
+    },
+    "salesAutomation": {
+      "title": "Sales & Lead Automation",
+      "desc": "Follow-ups that never forget, pipelines that never sleep."
+    },
+    "internalChatbots": {
+      "title": "Internal Knowledge Chatbots",
+      "desc": "Your policies, products, and processes — answerable in seconds."
+    },
+    "aiContent": {
+      "title": "AI Content & Commercials",
+      "desc": "Concept to screen in days, not months."
+    },
+    "customAi": {
+      "title": "Custom AI Systems",
+      "desc": "Built for your workflow when off-the-shelf won't do."
+    }
   },
-  "contact": {
-    "heading": "Ready to start?",
-    "sub": "Message us on WhatsApp — we respond fast.",
-    "subAr": "راسلنا على واتساب — نرد بسرعة.",
-    "btn": "Chat on WhatsApp"
+  "process": {
+    "eyebrow": "HOW WE WORK",
+    "heading": "A PROCESS, NOT A GAMBLE.",
+    "step01": "Discovery",
+    "step01Desc": "We learn your business before we touch a pixel.",
+    "step02": "Strategy",
+    "step02Desc": "Goals, audience, message, and the plan to win.",
+    "step03": "Production",
+    "step03Desc": "Film, design, and content at cinema grade.",
+    "step04": "Build & Integrate",
+    "step04Desc": "Websites, systems, and AI wired together.",
+    "step05": "Launch",
+    "step05Desc": "Everything live, tested, and tracked.",
+    "step06": "Grow",
+    "step06Desc": "Measure, optimize, repeat."
+  },
+  "industries": {
+    "eyebrow": "INDUSTRIES"
+  },
+  "whyPremiera": {
+    "tagline": "Fifteen years. One standard."
+  },
+  "founder": {
+    "eyebrow": "FROM THE FOUNDER",
+    "body": "Most businesses don't need another agency. They need one partner who sees the whole picture — the brand, the film, the website, and the system underneath that makes it all grow.\n\nFor more than fifteen years I've built campaigns, films, and platforms for brands you know. Every project taught me the same lesson: great creative without technology stalls, and technology without story is invisible.\nPremiera Live exists to do both — and when you work with us, you work with me.",
+    "signature": "Shareef, Founder"
+  },
+  "finalCta": {
+    "heading": "READY TO BUILD SOMETHING EXTRAORDINARY?",
+    "sub": "Replies within one business day.",
+    "cta": "Start on WhatsApp"
   },
   "footer": {
     "tagline": "Launching in Saudi Arabia — serving clients across the Gulf.",
-    "taglineAr": "قريباً في السعودية — نخدم العملاء في جميع أنحاء الخليج.",
-    "copyright": "© 2026 Premiera Live. All rights reserved."
+    "copyright": "\u00a9 2026 Premiera Live"
   }
 }

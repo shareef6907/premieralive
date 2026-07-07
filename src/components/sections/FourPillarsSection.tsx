@@ -1,19 +1,25 @@
-// FourPillarsSection placeholder — PR-3 will implement four pillars
+import { useLocale } from 'next-intl'
+
 export default function FourPillarsSection() {
+  const locale = useLocale()
+  const isArabic = locale === 'ar'
+
   return (
-    <section
-      id="services"
-      style={{ padding: 'var(--section-y) clamp(1.5rem, 5vw, 4rem)', background: 'var(--bg)' }}
-    >
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1rem' }}>
-        WHAT WE DO
+    <section style={{ padding: 'var(--section-y) var(--container)', maxWidth: 'var(--container)', margin: '0 auto' }}>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+        {isArabic ? 'ماذا نقدم' : 'WHAT WE DO'}
       </p>
-      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--h2)', color: 'var(--text)', letterSpacing: '0.01em', textTransform: 'uppercase', lineHeight: 0.95, marginBottom: '4rem' }}>
-        ONE PARTNER. FOUR DISCIPLINES.
+      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--h2)', color: 'var(--text)', lineHeight: 0.95, letterSpacing: '0.01em', textTransform: 'uppercase', marginBottom: '4rem' }}>
+        {isArabic ? 'نجمع أربعة تخصصات تحت شريك واحد.' : 'ONE PARTNER. FOUR DISCIPLINES.'}
       </h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} style={{ background: 'var(--card)', border: '1px solid var(--card-border)', borderRadius: 'var(--radius)', padding: '2rem', height: 200 }} />
+      {/* Pillar cards — PR-3 */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+        {[1,2,3,4].map(i => (
+          <div key={i} style={{ background: 'var(--card)', border: '1px solid var(--card-border)', borderRadius: 'var(--radius)', padding: '2rem' }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+              PILLAR {i} — {isArabic ? 'PR-3' : 'PR-3'}
+            </p>
+          </div>
         ))}
       </div>
     </section>

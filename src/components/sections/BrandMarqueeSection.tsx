@@ -1,21 +1,18 @@
-// BrandMarqueeSection placeholder — PR-2 will implement brand marquee
+import { useLocale } from 'next-intl'
+
 export default function BrandMarqueeSection() {
+  const locale = useLocale()
+  const isArabic = locale === 'ar'
+
   return (
-    <section
-      id="marquee"
-      style={{
-        padding: '2rem 0',
-        background: 'var(--bg)',
-        borderTop: '1px solid var(--card-border)',
-        borderBottom: '1px solid var(--card-border)',
-      }}
-    >
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', color: 'var(--gold)', textTransform: 'uppercase', textAlign: 'center', marginBottom: '2rem' }}>
-        TRUSTED BY GLOBAL BRANDS
+    <section style={{ padding: 'var(--section-y) 0', overflow: 'hidden' }}>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', color: 'var(--gold)', textTransform: 'uppercase', textAlign: 'center', marginBottom: '3rem' }}>
+        {isArabic ? 'وثقت بنا علامات عالمية' : 'TRUSTED BY GLOBAL BRANDS'}
       </p>
-      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--h2)', color: 'var(--text)', textAlign: 'center', letterSpacing: '0.01em', textTransform: 'uppercase' }}>
-        BRAND MARQUEE PLACEHOLDER
-      </h2>
+      {/* Marquee items rendered via CSS animation */}
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', fontWeight: 500, color: 'var(--text-faint)', textAlign: 'center' }}>
+        (Marquee — PR-2)
+      </div>
     </section>
   )
 }
