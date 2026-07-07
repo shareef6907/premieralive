@@ -7,11 +7,18 @@
     "startProject": "ابدأ مشروعك"
   },
   "hero": {
-    "eyebrow": "بريميرا لايف",
+    "eyebrow": "بريميرا لايف — عرض أعمالنا",
     "headline": "Marketing that makes your brand impossible to ignore.",
     "headlineAr": "نصنع علامات تجارية لا يمكن تجاهلها",
     "sub": "Launching in Saudi Arabia",
-    "subAr": "قريباً في السعودية"
+    "subAr": "قريباً في السعودية",
+    "soundOn": "TAP FOR SOUND",
+    "soundOnAr": "اضغط للصوت",
+    "soundOff": "TAP TO MUTE",
+    "soundOffAr": "اضغط لكتم الصوت",
+    "startProject": "Start Project",
+    "startProjectAr": "ابدأ مشروعك",
+    "ourWork": "أعمالنا"
   },
   "services": {
     "eyebrow": "ما نقدمه",
@@ -33,6 +40,24 @@
     "heading": "علامات صنعناها",
     "comingSoon": "قريباً",
     "comingSoonAr": "قريباً"
+  },
+  "brandFilms": {
+    "eyebrow": "BRAND FILMS",
+    "eyebrowAr": "أفلام السوشيال ميديا",
+    "heading": "Cinema-grade films for leading brands.",
+    "headingAr": "أفلام سينمائية لعلامات تجارية عالمية."
+  },
+  "shorts": {
+    "eyebrow": "SHORTS & REELS",
+    "eyebrowAr": "ريلز وشورتس",
+    "heading": "Scroll-stopping vertical content.",
+    "headingAr": "محتوى عمودي يجذب الانتباه."
+  },
+  "animation3d": {
+    "eyebrow": "ANIMATION & 3D",
+    "eyebrowAr": "الأنيميشن والتصميم ثلاثي الأبعاد",
+    "heading": "Worlds built from imagination.",
+    "headingAr": "عالم مبني من خيالنا."
   },
   "whyUs": {
     "eyebrow": "لماذا بريميرا لايف",

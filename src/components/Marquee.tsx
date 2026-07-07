@@ -1,9 +1,22 @@
-"use client";
+'use client';
 
 const BRANDS = [
-  "BBC Studios", "McLaren F1", "Four Seasons", "HSBC",
-  "Aston Martin", "Audi", "ALDO", "Calvin Klein",
-  "Tommy Hilfiger", "Puma", "LC Waikiki", "Bahrain International Circuit",
+  'BBC STUDIOS',
+  'MCLAREN',
+  'AUDI',
+  'JEEP',
+  'TOMMY HILFIGER',
+  'CALVIN KLEIN',
+  'DHL',
+  'FOUR SEASONS',
+  'BAHRAIN INTERNATIONAL CIRCUIT',
+  'FORMULA 1',
+  'WORLD ENDURANCE CHAMPIONSHIP',
+  'UAE SPACE AGENCY',
+  'STARBUCKS',
+  'BAHRAIN MINISTRY OF YOUTH AFFAIRS',
+  'BAHRAIN ECONOMIC DEVELOPMENT BOARD',
+  'RASHID EQUESTRIAN HORSE RACING',
 ];
 
 export default function Marquee() {
