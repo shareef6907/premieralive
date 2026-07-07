@@ -6,12 +6,21 @@
     "contact": "Contact",
     "startProject": "Start Project"
   },
+  "trustedBy": "Trusted By",
+  "trustedByAr": "يثقون بنا",
   "hero": {
-    "eyebrow": "PREMIERA LIVE",
+    "eyebrow": "PREMIERA LIVE — SHOWREEL",
     "headline": "Marketing that makes your brand impossible to ignore.",
     "headlineAr": "نصنع علامات تجارية لا يمكن تجاهلها",
     "sub": "Launching in Saudi Arabia",
-    "subAr": "قريباً في السعودية"
+    "subAr": "قريباً في السعودية",
+    "soundOn": "TAP FOR SOUND",
+    "soundOnAr": "اضغط للصوت",
+    "soundOff": "TAP TO MUTE",
+    "soundOffAr": "اضغط لكتم الصوت",
+    "startProject": "Start Project",
+    "startProjectAr": "ابدأ مشروعك",
+    "ourWork": "Our Work"
   },
   "services": {
     "eyebrow": "WHAT WE DO",
@@ -33,6 +42,30 @@
     "heading": "Brands We've Brought to Life",
     "comingSoon": "Coming Soon",
     "comingSoonAr": "قريباً"
+  },
+  "brandFilms": {
+    "eyebrow": "BRAND FILMS",
+    "eyebrowAr": "أفلام السوشيال ميديا",
+    "heading": "Cinema-grade films for leading brands.",
+    "headingAr": "أفلام سينمائية لعلامات تجارية عالمية."
+  },
+  "shorts": {
+    "eyebrow": "SHORTS & REELS",
+    "eyebrowAr": "ريلز وشورتس",
+    "heading": "Scroll-stopping vertical content.",
+    "headingAr": "محتوى عمودي يجذب الانتباه."
+  },
+  "animation3d": {
+    "eyebrow": "ANIMATION & 3D",
+    "eyebrowAr": "الأنيميشن والتصميم ثلاثي الأبعاد",
+    "heading": "Worlds built from imagination.",
+    "headingAr": "عالم مبني من خيالنا."
+  },
+  "cgi": {
+    "eyebrow": "REAL-LIFE CGI ANIMATION",
+    "eyebrowAr": "أنيميشن CGI واقعي",
+    "heading": "Worlds that never existed. Built frame by frame.",
+    "headingAr": "عوالم لم تكن موجودة. مبنية إطاراً بإطار."
   },
   "whyUs": {
     "eyebrow": "WHY PREMIERA LIVE",
