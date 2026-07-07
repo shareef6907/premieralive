@@ -1,10 +1,16 @@
 import { setRequestLocale } from 'next-intl/server'
-import ScrollScrubHero from '@/components/ScrollScrubHero'
-import Marquee from '@/components/Marquee'
-import Services from '@/components/Services'
-import SelectedWork from '@/components/SelectedWork'
-import WhyUs from '@/components/WhyUs'
-import Contact from '@/components/Contact'
+import HeroSection from '@/components/sections/HeroSection'
+import BrandMarqueeSection from '@/components/sections/BrandMarqueeSection'
+import FourPillarsSection from '@/components/sections/FourPillarsSection'
+import GoalPickerSection from '@/components/sections/GoalPickerSection'
+import ScrollScrubSection from '@/components/sections/ScrollScrubSection'
+import WorkSection from '@/components/sections/WorkSection'
+import AISystemsSection from '@/components/sections/AISystemsSection'
+import ProcessSection from '@/components/sections/ProcessSection'
+import IndustriesSection from '@/components/sections/IndustriesSection'
+import WhyPremieraSection from '@/components/sections/WhyPremieraSection'
+import FounderLetterSection from '@/components/sections/FounderLetterSection'
+import FinalCTASection from '@/components/sections/FinalCTASection'
 
 export default async function Page({
   params,
@@ -16,12 +22,18 @@ export default async function Page({
 
   return (
     <>
-      <ScrollScrubHero locale={locale} />
-      <Marquee />
-      <Services />
-      <SelectedWork />
-      <WhyUs />
-      <Contact />
+      <HeroSection />
+      <BrandMarqueeSection />
+      <FourPillarsSection />
+      <GoalPickerSection />
+      <ScrollScrubSection />
+      <WorkSection />
+      <AISystemsSection />
+      <ProcessSection />
+      <IndustriesSection />
+      <WhyPremieraSection />
+      <FounderLetterSection />
+      <FinalCTASection />
     </>
   )
 }
