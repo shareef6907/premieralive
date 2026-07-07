@@ -2,7 +2,8 @@ const _M = process.env.NEXT_PUBLIC_MEDIA_URL ?? '';
 const M = _M.startsWith('http') ? _M : 'https://premiera-live-media.s3.us-east-1.amazonaws.com';
 
 export const media = {
-  heroScrub: `${M}/premiera-scrub-optimized.mp4`,
+  heroHeader: `${M}/Animation/New%20All%20ads%20-%20Header%20High%20res.m4v`,
+  heroScrub: `${M}/premiera-scrub-hq.mp4`,
   heroPoster: `${M}/hero-poster.jpg`,
   folders: {
     horizontal:   `${M}/Horizontal%20Videos`,

@@ -1,4 +1,5 @@
 import { setRequestLocale } from 'next-intl/server'
+import HeroVideo from '@/components/HeroVideo'
 import ScrollScrubHero from '@/components/ScrollScrubHero'
 import Marquee from '@/components/Marquee'
 import Services from '@/components/Services'
@@ -18,8 +19,9 @@ export default async function Page({
 
   return (
     <>
-      <ScrollScrubHero locale={locale} />
+      <HeroVideo locale={locale} />
       <Marquee />
+      <ScrollScrubHero locale={locale} />
       <Services />
       <BrandFilms />
       <ShortsReels />
