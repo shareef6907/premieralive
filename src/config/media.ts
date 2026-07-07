@@ -2,6 +2,7 @@ const M = process.env.NEXT_PUBLIC_MEDIA_URL!;
 
 export const media = {
   heroScrub: `${M}/premiera-scrub-optimized.mp4`,
+  heroPoster: `${M}/hero-poster.jpg`,
   folders: {
     horizontal:  `${M}/horizontal`,
     animations:  `${M}/animations`,
