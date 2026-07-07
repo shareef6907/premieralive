@@ -98,6 +98,7 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
         <video
           ref={videoRef}
           src={media.heroScrub}
+          poster={media.heroPoster}
           muted
           playsInline
           preload="auto"
