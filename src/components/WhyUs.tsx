@@ -1,17 +1,64 @@
 'use client'
 
+import { useRef } from 'react'
+import { motion, useInView, animate, useMotionValue } from 'motion/react'
 import { useTranslations, useLocale } from 'next-intl'
+
+function AnimatedCounter({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: '-60px' })
+  const prefersReduced = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  const numericValue = parseInt(value.replace(/\D/g, ''), 10)
+  const prefix = value.match(/^\D+/)?.[0] ?? ''
+  const suffix = value.match(/\D+$/)?.[0] ?? ''
+
+  if (prefersReduced) {
+    return <span ref={ref}>{value}</span>
+  }
+
+  return (
+    <motion.span
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+    >
+      {numericValue > 0 ? (
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+        >
+          {prefix}
+          <motion.span>
+            {Array.from({ length: String(numericValue).length }).map((_, idx) => {
+              const digit = String(numericValue)[idx]
+              return (
+                <motion.span
+                  key={idx}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={isInView ? { y: 0, opacity: 1 } : {}}
+                  transition={{ duration: 1.2, delay: idx * 0.08, ease: 'easeOut' }}
+                >
+                  {digit}
+                </motion.span>
+              )
+            })}
+          </motion.span>
+          {suffix}
+        </motion.span>
+      ) : (
+        <span>{value}</span>
+      )}
+    </motion.span>
+  )
+}
 
 export default function WhyUs() {
   const t = useTranslations('whyUs')
   const locale = useLocale()
   const isArabic = locale === 'ar'
-
-  const stats = t.raw('stats') as Array<{
-    value: string
-    label: string
-    labelAr: string
-  }>
+  const stats = t.raw('stats') as Array<{ value: string; label: string; labelAr: string }>
 
   return (
     <section
@@ -22,7 +69,11 @@ export default function WhyUs() {
         borderTop: '1px solid rgba(255,255,255,0.03)',
       }}
     >
-      <p
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.5 }}
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: '0.75rem',
@@ -32,9 +83,13 @@ export default function WhyUs() {
         }}
       >
         {t('eyebrow')}
-      </p>
+      </motion.p>
 
-      <h2
+      <motion.h2
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, delay: 0.1 }}
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(2rem, 5vw, 4rem)',
@@ -44,7 +99,7 @@ export default function WhyUs() {
         }}
       >
         {t('heading')}
-      </h2>
+      </motion.h2>
 
       <div
         style={{
@@ -54,7 +109,14 @@ export default function WhyUs() {
         }}
       >
         {stats.map((stat, i) => (
-          <div key={i} style={{ textAlign: 'center' }}>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            style={{ textAlign: 'center' }}
+          >
             <div
               style={{
                 fontFamily: 'var(--font-display)',
@@ -65,7 +127,7 @@ export default function WhyUs() {
                 marginBottom: '0.75rem',
               }}
             >
-              {stat.value}
+              <AnimatedCounter value={stat.value} />
             </div>
             <div
               style={{
@@ -77,7 +139,7 @@ export default function WhyUs() {
             >
               {isArabic ? stat.labelAr : stat.label}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

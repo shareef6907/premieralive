@@ -1,20 +1,67 @@
 'use client'
 
+import { motion } from 'motion/react'
 import { useTranslations, useLocale } from 'next-intl'
+import { media } from '@/config/media'
 
-const PLACEHOLDER_POSTERS = [
-  { label: 'Coming Soon', labelAr: 'قريباً' },
-  { label: 'Coming Soon', labelAr: 'قريباً' },
-  { label: 'Coming Soon', labelAr: 'قريباً' },
-  { label: 'Coming Soon', labelAr: 'قريباً' },
-  { label: 'Coming Soon', labelAr: 'قريباً' },
-  { label: 'Coming Soon', labelAr: 'قريباً' },
-]
+function ComingSoonTile({ index }: { index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      style={{
+        position: 'relative',
+        aspectRatio: '9/16',
+        background: 'transparent',
+        borderRadius: 12,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {/* Gold ring border */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        borderRadius: 12,
+        padding: '1px',
+        background: 'linear-gradient(135deg, rgba(201,162,75,0.5) 0%, rgba(201,162,75,0.1) 50%, rgba(201,162,75,0.5) 100%)',
+        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+        WebkitMaskComposite: 'xor',
+        maskComposite: 'exclude',
+      }} />
+      <div
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: '0.75rem',
+          letterSpacing: '0.25em',
+          color: 'rgba(201,162,75,0.35)',
+          textAlign: 'center',
+          padding: '1rem',
+        }}
+      >
+        COMING<br />SOON
+      </div>
+    </motion.div>
+  )
+}
 
 export default function SelectedWork() {
   const t = useTranslations('work')
   const locale = useLocale()
   const isArabic = locale === 'ar'
+
+  const allWork = [
+    ...media.work.horizontal,
+    ...media.work.animations,
+    ...media.work.reels,
+    ...media.work.interviews,
+  ]
+
+  const tiles = allWork.length > 0 ? allWork : Array(6).fill(null)
 
   return (
     <section
@@ -25,7 +72,11 @@ export default function SelectedWork() {
         borderTop: '1px solid rgba(255,255,255,0.03)',
       }}
     >
-      <p
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.5 }}
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: '0.75rem',
@@ -35,9 +86,13 @@ export default function SelectedWork() {
         }}
       >
         {t('eyebrow')}
-      </p>
+      </motion.p>
 
-      <h2
+      <motion.h2
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, delay: 0.1 }}
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(2rem, 5vw, 4rem)',
@@ -47,7 +102,7 @@ export default function SelectedWork() {
         }}
       >
         {t('heading')}
-      </h2>
+      </motion.h2>
 
       <div
         style={{
@@ -56,33 +111,48 @@ export default function SelectedWork() {
           gap: '1.5rem',
         }}
       >
-        {PLACEHOLDER_POSTERS.map((item, i) => (
-          <div
-            key={i}
-            style={{
-              position: 'relative',
-              aspectRatio: '9/16',
-              background: '#16161B',
-              border: '1px solid rgba(255,255,255,0.06)',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <div
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '1.5rem',
-                letterSpacing: '0.15em',
-                color: 'rgba(255,255,255,0.12)',
-              }}
-            >
-              {isArabic ? item.labelAr : item.label}
-            </div>
-          </div>
-        ))}
+        {tiles.map((item, i) =>
+          item === null
+            ? <ComingSoonTile key={i} index={i} />
+            : (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                style={{
+                  position: 'relative',
+                  aspectRatio: '9/16',
+                  background: '#16161B',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  borderRadius: 12,
+                  overflow: 'hidden',
+                  backgroundImage: `url(${media.folders.posters}/${item.file})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(10,10,11,0.85) 0%, transparent 50%)',
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '1.25rem',
+                  left: '1.25rem',
+                  right: '1.25rem',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1rem',
+                  letterSpacing: '0.08em',
+                  color: '#fff',
+                }}>
+                  {item.title}
+                </div>
+              </motion.div>
+            )
+        )}
       </div>
     </section>
   )

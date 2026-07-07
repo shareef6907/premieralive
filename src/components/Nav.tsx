@@ -11,123 +11,181 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 80)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return (
-    <nav
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        height: '72px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 2rem',
-        transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
-        background: scrolled ? 'rgba(10,10,11,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent',
-      }}
-    >
-      <Link
-        href={`/${locale}`}
-        style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', lineHeight: 1 }}
-      >
-        <span
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.35rem',
-            letterSpacing: '0.2em',
-            color: '#C9A24B',
-          }}
-        >
-          {locale === 'ar' ? 'بريميرا' : 'PREMIERA'}
-        </span>
-        <span
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '0.55rem',
-            letterSpacing: '0.45em',
-            color: 'rgba(201,162,75,0.65)',
-            marginTop: '-2px',
-          }}
-        >
-          {locale === 'ar' ? 'لايف' : 'LIVE'}
-        </span>
-      </Link>
+  const navLinks = ['work', 'services', 'whyUs', 'contact']
 
-      <div
+  return (
+    <>
+      <nav
         style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          height: '72px',
           display: 'flex',
           alignItems: 'center',
-          gap: '2.5rem',
+          justifyContent: 'space-between',
+          padding: '0 2rem',
+          transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+          background: scrolled ? 'rgba(10,10,11,0.92)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(16px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
         }}
-        className="desktop-nav"
       >
-        {['work', 'services', 'whyUs', 'contact'].map((key) => (
-          <a
-            key={key}
-            href={`#${key}`}
+        <Link
+          href={`/${locale}`}
+          style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', lineHeight: 1 }}
+        >
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', letterSpacing: '0.2em', color: '#C9A24B' }}>
+            {locale === 'ar' ? 'بريميرا' : 'PREMIERA'}
+          </span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.55rem', letterSpacing: '0.45em', color: 'rgba(201,162,75,0.65)', marginTop: '-2px' }}>
+            {locale === 'ar' ? 'لايف' : 'LIVE'}
+          </span>
+        </Link>
+
+        <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+          {navLinks.map((key) => (
+            <a
+              key={key}
+              href={`#${key}`}
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '0.8rem',
+                letterSpacing: '0.18em',
+                color: 'rgba(255,255,255,0.65)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+            >
+              {t(key)}
+            </a>
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Link
+            href={locale === 'en' ? '/ar' : '/en'}
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '0.8rem',
-              letterSpacing: '0.18em',
-              color: 'rgba(255,255,255,0.65)',
+              fontSize: '0.72rem',
+              letterSpacing: '0.15em',
+              color: 'rgba(255,255,255,0.5)',
               textDecoration: 'none',
-              transition: 'color 0.2s',
+              padding: '0.25rem 0.6rem',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: '3px',
+              transition: 'all 0.2s',
             }}
           >
-            {t(key)}
+            {locale === 'en' ? 'عربي' : 'EN'}
+          </Link>
+          <a
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              padding: '0.5rem 1.1rem',
+              background: '#C9A24B',
+              color: '#0A0A0B',
+              fontFamily: 'var(--font-display)',
+              fontSize: '0.75rem',
+              letterSpacing: '0.1em',
+              borderRadius: '100px',
+              textDecoration: 'none',
+              fontWeight: 700,
+              boxShadow: '0 4px 20px rgba(201,162,75,0.35)',
+            }}
+          >
+            {t('startProject')}
           </a>
-        ))}
-      </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <Link
-          href={locale === 'en' ? '/ar' : '/en'}
+          {/* hamburger */}
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              display: 'none',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              flexDirection: 'column',
+              gap: '5px',
+              padding: '4px',
+            }}
+            aria-label="Toggle menu"
+          >
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{
+                  display: 'block',
+                  width: '22px',
+                  height: '2px',
+                  background: 'rgba(255,255,255,0.7)',
+                  transition: 'all 0.3s',
+                  transform: menuOpen
+                    ? i === 0 ? 'rotate(45deg) translate(5px, 5px)'
+                    : i === 2 ? 'rotate(-45deg) translate(5px, -5px)'
+                    : 'scaleX(0)'
+                    : 'none',
+                }}
+              />
+            ))}
+          </button>
+        </div>
+      </nav>
+
+      {/* mobile drawer */}
+      {menuOpen && (
+        <div
           style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '0.72rem',
-            letterSpacing: '0.15em',
-            color: 'rgba(255,255,255,0.5)',
-            textDecoration: 'none',
-            padding: '0.25rem 0.6rem',
-            border: '1px solid rgba(255,255,255,0.15)',
-            borderRadius: '3px',
-            transition: 'all 0.2s',
-          }}
-        >
-          {locale === 'en' ? 'عربي' : 'EN'}
-        </Link>
-        <a
-          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex',
+            position: 'fixed',
+            inset: 0,
+            zIndex: 99,
+            background: 'rgba(10,10,11,0.97)',
+            backdropFilter: 'blur(20px)',
+            display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            gap: '0.4rem',
-            padding: '0.5rem 1.1rem',
-            background: '#C9A24B',
-            color: '#0A0A0B',
-            fontFamily: 'var(--font-display)',
-            fontSize: '0.75rem',
-            letterSpacing: '0.1em',
-            borderRadius: '100px',
-            textDecoration: 'none',
-            fontWeight: 700,
-            boxShadow: '0 4px 20px rgba(201,162,75,0.35)',
+            justifyContent: 'center',
+            gap: '2.5rem',
           }}
         >
-          {t('startProject')}
-        </a>
-      </div>
-    </nav>
+          {navLinks.map((key) => (
+            <a
+              key={key}
+              href={`#${key}`}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '2rem',
+                letterSpacing: '0.15em',
+                color: 'rgba(255,255,255,0.8)',
+                textDecoration: 'none',
+              }}
+            >
+              {t(key)}
+            </a>
+          ))}
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 767px) {
+          .desktop-nav { display: none !important; }
+          .mobile-menu-btn { display: flex !important; }
+        }
+      `}</style>
+    </>
   )
 }

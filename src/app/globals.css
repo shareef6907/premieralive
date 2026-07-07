@@ -42,3 +42,28 @@ body {
   background: #C9A24B;
   border-radius: 3px;
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* prefers-reduced-motion: disable animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
