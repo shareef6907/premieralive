@@ -118,7 +118,7 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
   if (isMobile) return <MobileHero locale={locale} />;
 
   return (
-    <section ref={sectionRef} className="relative h-[400vh]">
+    <section ref={sectionRef} id="scrub-section" className="relative h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-[#0A0A0B]">
         <video
           ref={videoRef}

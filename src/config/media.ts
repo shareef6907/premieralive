@@ -2,7 +2,7 @@ const _M = process.env.NEXT_PUBLIC_MEDIA_URL ?? '';
 const M = _M.startsWith('http') ? _M : 'https://premiera-live-media.s3.us-east-1.amazonaws.com';
 
 export const media = {
-  heroHeader: `${M}/Animation/New%20All%20ads%20-%20Header%20High%20res.m4v`,
+  heroHeader: `${M}/Horizontal%20Videos/Al%20Hamra%20Jewellery%20Final%20for%20Bn.MP4`,
   heroScrub: `${M}/premiera-scrub-hq.mp4`,
   heroPoster: `${M}/hero-poster.jpg`,
   folders: {

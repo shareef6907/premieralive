@@ -7,11 +7,18 @@
     "startProject": "ابدأ مشروعك"
   },
   "hero": {
-    "eyebrow": "بريميرا لايف",
+    "eyebrow": "بريميرا لايف — عرض أعمالنا",
     "headline": "Marketing that makes your brand impossible to ignore.",
     "headlineAr": "نصنع علامات تجارية لا يمكن تجاهلها",
     "sub": "Launching in Saudi Arabia",
-    "subAr": "قريباً في السعودية"
+    "subAr": "قريباً في السعودية",
+    "soundOn": "TAP FOR SOUND",
+    "soundOnAr": "اضغط للصوت",
+    "soundOff": "TAP TO MUTE",
+    "soundOffAr": "اضغط لكتم الصوت",
+    "startProject": "Start Project",
+    "startProjectAr": "ابدأ مشروعك",
+    "ourWork": "أعمالنا"
   },
   "services": {
     "eyebrow": "ما نقدمه",
