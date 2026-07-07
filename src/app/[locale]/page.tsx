@@ -1,5 +1,6 @@
 import { setRequestLocale } from 'next-intl/server'
-import Hero from '@/components/Hero'
+import ScrollScrubHero from '@/components/ScrollScrubHero'
+import Marquee from '@/components/Marquee'
 import Services from '@/components/Services'
 import SelectedWork from '@/components/SelectedWork'
 import WhyUs from '@/components/WhyUs'
@@ -15,7 +16,8 @@ export default async function Page({
 
   return (
     <>
-      <Hero />
+      <ScrollScrubHero locale={locale} />
+      <Marquee />
       <Services />
       <SelectedWork />
       <WhyUs />

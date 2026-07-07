@@ -1,17 +1,11 @@
 'use client'
 
+import { motion } from 'motion/react'
 import { useTranslations, useLocale } from 'next-intl'
 
 function SaudiFlag() {
   return (
-    <svg
-      width="22"
-      height="15"
-      viewBox="0 0 20 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
+    <svg width="22" height="15" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect width="20" height="14" fill="#006C35" />
       <rect x="0" y="3.5" width="20" height="1.4" fill="white" />
       <rect x="0" y="7" width="20" height="1.4" fill="white" />
@@ -36,7 +30,11 @@ export default function Contact() {
         textAlign: 'center',
       }}
     >
-      <h2
+      <motion.h2
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6 }}
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(2.5rem, 6vw, 5rem)',
@@ -46,9 +44,13 @@ export default function Contact() {
         }}
       >
         {t('heading')}
-      </h2>
+      </motion.h2>
 
-      <p
+      <motion.p
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, delay: 0.15 }}
         style={{
           fontFamily: 'var(--font-body)',
           fontSize: '1.1rem',
@@ -60,12 +62,17 @@ export default function Contact() {
         }}
       >
         {isArabic ? t('subAr') : t('sub')}
-      </p>
+      </motion.p>
 
-      <a
+      <motion.a
         href={`https://wa.me/${whatsappNum}?text=${encodeURIComponent(isArabic ? 'مرحباً، أريد التواصل مع بريميرا لايف' : "Hi, I'd like to get in touch with Premiera Live")}`}
         target="_blank"
         rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.5, delay: 0.25 }}
+        whileHover={{ scale: 1.03, y: -2 }}
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -80,22 +87,17 @@ export default function Contact() {
           borderRadius: '100px',
           textDecoration: 'none',
           boxShadow: '0 4px 30px rgba(201,162,75,0.4)',
-          transition: 'all 0.2s',
-        }}
-        onMouseEnter={(e) => {
-          ;(e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'
-          ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 8px 40px rgba(201,162,75,0.5)'
-        }}
-        onMouseLeave={(e) => {
-          ;(e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)'
-          ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 30px rgba(201,162,75,0.4)'
         }}
       >
         <SaudiFlag />
         {t('btn')}
-      </a>
+      </motion.a>
 
-      <p
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.35 }}
         style={{
           fontFamily: 'var(--font-body)',
           fontSize: '0.8rem',
@@ -104,7 +106,7 @@ export default function Contact() {
         }}
       >
         {isArabic ? 'نخدم العملاء في السعودية والخليج' : 'Serving clients in Saudi Arabia and across the Gulf.'}
-      </p>
+      </motion.p>
     </section>
   )
 }

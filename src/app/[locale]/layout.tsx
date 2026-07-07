@@ -4,6 +4,8 @@ import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import SmoothScroll from '@/components/SmoothScroll'
+import CursorGlow from '@/components/CursorGlow'
 import { brand } from '@/config/brand'
 
 const locales = ['en', 'ar']
@@ -77,9 +79,12 @@ export default async function LocaleLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Nav />
-          <main>{children}</main>
-          <Footer />
+          <SmoothScroll>
+            <CursorGlow />
+            <Nav />
+            <main>{children}</main>
+            <Footer />
+          </SmoothScroll>
         </NextIntlClientProvider>
       </body>
     </html>
