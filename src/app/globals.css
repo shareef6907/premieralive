@@ -39,6 +39,7 @@
 .v2-section {
   padding-block: var(--section-y);
   background: var(--color-bg);
+  position: relative;
 }
 .v2-section--elevated {
   background: var(--color-bg-elevated);
@@ -151,6 +152,24 @@ body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Entrance animation */
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RTL border fix for goal picker panel */
+[dir="rtl"] .goal-panel {
+  border-left: none;
+  border-right: 2px solid var(--color-gold);
 }
 
 /* Gold rule */

@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
 import CursorGlow from '@/components/CursorGlow'
 import { brand } from '@/config/brand'
+import { IMAGES } from '@/config/media'
 
 const locales = ['en', 'ar']
 
@@ -45,6 +46,14 @@ export async function generateMetadata({
       siteName: brand.name,
       locale: isArabic ? 'ar_SA' : 'en_US',
       type: 'website',
+      images: [
+        {
+          url: IMAGES.ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     robots: {
       index: brand.siteIndexable,
