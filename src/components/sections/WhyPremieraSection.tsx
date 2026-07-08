@@ -40,7 +40,7 @@ export default function WhyPremieraSection() {
           marginBottom: '3rem',
         }}
       >
-        {isArabic ? 'نلتزم معياراً واحداً منذ خمسة عشر عاماً.' : 'Fifteen years. One standard.'}
+        {isArabic ? 'نعمل منذ خمسة عشر عاماً عبر الخليج — وُلدنا في البحرين، ونخدم السوق السعودي اليوم.' : 'Fifteen years across the Gulf. Born in Bahrain — now in Saudi Arabia.'}
       </p>
 
       {/* Stats grid — 4-col desktop, 2-col mobile */}
