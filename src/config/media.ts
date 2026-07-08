@@ -28,8 +28,7 @@ export const media = {
   },
 };
 
-// Hero — Al Hamra master (Shareef swaps filename to web encode when ready)
-export const HERO_VIDEO    = `${M}/Horizontal%20Videos/Al%20Hamra%20Jewellery%20Final%20for%20Bn.MP4`;
+export const HERO_VIDEO = `${M}/Horizontal%20Videos/Hamra%20Jewellery%20new1.mp4`;
 export const HERO_POSTER   = `${M}/hero-poster.jpg`;
 export const SCRUB_VIDEO   = `${M}/premiera-scrub-hq.mp4`;
 export const CGI_SHOWREEL  = `${M}/Animation/Premiera%20-%20animation%20showcase.mp4`;
