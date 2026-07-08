@@ -12,8 +12,6 @@ export const IMAGES = {
 };
 
 export const media = {
-  heroScrub: `${M}/premiera-scrub-optimized.mp4`,
-  heroPoster: `${M}/hero-poster.jpg`,
   folders: {
     horizontal:  `${M}/horizontal`,
     animations:  `${M}/animations`,
@@ -29,3 +27,11 @@ export const media = {
     interviews:  [] as { file: string; title: string }[],
   },
 };
+
+// Hero — Al Hamra master (Shareef swaps filename to web encode when ready)
+export const HERO_VIDEO    = `${M}/Horizontal%20Videos/Al%20Hamra%20Jewellery%20Final%20for%20Bn.MP4`;
+export const HERO_POSTER   = `${M}/hero-poster.jpg`;
+export const SCRUB_VIDEO   = `${M}/premiera-scrub-hq.mp4`;
+export const CGI_SHOWREEL  = `${M}/Animation/Premiera%20-%20animation%20showcase.mp4`;
+export const BRAND_FILMS   = [] as string[];
+export const SHORTS        = [] as string[];
