@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { SCRUB_VIDEO, HERO_POSTER } from "@/config/media";
+import { HERO_POSTER } from "@/config/media";
 
 const LABELS = [
   { s: 0.00, e: 0.10, en: "Marketing that makes your brand impossible to ignore.", ar: "نصنع علامات تجارية لا يمكن تجاهلها" },
@@ -21,7 +21,7 @@ function MobileHero({ locale }: { locale: string }) {
   return (
     <section className="relative h-screen overflow-hidden bg-[#0A0A0B]">
       <video
-        src={SCRUB_VIDEO}
+        src=""
         autoPlay
         loop
         muted
@@ -97,7 +97,7 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
       <div className="sticky top-0 h-screen overflow-hidden bg-[#0A0A0B]">
         <video
           ref={videoRef}
-          src={SCRUB_VIDEO}
+          src=""
           poster={HERO_POSTER}
           muted
           playsInline
