@@ -3,7 +3,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import BrandMarqueeSection from '@/components/sections/BrandMarqueeSection'
 import FourPillarsSection from '@/components/sections/FourPillarsSection'
 import GoalPickerSection from '@/components/sections/GoalPickerSection'
-import ScrollScrubSection from '@/components/sections/ScrollScrubSection'
 import WorkSection from '@/components/sections/WorkSection'
 import AISystemsSection from '@/components/sections/AISystemsSection'
 import ProcessSection from '@/components/sections/ProcessSection'
@@ -26,7 +25,6 @@ export default async function Page({
       <BrandMarqueeSection />
       <FourPillarsSection />
       <GoalPickerSection />
-      <ScrollScrubSection />
       <WorkSection />
       <AISystemsSection />
       <ProcessSection />
