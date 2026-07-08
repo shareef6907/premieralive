@@ -68,6 +68,26 @@
   max-width: 16ch;               /* wraps as a block, never one word per line */
   margin-bottom: 2.5rem;
 }
+[dir="rtl"] .v2-title {
+  max-width: 24ch;                /* Arabic titles need more width than EN-tuned 16ch */
+}
+
+/* Four pillars grid — 4-col desktop, 2-col tablet, 1-col mobile */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .pillars-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
 * {
   box-sizing: border-box;

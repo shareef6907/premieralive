@@ -11,7 +11,7 @@ export default function FourPillarsSection() {
       eyebrow={isArabic ? 'ماذا نقدم' : 'WHAT WE DO'}
       title={isArabic ? 'نجمع أربعة تخصصات تحت شريك واحد.' : 'ONE PARTNER. FOUR DISCIPLINES.'}
     >
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+      <div className="pillars-grid">
         {[1, 2, 3, 4].map(i => (
           <div
             key={i}
