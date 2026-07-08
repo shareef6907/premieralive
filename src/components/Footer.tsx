@@ -1,100 +1,100 @@
-import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
+import { useLocale } from 'next-intl'
 
 export default function Footer() {
-  const t = useTranslations('footer')
   const locale = useLocale()
   const isArabic = locale === 'ar'
 
   return (
     <footer
       style={{
-        background: '#0A0A0B',
-        borderTop: '1px solid rgba(255,255,255,0.04)',
-        padding: '4rem 2rem 2rem',
+        background: 'var(--bg)',
+        borderTop: '1px solid var(--card-border)',
+        padding: '3rem clamp(1.5rem, 5vw, 4rem) 2rem',
       }}
     >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}
-      >
-        {/* Wordmark */}
-        <div style={{ marginBottom: '2rem' }}>
-          <div
+      {/* Row 1: P monogram + wordmark */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+        {/* Gold P monogram — simplified inline SVG */}
+        <div
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: '50%',
+            border: '1px solid var(--gold)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
+          <span
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.8rem',
-              letterSpacing: '0.15em',
-              color: '#C9A24B',
+              fontSize: '1rem',
+              color: 'var(--gold)',
+              lineHeight: 1,
             }}
           >
+            P
+          </span>
+        </div>
+        <div>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', letterSpacing: '0.25em', color: 'var(--gold)' }}>
             PREMIERA LIVE
           </div>
-          <div
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '0.6rem',
-              letterSpacing: '0.5em',
-              color: 'rgba(201,162,75,0.5)',
-              marginTop: '-4px',
-            }}
-          >
-            {isArabic ? 'قريباً في السعودية' : 'LAUNCHING IN SAUDI ARABIA'}
-          </div>
         </div>
+      </div>
 
-        {/* Tagline */}
+      {/* Row 2: tagline */}
+      <p
+        style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--body-sm)',
+          color: 'var(--text-faint)',
+          lineHeight: 1.7,
+          marginBottom: '2rem',
+        }}
+      >
+        {isArabic
+          ? 'تنطلق بريميرا لايف في السعودية — ونخدم عملاءنا في مختلف دول الخليج.'
+          : 'Launching in Saudi Arabia — serving clients across the Gulf.'}
+      </p>
+
+      {/* Row 3: copyright + locale switcher */}
+      <div
+        style={{
+          borderTop: '1px solid var(--card-border)',
+          paddingTop: '1.25rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '1rem',
+        }}
+      >
         <p
           style={{
             fontFamily: 'var(--font-body)',
-            fontSize: '0.9rem',
-            color: 'rgba(255,255,255,0.4)',
-            maxWidth: '480px',
-            lineHeight: 1.7,
-            marginBottom: '3rem',
+            fontSize: 'var(--body-sm)',
+            color: 'var(--text-faint)',
           }}
         >
-          {isArabic ? t('taglineAr') : t('tagline')}
+          &copy; 2026 Premiera Live
         </p>
-
-        {/* Bottom row */}
-        <div
+        <Link
+          href={locale === 'en' ? '/ar' : '/en'}
           style={{
-            borderTop: '1px solid rgba(255,255,255,0.04)',
-            paddingTop: '1.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '1rem',
+            fontFamily: 'var(--font-display)',
+            fontSize: '0.72rem',
+            letterSpacing: '0.15em',
+            color: 'var(--text-faint)',
+            textDecoration: 'none',
+            transition: 'color 0.2s',
           }}
         >
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '0.78rem',
-              color: 'rgba(255,255,255,0.25)',
-            }}
-          >
-            {t('copyright')}
-          </p>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <Link
-              href={locale === 'en' ? '/ar' : '/en'}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '0.75rem',
-                letterSpacing: '0.1em',
-                color: 'rgba(255,255,255,0.35)',
-                textDecoration: 'none',
-              }}
-            >
-              {locale === 'en' ? 'العربية' : 'English'}
-            </Link>
-          </div>
-        </div>
+          {locale === 'en' ? 'العربية' : 'English'}
+        </Link>
       </div>
     </footer>
   )
