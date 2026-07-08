@@ -13,8 +13,10 @@ const STATS = [
 
 function useCountUp(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0)
+  const hasRun = useRef(false)
   useEffect(() => {
-    if (!start) return
+    if (!start || hasRun.current) return
+    hasRun.current = true
     let startTime: number | null = null
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp
@@ -44,10 +46,13 @@ function StatItem({ stat, isArabic }: { stat: typeof STATS[0]; isArabic: boolean
   const suffix = numStr.replace(/[\d,]/g, '')
   const count = useCountUp(raw, 2000, visible)
 
+  // Format with locale comma separator for EN; raw for AR (Western numerals)
+  const displayNum = isArabic ? count.toString() : count.toLocaleString('en-US')
+
   return (
     <div ref={ref} style={{ textAlign: 'center', padding: '0 2rem' }}>
       <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,3vw,3rem)', color: 'var(--color-gold)', lineHeight: 1 }}>
-        {count}{suffix}
+        {displayNum}{suffix}
       </div>
       <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', color: 'var(--color-text-faint)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: '0.5rem' }}>
         {stat[isArabic ? 'ar' : 'en'].label}
@@ -129,6 +134,7 @@ export default function HeroSection() {
         muted
         loop
         playsInline
+        preload="auto"
         style={{
           position: 'absolute',
           inset: 0,
@@ -150,107 +156,141 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Content — bottom-left */}
+      {/* Flex column: content top + stats strip bottom, normal flow */}
       <div
         style={{
-          position: 'absolute',
-          bottom: '5rem',
-          left: 0,
-          right: 0,
-          maxWidth: '720px',
-          padding: '0 clamp(1.5rem,5vw,4rem)',
+          position: 'relative',
           zIndex: 2,
+          minHeight: '100svh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
         }}
       >
-        <p style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: 'var(--eyebrow)',
-          letterSpacing: '0.2em',
-          color: 'var(--color-gold)',
-          textTransform: 'uppercase',
-          marginBottom: '1.25rem',
-        }}>
-          {isArabic ? 'إبداع · تقنية · ذكاء اصطناعي · نمو' : 'CREATIVE · TECHNOLOGY · AI · GROWTH'}
-        </p>
+        {/* Content block — top */}
+        <div
+          style={{
+            maxWidth: '880px',
+            padding: 'clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem) 0',
+          }}
+        >
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--eyebrow)',
+            letterSpacing: '0.2em',
+            color: 'var(--color-gold)',
+            textTransform: 'uppercase',
+            marginBottom: '1.25rem',
+          }}>
+            {isArabic ? 'إبداع · تقنية · ذكاء اصطناعي · نمو' : 'CREATIVE · TECHNOLOGY · AI · GROWTH'}
+          </p>
 
-        <h1 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'var(--h1)',
-          color: 'var(--color-text)',
-          lineHeight: 0.95,
-          letterSpacing: '0.01em',
-          textTransform: 'uppercase',
-          marginBottom: '1.5rem',
-        }}>
-          {isArabic ? 'نصنع علاماتٍ لا تُنسى' : 'WE BUILD BRANDS PEOPLE REMEMBER'}
-        </h1>
+          <h1 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(3rem, 7vw, 6.5rem)',
+            color: 'var(--color-text)',
+            lineHeight: 0.95,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
+            marginBottom: '1.5rem',
+          }}>
+            {isArabic ? 'نصنع علاماتٍ لا تُنسى' : 'WE BUILD BRANDS PEOPLE REMEMBER'}
+          </h1>
 
-        <p style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: 'var(--body)',
-          color: 'var(--color-text-dim)',
-          lineHeight: 1.7,
-          maxWidth: '560px',
-          marginBottom: '2rem',
-        }}>
-          {isArabic
-            ? 'نمزج السرد السينمائي بأنظمة الذكاء الاصطناعي وتجارب رقمية مصمّمة لزيادة العملاء والمبيعات وقيمة العلامة التجارية في السعودية والخليج.'
-            : 'Cinematic storytelling, AI-powered systems, and digital experiences — engineered to grow leads, sales, and brand value across Saudi Arabia and the Gulf.'}
-        </p>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--body)',
+            color: 'var(--color-text-dim)',
+            lineHeight: 1.7,
+            maxWidth: '560px',
+            marginBottom: '2rem',
+          }}>
+            {isArabic
+              ? 'نمزج السرد السينمائي بأنظمة الذكاء الاصطناعي وتجارب رقمية مصمّمة لزيادة العملاء والمبيعات وقيمة العلامة التجارية في السعودية والخليج.'
+              : 'Cinematic storytelling, AI-powered systems, and digital experiences — engineered to grow leads, sales, and brand value across Saudi Arabia and the Gulf.'}
+          </p>
 
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <a
-            href={isArabic ? whatsappAr : whatsappEn}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              padding: '0.875rem 1.75rem',
-              background: 'var(--color-gold)',
-              color: '#0A0A0B',
-              fontFamily: 'var(--font-body)',
-              fontWeight: 600,
-              fontSize: 'var(--body-sm)',
-              textDecoration: 'none',
-              borderRadius: 'var(--radius)',
-              letterSpacing: '0.02em',
-            }}
-          >
-            {isArabic ? 'احجز جلسة استراتيجية' : 'Book a Strategy Session'}
-          </a>
-          <a
-            href="#work"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '0.875rem 1.75rem',
-              border: '1px solid var(--color-card-border)',
-              color: 'var(--color-text)',
-              fontFamily: 'var(--font-body)',
-              fontWeight: 500,
-              fontSize: 'var(--body-sm)',
-              textDecoration: 'none',
-              borderRadius: 'var(--radius)',
-              letterSpacing: '0.02em',
-              transition: 'border-color 0.3s',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--color-gold)')}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--color-card-border)')}
-          >
-            {isArabic ? 'شاهد أعمالنا' : 'See Our Work'}
-          </a>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <a
+              href={isArabic ? whatsappAr : whatsappEn}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.875rem 1.75rem',
+                background: 'var(--color-gold)',
+                color: '#0A0A0B',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 600,
+                fontSize: 'var(--body-sm)',
+                textDecoration: 'none',
+                borderRadius: 'var(--radius)',
+                letterSpacing: '0.02em',
+              }}
+            >
+              {isArabic ? 'احجز جلسة استراتيجية' : 'Book a Strategy Session'}
+            </a>
+            <a
+              href="#work"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '0.875rem 1.75rem',
+                border: '1px solid var(--color-card-border)',
+                color: 'var(--color-text)',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 500,
+                fontSize: 'var(--body-sm)',
+                textDecoration: 'none',
+                borderRadius: 'var(--radius)',
+                letterSpacing: '0.02em',
+                transition: 'border-color 0.3s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--color-gold)')}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--color-card-border)')}
+            >
+              {isArabic ? 'شاهد أعمالنا' : 'See Our Work'}
+            </a>
+          </div>
+        </div>
+
+        {/* Stats strip — last flex child, pinned to bottom */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            borderTop: '1px solid var(--color-card-border)',
+            background: 'rgba(10,10,11,0.6)',
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          {STATS.map((stat, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '1.25rem 0',
+              }}
+            >
+              {i > 0 && (
+                <div style={{ width: '1px', height: '2.5rem', background: 'var(--color-card-border)', marginRight: '0', marginLeft: '0' }} />
+              )}
+              <StatItem stat={stat} isArabic={isArabic} />
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Unmute pill — bottom-right */}
+      {/* Unmute pill — bottom-right, outside flex so it floats */}
       <button
         onClick={e => { e.stopPropagation(); toggleMute() }}
         aria-label={muted ? (isArabic ? 'تشغيل الصوت' : 'Unmute') : (isArabic ? 'كتم الصوت' : 'Mute')}
         style={{
           position: 'absolute',
-          bottom: '2rem',
+          bottom: '6rem',
           right: 'clamp(1.5rem,5vw,4rem)',
           zIndex: 3,
           display: 'flex',
@@ -285,38 +325,6 @@ export default function HeroSection() {
         )}
         {muted ? (isArabic ? 'تشغيل' : 'Unmute') : (isArabic ? 'كتم' : 'Mute')}
       </button>
-
-      {/* Stats strip — pinned bottom */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          borderTop: '1px solid var(--color-card-border)',
-          background: 'rgba(10,10,11,0.6)',
-          backdropFilter: 'blur(8px)',
-          zIndex: 2,
-        }}
-      >
-        {STATS.map((stat, i) => (
-          <div
-            key={i}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              padding: '1.25rem 0',
-            }}
-          >
-            {i > 0 && (
-              <div style={{ width: '1px', height: '2.5rem', background: 'var(--color-card-border)', marginRight: '0', marginLeft: '0' }} />
-            )}
-            <StatItem stat={stat} isArabic={isArabic} />
-          </div>
-        ))}
-      </div>
     </section>
   )
 }
