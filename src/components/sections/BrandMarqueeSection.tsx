@@ -25,6 +25,7 @@ const BRANDS = [
 export default function BrandMarqueeSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
+  const trackRef = useRef<HTMLDivElement>(null)
   const [paused, setPaused] = useState(false)
   const [prefersReduced, setPrefersReduced] = useState(false)
 
@@ -38,7 +39,7 @@ export default function BrandMarqueeSection() {
 
   return (
     <section
-      style={{ padding: 'var(--section-y) 0', background: 'var(--bg-elevated)' }}
+      style={{ padding: 'var(--section-y) 0', overflow: 'hidden', background: 'var(--bg-elevated)' }}
       aria-label={isArabic ? 'العلامات التجارية الموثوق بها' : 'Trusted by global brands'}
     >
       <p
@@ -55,111 +56,76 @@ export default function BrandMarqueeSection() {
         {isArabic ? 'وثقت بنا علامات عالمية' : 'TRUSTED BY GLOBAL BRANDS'}
       </p>
 
-      {/* Marquee clipping wrapper — masks the overflowing tracks */}
+      {/* Row 1 — scrolls left */}
       <div
-        style={{
-          overflow: 'hidden',
-          position: 'relative',
-        }}
+        style={{ overflow: 'hidden', marginBottom: '1.5rem', cursor: 'default' }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
       >
-        {/* Fade masks on left and right edges */}
         <div
-          aria-hidden="true"
+          ref={trackRef}
           style={{
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            width: 'clamp(1rem, 5vw, 4rem)',
-            background: 'linear-gradient(to right, var(--bg-elevated), transparent)',
-            zIndex: 1,
-            pointerEvents: 'none',
+            display: 'flex',
+            width: 'max-content',
+            animation: prefersReduced ? 'none' : 'marquee-left 30s linear infinite',
+            animationPlayState: paused ? 'paused' : 'running',
           }}
-        />
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            right: 0,
-            width: 'clamp(1rem, 5vw, 4rem)',
-            background: 'linear-gradient(to left, var(--bg-elevated), transparent)',
-            zIndex: 1,
-            pointerEvents: 'none',
-          }}
-        />
-
-        {/* Row 1 — scrolls left */}
-        <div
-          style={{ marginBottom: '1.5rem', cursor: 'default' }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
         >
-          <div
-            style={{
-              display: 'flex',
-              width: 'max-content',
-              animation: prefersReduced ? 'none' : 'marquee-left 30s linear infinite',
-              animationPlayState: paused ? 'paused' : 'running',
-            }}
-          >
-            {[...BRANDS, ...BRANDS].map((brand, i) => (
-              <span
-                key={`row1-${i}`}
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
-                  fontWeight: 500,
-                  color: 'var(--text-faint)',
-                  padding: '0 2.5rem',
-                  whiteSpace: 'nowrap',
-                  transition: 'color 0.3s ease',
-                  userSelect: 'none',
-                }}
-                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--text)')}
-                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--text-faint)')}
-              >
-                {brand}
-              </span>
-            ))}
-          </div>
+          {[...BRANDS, ...BRANDS].map((brand, i) => (
+            <span
+              key={`row1-${i}`}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
+                fontWeight: 500,
+                color: 'var(--text-faint)',
+                padding: '0 2.5rem',
+                whiteSpace: 'nowrap',
+                transition: 'color 0.3s ease',
+                userSelect: 'none',
+              }}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--text)')}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--text-faint)')}
+            >
+              {brand}
+            </span>
+          ))}
         </div>
+      </div>
 
-        {/* Row 2 — scrolls right */}
+      {/* Row 2 — scrolls right */}
+      <div
+        style={{ overflow: 'hidden', cursor: 'default' }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
         <div
-          style={{ cursor: 'default' }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          style={{
+            display: 'flex',
+            width: 'max-content',
+            animation: prefersReduced ? 'none' : 'marquee-right 35s linear infinite',
+            animationPlayState: paused ? 'paused' : 'running',
+          }}
         >
-          <div
-            style={{
-              display: 'flex',
-              width: 'max-content',
-              animation: prefersReduced ? 'none' : 'marquee-right 35s linear infinite',
-              animationPlayState: paused ? 'paused' : 'running',
-            }}
-          >
-            {[...BRANDS, ...BRANDS].map((brand, i) => (
-              <span
-                key={`row2-${i}`}
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
-                  fontWeight: 500,
-                  color: 'var(--text-faint)',
-                  padding: '0 2.5rem',
-                  whiteSpace: 'nowrap',
-                  transition: 'color 0.3s ease',
-                  userSelect: 'none',
-                }}
-                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--text)')}
-                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--text-faint)')}
-              >
-                {brand}
-              </span>
-            ))}
-          </div>
+          {[...BRANDS, ...BRANDS].map((brand, i) => (
+            <span
+              key={`row2-${i}`}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'clamp(0.875rem, 1.5vw, 1.125rem)',
+                fontWeight: 500,
+                color: 'var(--text-faint)',
+                padding: '0 2.5rem',
+                whiteSpace: 'nowrap',
+                transition: 'color 0.3s ease',
+                userSelect: 'none',
+              }}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--text)')}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--text-faint)')}
+            >
+              {brand}
+            </span>
+          ))}
         </div>
       </div>
 

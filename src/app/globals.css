@@ -19,7 +19,7 @@
 
 :root {
   /* Type scale */
-  --h1: clamp(3.5rem, 8vw, 7.5rem);
+  --h1: clamp(3rem, 7vw, 6.5rem);
   --h2: clamp(2.5rem, 5vw, 4.5rem);
   --h3: clamp(1.375rem, 2vw, 1.75rem);
   --eyebrow: 0.8125rem;
@@ -67,6 +67,26 @@
   color: var(--color-text);
   max-width: 16ch;               /* wraps as a block, never one word per line */
   margin-bottom: 2.5rem;
+}
+[dir="rtl"] .v2-title {
+  max-width: 24ch;                /* Arabic titles need more width than EN-tuned 16ch */
+}
+
+/* Four pillars grid — 4-col desktop, 2-col tablet, 1-col mobile */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .pillars-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 * {
