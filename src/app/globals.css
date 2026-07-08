@@ -39,6 +39,7 @@
 .v2-section {
   padding-block: var(--section-y);
   background: var(--color-bg);
+  position: relative;
 }
 .v2-section--elevated {
   background: var(--color-bg-elevated);
