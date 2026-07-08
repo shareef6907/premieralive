@@ -154,6 +154,24 @@ body {
   animation-play-state: paused;
 }
 
+/* Entrance animation */
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RTL border fix for goal picker panel */
+[dir="rtl"] .goal-panel {
+  border-left: none;
+  border-right: 2px solid var(--color-gold);
+}
+
 /* Gold rule */
 .gold-rule {
   width: 48px;

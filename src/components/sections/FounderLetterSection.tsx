@@ -1,6 +1,27 @@
 import { useLocale } from 'next-intl'
 import Section from '../Section'
 
+const WHATSAPP_NUM = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500000000'
+
+const SA_FLAG = (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 60 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    style={{ flexShrink: 0 }}
+  >
+    <rect width="60" height="40" fill="#006C35" />
+    <rect x="18" y="11" width="24" height="18" fill="white" />
+    <path d="M21 20 L21 15 L27 11 L30 20 Z" fill="#006C35" />
+    <path d="M21 20 L21 25 L27 29 L30 20 Z" fill="#006C35" />
+    <path d="M39 20 L39 15 L33 11 L30 20 Z" fill="#006C35" />
+    <path d="M39 20 L39 25 L33 29 L30 20 Z" fill="#006C35" />
+  </svg>
+)
+
 export default function FounderLetterSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
@@ -16,12 +37,36 @@ export default function FounderLetterSection() {
           maxWidth: '640px',
         }}
       >
-        {isArabic
-          ? <>لا تحتاج معظم الشركات إلى وكالة أخرى، بل إلى شريك واحد يرى الصورة كاملة — العلامة، والفيلم، والموقع، والنظام الذي يُنمّيها جميعاً.<br /><br />أمضيتُ أكثر من خمسة عشر عاماً في بناء حملات وأفلام ومنصات لعلامات تعرفها. وعلّمني كل مشروع الدرس نفسه: يتعثر الإبداع بلا تقنية، وتبقى التقنية بلا قصة غير مرئية.<br /><br />وُجدت بريميرا لايف لتجمع الاثنين — وحين تعمل معنا، تعمل معي مباشرة.</>
-          : <>Most businesses don&apos;t need another agency. They need one partner who sees the whole picture — the brand, the film, the website, and the system underneath that makes it all grow.<br /><br />For more than fifteen years I&apos;ve built campaigns, films, and platforms for brands you know. Every project taught me the same lesson: great creative without technology stalls, and technology without story is invisible.<br /><br />Premiera Live exists to do both — and when you work with us, you work with me.</>}
+        {isArabic ? (
+          <>
+            لا تحتاج معظم الشركات إلى وكالة أخرى، بل إلى شريك واحد يرى الصورة كاملة — العلامة، والفيلم، والموقع، والنظام الذي يُنمّيها جميعاً.
+            <br /><br />
+            أمضيتُ أكثر من خمسة عشر عاماً — من البحرين وعبر الخليج — في بناء حملات وأفلام ومنصات لعلامات تعرفها. وعلّمني كل مشروع الدرس نفسه: يتعثر الإبداع بلا تقنية، وتبقى التقنية بلا قصة غير مرئية.
+            <br /><br />
+            وُجدت بريميرا لايف لتجمع الاثنين — وحين تعمل معنا، تعمل معي مباشرة.
+          </>
+        ) : (
+          <>
+            Most businesses don&apos;t need another agency. They need one partner who sees the whole picture — the brand, the film, the website, and the system underneath that makes it all grow.
+            <br /><br />
+            For more than fifteen years — from Bahrain, across the Gulf — I&apos;ve built campaigns, films, and platforms for brands you know. Every project taught me the same lesson: great creative without technology stalls, and technology without story is invisible.
+            <br /><br />
+            Premiera Live exists to do both — and when you work with us, you work with me.
+          </>
+        )}
         <br /><br />
-        <div style={{ width: '48px', height: '1px', background: 'var(--color-gold)', marginBottom: '1rem' }} />
-        <span style={{ color: 'var(--color-gold)' }}>— {isArabic ? 'شريف، المؤسس' : 'Shareef, Founder'}</span>
+        <div
+          aria-hidden="true"
+          style={{
+            width: '48px',
+            height: '1px',
+            background: 'var(--color-gold)',
+            marginBottom: '1rem',
+          }}
+        />
+        <span style={{ color: 'var(--color-gold)' }}>
+          — {isArabic ? 'شريف، المؤسس' : 'Shareef, Founder'}
+        </span>
       </div>
     </Section>
   )
