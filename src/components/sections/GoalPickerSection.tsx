@@ -1,21 +1,19 @@
 import { useLocale } from 'next-intl'
+import Section from '../Section'
 
 export default function GoalPickerSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
 
   return (
-    <section style={{ padding: 'var(--section-y) var(--container)', maxWidth: 'var(--container)', margin: '0 auto' }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>
-        {isArabic ? 'ابدأ بهدفك' : 'START WITH YOUR GOAL'}
-      </p>
-      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--h2)', color: 'var(--text)', lineHeight: 0.95, letterSpacing: '0.01em', textTransform: 'uppercase', marginBottom: '3rem' }}>
-        {isArabic ? 'ماذا تريد أن تحقق؟' : 'WHAT DO YOU WANT TO ACHIEVE?'}
-      </h2>
-      {/* Goal picker — PR-3 */}
-      <div style={{ color: 'var(--text-dim)', fontFamily: 'var(--font-body)' }}>
+    <Section
+      id="goal"
+      eyebrow={isArabic ? 'ابدأ بهدفك' : 'START WITH YOUR GOAL'}
+      title={isArabic ? 'ماذا تريد أن تحقق؟' : 'WHAT DO YOU WANT TO ACHIEVE?'}
+    >
+      <div style={{ color: 'var(--color-text-dim)', fontFamily: 'var(--font-body)' }}>
         Goal picker — PR-3
       </div>
-    </section>
+    </Section>
   )
 }

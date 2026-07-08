@@ -1,15 +1,13 @@
 import { useLocale } from 'next-intl'
+import Section from '../Section'
 
 export default function IndustriesSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
 
   return (
-    <section style={{ padding: '4rem var(--container)', maxWidth: 'var(--container)', margin: '0 auto' }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '2rem' }}>
-        {isArabic ? 'القطاعات' : 'INDUSTRIES'}
-      </p>
+    <Section id="industries" eyebrow={isArabic ? 'القطاعات' : 'INDUSTRIES'}>
       {/* Industry chips — PR-5 */}
-    </section>
+    </Section>
   )
 }
