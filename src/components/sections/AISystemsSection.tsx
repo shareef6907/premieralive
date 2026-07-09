@@ -1,9 +1,100 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
-import { IMAGES, PLATFORMS } from '@/config/media'
+import { IMAGES, PLATFORMS, AI_BG_LOOP } from '@/config/media'
+
+// ---------------------------------------------------------------------------
+// Video background with IntersectionObserver play/pause
+// ---------------------------------------------------------------------------
+interface VideoBgProps {
+  src: string
+  poster: string
+  reducedMotion: boolean
+}
+
+function VideoBg({ src, poster, reducedMotion }: VideoBgProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (reducedMotion) return
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {})
+          } else {
+            video.pause()
+          }
+        })
+      },
+      { threshold: 0.25 }
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [reducedMotion])
+
+  if (reducedMotion) {
+    // Static image only — no video element at all
+    return (
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `url(${poster})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          zIndex: 0,
+        }}
+      />
+    )
+  }
+
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        zIndex: 0,
+        overflow: 'hidden',
+      }}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="none"
+        onError={(e) => {
+          // Fallback: if video errors, swap src to poster via background-image
+          const target = e.currentTarget
+          target.style.display = 'none'
+          const parent = target.parentElement
+          if (parent) {
+            parent.style.backgroundImage = `url(${poster})`
+            parent.style.backgroundSize = 'cover'
+            parent.style.backgroundPosition = 'center'
+          }
+        }}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.4,
+        }}
+      />
+    </div>
+  )
+}
 
 // ---------------------------------------------------------------------------
 // Platform card with expandable dashboard
@@ -70,7 +161,6 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: Plat
           {isArabic ? descAr : descEn}
         </p>
 
-        {/* Toggle button */}
         <button
           onClick={() => setExpanded((v) => !v)}
           aria-expanded={expanded}
@@ -107,7 +197,6 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: Plat
           </svg>
         </button>
 
-        {/* Dashboard screenshot — revealed on toggle */}
         {expanded && (
           <div
             style={{
@@ -135,6 +224,16 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: Plat
 export default function AISystemsSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
+  const [reducedMotion, setReducedMotion] = useState(false)
+
+  // Detect prefers-reduced-motion once on mount
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setReducedMotion(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   const aiCards = [
     {
@@ -170,7 +269,7 @@ export default function AISystemsSection() {
     {
       titleEn: 'Custom AI Systems',
       titleAr: 'أنظمة ذكاء اصطناعي مخصصة',
-      bodyEn: 'Built for your workflow when off-the-shelf won\'t do.',
+      bodyEn: "Built for your workflow when off-the-shelf won't do.",
       bodyAr: 'نصمّمها خصيصاً لسير عملك عندما لا تكفي الحلول الجاهزة.',
     },
   ]
@@ -185,18 +284,11 @@ export default function AISystemsSection() {
           : 'THE FUTURE OF MARKETING IS ALREADY WORKING HERE.'
       }
     >
-      {/* Background image */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `url(${IMAGES.aiSystemsBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.25,
-          zIndex: 0,
-        }}
+      {/* Background — video (IO play/pause) or static image (reduced-motion) */}
+      <VideoBg
+        src={AI_BG_LOOP}
+        poster={IMAGES.aiSystemsBg}
+        reducedMotion={reducedMotion}
       />
 
       {/* Content layer */}
@@ -263,7 +355,6 @@ export default function AISystemsSection() {
 
         {/* Platforms sub-section */}
         <div style={{ borderTop: '1px solid var(--color-card-border)', paddingTop: 'clamp(3rem, 6vw, 5rem)' }}>
-          {/* Eyebrow */}
           <p
             style={{
               fontFamily: 'var(--font-body)',
@@ -278,7 +369,6 @@ export default function AISystemsSection() {
             {isArabic ? 'منصات هندسناها بالكامل' : 'PLATFORMS WE ENGINEERED'}
           </p>
 
-          {/* Intro line */}
           <p
             style={{
               fontFamily: 'var(--font-body)',
@@ -294,7 +384,7 @@ export default function AISystemsSection() {
               : "We don't just talk about software — we build it. These are live platforms we designed, coded, and operate end to end."}
           </p>
 
-          {/* Platform cards — stacked mobile, side-by-side ≥1024px */}
+          {/* Platform cards */}
           <div
             style={{
               display: 'flex',
