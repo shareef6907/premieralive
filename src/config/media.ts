@@ -72,7 +72,7 @@ export const BRAND_FILMS: { src: string; title: string }[] = [
   },
 ];
 
-export const SHORTS: { src: string; title: string }[] = [
+export const SHORTS: { src: string; title: string; posterTime?: number }[] = [
   {
     src: `${M}/Shorts-reel/EMAAD%20GRADUATION%20VIDEO.m4v`,
     title: 'Emaad Graduation',
@@ -88,6 +88,7 @@ export const SHORTS: { src: string; title: string }[] = [
   {
     src: `${M}/Shorts-reel/LC%20Waikiki.M4V`,
     title: 'LC Waikiki',
+    posterTime: 2.0,
   },
   {
     src: `${M}/Shorts-reel/Mado%20Eid%20Box%20Final%206.m4v`,
