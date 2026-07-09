@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { HERO_POSTER } from "@/config/media";
 
 const LABELS = [
   { s: 0.00, e: 0.10, en: "Marketing that makes your brand impossible to ignore.", ar: "نصنع علامات تجارية لا يمكن تجاهلها" },
@@ -98,10 +97,8 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
         <video
           ref={videoRef}
           src=""
-          poster={HERO_POSTER}
           muted
           playsInline
-          preload="auto"
           className="h-full w-full object-cover will-change-transform"
           style={{
             transform: `scale(1.06) translate(${mouse.x * -12}px, ${mouse.y * -8}px)`,
