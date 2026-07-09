@@ -16,6 +16,25 @@ export const HERO_POSTER = `${M}/hero-poster.jpg?v=2`;
 export const SCRUB_VIDEO   = `${M}/premiera-scrub-hq.mp4`;
 export const CGI_SHOWREEL  = `${M}/Animation/Premiera%20-%20animation%20showcase.mp4`;
 
+export const PLATFORMS = {
+  bahrainNights: {
+    cover: `${M}/bahrainnights%20.png`,
+    dashboard: `${M}/bahrainnights%20dashboard.png`,
+    nameEn: 'BahrainNights.com',
+    nameAr: 'BahrainNights.com',
+    descEn: "Bahrain's events platform — venue directory, events engine, newsletters, and a full admin dashboard. 100% custom code, built and operated by our team.",
+    descAr: "منصة الفعاليات في البحرين — دليل أماكن، ومحرك فعاليات، ونشرات بريدية، ولوحة تحكم كاملة. برمجناها بالكامل ونشغّلها بأنفسنا.",
+  },
+  studentPhotos: {
+    cover: `${M}/Studentphotos.png`,
+    dashboard: `${M}/studentphotos%20dashboard.png`,
+    nameEn: 'StudentPhotos.com',
+    nameAr: 'StudentPhotos.com',
+    descEn: "A school-photography e-commerce platform — online galleries, secure payments, automated watermarking and digital delivery. Fully custom software, front to back. The domain alone cost several thousand dollars.",
+    descAr: "منصة تجارة إلكترونية لتصوير المدارس — معارض رقمية، ودفع آمن، وعلامات مائية وتسليم آلي. برمجية مخصصة بالكامل، والنطاق وحده كلّف عدة آلاف من الدولارات.",
+  },
+};
+
 export const media = {
   folders: {
     horizontal:  `${M}/horizontal`,
@@ -72,14 +91,6 @@ export const SHORTS: { src: string; title: string }[] = [
   {
     src: `${M}/Shorts-reel/Mado%20Eid%20Box%20Final%206.m4v`,
     title: 'Mado Eid Box',
-  },
-  {
-    src: `${M}/Shorts-reel/Manara%20Art%20-%20Road%20Map%20-%20T3.mp4`,
-    title: 'Manara Art — Road Map',
-  },
-  {
-    src: `${M}/Shorts-reel/Noor%20Interview%20MYS%20for%20instagram.MP4`,
-    title: 'Noor Interview',
   },
   {
     src: `${M}/Shorts-reel/Sketchers%20Bahrain%20Nights%20FINAL%20T1.MP4`,
