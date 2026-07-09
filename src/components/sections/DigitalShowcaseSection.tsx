@@ -1,74 +1,9 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
-import { IMAGES, PLATFORMS, AI_BG_LOOP } from '@/config/media'
-
-// ---------------------------------------------------------------------------
-// VideoBg — IO observes bg div, threshold 0, rootMargin 250px
-// Kept verbatim from bca5938 AISystemsSection
-// ---------------------------------------------------------------------------
-function VideoBg({ src, poster, reducedMotion }: { src: string; poster: string; reducedMotion: boolean }) {
-  const bgRef = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    if (reducedMotion) return
-    const video = videoRef.current
-    const bg = bgRef.current
-    if (!video || !bg) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) video.play().catch(() => {})
-          else video.pause()
-        })
-      },
-      { threshold: 0, rootMargin: '250px 0px 250px 0px' }
-    )
-    observer.observe(bg)
-
-    const handleExpand = () => {
-      requestAnimationFrame(() => { if (!video.paused) video.play().catch(() => {}) })
-    }
-    window.addEventListener('dashboard-toggled', handleExpand)
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') requestAnimationFrame(() => { if (!video.paused) video.play().catch(() => {}) })
-    }
-    document.addEventListener('visibilitychange', handleVisibility)
-
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('dashboard-toggled', handleExpand)
-      document.removeEventListener('visibilitychange', handleVisibility)
-    }
-  }, [reducedMotion])
-
-  if (reducedMotion) {
-    return <div aria-hidden="true" style={{ position: 'absolute', inset: 0, backgroundImage: `url(${poster})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
-  }
-
-  return (
-    <div ref={bgRef} aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
-      <video
-        ref={videoRef}
-        src={src}
-        poster={poster}
-        muted loop playsInline
-        preload="none"
-        onError={(e) => {
-          const target = e.currentTarget
-          target.style.display = 'none'
-          const parent = target.parentElement
-          if (parent) { parent.style.backgroundImage = `url(${poster})`; parent.style.backgroundSize = 'cover'; parent.style.backgroundPosition = 'center' }
-        }}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
-      />
-    </div>
-  )
-}
+import { IMAGES, PLATFORMS } from '@/config/media'
 
 // ---------------------------------------------------------------------------
 // PlatformCard — CSS laptop frame + dashboard toggle
@@ -142,20 +77,11 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: {
 }
 
 // ---------------------------------------------------------------------------
-// Digital Showcase section
+// Digital Showcase section — static background, no video bg
 // ---------------------------------------------------------------------------
 export default function DigitalShowcaseSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
-  const [reducedMotion, setReducedMotion] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setReducedMotion(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
 
   return (
     <Section
@@ -163,8 +89,13 @@ export default function DigitalShowcaseSection() {
       eyebrow={isArabic ? 'أعمالنا الرقمية' : 'DIGITAL SHOWCASE'}
       title={isArabic ? 'نبني المنصات ونشغّلها بأنفسنا.' : 'PLATFORMS WE BUILT AND RUN.'}
     >
-      {/* Background video — IO play/pause, reduced-motion static fallback */}
-      <VideoBg src={AI_BG_LOOP} poster={IMAGES.aiSystemsBg} reducedMotion={reducedMotion} />
+      {/* Static background — opacity 0.25, like the pre-video pattern */}
+      <div aria-hidden="true" style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMAGES.aiSystemsBg})`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+        opacity: 0.25, zIndex: 0,
+      }} />
 
       {/* Content layer */}
       <div style={{ position: 'relative', zIndex: 1 }}>

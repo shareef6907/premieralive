@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
 import { BRAND_FILMS, SHORTS, CGI_SHOWREEL, MEDIA_BASE } from '@/config/media'
@@ -30,13 +30,36 @@ interface VideoModalProps {
 }
 
 // ---------------------------------------------------------------------------
-// VideoCard — poster-frame + hover play (desktop) / tap modal (mobile)
-// Kept verbatim from bca5938 WorkSection
+// VideoCard — IO frame-seek (mobile), hover play (desktop)
 // ---------------------------------------------------------------------------
 function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [errored, setErrored] = useState(false)
   const [playing, setPlaying] = useState(false)
+  const ioRef = useRef<IntersectionObserver | null>(null)
+  const seekedRef = useRef(false)
+
+  // IO frame-seek: seek only when card enters viewport
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !isTouch) return
+
+    ioRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !seekedRef.current) {
+            seekedRef.current = true
+            video.src = item.src
+            video.load()
+          }
+        })
+      },
+      { threshold: 0 }
+    )
+    ioRef.current.observe(video)
+
+    return () => ioRef.current?.disconnect()
+  }, [isTouch, item.src])
 
   function handleLoadedMetadata() {
     const v = videoRef.current
@@ -105,7 +128,6 @@ function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardP
     >
       <video
         ref={videoRef}
-        src={item.src}
         muted loop playsInline
         preload="metadata"
         onLoadedMetadata={handleLoadedMetadata}
@@ -125,10 +147,31 @@ function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardP
 }
 
 // ---------------------------------------------------------------------------
-// Modal — video element on mount only, sound ON (modal context), 44x44 close
+// Modal — loading spinner + 10s canplay timeout fallback
 // ---------------------------------------------------------------------------
 function VideoModal({ src, onClose }: VideoModalProps) {
   const startY = useRef<number | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [timedOut, setTimedOut] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    if (!src) return
+    setLoading(true)
+    setTimedOut(false)
+
+    timerRef.current = setTimeout(() => {
+      setTimedOut(true)
+      setLoading(false)
+    }, 10000)
+
+    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
+  }, [src])
+
+  function handleCanPlay() {
+    setLoading(false)
+    if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
+  }
 
   function handlePointerDown(e: React.PointerEvent) { startY.current = e.clientY }
   function handlePointerUp(e: React.PointerEvent) {
@@ -161,11 +204,51 @@ function VideoModal({ src, onClose }: VideoModalProps) {
           <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <video
-        src={src} controls autoPlay playsInline preload="auto"
-        onClick={(e) => e.stopPropagation()}
-        style={{ maxWidth: '90vw', maxHeight: '90vh', borderRadius: 'var(--radius)' }}
-      />
+
+      {loading && !timedOut && (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', zIndex: 10000 }}>
+          <div style={{
+            width: '48px', height: '48px',
+            border: '3px solid rgba(201,162,75,0.2)',
+            borderTopColor: 'var(--color-gold)',
+            borderRadius: '50%',
+            animation: 'spin 0.8s linear infinite',
+          }} />
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)' }}>Loading...</p>
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        </div>
+      )}
+
+      {timedOut ? (
+        <div style={{ textAlign: 'center', zIndex: 10000 }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(255,255,255,0.7)', marginBottom: '1rem' }}>
+            Tap to open film directly
+          </p>
+          <a
+            href={src}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'var(--color-gold)', textDecoration: 'underline' }}
+          >
+            Open video
+          </a>
+        </div>
+      ) : (
+        <video
+          src={src}
+          controls
+          autoPlay
+          playsInline
+          preload="auto"
+          onCanPlay={handleCanPlay}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            maxWidth: '90vw', maxHeight: '90vh',
+            borderRadius: 'var(--radius)',
+            display: loading ? 'none' : 'block',
+          }}
+        />
+      )}
     </div>
   )
 }
@@ -199,7 +282,7 @@ export default function FeaturedProductionsSection() {
         id="films"
         eyebrow={isArabic ? 'إنتاج مختار' : 'FEATURED PRODUCTION'}
       >
-        {/* Editorial film blocks — one per film, near full-width */}
+        {/* Editorial film blocks — one per film, near full-width, full-bleed */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(3rem, 6vw, 5rem)', marginBottom: 'clamp(4rem, 8vw, 7rem)' }}>
           {allFilms.map((item, i) => (
             <div key={i} style={{ width: '100%' }}>
@@ -231,7 +314,13 @@ export default function FeaturedProductionsSection() {
           }}>
             {isArabic ? 'أفلام قصيرة واجتماعية' : 'VERTICAL & SOCIAL FILMS'}
           </p>
-          <div style={{ display: 'flex', overflowX: 'auto', gap: '1rem', paddingBottom: '1rem', paddingRight: isTouch ? '15%' : '0', scrollbarWidth: 'thin', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', paddingLeft: '0' }}>
+          <div style={{
+            display: 'flex', overflowX: 'auto', gap: '1rem',
+            paddingBottom: '1rem',
+            paddingRight: isTouch ? '15%' : '0',
+            scrollbarWidth: 'thin', scrollSnapType: 'x mandatory',
+            WebkitOverflowScrolling: 'touch', paddingLeft: '0',
+          }}>
             {SHORTS.map((item, i) => (
               <div key={i} style={{ scrollSnapAlign: 'start', flexShrink: 0 }}>
                 <VideoCard
