@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
 import { IMAGES } from '@/config/media'
@@ -28,7 +28,7 @@ const DIVISIONS = [
   },
 ]
 
-function DivisionHalf({ division, index }: { division: typeof DIVISIONS[0]; index: number }) {
+function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
   const locale = useLocale()
   const isArabic = locale === 'ar'
   const [hovered, setHovered] = useState(false)
@@ -47,6 +47,8 @@ function DivisionHalf({ division, index }: { division: typeof DIVISIONS[0]; inde
     >
       {/* Image with hover scale */}
       <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
         style={{
           height: '260px',
           overflow: 'hidden',
@@ -54,19 +56,17 @@ function DivisionHalf({ division, index }: { division: typeof DIVISIONS[0]; inde
         }}
       >
         <div
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
           style={{
             width: '100%',
             height: '100%',
             backgroundImage: `url(${division.image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            transform: hovered ? 'scale(1.03)' : 'scale(1)',
             transition: 'transform 0.6s var(--ease-out)',
+            transform: hovered ? 'scale(1.03)' : 'scale(1)',
           }}
+          className="division-img"
         />
-        {/* Gradient overlay */}
         <div style={{
           position: 'absolute',
           inset: 0,
@@ -123,17 +123,15 @@ export default function DivisionsSection() {
   const isArabic = locale === 'ar'
 
   return (
-    <Section
-      eyebrow={isArabic ? 'ما نقدم' : 'WHAT WE DO'}
-    >
+    <Section eyebrow={isArabic ? 'ما نقدم' : 'WHAT WE DO'}>
       <div style={{
         display: 'flex',
         flexDirection: isArabic ? 'row-reverse' : 'row',
         gap: '1.5rem',
         flexWrap: 'wrap',
       }}>
-        {DIVISIONS.map((d, i) => (
-          <DivisionHalf key={d.id} division={d} index={i} />
+        {DIVISIONS.map((d) => (
+          <DivisionHalf key={d.id} division={d} />
         ))}
       </div>
     </Section>
