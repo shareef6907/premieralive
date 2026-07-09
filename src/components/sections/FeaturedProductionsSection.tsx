@@ -128,8 +128,9 @@ function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardP
     >
       <video
         ref={videoRef}
+        src={item.src}
         muted loop playsInline
-        preload="metadata"
+        preload={isTouch ? 'metadata' : 'auto'}
         onLoadedMetadata={handleLoadedMetadata}
         onError={() => setErrored(true)}
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
