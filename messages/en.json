@@ -1,18 +1,17 @@
 {
   "nav": {
-    "work": "Work",
-    "services": "Services",
-    "ai": "AI",
+    "films": "Films",
+    "digital": "Digital",
     "process": "Process",
     "contact": "Contact",
     "bookSession": "Book a Strategy Session"
   },
   "hero": {
-    "eyebrow": "CREATIVE \u00b7 TECHNOLOGY \u00b7 AI \u00b7 GROWTH",
-    "headline": "WE BUILD BRANDS PEOPLE REMEMBER",
-    "sub": "Cinematic storytelling, AI-powered systems, and digital experiences — engineered to grow leads, sales, and brand value across Saudi Arabia and the Gulf.",
-    "seeWork": "See Our Work",
-    "bookSession": "Book a Strategy Session"
+    "eyebrow": "CINEMATIC PRODUCTION \u00b7 DIGITAL EXPERIENCES",
+    "headline": "EVERY GREAT BUSINESS DESERVES A GREAT STORY.",
+    "sub": "We create cinematic productions and digital experiences that help businesses communicate, launch, and grow.",
+    "viewFilms": "View Films",
+    "exploreDigital": "Explore Digital Experiences"
   },
   "stats": {
     "years": "15+ Years of Experience",
@@ -23,122 +22,54 @@
   "brandMarquee": {
     "eyebrow": "TRUSTED BY GLOBAL BRANDS"
   },
-  "fourPillars": {
+  "intro": {
+    "body": "We create films people remember — and digital experiences businesses grow on."
+  },
+  "divisions": {
     "eyebrow": "WHAT WE DO",
-    "heading": "ONE PARTNER. FOUR DISCIPLINES.",
-    "creative": {
-      "title": "CREATIVE",
-      "desc": "Brand identities and campaigns built to be remembered.",
-      "services": ["Branding & Design", "Social Media Management", "Campaign Strategy", "Content Direction"]
+    "cinematic": {
+      "name": "CINEMATIC PRODUCTION",
+      "line": "Films built to be remembered.",
+      "capabilities": ["Commercial Films", "Corporate Films", "Professional Photography", "Event Coverage", "Animation & CGI", "Documentary"]
     },
-    "content": {
-      "title": "CONTENT",
-      "desc": "Cinema-grade film, photography, and animation.",
-      "services": ["Video Production & Photography", "Animation & 3D", "Podcast Filming", "Multi-Camera Live Streaming"]
-    },
-    "technology": {
-      "title": "TECHNOLOGY",
-      "desc": "Websites and software engineered like products.",
-      "services": ["Websites & Platforms", "Software & Apps", "E-commerce", "Booking & CRM Systems"]
-    },
-    "aiGrowth": {
-      "title": "AI & GROWTH",
-      "desc": "Intelligent systems that sell while you sleep.",
-      "services": ["AI Employees & Chatbots", "Marketing Retainers", "Performance Marketing", "Analytics & Reporting"]
+    "digital": {
+      "name": "DIGITAL EXPERIENCES",
+      "line": "Software that turns attention into growth.",
+      "capabilities": ["Business Websites", "Landing Pages", "Booking Systems", "Business Platforms", "Client Portals", "AI Assistants & Automation"]
     }
   },
-  "goalPicker": {
-    "eyebrow": "START WITH YOUR GOAL",
-    "heading": "WHAT DO YOU WANT TO ACHIEVE?",
-    "increaseSales": {
-      "title": "Increase Sales",
-      "answer": "We combine conversion-focused websites, performance marketing, and AI sales automation so every riyal you spend is tracked to revenue. You'll see exactly what's working — and we cut what isn't.",
-      "cta": "Talk to us about this"
-    },
-    "generateLeads": {
-      "title": "Generate Leads",
-      "answer": "We build landing experiences, ad campaigns, and WhatsApp AI assistants that capture, qualify, and follow up with leads automatically — 24/7, in Arabic and English.",
-      "cta": "Talk to us about this"
-    },
-    "launchBrand": {
-      "title": "Launch a New Brand",
-      "answer": "We take you from name to market: identity, cinematic launch content, website, and the first 90 days of marketing — one team, one timeline, one standard.",
-      "cta": "Talk to us about this"
-    },
-    "automateBusiness": {
-      "title": "Automate My Business",
-      "answer": "We build AI employees, internal chatbots, and document automation that remove repetitive work from your team's day — so headcount grows slower than revenue.",
-      "cta": "Talk to us about this"
-    },
-    "betterContent": {
-      "title": "Create Better Content",
-      "answer": "We shoot, edit, and animate at cinema grade — film, photography, 3D, and podcasts — then package it for every platform your customers actually use.",
-      "cta": "Talk to us about this"
-    },
-    "buildWebsite": {
-      "title": "Build a Website",
-      "answer": "We engineer websites like products: fast, bilingual, conversion-focused, and connected to booking, ordering, or CRM systems that run your operations.",
-      "cta": "Talk to us about this"
-    }
-  },
-  "scrollScrub": {
-    "eyebrow": "SIGNATURE"
-  },
-  "work": {
-    "eyebrow": "SELECTED WORK",
-    "heading": "PROOF, NOT PROMISES.",
-    "brandFilms": "Brand Films",
-    "shorts": "Shorts",
-    "cgi": "CGI & Animation",
+  "featuredProductions": {
+    "eyebrow": "FEATURED PRODUCTION",
+    "shortsHeading": "VERTICAL & SOCIAL FILMS",
     "cgiHeading": "CGI THAT SELLS THE UNSHOOTABLE"
   },
-  "aiSystems": {
-    "eyebrow": "AI SYSTEMS",
-    "heading": "THE FUTURE OF MARKETING IS ALREADY WORKING HERE.",
-    "intro": "Most agencies talk about AI. We build it — real systems, deployed for real businesses.",
-    "aiEmployees": {
-      "title": "AI Employees",
-      "desc": "Trained on your business, answering customers 24/7."
-    },
-    "whatsappAi": {
-      "title": "WhatsApp AI Assistants",
-      "desc": "Capture, qualify, and book — inside the app Saudis already use."
-    },
-    "salesAutomation": {
-      "title": "Sales & Lead Automation",
-      "desc": "Follow-ups that never forget, pipelines that never sleep."
-    },
-    "internalChatbots": {
-      "title": "Internal Knowledge Chatbots",
-      "desc": "Your policies, products, and processes — answerable in seconds."
-    },
-    "aiContent": {
-      "title": "AI Content & Commercials",
-      "desc": "Concept to screen in days, not months."
-    },
-    "customAi": {
-      "title": "Custom AI Systems",
-      "desc": "Built for your workflow when off-the-shelf won't do."
-    }
+  "digitalShowcase": {
+    "eyebrow": "DIGITAL SHOWCASE",
+    "heading": "PLATFORMS WE BUILT AND RUN.",
+    "intro": "We don't just talk about software — we build it. These are live platforms we designed, coded, and operate end to end.",
+    "closingLine": "Platforms of this scope are typically quoted at tens of thousands of dollars and take a senior development team months to deliver. We design, code, and launch them in a fraction of that time — the same systems run our own businesses.",
+    "viewDashboard": "View dashboard"
+  },
+  "whyBoth": {
+    "beat1": "Film earns attention.",
+    "beat2": "Digital converts it.",
+    "beat3": "Your business grows."
   },
   "process": {
     "eyebrow": "HOW WE WORK",
     "heading": "A PROCESS, NOT A GAMBLE.",
-    "step01": "Discovery",
+    "step01": "Discover",
     "step01Desc": "We learn your business before we touch a pixel.",
     "step02": "Strategy",
     "step02Desc": "Goals, audience, message, and the plan to win.",
     "step03": "Production",
     "step03Desc": "Film, design, and content at cinema grade.",
-    "step04": "Build & Integrate",
-    "step04Desc": "Websites, systems, and AI wired together.",
+    "step04": "Development",
+    "step04Desc": "Websites, platforms, and systems — custom-coded.",
     "step05": "Launch",
     "step05Desc": "Everything live, tested, and tracked.",
-    "step06": "Grow",
-    "step06Desc": "Measure, optimize, repeat."
-  },
-  "industries": {
-    "eyebrow": "INDUSTRIES"
+    "step06": "Support",
+    "step06Desc": "We stay after launch — maintenance, updates, growth."
   },
   "whyPremiera": {
     "tagline": "Fifteen years. One standard."
@@ -149,9 +80,9 @@
     "signature": "Shareef, Founder"
   },
   "finalCta": {
-    "heading": "READY TO BUILD SOMETHING EXTRAORDINARY?",
+    "heading": "LET'S BUILD SOMETHING REMARKABLE.",
     "sub": "Replies within one business day.",
-    "cta": "Start on WhatsApp"
+    "cta": "Book a Discovery Call"
   },
   "footer": {
     "tagline": "Launching in Saudi Arabia — serving clients across the Gulf.",
