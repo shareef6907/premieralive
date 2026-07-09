@@ -84,6 +84,9 @@ export default function WhyPremieraSection() {
                 color: 'var(--color-text-faint)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
+                borderRight: isArabic ? '1px solid var(--color-card-border)' : 'none',
+                borderLeft: isArabic ? 'none' : '1px solid var(--color-card-border)',
+                paddingInline: '1.5rem',
               }}
             >
               {isArabic ? stat.labelAr : stat.labelEn}
