@@ -11,8 +11,7 @@ export const IMAGES = {
   ogImage: `${M}/homepage-photos/og-image.jpg`,
 };
 
-export const HERO_VIDEO = `${M}/Horizontal%20Videos/Brand%20new%20header1.mp4`;
-export const HERO_POSTER = `${M}/hero-poster.jpg?v=2`;
+export const HERO_VIDEO = `${M}/Horizontal%20Videos/cinematic-webworks-header.mp4`;
 export const SCRUB_VIDEO   = `${M}/premiera-scrub-hq.mp4`;
 export const CGI_SHOWREEL  = `${M}/Animation/Premiera%20-%20animation%20showcase.mp4`;
 export const AI_BG_LOOP    = `${M}/Horizontal%20Videos/ai-systems-bg.mp4`;
