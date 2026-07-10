@@ -182,9 +182,6 @@ export default function DivisionsSection() {
             border-radius: 0 !important;
             overflow: visible !important;
           }
-          .division-image {
-            display: none !important;
-          }
           .division-content {
             padding: 0 !important;
           }
