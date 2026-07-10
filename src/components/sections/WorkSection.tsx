@@ -178,6 +178,7 @@ function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardP
 // Modal — video element created ONLY on mount (mobile performance)
 // -----------------------------------------------------------------------
 function VideoModal({ src, onClose }: VideoModalProps) {
+  const [playing, setPlaying] = useState(false)
   // Swipe-down detection via pointer Y delta
   const startY = useRef<number | null>(null)
 
@@ -238,14 +239,62 @@ function VideoModal({ src, onClose }: VideoModalProps) {
         </svg>
       </button>
 
-      {/* Video created on mount — playsInline, controls, sound ON */}
+      {/* Custom play button overlay */}
+      <div
+        className="video-overlay"
+        onClick={() => {
+          const v = document.getElementById('modal-video')
+          if (v) {
+            if (v.paused) {
+              v.play()
+              setPlaying(true)
+            } else {
+              v.pause()
+              setPlaying(false)
+            }
+          }
+        }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          zIndex: 10000,
+          background: playing ? 'transparent' : 'rgba(0,0,0,0.3)',
+          transition: 'background 0.3s',
+        }}
+      >
+        {!playing && (
+          <div
+            style={{
+              width: '72px',
+              height: '72px',
+              borderRadius: '50%',
+              background: 'rgba(201,162,75,0.9)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 4px 24px rgba(201,162,75,0.4)',
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#0A0A0B">
+              <polygon points="6 4 20 12 6 20 6 4" />
+            </svg>
+          </div>
+        )}
+      </div>
+
+      {/* Video — no native controls, custom overlay handles play/pause */}
       <video
+        id="modal-video"
         src={src}
-        controls
-        autoPlay
         playsInline
-        preload="auto"
+        preload="none"
         onClick={(e) => e.stopPropagation()}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
         style={{
           maxWidth: '90vw',
           maxHeight: '90vh',
