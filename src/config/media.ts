@@ -81,10 +81,6 @@ export const SHORTS: { src: string; title: string; posterTime?: number }[] = [
     title: 'BMW',
   },
   {
-    src: `${M}/Shorts-reel/Apparel%20Group%20-%20Jamies%20Italian.MP4`,
-    title: 'Apparel Group — Jamies Italian',
-  },
-  {
     src: `${M}/Shorts-reel/LC%20Waikiki.M4V`,
     title: 'LC Waikiki',
     posterTime: 2.0,
