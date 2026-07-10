@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import ScrollToTop from '@/components/ScrollToTop'
 import RelatedServiceLink from '@/components/RelatedServiceLink'
 import Link from 'next/link'
@@ -161,18 +162,16 @@ export default async function ServicePage({ params }: Props) {
         display: 'flex', alignItems: 'flex-end',
         overflow: 'hidden',
       }}>
-        {/* Background image */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url(${service.heroImage})`,
-          backgroundSize: 'cover', backgroundPosition: 'center',
-        }}>
-          {/* Fallback gradient if image missing */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(to top, rgba(10,10,11,0.9) 0%, rgba(10,10,11,0.3) 60%, rgba(10,10,11,0.5) 100%)',
-          }} />
-        </div>
+        {/* Optimised background image via Vercel Image CDN */}
+        <Image
+          src={service.heroImage}
+          alt={name}
+          fill
+          priority
+          quality={70}
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+        />
         {/* Dark overlay */}
         <div style={{
           position: 'absolute', inset: 0,

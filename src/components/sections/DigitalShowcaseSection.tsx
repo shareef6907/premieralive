@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
 import { IMAGES, PLATFORMS } from '@/config/media'
@@ -31,10 +32,13 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: {
       }}>
         <div style={{
           background: '#000', borderRadius: '4px 4px 0 0',
-          overflow: 'hidden', aspectRatio: '16/10',
+          overflow: 'hidden', aspectRatio: '16/10', position: 'relative',
         }}>
-          <img src={cover} alt={isArabic ? nameAr : nameEn}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <Image src={cover} alt={isArabic ? nameAr : nameEn}
+            fill
+            quality={70}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ objectFit: 'cover', display: 'block' }} />
         </div>
       </div>
       {/* Laptop base bar */}
@@ -67,8 +71,10 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: {
           </svg>
         </button>
         {expanded && (
-          <div style={{ marginTop: '1rem', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid var(--color-card-border)' }}>
-            <img src={dashboard} alt={isArabic ? nameAr : nameEn} style={{ width: '100%', height: 'auto', display: 'block' }} />
+          <div style={{ marginTop: '1rem', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid var(--color-card-border)', position: 'relative' }}>
+            <Image src={dashboard} alt={isArabic ? nameAr : nameEn}
+              fill quality={70} sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: 'cover', display: 'block' }} />
           </div>
         )}
       </div>
@@ -89,13 +95,19 @@ export default function DigitalShowcaseSection() {
       eyebrow={isArabic ? 'أعمالنا الرقمية' : 'DIGITAL SHOWCASE'}
       title={isArabic ? 'نبني المنصات ونشغّلها بأنفسنا.' : 'PLATFORMS WE BUILT AND RUN.'}
     >
-      {/* Static background — opacity 0.25, like the pre-video pattern */}
+      {/* Static background — opacity 0.25 */}
       <div aria-hidden="true" style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: `url(${IMAGES.aiSystemsBg})`,
-        backgroundSize: 'cover', backgroundPosition: 'center',
-        opacity: 0.25, zIndex: 0,
-      }} />
+        position: 'absolute', inset: 0, zIndex: 0,
+      }}>
+        <Image
+          src={IMAGES.aiSystemsBg}
+          alt=""
+          fill
+          quality={50}
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.25 }}
+        />
+      </div>
 
       {/* Content layer */}
       <div style={{ position: 'relative', zIndex: 1 }}>

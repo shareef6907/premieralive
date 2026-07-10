@@ -1,31 +1,31 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
 import { IMAGES } from '@/config/media'
 import ServiceCardLink from '../ServiceCardLink'
 
-// Slug mapping for each capability (order matches capability lists)
 const CAPABILITY_SLUGS = {
   cinematic: [
-    'commercial-film-production-saudi-arabia',    // Commercial Films
-    'corporate-video-production-saudi-arabia',      // Corporate Films
-    'professional-photography-saudi-arabia',       // Professional Photography
-    'animation-cgi-studio-saudi-arabia',           // Animation & CGI
-    'documentary-production-saudi-arabia',          // Documentary
-    'event-coverage-saudi-arabia',                 // Event Coverage
-    'multi-cam-live-streaming-saudi-arabia',        // Multi-Cam Live Streaming
+    'commercial-film-production-saudi-arabia',
+    'corporate-video-production-saudi-arabia',
+    'professional-photography-saudi-arabia',
+    'animation-cgi-studio-saudi-arabia',
+    'documentary-production-saudi-arabia',
+    'event-coverage-saudi-arabia',
+    'multi-cam-live-streaming-saudi-arabia',
   ],
   digital: [
-    'business-website-development-saudi-arabia',    // Business Websites
-    'business-software-development-saudi-arabia',    // Business Software
-    'landing-page-design-saudi-arabia',             // Landing Pages
-    'booking-system-development-saudi-arabia',      // Booking Systems
-    'business-platform-development-saudi-arabia',    // Business Platforms
-    'client-portal-development-saudi-arabia',       // Client Portals
-    'ai-assistants-automation-saudi-arabia',        // AI Assistants & Automation
-    'website-maintenance-saudi-arabia',             // Website Maintenance
+    'business-website-development-saudi-arabia',
+    'business-software-development-saudi-arabia',
+    'landing-page-design-saudi-arabia',
+    'booking-system-development-saudi-arabia',
+    'business-platform-development-saudi-arabia',
+    'client-portal-development-saudi-arabia',
+    'ai-assistants-automation-saudi-arabia',
+    'website-maintenance-saudi-arabia',
   ],
 } as const
 
@@ -81,17 +81,18 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
           position: 'relative',
         }}
       >
-        <div
+        <Image
+          src={division.image}
+          alt={isArabic ? division.nameAr : division.nameEn}
+          fill
+          quality={70}
+          sizes="(max-width: 768px) 100vw, 50vw"
           style={{
-            width: '100%',
-            height: '100%',
-            backgroundImage: `url(${division.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            objectFit: 'cover',
+            objectPosition: 'center',
             transition: 'transform 0.6s var(--ease-out)',
             transform: hovered ? 'scale(1.03)' : 'scale(1)',
           }}
-          className="division-img"
         />
         <div style={{
           position: 'absolute',
@@ -123,7 +124,6 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
           {isArabic ? division.lineAr : division.lineEn}
         </p>
 
-        {/* Capability list — each item is a link to its service page */}
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
           {capabilities.map((cap, i) => {
             const slug = slugs[i]
