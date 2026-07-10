@@ -12,8 +12,8 @@ const DIVISIONS = [
     nameAr: 'الإنتاج السينمائي',
     lineEn: 'Films built to be remembered.',
     lineAr: 'ننتج أفلاماً تبقى في الذاكرة.',
-    capabilitiesEn: ['Commercial Films', 'Corporate Films', 'Professional Photography', 'Event Coverage', 'Animation & CGI', 'Documentary'],
-    capabilitiesAr: ['أفلام إعلانية', 'أفلام مؤسسية', 'تصوير احترافي', 'تغطية الفعاليات', 'رسوم متحركة ومؤثرات', 'أفلام وثائقية'],
+    capabilitiesEn: ['Commercial Films', 'Corporate Films', 'Professional Photography', 'Animation & CGI', 'Documentary', 'Event Coverage', 'Multi-Cam Live Streaming'],
+    capabilitiesAr: ['أفلام إعلانية', 'أفلام مؤسسية', 'تصوير احترافي', 'رسوم متحركة ومؤثرات', 'أفلام وثائقية', 'تغطية الفعاليات', 'بث مباشر متعدد الكاميرات'],
     image: IMAGES.pillarContent,
   },
   {
@@ -22,8 +22,8 @@ const DIVISIONS = [
     nameAr: 'التجارب الرقمية',
     lineEn: 'Software that turns attention into growth.',
     lineAr: 'نبني برمجيات تحوّل الانتباه إلى نمو.',
-    capabilitiesEn: ['Business Websites', 'Landing Pages', 'Booking Systems', 'Business Platforms', 'Client Portals', 'AI Assistants & Automation'],
-    capabilitiesAr: ['مواقع الأعمال', 'صفحات الهبوط', 'أنظمة الحجز', 'منصات الأعمال', 'بوابات العملاء', 'مساعدون أذكياء وأتمتة'],
+    capabilitiesEn: ['Business Websites', 'Business Software', 'Landing Pages', 'Booking Systems', 'Business Platforms', 'Client Portals', 'AI Assistants & Automation', 'Website Maintenance'],
+    capabilitiesAr: ['مواقع الأعمال', 'برمجيات الأعمال', 'صفحات الهبوط', 'أنظمة الحجز', 'منصات الأعمال', 'بوابات العملاء', 'مساعدون أذكياء وأتمتة', 'صيانة المواقع'],
     image: IMAGES.pillarTechnology,
   },
 ]

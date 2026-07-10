@@ -7,8 +7,8 @@ const BEATS = [
     ar: 'يجذب الفيلم الانتباه.',
   },
   {
-    en: 'Digital converts it.',
-    ar: 'تحوّله المنصة إلى عملاء.',
+    en: 'Websites convert it.',
+    ar: 'يحوّله الموقع إلى عملاء.',
   },
   {
     en: 'Your business grows.',
