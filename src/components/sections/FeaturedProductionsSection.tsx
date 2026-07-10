@@ -16,87 +16,138 @@ interface VideoItem {
   posterTime?: number
 }
 
-interface VideoCardProps {
+// ---------------------------------------------------------------------------
+// Global mute state — shared across all slider instances
+// ---------------------------------------------------------------------------
+// Use a module-level ref so unmute exclusivity works across all card instances
+let _globalUnmutedSrc: string | null = null
+const _globalMuteListeners: Set<() => void> = new Set()
+
+export function subscribeGlobalMute(cb: () => void) {
+  _globalMuteListeners.add(cb)
+  return () => { _globalMuteListeners.delete(cb) }
+}
+
+function notifyGlobalMute() {
+  _globalMuteListeners.forEach(cb => cb())
+}
+
+// ---------------------------------------------------------------------------
+// SliderCard — IO autoplay (mobile), hover play (desktop)
+// Unmute exclusivity: only one video unmutes globally at a time.
+// Desktop hover: unmute + play. Touch tap: unmute + play.
+// Any other play attempt: mutes the previously unmuted one.
+// ---------------------------------------------------------------------------
+function SliderCard({
+  item,
+  aspectRatio,
+  cardWidth,
+  isTouch,
+}: {
   item: VideoItem
   aspectRatio: AspectRatio
   cardWidth: string
   isTouch: boolean
-  onOpen: (src: string) => void
-}
-
-interface VideoModalProps {
-  src: string | null
-  onClose: () => void
-}
-
-// ---------------------------------------------------------------------------
-// VideoCard — IO frame-seek (mobile), hover play (desktop)
-// ---------------------------------------------------------------------------
-function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardProps) {
+}) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [errored, setErrored] = useState(false)
-  const [playing, setPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)       // start muted
+  const [isVisible, setIsVisible] = useState(false)  // IO-driven visibility
   const ioRef = useRef<IntersectionObserver | null>(null)
-  const seekedRef = useRef(false)
+  const isCurrentlyPlaying = useRef(false)
 
-  // IO frame-seek: seek only when card enters viewport
+  // IO: set video src + autoplay when card enters viewport (mobile)
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !isTouch) return
+    if (!video) return
 
     ioRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !seekedRef.current) {
-            seekedRef.current = true
+          setIsVisible(entry.isIntersecting)
+          if (entry.isIntersecting && isTouch) {
             video.src = item.src
             video.load()
+            video.play().catch(() => {})
           }
         })
       },
       { threshold: 0 }
     )
     ioRef.current.observe(video)
-
     return () => ioRef.current?.disconnect()
   }, [isTouch, item.src])
 
-  function handleLoadedMetadata() {
-    const v = videoRef.current
-    if (!v) return
-    v.currentTime = item.posterTime ?? 1.0
-  }
+  // Sync play state with visibility (mobile IO autoplay)
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    if (!isTouch) return
+
+    if (isVisible) {
+      video.play().catch(() => {})
+    } else {
+      video.pause()
+      video.currentTime = item.posterTime ?? 1.0
+    }
+  }, [isVisible, isTouch, item.posterTime])
 
   function handleMouseEnter() {
     if (isTouch) return
-    const v = videoRef.current
-    if (!v || errored) return
-    v.play().catch(() => {})
-    setPlaying(true)
+    const video = videoRef.current
+    if (!video || errored) return
+
+    // Mute any currently unmuted video globally
+    if (_globalUnmutedSrc && _globalUnmutedSrc !== item.src) {
+      _globalUnmutedSrc = null
+      notifyGlobalMute()
+    }
+
+    video.muted = false
+    setIsMuted(false)
+    _globalUnmutedSrc = item.src
+    video.play().catch(() => {})
+    isCurrentlyPlaying.current = true
   }
 
   function handleMouseLeave() {
     if (isTouch) return
-    const v = videoRef.current
-    if (!v) return
-    v.pause()
-    v.currentTime = item.posterTime ?? 1.0
-    setPlaying(false)
+    const video = videoRef.current
+    if (!video) return
+    video.pause()
+    video.muted = true
+    setIsMuted(true)
+    if (_globalUnmutedSrc === item.src) _globalUnmutedSrc = null
+    video.currentTime = item.posterTime ?? 1.0
+    isCurrentlyPlaying.current = false
   }
 
-  function handleClick() {
-    if (!isTouch) return
-    onOpen(item.src)
+  // Called by global mute broadcast
+  function handleGlobalMute() {
+    const video = videoRef.current
+    if (!video || video.muted) return
+    video.muted = true
+    setIsMuted(true)
+    video.pause()
+    video.currentTime = item.posterTime ?? 1.0
+    isCurrentlyPlaying.current = false
+    if (_globalUnmutedSrc === item.src) _globalUnmutedSrc = null
   }
+
+  // Subscribe to global mute
+  useEffect(() => {
+    return subscribeGlobalMute(handleGlobalMute)
+  }, [])
 
   if (errored) {
     return (
       <div
-        onClick={handleClick}
         style={{
           flexShrink: 0, width: cardWidth, aspectRatio,
-          background: 'var(--color-card)', border: '1px solid var(--color-card-border)',
-          borderRadius: 'var(--radius)', display: 'flex', flexDirection: 'column',
+          background: 'var(--color-card)',
+          border: '1px solid var(--color-card-border)',
+          borderRadius: 'var(--radius)',
+          display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
           cursor: 'pointer', overflow: 'hidden',
         }}
@@ -115,26 +166,49 @@ function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardP
 
   return (
     <div
-      onClick={handleClick}
+      onClick={!isTouch ? handleMouseEnter : undefined}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
         flexShrink: 0, width: cardWidth, aspectRatio,
         background: '#000', borderRadius: 'var(--radius)', overflow: 'hidden',
         cursor: 'pointer', position: 'relative',
-        border: playing ? '1px solid var(--color-gold-soft)' : '1px solid transparent',
+        border: isCurrentlyPlaying.current ? '1px solid var(--color-gold-soft)' : '1px solid transparent',
         transition: 'border-color 0.3s',
       }}
     >
       <video
         ref={videoRef}
         src={item.src}
-        muted loop playsInline
+        muted
+        loop
+        playsInline
         preload="metadata"
-        onLoadedMetadata={handleLoadedMetadata}
+        onLoadedMetadata={() => {
+          const v = videoRef.current
+          if (v) v.currentTime = item.posterTime ?? 1.0
+        }}
         onError={() => setErrored(true)}
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
+
+      {/* Mute indicator */}
+      {isMuted && (
+        <div style={{
+          position: 'absolute', top: '0.5rem', right: '0.5rem',
+          background: 'rgba(0,0,0,0.55)', borderRadius: '50%',
+          width: '28px', height: '28px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          pointerEvents: 'none',
+        }}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
+        </div>
+      )}
+
+      {/* Title */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0,
         padding: '2rem 0.75rem 0.75rem',
@@ -148,122 +222,14 @@ function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardP
 }
 
 // ---------------------------------------------------------------------------
-// Modal — loading spinner + 10s canplay timeout fallback
-// ---------------------------------------------------------------------------
-function VideoModal({ src, onClose }: VideoModalProps) {
-  const startY = useRef<number | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [timedOut, setTimedOut] = useState(false)
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  useEffect(() => {
-    if (!src) return
-    setLoading(true)
-    setTimedOut(false)
-
-    timerRef.current = setTimeout(() => {
-      setTimedOut(true)
-      setLoading(false)
-    }, 10000)
-
-    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
-  }, [src])
-
-  function handleCanPlay() {
-    setLoading(false)
-    if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
-  }
-
-  function handlePointerDown(e: React.PointerEvent) { startY.current = e.clientY }
-  function handlePointerUp(e: React.PointerEvent) {
-    if (startY.current === null) return
-    if (e.clientY - startY.current > 60) onClose()
-    startY.current = null
-  }
-
-  if (!src) return null
-
-  return (
-    <div
-      onClick={onClose}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-    >
-      <button
-        onClick={onClose}
-        aria-label="Close video"
-        style={{
-          position: 'absolute', top: '1.25rem', right: '1.25rem',
-          background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
-          borderRadius: '50%', minWidth: '44px', minHeight: '44px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          cursor: 'pointer', zIndex: 10001, color: '#fff',
-        }}
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-
-      {loading && !timedOut && (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', zIndex: 10000 }}>
-          <div style={{
-            width: '48px', height: '48px',
-            border: '3px solid rgba(201,162,75,0.2)',
-            borderTopColor: 'var(--color-gold)',
-            borderRadius: '50%',
-            animation: 'spin 0.8s linear infinite',
-          }} />
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)' }}>Loading...</p>
-          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-        </div>
-      )}
-
-      {timedOut ? (
-        <div style={{ textAlign: 'center', zIndex: 10000 }}>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(255,255,255,0.7)', marginBottom: '1rem' }}>
-            Tap to open film directly
-          </p>
-          <a
-            href={src}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'var(--color-gold)', textDecoration: 'underline' }}
-          >
-            Open video
-          </a>
-        </div>
-      ) : (
-        <video
-          src={src}
-          controls
-          autoPlay
-          playsInline
-          preload="auto"
-          onCanPlay={handleCanPlay}
-          onClick={(e) => e.stopPropagation()}
-          style={{
-            maxWidth: '90vw', maxHeight: '90vh',
-            borderRadius: 'var(--radius)',
-            display: loading ? 'none' : 'block',
-          }}
-        />
-      )}
-    </div>
-  )
-}
-
-// ---------------------------------------------------------------------------
-// Featured Productions section
+// Featured Productions section — horizontal scroll sliders
 // ---------------------------------------------------------------------------
 export default function FeaturedProductionsSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
-  const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const [isTouch, setIsTouch] = useState(false)
 
-  // Hamra added at top
+  // Hamra added at top of brand films
   const allFilms: VideoItem[] = [
     { src: `${MEDIA_BASE}/Horizontal%20Videos/Hamra%20Jewellery%20new2.mp4`, title: 'Al Hamra Jewellery' },
     ...BRAND_FILMS.map((f) => ({ src: f.src, title: f.title, posterTime: (f as any).posterTime })),
@@ -283,23 +249,22 @@ export default function FeaturedProductionsSection() {
         id="films"
         eyebrow={isArabic ? 'إنتاج مختار' : 'FEATURED PRODUCTION'}
       >
-        {/* Editorial film blocks — one per film, near full-width, full-bleed */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(3rem, 6vw, 5rem)', marginBottom: 'clamp(4rem, 8vw, 7rem)' }}>
+        {/* Brand Films slider */}
+        <div style={{
+          display: 'flex', overflowX: 'auto', gap: '1rem',
+          paddingBottom: '1rem',
+          paddingRight: isTouch ? '15%' : '0',
+          scrollbarWidth: 'thin', scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+        }}>
           {allFilms.map((item, i) => (
-            <div key={i} style={{ width: '100%' }}>
-              <VideoCard
+            <div key={i} style={{ scrollSnapAlign: 'start', flexShrink: 0 }}>
+              <SliderCard
                 item={item}
                 aspectRatio="16/9"
-                cardWidth="100%"
+                cardWidth={isTouch ? '75vw' : '480px'}
                 isTouch={isTouch}
-                onOpen={setActiveVideo}
               />
-              <p style={{
-                fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                color: 'var(--color-text-dim)', marginTop: '1rem',
-              }}>
-                {item.title}
-              </p>
             </div>
           ))}
         </div>
@@ -320,16 +285,15 @@ export default function FeaturedProductionsSection() {
             paddingBottom: '1rem',
             paddingRight: isTouch ? '15%' : '0',
             scrollbarWidth: 'thin', scrollSnapType: 'x mandatory',
-            WebkitOverflowScrolling: 'touch', paddingLeft: '0',
+            WebkitOverflowScrolling: 'touch',
           }}>
             {SHORTS.map((item, i) => (
               <div key={i} style={{ scrollSnapAlign: 'start', flexShrink: 0 }}>
-                <VideoCard
+                <SliderCard
                   item={item}
                   aspectRatio="9/16"
                   cardWidth="200px"
                   isTouch={isTouch}
-                  onOpen={setActiveVideo}
                 />
               </div>
             ))}
@@ -349,12 +313,18 @@ export default function FeaturedProductionsSection() {
             {isArabic ? 'ننفّذ بالمؤثرات ما تعجز الكاميرا عن تصويره' : 'CGI THAT SELLS THE UNSHOOTABLE'}
           </p>
           <div style={{ width: '100%', aspectRatio: '16 / 9', background: '#000', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
-            <video src={CGI_SHOWREEL} muted autoPlay loop playsInline preload="metadata" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <video
+              src={CGI_SHOWREEL}
+              muted
+              autoPlay
+              loop
+              playsInline
+              preload="metadata"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         </div>
       </section>
-
-      <VideoModal src={activeVideo} onClose={() => setActiveVideo(null)} />
     </>
   )
 }

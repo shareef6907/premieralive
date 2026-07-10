@@ -1,29 +1,11 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
 import { useLocale } from 'next-intl'
 import { HERO_VIDEO } from '@/config/media'
 
 export default function HeroSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(hover: none) and (pointer: coarse)')
-    setIsMobile(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-
-  // Mobile: seek to 1.5s frame, no autoplay; desktop: autoplay
-  function handleLoadedMetadata() {
-    const v = videoRef.current
-    if (!v) return
-    v.currentTime = 1.5
-  }
 
   return (
     <section
@@ -37,14 +19,12 @@ export default function HeroSection() {
     >
       {/* Background video */}
       <video
-        ref={videoRef}
         src={HERO_VIDEO}
-        autoPlay={!isMobile}
+        autoPlay
         muted
-        loop={!isMobile}
+        loop
         playsInline
-        preload={isMobile ? 'metadata' : 'none'}
-        onLoadedMetadata={isMobile ? handleLoadedMetadata : undefined}
+        preload="metadata"
         style={{
           position: 'absolute',
           inset: 0,
