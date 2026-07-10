@@ -11,7 +11,7 @@ export const IMAGES = {
   ogImage: `${M}/homepage-photos/og-image.jpg`,
 };
 
-export const HERO_VIDEO = `${M}/Horizontal%20Videos/cinematic-webworks-header.mp4`;
+export const HERO_VIDEO = '/hero.mp4';
 export const SCRUB_VIDEO   = `${M}/premiera-scrub-hq.mp4`;
 export const CGI_SHOWREEL  = `${M}/Animation/Premiera%20-%20animation%20showcase.mp4`;
 export const AI_BG_LOOP    = `${M}/Horizontal%20Videos/ai-systems-bg.mp4`;
@@ -30,8 +30,8 @@ export const PLATFORMS = {
     dashboard: `${M}/studentphotos%20dashboard.png`,
     nameEn: 'StudentPhotos.com',
     nameAr: 'StudentPhotos.com',
-    descEn: "A school-photography e-commerce platform — online galleries, secure payments, automated watermarking and digital delivery. Fully custom software, front to back. The domain alone cost several thousand dollars.",
-    descAr: "منصة تجارة إلكترونية لتصوير المدارس — معارض رقمية، ودفع آمن، وعلامات مائية وتسليم آلي. برمجية مخصصة بالكامل، والنطاق وحده كلّف عدة آلاف من الدولارات.",
+    descEn: "A school-photography e-commerce platform — online galleries, secure payments, automated watermarking and digital delivery. Fully custom software, front to back.",
+    descAr: "منصة تجارة إلكترونية لتصوير المدارس — معارض رقمية، ودفع آمن، وعلامات مائية وتسليم آلي. برمجية مخصصة بالكامل.",
   },
 };
 
