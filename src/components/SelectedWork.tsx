@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
+import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { media } from '@/config/media'
 
@@ -128,11 +129,16 @@ export default function SelectedWork() {
                   border: '1px solid rgba(255,255,255,0.06)',
                   borderRadius: 12,
                   overflow: 'hidden',
-                  backgroundImage: `url(${media.folders.posters}/${item.file})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
                 }}
               >
+                <Image
+                  src={`${media.folders.posters}/${item.file}`}
+                  alt={item.title}
+                  fill
+                  quality={70}
+                  sizes="(max-width: 768px) 50vw, 280px"
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
                 <div style={{
                   position: 'absolute',
                   inset: 0,
