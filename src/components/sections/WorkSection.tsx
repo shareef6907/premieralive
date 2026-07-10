@@ -243,7 +243,7 @@ function VideoModal({ src, onClose }: VideoModalProps) {
       <div
         className="video-overlay"
         onClick={() => {
-          const v = document.getElementById('modal-video')
+          const v = document.getElementById('modal-video') as HTMLVideoElement | null
           if (v) {
             if (v.paused) {
               v.play()
