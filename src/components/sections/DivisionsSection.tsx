@@ -2,8 +2,32 @@
 
 import { useState } from 'react'
 import { useLocale } from 'next-intl'
+import Link from 'next/link'
 import Section from '../Section'
 import { IMAGES } from '@/config/media'
+
+// Slug mapping for each capability (order matches capability lists)
+const CAPABILITY_SLUGS = {
+  cinematic: [
+    'commercial-film-production-saudi-arabia',    // Commercial Films
+    'corporate-video-production-saudi-arabia',      // Corporate Films
+    'professional-photography-saudi-arabia',       // Professional Photography
+    'animation-cgi-studio-saudi-arabia',           // Animation & CGI
+    'documentary-production-saudi-arabia',          // Documentary
+    'event-coverage-saudi-arabia',                 // Event Coverage
+    'multi-cam-live-streaming-saudi-arabia',        // Multi-Cam Live Streaming
+  ],
+  digital: [
+    'business-website-development-saudi-arabia',    // Business Websites
+    'business-software-development-saudi-arabia',    // Business Software
+    'landing-page-design-saudi-arabia',             // Landing Pages
+    'booking-system-development-saudi-arabia',      // Booking Systems
+    'business-platform-development-saudi-arabia',    // Business Platforms
+    'client-portal-development-saudi-arabia',       // Client Portals
+    'ai-assistants-automation-saudi-arabia',        // AI Assistants & Automation
+    'website-maintenance-saudi-arabia',             // Website Maintenance
+  ],
+} as const
 
 const DIVISIONS = [
   {
@@ -32,6 +56,8 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
   const locale = useLocale()
   const isArabic = locale === 'ar'
   const [hovered, setHovered] = useState(false)
+  const slugs = CAPABILITY_SLUGS[division.id as keyof typeof CAPABILITY_SLUGS]
+  const capabilities = isArabic ? division.capabilitiesAr : division.capabilitiesEn
 
   return (
     <div
@@ -97,21 +123,43 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
           {isArabic ? division.lineAr : division.lineEn}
         </p>
 
-        {/* Capability list */}
+        {/* Capability list — each item is a link to its service page */}
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
-          {(isArabic ? division.capabilitiesAr : division.capabilitiesEn).map((cap, i) => (
-            <li key={i} style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'var(--body-sm)',
-              color: 'var(--color-text-dim)',
-              lineHeight: 1.8,
-              borderBottom: '1px solid var(--color-card-border)',
-              paddingBottom: '0.5rem',
-              marginBottom: '0.5rem',
-            }}>
-              {i === 0 ? '— ' : ''}{cap}
-            </li>
-          ))}
+          {capabilities.map((cap, i) => {
+            const slug = slugs[i]
+            const href = `/${locale}/services/${slug}`
+            return (
+              <li key={i} style={{
+                borderBottom: '1px solid var(--color-card-border)',
+                paddingBottom: '0.5rem',
+                marginBottom: '0.5rem',
+              }}>
+                <Link
+                  href={href}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'var(--body-sm)',
+                    color: 'var(--color-text-dim)',
+                    lineHeight: 1.8,
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.color = 'var(--color-gold)'
+                  }}
+                  onMouseLeave={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.color = 'var(--color-text-dim)'
+                  }}
+                >
+                  <span style={{ color: 'var(--color-gold)', fontWeight: 600, flexShrink: 0 }}>—</span>
+                  {cap}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </div>
