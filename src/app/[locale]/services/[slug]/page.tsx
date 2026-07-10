@@ -1,12 +1,13 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getTranslations, getLocale } from 'next-intl/server'
+import RelatedServiceLink from '@/components/RelatedServiceLink'
 import Link from 'next/link'
 import { SERVICES_BY_SLUG, ALL_SLUGS } from '@/config/services'
 import type { ServiceSlug } from '@/config/services'
 
 interface Props {
-  params: { locale: string; slug: string }
+  params: Promise<{ locale: string; slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, slug } = params
+  const { locale, slug } = await params
   const service = SERVICES_BY_SLUG[slug as ServiceSlug]
   if (!service) return {}
 
@@ -96,13 +97,11 @@ function ServiceJsonLd({ locale, slug, name }: { locale: string; slug: string; n
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default async function ServicePage({ params }: Props) {
-  const { locale, slug } = params
+  const { locale, slug } = await params
   const isArabic = locale === 'ar'
 
   const service = SERVICES_BY_SLUG[slug as ServiceSlug]
   if (!service) notFound()
-
-  const t = await getTranslations({ locale, namespace: 'Services' })
 
   const name = isArabic ? service.nameAr : service.nameEn
   const valueProp = isArabic ? service.valuePropAr : service.valuePropEn
@@ -409,28 +408,9 @@ export default async function ServicePage({ params }: Props) {
                 const relName = isArabic ? rel.nameAr : rel.nameEn
                 const relHref = `/${locale}/services/${rel.slug}`
                 return (
-                  <a
-                    key={rel.slug}
-                    href={relHref}
-                    style={{
-                      padding: '0.625rem 1.25rem',
-                      border: '1px solid var(--color-card-border)',
-                      borderRadius: 'var(--radius)',
-                      fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                      color: 'var(--color-text-dim)', textDecoration: 'none',
-                      transition: 'border-color 0.2s, color 0.2s',
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = 'var(--color-gold-soft)'
-                      ;(e.currentTarget as HTMLElement).style.color = 'var(--color-text)'
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = 'var(--color-card-border)'
-                      ;(e.currentTarget as HTMLElement).style.color = 'var(--color-text-dim)'
-                    }}
-                  >
+                  <RelatedServiceLink key={rel.slug} href={relHref}>
                     {relName}
-                  </a>
+                  </RelatedServiceLink>
                 )
               })}
             </div>
