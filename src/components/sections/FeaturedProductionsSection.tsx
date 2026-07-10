@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
 import { BRAND_FILMS, SHORTS, CGI_SHOWREEL, MEDIA_BASE } from '@/config/media'
@@ -14,16 +14,16 @@ interface VideoItem {
   src: string
   title: string
   posterTime?: number
+  poster?: string
 }
 
 // ---------------------------------------------------------------------------
-// Global mute state — shared across all slider instances
+// Global mute state — shared across all slider card instances
 // ---------------------------------------------------------------------------
-// Use a module-level ref so unmute exclusivity works across all card instances
 let _globalUnmutedSrc: string | null = null
 const _globalMuteListeners: Set<() => void> = new Set()
 
-export function subscribeGlobalMute(cb: () => void) {
+function subscribeGlobalMute(cb: () => void) {
   _globalMuteListeners.add(cb)
   return () => { _globalMuteListeners.delete(cb) }
 }
@@ -33,10 +33,9 @@ function notifyGlobalMute() {
 }
 
 // ---------------------------------------------------------------------------
-// SliderCard — IO autoplay (mobile), hover play (desktop)
-// Unmute exclusivity: only one video unmutes globally at a time.
-// Desktop hover: unmute + play. Touch tap: unmute + play.
-// Any other play attempt: mutes the previously unmuted one.
+// SliderCard — IO autoplay on mobile, click-to-unmute on all devices
+// Global mute exclusivity: clicking one card's unmute mutes all others
+// isCurrentlyPlaying ref: drives gold border on the actively-played card
 // ---------------------------------------------------------------------------
 function SliderCard({
   item,
@@ -51,12 +50,12 @@ function SliderCard({
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [errored, setErrored] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)       // start muted
-  const [isVisible, setIsVisible] = useState(false)  // IO-driven visibility
+  const [isMuted, setIsMuted] = useState(true)   // all start muted
+  const [isVisible, setIsVisible] = useState(false)
   const ioRef = useRef<IntersectionObserver | null>(null)
   const isCurrentlyPlaying = useRef(false)
 
-  // IO: set video src + autoplay when card enters viewport (mobile)
+  // IO: set src + autoplay when card enters viewport (mobile)
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
@@ -78,11 +77,10 @@ function SliderCard({
     return () => ioRef.current?.disconnect()
   }, [isTouch, item.src])
 
-  // Sync play state with visibility (mobile IO autoplay)
+  // Sync play state with IO visibility (mobile autoplay)
   useEffect(() => {
     const video = videoRef.current
-    if (!video) return
-    if (!isTouch) return
+    if (!video || !isTouch) return
 
     if (isVisible) {
       video.play().catch(() => {})
@@ -92,37 +90,35 @@ function SliderCard({
     }
   }, [isVisible, isTouch, item.posterTime])
 
-  function handleMouseEnter() {
-    if (isTouch) return
-    const video = videoRef.current
-    if (!video || errored) return
-
-    // Mute any currently unmuted video globally
-    if (_globalUnmutedSrc && _globalUnmutedSrc !== item.src) {
-      _globalUnmutedSrc = null
-      notifyGlobalMute()
-    }
-
-    video.muted = false
-    setIsMuted(false)
-    _globalUnmutedSrc = item.src
-    video.play().catch(() => {})
-    isCurrentlyPlaying.current = true
-  }
-
-  function handleMouseLeave() {
-    if (isTouch) return
+  // Per-slide unmute toggle — handles both desktop and touch
+  function toggleMute(e: React.MouseEvent) {
+    e.stopPropagation()
     const video = videoRef.current
     if (!video) return
-    video.pause()
-    video.muted = true
-    setIsMuted(true)
-    if (_globalUnmutedSrc === item.src) _globalUnmutedSrc = null
-    video.currentTime = item.posterTime ?? 1.0
-    isCurrentlyPlaying.current = false
+
+    if (!video.muted) {
+      // Mute this card
+      video.muted = true
+      setIsMuted(true)
+      video.pause()
+      video.currentTime = item.posterTime ?? 1.0
+      isCurrentlyPlaying.current = false
+      if (_globalUnmutedSrc === item.src) _globalUnmutedSrc = null
+    } else {
+      // Unmute this card with global exclusivity
+      if (_globalUnmutedSrc && _globalUnmutedSrc !== item.src) {
+        _globalUnmutedSrc = null
+        notifyGlobalMute()
+      }
+      video.muted = false
+      setIsMuted(false)
+      _globalUnmutedSrc = item.src
+      video.play().catch(() => {})
+      isCurrentlyPlaying.current = true
+    }
   }
 
-  // Called by global mute broadcast
+  // Global mute broadcast — received when another card unmutes
   function handleGlobalMute() {
     const video = videoRef.current
     if (!video || video.muted) return
@@ -134,7 +130,6 @@ function SliderCard({
     if (_globalUnmutedSrc === item.src) _globalUnmutedSrc = null
   }
 
-  // Subscribe to global mute
   useEffect(() => {
     return subscribeGlobalMute(handleGlobalMute)
   }, [])
@@ -166,9 +161,7 @@ function SliderCard({
 
   return (
     <div
-      onClick={!isTouch ? handleMouseEnter : undefined}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onClick={toggleMute}
       style={{
         flexShrink: 0, width: cardWidth, aspectRatio,
         background: '#000', borderRadius: 'var(--radius)', overflow: 'hidden',
@@ -184,6 +177,7 @@ function SliderCard({
         loop
         playsInline
         preload="metadata"
+        poster={item.poster}
         onLoadedMetadata={() => {
           const v = videoRef.current
           if (v) v.currentTime = item.posterTime ?? 1.0
@@ -192,19 +186,26 @@ function SliderCard({
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
 
-      {/* Mute indicator */}
-      {isMuted && (
-        <div style={{
-          position: 'absolute', top: '0.5rem', right: '0.5rem',
-          background: 'rgba(0,0,0,0.55)', borderRadius: '50%',
-          width: '28px', height: '28px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          pointerEvents: 'none',
-        }}>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+      {/* Per-slide unmute pill — visible only when this card is unmuted */}
+      {!isMuted && (
+        <div
+          onClick={toggleMute}
+          style={{
+            position: 'absolute', top: '0.5rem', right: '0.5rem',
+            background: 'rgba(0,0,0,0.6)', borderRadius: '9999px',
+            padding: '0.25rem 0.625rem',
+            display: 'flex', alignItems: 'center', gap: '0.375rem',
+            cursor: 'pointer',
+            border: '1px solid rgba(201,162,75,0.5)',
+          }}
+        >
+          {/* Speaker icon */}
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-            <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
           </svg>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.6875rem', fontWeight: 500, color: '#C9A24B' }}>SOUND ON</span>
         </div>
       )}
 
@@ -229,7 +230,7 @@ export default function FeaturedProductionsSection() {
   const isArabic = locale === 'ar'
   const [isTouch, setIsTouch] = useState(false)
 
-  // Hamra added at top of brand films
+  // Al Hamra at top of brand films
   const allFilms: VideoItem[] = [
     { src: `${MEDIA_BASE}/Horizontal%20Videos/Hamra%20Jewellery%20new2.mp4`, title: 'Al Hamra Jewellery' },
     ...BRAND_FILMS.map((f) => ({ src: f.src, title: f.title, posterTime: (f as any).posterTime })),
