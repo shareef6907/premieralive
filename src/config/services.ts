@@ -49,10 +49,10 @@ export const SERVICES: ServicePage[] = [
   // ── CINEMATIC PRODUCTION ─────────────────────────────────────────────────
   {
     slug: 'commercial-film-production-saudi-arabia',
-    shortName: 'commercial-film',
+    shortName: 'commercial-films',
     nameEn: 'Commercial Film Production in Saudi Arabia',
     nameAr: 'إنتاج الأفلام الإعلانية في السعودية',
-    heroImage: SB + 'commercial-film.jpg',
+    heroImage: SB + 'commercial-films.jpg',
     valuePropEn: 'Cinema-grade commercials for brands that need to be remembered — concept to final cut, delivered by the team behind campaigns for global names.',
     valuePropAr: 'ننتج أفلاماً إعلانية بمستوى سينمائي للعلامات التي تحتاج أن تُذكر — من الفكرة إلى المونتاج النهائي، بفريق يملك خبرة حملات للعلامات العالمية.',
     whatWeDeliverEn: [
@@ -99,10 +99,10 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'corporate-video-production-saudi-arabia',
-    shortName: 'corporate-video',
+    shortName: 'corporate-films',
     nameEn: 'Corporate Video Production in Saudi Arabia',
     nameAr: 'إنتاج الأفلام المؤسسية في السعودية',
-    heroImage: SB + 'corporate-video.jpg',
+    heroImage: SB + 'corporate-films.jpg',
     valuePropEn: 'Corporate films that actually represent your organisation — not generic talking heads, but content built for your audience and your objectives.',
     valuePropAr: 'أفلام مؤسسية تعكس مؤسستك فعلاً — ليست لقطات نمطية مكررة، بل محتوى يُبنى لجمهورك ولأهدافك.',
     whatWeDeliverEn: [
@@ -149,10 +149,10 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'professional-photography-saudi-arabia',
-    shortName: 'photography',
+    shortName: 'professional-photography',
     nameEn: 'Professional Photography in Saudi Arabia',
     nameAr: 'التصوير الاحترافي في السعودية',
-    heroImage: SB + 'photography.jpg',
+    heroImage: SB + 'professional-photography.jpg',
     valuePropEn: 'Professional image-making for brands that understand the difference a great photograph makes — from product and campaign shoots to corporate portraiture.',
     valuePropAr: 'إنتاج صور احترافية للعلامات التي تدرك أثر الصورة الممتازة — من تصوير المنتجات والحملات إلى البورتريه المؤسسي.',
     whatWeDeliverEn: [
@@ -232,12 +232,12 @@ export const SERVICES: ServicePage[] = [
     whereWeWorkEn: 'We deliver animation and CGI work to clients across Saudi Arabia — in Riyadh, Jeddah, Khobar, Dammam, and Jubail — and across the Gulf region.',
     whereWeWorkAr: 'نقدّم أعمال الرسوم المتحركة والمؤثرات للعملاء في أرجاء السعودية — في الرياض وجدة والخبر والدمام والجبيل — وعبر دول الخليج.',
     faqEn: [
-      { q: 'What software do you use for CGI and animation?', a: 'We use a range of industry-standard tools including Cinema 4D, Blender, and After Effects, selected per project requirements.' },
+      { q: 'What software do you use for CGI and animation?', a: 'We work with professional 3D, CGI, and compositing pipelines — including AI-assisted production that lets us deliver in days what traditionally takes weeks.' },
       { q: 'Can animation explain complex products?', a: 'Yes — product visualisation and explainer animation are two of our most requested services. We translate complex concepts into clear, watchable content.' },
       { q: 'What turnaround times apply?', a: 'Animation projects are typically delivered within 2–3 days; extensive CGI sequences can take longer.' },
     ],
     faqAr: [
-      { q: 'ما البرمجيات التي تستخدمونها للرسوم المتحركة والمؤثرات؟', a: 'نستخدم مجموعة من الأدوات المعيارية في الصناعة تشمل Cinema 4D وBlender وAfter Effects، نختارها حسب متطلبات كل مشروع.' },
+      { q: 'ما البرمجيات التي تستخدمونها للرسوم المتحركة والمؤثرات؟', a: 'نعمل بخطوط إنتاج احترافية للأبعاد الثلاثية والمؤثرات والتركيب — ومنها إنتاج معزز بالذكاء الاصطناعي يتيح لنا التسليم في أيام بدل أسابيع.' },
       { q: 'هل يمكن للرسوم المتحركة شرح المنتجات المعقدة؟', a: 'نعم — تصوّر المنتجات ورسوم الشروحات هما من أكثر خدماتنا طلباً. نترجم المفاهيم المعقدة إلى محتوى واضح وقابل للمشاهدة.' },
       { q: 'ما مدة التسليم للمشاريع المتحركة؟', a: 'نسلّم مشاريع الرسوم المتحركة خلال يومين إلى ثلاثة أيام عادةً، وقد تستغرق المشاهد المعقدة وقتاً أطول.' },
     ],
@@ -393,10 +393,10 @@ export const SERVICES: ServicePage[] = [
   // ── DIGITAL EXPERIENCES ───────────────────────────────────────────────────
   {
     slug: 'business-website-development-saudi-arabia',
-    shortName: 'business-website',
+    shortName: 'business-websites',
     nameEn: 'Business Website Development in Saudi Arabia',
     nameAr: 'بناء مواقع الأعمال في السعودية',
-    heroImage: SB + 'business-website.jpg',
+    heroImage: SB + 'business-websites.jpg',
     valuePropEn: 'Business websites engineered to perform — fast, bilingual, and connected to the systems that run your operations. Built by a team that understands both design and development.',
     valuePropAr: 'مواقع أعمال مصمّمة للأداء — سريعة وثنائية اللغة ومتصلة بالأنظمة التي تشغّل عملك. يبنيها فريق يفهم التصميم والتطوير معاً.',
     whatWeDeliverEn: [
@@ -478,12 +478,12 @@ export const SERVICES: ServicePage[] = [
     whereWeWorkEn: 'We develop custom business software for organisations across Saudi Arabia — in Riyadh, Jeddah, Khobar, Dammam, and Jubail — and deliver to clients throughout the Gulf.',
     whereWeWorkAr: 'نطوّر برمجيات أعمال مخصصة للمنظمات في أرجاء السعودية — في الرياض وجدة والخبر والدمام والجبيل — ونسلّم للعملاء في مختلف دول الخليج.',
     faqEn: [
-      { q: 'What technologies do you use?', a: 'We select the right stack per project from modern, maintainable options — including Python, Node.js, React, and cloud infrastructure on AWS or Azure.' },
+      { q: 'What technologies do you use?', a: 'We build on modern, proven technology — Node.js, React, and cloud infrastructure — chosen for performance, security, and longevity.' },
       { q: 'Can you integrate with our existing systems?', a: 'Yes — API integration is part of most enterprise software projects. We map your existing tools and build the connections before we write any new code.' },
       { q: 'How do you handle data security?', a: 'Security is built into our architecture from the start — including role-based access, encrypted storage, and compliance with relevant data protection standards.' },
     ],
     faqAr: [
-      { q: 'ما التقنيات التي تستخدمونها؟', a: 'نختار المكدس المناسب لكل مشروع من الخيارات الحديثة والقابلة للصيانة — بما في ذلك Python وNode.js وReact والبنية السحابية على AWS أو Azure.' },
+      { q: 'ما التقنيات التي تستخدمونها؟', a: 'نبني على تقنيات حديثة مجرَّبة — Node.js وReact وبنية سحابية — نختارها للأداء والأمان وطول العمر.' },
       { q: 'هل يمكنكم التكامل مع أنظمتنا القائمة؟', a: 'نعم — التكامل عبر API هو جزء من معظم مشاريع البرمجيات المؤسسية. نرسم خريطة أدواتك القائمة ونبني الاتصالات قبل كتابة أي كود جديد.' },
       { q: 'كيف تتعاملون مع أمان البيانات؟', a: 'الأمان يُبنى في هندستنا من البداية — بما في ذلك الوصول المستند إلى الأدوار والتشفير والامتثال لمعايير حماية البيانات ذات الصلة.' },
     ],
@@ -493,10 +493,10 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'landing-page-design-saudi-arabia',
-    shortName: 'landing-page',
+    shortName: 'landing-pages',
     nameEn: 'Landing Page Design in Saudi Arabia',
     nameAr: 'تصميم صفحات الهبوط في السعودية',
-    heroImage: SB + 'landing-page.jpg',
+    heroImage: SB + 'landing-pages.jpg',
     valuePropEn: 'Landing pages designed to do one thing — convert the visitors you drive to them into leads or customers. Built fast, tested, and optimised around your campaign goals.',
     valuePropAr: 'صفحات هبوط مصممة لهدف واحد — تحويل الزوار الذين يصلون إليها إلى عملاء محتملين أو عملاء. تُبنى بسرعة وتُختبر وتُحسَّن حول أهداف حملتك.',
     whatWeDeliverEn: [
@@ -541,10 +541,10 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'booking-system-development-saudi-arabia',
-    shortName: 'booking-system',
+    shortName: 'booking-systems',
     nameEn: 'Booking System Development in Saudi Arabia',
     nameAr: 'بناء أنظمة الحجز في السعودية',
-    heroImage: SB + 'booking-system.jpg',
+    heroImage: SB + 'booking-systems.jpg',
     valuePropEn: 'Booking and reservation systems that your customers actually use — designed around your operation, integrated with your calendar, and built to reduce no-shows and administrative overhead.',
     valuePropAr: 'أنظمة حجز ومواعيد يستخدمها عملاؤك فعلاً — مصممة حول عملياتك ومتصلّة ببياناتك ومبنية لتقليل عدم الحضور والضغط الإداري.',
     whatWeDeliverEn: [
@@ -591,10 +591,10 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'business-platform-development-saudi-arabia',
-    shortName: 'business-platform',
+    shortName: 'business-platforms',
     nameEn: 'Business Platform Development in Saudi Arabia',
     nameAr: 'بناء منصات الأعمال في السعودية',
-    heroImage: SB + 'business-platform.jpg',
+    heroImage: SB + 'business-platforms.jpg',
     valuePropEn: 'Full-scale business platforms — the kind that run operations, serve customers, or create new revenue channels. Built with the architecture that scales with your ambitions.',
     valuePropAr: 'منصات أعمال كاملة النطاق — النوع الذي يشغّل العمليات ويخدم العملاء أو يخلق قنوات إيرادات جديدة. تُبنى بالهندسة التي تنمو مع طموحاتك.',
     whatWeDeliverEn: [
@@ -641,10 +641,10 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'client-portal-development-saudi-arabia',
-    shortName: 'client-portal',
+    shortName: 'client-portals',
     nameEn: 'Client Portal Development in Saudi Arabia',
     nameAr: 'بناء بوابات العملاء في السعودية',
-    heroImage: SB + 'client-portal.jpg',
+    heroImage: SB + 'client-portals.jpg',
     valuePropEn: 'Client portals that replace the WhatsApp chains and email threads — a single place for your clients to access their projects, documents, and communications with your team.',
     valuePropAr: 'بوابات عملاء تحل محل سلاسل واتساب ومواضيع البريد — مكان واحد لعملائك للوصول إلى مشاريعهم ومستنداتهم والتواصل مع فريقك.',
     whatWeDeliverEn: [
