@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { getLocale } from 'next-intl/server'
-import Link from 'next/link'
+import ServiceCardLink from '@/components/ServiceCardLink'
 import { SERVICES } from '@/config/services'
 
 export const metadata: Metadata = {
@@ -19,8 +19,7 @@ const DIVISIONS = [
   {
     labelEn: 'Cinematic Production',
     labelAr: 'الإنتاج السينمائي',
-    slug: 'cinematic',
-    servicesEn: [
+    slugs: [
       'commercial-film-production-saudi-arabia',
       'corporate-video-production-saudi-arabia',
       'professional-photography-saudi-arabia',
@@ -33,8 +32,7 @@ const DIVISIONS = [
   {
     labelEn: 'Digital Experiences',
     labelAr: 'التجارب الرقمية',
-    slug: 'digital',
-    servicesEn: [
+    slugs: [
       'business-website-development-saudi-arabia',
       'business-software-development-saudi-arabia',
       'landing-page-design-saudi-arabia',
@@ -108,47 +106,17 @@ export default async function ServicesIndexPage() {
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
           gap: '1rem',
         }}>
-          {DIVISIONS[0].servicesEn.map((slug) => {
+          {DIVISIONS[0].slugs.map((slug) => {
             const svc = SERVICES.find((s) => s.slug === slug)
             if (!svc) return null
-            const name = isArabic ? svc.nameAr : svc.nameEn
-            const href = `/${locale}/services/${slug}`
             return (
-              <Link
+              <ServiceCardLink
                 key={slug}
-                href={href}
-                style={{
-                  padding: '1.5rem',
-                  background: 'var(--color-card)',
-                  border: '1px solid var(--color-card-border)',
-                  borderRadius: 'var(--radius)',
-                  textDecoration: 'none',
-                  transition: 'border-color 0.2s, transform 0.2s',
-                  display: 'block',
-                }}
-                onMouseEnter={(e) => {
-                  ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-gold-soft)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
-                }}
-                onMouseLeave={(e) => {
-                  ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-card-border)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-                }}
-              >
-                <p style={{
-                  fontFamily: 'var(--font-body)', fontWeight: 600,
-                  fontSize: 'var(--body)', color: 'var(--color-text)',
-                  marginBottom: '0.5rem',
-                }}>
-                  {name}
-                </p>
-                <p style={{
-                  fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                  color: 'var(--color-text-faint)', lineHeight: 1.5,
-                }}>
-                  {isArabic ? svc.valuePropAr : svc.valuePropEn}
-                </p>
-              </Link>
+                href={`/${locale}/services/${slug}`}
+                name={isArabic ? svc.nameAr : svc.nameEn}
+                description={isArabic ? svc.valuePropAr : svc.valuePropEn}
+                isArabic={isArabic}
+              />
             )
           })}
         </div>
@@ -173,47 +141,17 @@ export default async function ServicesIndexPage() {
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             gap: '1rem',
           }}>
-            {DIVISIONS[1].servicesEn.map((slug) => {
+            {DIVISIONS[1].slugs.map((slug) => {
               const svc = SERVICES.find((s) => s.slug === slug)
               if (!svc) return null
-              const name = isArabic ? svc.nameAr : svc.nameEn
-              const href = `/${locale}/services/${slug}`
               return (
-                <Link
+                <ServiceCardLink
                   key={slug}
-                  href={href}
-                  style={{
-                    padding: '1.5rem',
-                    background: 'var(--color-card)',
-                    border: '1px solid var(--color-card-border)',
-                    borderRadius: 'var(--radius)',
-                    textDecoration: 'none',
-                    transition: 'border-color 0.2s, transform 0.2s',
-                    display: 'block',
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-gold-soft)'
-                    ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-card-border)'
-                    ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-                  }}
-                >
-                  <p style={{
-                    fontFamily: 'var(--font-body)', fontWeight: 600,
-                    fontSize: 'var(--body)', color: 'var(--color-text)',
-                    marginBottom: '0.5rem',
-                  }}>
-                    {name}
-                  </p>
-                  <p style={{
-                    fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                    color: 'var(--color-text-faint)', lineHeight: 1.5,
-                  }}>
-                    {isArabic ? svc.valuePropAr : svc.valuePropEn}
-                  </p>
-                </Link>
+                  href={`/${locale}/services/${slug}`}
+                  name={isArabic ? svc.nameAr : svc.nameEn}
+                  description={isArabic ? svc.valuePropAr : svc.valuePropEn}
+                  isArabic={isArabic}
+                />
               )
             })}
           </div>

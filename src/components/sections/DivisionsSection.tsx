@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { useLocale } from 'next-intl'
-import Link from 'next/link'
 import Section from '../Section'
 import { IMAGES } from '@/config/media'
+import ServiceCardLink from '../ServiceCardLink'
 
 // Slug mapping for each capability (order matches capability lists)
 const CAPABILITY_SLUGS = {
@@ -127,36 +127,19 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
           {capabilities.map((cap, i) => {
             const slug = slugs[i]
-            const href = `/${locale}/services/${slug}`
+            if (!slug) return null
             return (
               <li key={i} style={{
                 borderBottom: '1px solid var(--color-card-border)',
                 paddingBottom: '0.5rem',
                 marginBottom: '0.5rem',
               }}>
-                <Link
-                  href={href}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 'var(--body-sm)',
-                    color: 'var(--color-text-dim)',
-                    lineHeight: 1.8,
-                    textDecoration: 'none',
-                    transition: 'color 0.2s',
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.color = 'var(--color-gold)'
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.color = 'var(--color-text-dim)'
-                  }}
-                >
-                  <span style={{ color: 'var(--color-gold)', fontWeight: 600, flexShrink: 0 }}>—</span>
-                  {cap}
-                </Link>
+                <ServiceCardLink
+                  href={`/${locale}/services/${slug}`}
+                  name={cap}
+                  description=""
+                  isArabic={isArabic}
+                />
               </li>
             )
           })}
