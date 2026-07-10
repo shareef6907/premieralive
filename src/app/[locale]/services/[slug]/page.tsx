@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getTranslations, getLocale } from 'next-intl/server'
+import ScrollToTop from '@/components/ScrollToTop'
 import RelatedServiceLink from '@/components/RelatedServiceLink'
 import Link from 'next/link'
 import { SERVICES_BY_SLUG, ALL_SLUGS } from '@/config/services'
@@ -111,13 +111,22 @@ export default async function ServicePage({ params }: Props) {
   const faq = isArabic ? service.faqAr : service.faqEn
   const ctaMessage = isArabic ? service.ctaMessageAr : service.ctaMessageEn
 
-  const domain = 'https://www.premieralive.com'
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500000000'
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(ctaMessage)}`
+  const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(ctaMessage)}&type=phone_number&app_absent=0`
 
-  // Related service pages
+  const showCustomCode = [
+    'business-website-development-saudi-arabia',
+    'business-software-development-saudi-arabia',
+    'booking-system-development-saudi-arabia',
+    'business-platform-development-saudi-arabia',
+    'client-portal-development-saudi-arabia',
+  ].includes(slug)
+
+  const customCodeEN = 'Built from scratch for bulletproof security. Unlike cookie-cutter platforms and template builders, we write clean, custom code for every project. We develop everything ourselves — no WordPress, no page builders, no third-party platforms — so there is no limit on what we can build. And by eliminating heavy plugins and bloated third-party software, we drastically shrink the surface area for cyber threats: your website stays fast, lightweight, and incredibly difficult for automated hacking bots to target.'
+  const customCodeAR = 'نبني من الصفر لأمانٍ يصعب اختراقه. خلافاً للمنصات الجاهزة وقوالب البناء، نكتب شيفرة نظيفة مخصصة لكل مشروع، ونطوّر كل شيء بأنفسنا — بلا ووردبريس ولا أدوات بناء ولا منصات خارجية — فلا سقف لما نستطيع بناءه. وبإزالة الإضافات الثقيلة والبرمجيات المتضخمة نقلّص مساحة التعرض للتهديدات السيبرانية تقليصاً كبيراً: يبقى موقعك سريعاً وخفيفاً وعصيّاً على استهداف روبوتات الاختراق الآلية.'
+
   const related = service.relatedSlugs
-    .map((rs) => SERVICES_BY_SLUG[rs])
+    .map((rs: ServiceSlug) => SERVICES_BY_SLUG[rs])
     .filter(Boolean)
     .slice(0, 4)
 
@@ -129,10 +138,11 @@ export default async function ServicePage({ params }: Props) {
       <BreadcrumbJsonLd locale={locale} slug={slug} name={name} />
       <ServiceJsonLd locale={locale} slug={slug} name={name} />
 
+      <ScrollToTop />
       {/* ── Breadcrumb ── */}
       <div style={{
         maxWidth: '80rem', margin: '0 auto',
-        padding: '1.25rem clamp(1.25rem, 5vw, 4rem)',
+        padding: '5rem clamp(1.25rem, 5vw, 4rem) 1.25rem',
         display: 'flex', gap: '0.5rem', alignItems: 'center',
         fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
         color: 'var(--color-text-faint)',
@@ -241,6 +251,29 @@ export default async function ServicePage({ params }: Props) {
           ))}
         </ul>
       </section>
+
+      {/* ── Custom Code Paragraph (website/software/platform/portal only) ── */}
+      {showCustomCode && (
+        <section style={{
+          padding: '0 clamp(1.25rem, 5vw, 4rem) clamp(4rem, 8vw, 7rem)',
+          maxWidth: '80rem', margin: '0 auto',
+        }}>
+          <div style={{
+            padding: '1.5rem 2rem',
+            background: 'var(--color-card)',
+            border: '1px solid var(--color-card-border)',
+            borderLeft: '3px solid var(--color-gold)',
+            borderRadius: 'var(--radius)',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-body)', fontSize: 'var(--body)',
+              color: 'var(--color-text-dim)', lineHeight: 1.8,
+            }}>
+              {isArabic ? customCodeAR : customCodeEN}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* ── How We Work ── */}
       <section style={{
