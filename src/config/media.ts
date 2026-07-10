@@ -13,7 +13,7 @@ export const IMAGES = {
 
 export const HERO_VIDEO = '/hero-v2.mp4';
 export const SCRUB_VIDEO   = `${M}/premiera-scrub-hq.mp4`;
-export const CGI_SHOWREEL  = `${M}/Animation/Premiera%20-%20animation%20showcase.mp4`;
+export const CGI_SHOWREEL  = `${M}/work/AnimationShowcase-1080p.mp4`;
 export const AI_BG_LOOP    = `${M}/Horizontal%20Videos/ai-systems-bg.mp4`;
 
 export const PLATFORMS = {
@@ -52,53 +52,63 @@ export const media = {
   },
 };
 
-export const BRAND_FILMS: { src: string; title: string }[] = [
+export const BRAND_FILMS: { src: string; title: string; poster?: string }[] = [
   {
-    src: `${M}/Horizontal%20Videos/Atme%20Press%20Conference%20-%20Fintech%20Forward.m4v`,
+    src: `${M}/work/Atme-Fintech-1080p.mp4`,
     title: 'Atme Press Conference',
+    poster: `${M}/work/Atme-Fintech-poster.jpg`,
   },
   {
-    src: `${M}/Horizontal%20Videos/Empire%20Limo%20-%20Final%20Horizontal.M4V`,
+    src: `${M}/work/Empire-Limo-1080p.mp4`,
     title: 'Empire Limo',
+    poster: `${M}/work/Empire-Limo-poster.jpg`,
   },
   {
-    src: `${M}/Horizontal%20Videos/Horse%20Slow%20mo.m4v`,
+    src: `${M}/work/Horse-Slowmo-1080p.mp4`,
     title: 'Horse Slow Mo',
+    poster: `${M}/work/Horse-Slowmo-poster.jpg`,
   },
   {
-    src: `${M}/Horizontal+Videos/+MEOS%20Day%201%20-%20HDP%20Version.mp4`,
+    src: `${M}/work/MEOS-1080p.mp4`,
     title: 'MEOS Day 1',
+    poster: `${M}/work/MEOS-poster.jpg`,
   },
 ];
 
-export const SHORTS: { src: string; title: string; posterTime?: number }[] = [
+export const SHORTS: { src: string; title: string; poster?: string }[] = [
   {
-    src: `${M}/Shorts-reel/EMAAD%20GRADUATION%20VIDEO.m4v`,
+    src: `${M}/work/EmaadGrad-1080p.mp4`,
     title: 'Emaad Graduation',
+    poster: `${M}/work/EmaadGrad-poster.jpg`,
   },
   {
-    src: `${M}/Shorts-reel/bmw%20vertical.mp4`,
+    src: `${M}/work/BMW-1080p.mp4`,
     title: 'BMW',
+    poster: `${M}/work/BMW-poster.jpg`,
   },
   {
-    src: `${M}/Shorts-reel/LC%20Waikiki.M4V`,
+    src: `${M}/work/LCWaikiki-1080p.mp4`,
     title: 'LC Waikiki',
-    posterTime: 2.0,
+    poster: `${M}/work/LCWaikiki-poster.jpg`,
   },
   {
-    src: `${M}/Shorts-reel/Mado%20Eid%20Box%20Final%206.m4v`,
+    src: `${M}/work/MadoEid-1080p.mp4`,
     title: 'Mado Eid Box',
+    poster: `${M}/work/MadoEid-poster.jpg`,
   },
   {
-    src: `${M}/Shorts-reel/Sketchers%20Bahrain%20Nights%20FINAL%20T1.MP4`,
+    src: `${M}/work/Sketchers-1080p.mp4`,
     title: 'Sketchers Bahrain Nights',
+    poster: `${M}/work/Sketchers-poster.jpg`,
   },
   {
-    src: `${M}/Shorts-reel/Interview%20Instagram%202nd%20interview%20.mp4`,
+    src: `${M}/work/Interview-1080p.mp4`,
     title: 'Interview — 2nd Interview',
+    poster: `${M}/work/Interview-poster.jpg`,
   },
   {
-    src: `${M}/Shorts-reel/Womens%20Day%20%20-%20Apparel%20Group%20-%20T10%20with%20VO.mp4`,
+    src: `${M}/work/Womens-1080p.mp4`,
     title: "Women's Day — Apparel Group",
+    poster: `${M}/work/Womens-poster.jpg`,
   },
 ];
