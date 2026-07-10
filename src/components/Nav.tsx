@@ -88,20 +88,22 @@ export default function Nav() {
         </div>
 
         {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           {/* Locale switcher */}
           <Link
             href={locale === 'en' ? '/ar' : '/en'}
+            className="locale-toggle"
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: '0.72rem',
               letterSpacing: '0.15em',
               color: 'rgba(245,244,240,0.5)',
               textDecoration: 'none',
-              padding: '0.25rem 0.6rem',
+              padding: '0.4rem 0.75rem',
               border: '1px solid var(--card-border)',
               borderRadius: '3px',
               transition: 'all 0.2s',
+              whiteSpace: 'nowrap',
             }}
           >
             {locale === 'en' ? 'عربي' : 'EN'}

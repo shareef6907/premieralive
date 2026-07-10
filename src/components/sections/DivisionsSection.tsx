@@ -61,6 +61,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
 
   return (
     <div
+      className="division-half"
       style={{
         flex: 1,
         minWidth: 0,
@@ -73,6 +74,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
     >
       {/* Image with hover scale */}
       <div
+        className="division-image"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
@@ -102,8 +104,8 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
       </div>
 
       {/* Content */}
-      <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <p style={{
+      <div className="division-content" style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <p className="division-eyebrow" style={{
           fontFamily: 'var(--font-body)',
           fontWeight: 500,
           fontSize: 'var(--eyebrow)',
@@ -114,7 +116,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
         }}>
           {isArabic ? division.nameAr : division.nameEn}
         </p>
-        <p style={{
+        <p className="division-line" style={{
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(1.25rem, 2.5vw, 2rem)',
           color: 'var(--color-text)',
@@ -124,12 +126,12 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
           {isArabic ? division.lineAr : division.lineEn}
         </p>
 
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
+        <ul className="division-capabilities" style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
           {capabilities.map((cap, i) => {
             const slug = slugs[i]
             if (!slug) return null
             return (
-              <li key={i} style={{
+              <li key={i} className="capability-item" style={{
                 borderBottom: '1px solid var(--color-card-border)',
                 paddingBottom: '0.5rem',
                 marginBottom: '0.5rem',
@@ -155,16 +157,58 @@ export default function DivisionsSection() {
 
   return (
     <Section eyebrow={isArabic ? 'ما نقدم' : 'WHAT WE DO'}>
-      <div style={{
-        display: 'flex',
-        flexDirection: isArabic ? 'row-reverse' : 'row',
-        gap: '1.5rem',
-        flexWrap: 'wrap',
-      }}>
+      <div
+        className="divisions-container"
+        style={{
+          display: 'flex',
+          flexDirection: isArabic ? 'row-reverse' : 'row',
+          gap: '1.5rem',
+          flexWrap: 'wrap',
+        }}
+      >
         {DIVISIONS.map((d) => (
           <DivisionHalf key={d.id} division={d} />
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .divisions-container {
+            flex-direction: column !important;
+            gap: 2.5rem !important;
+          }
+          .division-half {
+            border: none !important;
+            border-radius: 0 !important;
+            overflow: visible !important;
+          }
+          .division-image {
+            display: none !important;
+          }
+          .division-content {
+            padding: 0 !important;
+          }
+          .division-eyebrow {
+            font-size: 0.7rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .division-line {
+            margin-bottom: 1.5rem !important;
+          }
+          .division-capabilities {
+            display: flex;
+            flex-direction: column;
+          }
+          .capability-item {
+            border-bottom: 1px solid rgba(201,162,75,0.15) !important;
+            margin-bottom: 0 !important;
+            padding: 1.25rem 0 !important;
+          }
+          .capability-item:last-child {
+            border-bottom: none !important;
+          }
+        }
+      `}</style>
     </Section>
   )
 }
