@@ -17,7 +17,7 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: {
   const [expanded, setExpanded] = useState(false)
 
   function handleToggle() {
-    setExpanded(v => { window.dispatchEvent(new Event('dashboard-toggled')); return !v })
+    setExpanded(v => !v)
   }
 
   return (
@@ -74,6 +74,7 @@ function PlatformCard({ cover, dashboard, nameEn, nameAr, descEn, descAr }: {
           <div style={{ marginTop: '1rem', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid var(--color-card-border)', position: 'relative' }}>
             <Image src={dashboard} alt={isArabic ? nameAr : nameEn}
               fill quality={70} sizes="(max-width: 768px) 100vw, 50vw"
+              loading="lazy"
               style={{ objectFit: 'cover', display: 'block' }} />
           </div>
         )}
