@@ -19,7 +19,7 @@ export const AI_BG_LOOP    = `${M}/Horizontal%20Videos/ai-systems-bg.mp4`;
 export const PLATFORMS = {
   bahrainNights: {
     cover: `${M}/bahrainnights%20.png`,
-    dashboard: `${M}/bahrainnights%20dashboard.png`,
+    dashboard: `${M}/dashboard/bahrainnights-dashboard.png`,
     nameEn: 'BahrainNights.com',
     nameAr: 'BahrainNights.com',
     descEn: "Bahrain's events platform — venue directory, events engine, newsletters, and a full admin dashboard. 100% custom code, built and operated by our team.",
@@ -27,7 +27,7 @@ export const PLATFORMS = {
   },
   studentPhotos: {
     cover: `${M}/Studentphotos.png`,
-    dashboard: `${M}/studentphotos%20dashboard.png`,
+    dashboard: `${M}/dashboard/studentphotos-dashboard.png`,
     nameEn: 'StudentPhotos.com',
     nameAr: 'StudentPhotos.com',
     descEn: "A school-photography e-commerce platform — online galleries, secure payments, automated watermarking and digital delivery. Fully custom software, front to back.",
