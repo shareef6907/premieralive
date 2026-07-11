@@ -1,0 +1,40 @@
+/* ============================================================
+   PREMIERA LIVE — v2 DESIGN TOKENS
+   Dark cinematic + gold. Premium film company that builds software.
+   ============================================================ */
+
+:root {
+  /* ── Color ────────────────────────────────────── */
+  --bg:               #0A0A0B;   /* page background */
+  --bg-elevated:      #101014;   /* alternate section plates */
+  --card:             #16161B;   /* cards, panels */
+  --card-border:      #26262E;   /* 1px card borders */
+
+  --gold:             #C9A24B;   /* THE accent — used sparingly */
+  --gold-soft:        #C9A24B33; /* 20% gold for glows/rings */
+
+  --text:             #F5F4F0;   /* primary text, warm white */
+  --text-dim:         #A6A49E;   /* secondary text */
+  --text-faint:       #6B6A66;   /* captions, eyebrows */
+
+  /* ── Typography ───────────────────────────────── */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Poppins', sans-serif;
+
+  /* Type scale — desktop */
+  --h1:   clamp(3.5rem,  8vw, 7.5rem);   /* hero only */
+  --h2:   clamp(2.5rem,  5vw, 4.5rem);   /* section titles */
+  --h3:   clamp(1.375rem, 2vw, 1.75rem); /* card titles */
+  --eyebrow:   0.8125rem;
+  --body:      1.0625rem;
+  --body-sm:   0.9375rem;
+
+  /* ── Rhythm ──────────────────────────────────── */
+  --section-y:  clamp(6rem, 12vw, 10rem); /* vertical padding per section */
+  --container:  80rem;                     /* max-width */
+  --radius:     0.75rem;
+
+  /* ── Motion ──────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur:      0.6s;
+}

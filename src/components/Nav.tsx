@@ -1,237 +1,159 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useParams, usePathname } from 'next/navigation';
+
+const links = [
+  { href: '/#work',        label: { en: 'Work',        ar: 'أعمالنا' } },
+  { href: '/#services',    label: { en: 'Services',    ar: 'خدماتنا' } },
+  { href: '/#ai',          label: { en: 'AI',          ar: 'الذكاء الاصطناعي' } },
+  { href: '/#process',     label: { en: 'Process',     ar: 'منهجية العمل' } },
+  { href: '/#contact',     label: { en: 'Contact',     ar: 'اتصل بنا' } },
+];
 
 export default function Nav() {
-  const locale = useLocale()
-  const isArabic = locale === 'ar'
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const locale = useParams().locale as string;
+  const pathname = usePathname();
+  const isArabic = locale === 'ar';
+
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    function onScroll() {
+      setScrolled(window.scrollY > 80);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  const navLinks = [
-    { href: `/${locale}/#films`,  en: 'Films',          ar: 'الأفلام' },
-    { href: `/${locale}/#digital`, en: 'Digital',        ar: 'رقمي' },
-    { href: `/${locale}/#process`, en: 'Process',        ar: 'منهجية العمل' },
-    { href: `/${locale}/#contact`, en: 'Contact',        ar: 'تواصل معنا' },
-  ]
-
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP
-  const whatsappUrl = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isArabic ? 'أرغب في حجز جلسة استراتيجية.' : "Hi, I'd like to book a strategy session.")}`
-    : '#'
+  const otherLocale = isArabic ? 'en' : 'ar';
+  const otherPath = pathname.replace(`/${locale}`, `/${otherLocale}`);
 
   return (
-    <>
-      <nav
+    <nav
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        transition: 'background 0.3s, border-color 0.3s',
+        background: scrolled ? 'var(--bg)' : 'transparent',
+        borderBottom: scrolled ? '1px solid var(--card-border)' : '1px solid transparent',
+      }}
+    >
+      <div
         style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
+          maxWidth: 'var(--container)',
+          margin: '0 auto',
+          padding: '0 clamp(1.25rem, 5vw, 4rem)',
           height: '72px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 clamp(1.5rem, 5vw, 4rem)',
-          transition: 'background 0.4s var(--ease-out), border-color 0.4s var(--ease-out)',
-          background: scrolled ? 'rgba(10,10,11,0.95)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(16px)' : 'none',
-          borderBottom: scrolled ? '1px solid var(--card-border)' : '1px solid transparent',
         }}
       >
         {/* Logo */}
-        <Link
-          href={`/${locale}`}
-          style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', lineHeight: 1 }}
-          aria-label="Premiera Live home"
-        >
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', letterSpacing: '0.2em', color: 'var(--gold)' }}>
-            PREMIERA
-          </span>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.55rem', letterSpacing: '0.45em', color: 'rgba(201,162,75,0.65)', marginTop: '-2px' }}>
-            LIVE
-          </span>
+        <Link href={`/${locale}`} style={{ textDecoration: 'none' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.75rem',
+                color: 'var(--gold)',
+                lineHeight: 1,
+                letterSpacing: '0.02em',
+              }}
+            >
+              PREMIERA
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                color: 'var(--text-dim)',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                lineHeight: 1.2,
+              }}
+            >
+              LIVE
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop nav links */}
-        <div
-          className="desktop-nav"
-          style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '0.8rem',
-                letterSpacing: '0.18em',
-                color: 'rgba(245,244,240,0.65)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.65)')}
-            >
-              {isArabic ? link.ar : link.en}
-            </a>
-          ))}
-        </div>
-
-        {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          {/* Locale switcher */}
-          <Link
-            href={locale === 'en' ? '/ar' : '/en'}
-            className="locale-toggle"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '0.72rem',
-              letterSpacing: '0.15em',
-              color: 'rgba(245,244,240,0.5)',
-              textDecoration: 'none',
-              padding: '0.4rem 0.75rem',
-              border: '1px solid var(--card-border)',
-              borderRadius: '3px',
-              transition: 'all 0.2s',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {locale === 'en' ? 'عربي' : 'EN'}
-          </Link>
-
-          {/* Gold CTA button */}
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              padding: '0.5rem 1.1rem',
-              background: 'var(--gold)',
-              color: 'var(--bg)',
-              fontFamily: 'var(--font-display)',
-              fontSize: '0.72rem',
-              letterSpacing: '0.08em',
-              borderRadius: '100px',
-              textDecoration: 'none',
-              fontWeight: 700,
-              boxShadow: '0 4px 20px rgba(201,162,75,0.3)',
-              transition: 'box-shadow 0.3s',
-              whiteSpace: 'nowrap',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 4px 28px rgba(201,162,75,0.5)')}
-            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,162,75,0.3)')}
-          >
-            {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
-          </a>
-
-          {/* Hamburger */}
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            style={{
-              display: 'none',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              flexDirection: 'column',
-              gap: '5px',
-              padding: '4px',
-            }}
-          >
-            {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                style={{
-                  display: 'block',
-                  width: '22px',
-                  height: '2px',
-                  background: 'rgba(245,244,240,0.7)',
-                  transition: 'all 0.3s var(--ease-out)',
-                  transform:
-                    menuOpen
-                      ? i === 0
-                        ? 'rotate(45deg) translate(5px, 5px)'
-                        : i === 2
-                        ? 'rotate(-45deg) translate(5px, -5px)'
-                        : 'scaleX(0)'
-                      : 'none',
-                }}
-              />
-            ))}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile drawer */}
-      {menuOpen && (
+        {/* Center links */}
         <div
           style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 99,
-            background: 'rgba(10,10,11,0.97)',
-            backdropFilter: 'blur(20px)',
             display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '2.5rem',
+            gap: '2rem',
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
           }}
         >
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setMenuOpen(false)}
               style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '2rem',
-                letterSpacing: '0.15em',
-                color: 'rgba(245,244,240,0.8)',
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                fontWeight: 500,
+                color: 'var(--text-dim)',
                 textDecoration: 'none',
+                transition: 'color 0.2s',
+                whiteSpace: 'nowrap',
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}
             >
-              {isArabic ? link.ar : link.en}
+              {isArabic ? link.label.ar : link.label.en}
             </a>
           ))}
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+        </div>
+
+        {/* Right: locale switcher + CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          {/* Locale switcher */}
+          <Link
+            href={otherPath}
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1rem',
-              letterSpacing: '0.15em',
-              color: 'var(--gold)',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--body-sm)',
+              fontWeight: 500,
+              color: 'var(--text-dim)',
               textDecoration: 'none',
-              marginTop: '1rem',
+              letterSpacing: '0.05em',
             }}
           >
-            {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
+            {otherLocale.toUpperCase()}
+          </Link>
+
+          {/* Gold CTA */}
+          <a
+            href="https://wa.me/97366170000"
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--body-sm)',
+              fontWeight: 600,
+              color: 'var(--bg)',
+              background: 'var(--gold)',
+              padding: '0.5rem 1.25rem',
+              borderRadius: '0.375rem',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              transition: 'opacity 0.2s',
+            }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = '0.85')}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = '1')}
+          >
+            {isArabic ? 'احجز جلسة استراتيجية' : 'Book a Strategy Session'}
           </a>
         </div>
-      )}
-
-      <style>{`
-        @media (max-width: 767px) {
-          .desktop-nav { display: none !important; }
-          .mobile-menu-btn { display: flex !important; }
-        }
-      `}</style>
-    </>
-  )
+      </div>
+    </nav>
+  );
 }

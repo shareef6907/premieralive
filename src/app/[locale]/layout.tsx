@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
+import FooterSection from '@/components/sections/FooterSection'
 import SmoothScroll from '@/components/SmoothScroll'
 import CursorGlow from '@/components/CursorGlow'
 import { brand } from '@/config/brand'
@@ -82,7 +82,7 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -92,7 +92,7 @@ export default async function LocaleLayout({
             <CursorGlow />
             <Nav />
             <main>{children}</main>
-            <Footer />
+            <FooterSection />
           </SmoothScroll>
         </NextIntlClientProvider>
       </body>
