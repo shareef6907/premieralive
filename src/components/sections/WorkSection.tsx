@@ -131,7 +131,7 @@ function VideoCard({ item, aspectRatio, cardWidth, isTouch, onOpen }: VideoCardP
         transition: 'border-color 0.3s',
       }}
     >
-      <video disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
+      <video
         ref={videoRef}
         src={item.src}
         muted
@@ -287,7 +287,7 @@ function VideoModal({ src, onClose }: VideoModalProps) {
       </div>
 
       {/* Video — no native controls, custom overlay handles play/pause */}
-      <video disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
+      <video
         id="modal-video"
         src={src}
         playsInline
@@ -420,7 +420,7 @@ export default function WorkSection() {
               overflow: 'hidden',
             }}
           >
-            <video disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
+            <video
               src={CGI_SHOWREEL}
               muted
               autoPlay

@@ -170,7 +170,7 @@ function SliderCard({
         transition: 'border-color 0.3s',
       }}
     >
-      <video disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
+      <video
         ref={videoRef}
         src={item.src}
         muted
@@ -314,7 +314,7 @@ export default function FeaturedProductionsSection() {
             {isArabic ? 'ننفّذ بالمؤثرات ما تعجز الكاميرا عن تصويره' : 'CGI THAT SELLS THE UNSHOOTABLE'}
           </p>
           <div style={{ width: '100%', aspectRatio: '16 / 9', background: '#000', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
-            <video disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
+            <video
               src={CGI_SHOWREEL}
               muted
               autoPlay
