@@ -17,10 +17,11 @@ export default function Nav() {
   }, [])
 
   const navLinks = [
-    { href: `/${locale}/#films`,  en: 'Films',          ar: 'الأفلام' },
-    { href: `/${locale}/#digital`, en: 'Digital',        ar: 'رقمي' },
-    { href: `/${locale}/#process`, en: 'Process',        ar: 'منهجية العمل' },
-    { href: `/${locale}/#contact`, en: 'Contact',        ar: 'تواصل معنا' },
+    { href: `/${locale}/#films`,    en: 'Films',       ar: 'الأفلام' },
+    { href: `/${locale}/digital`,   en: 'Digital',     ar: 'رقمي' },
+    { href: `/${locale}/marketing`, en: 'Marketing',   ar: 'التسويق' },
+    { href: `/${locale}/#process`, en: 'Process',     ar: 'منهجية العمل' },
+    { href: `/${locale}/#contact`, en: 'Contact',     ar: 'تواصل معنا' },
   ]
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP

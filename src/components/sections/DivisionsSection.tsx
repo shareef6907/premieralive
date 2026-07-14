@@ -29,6 +29,32 @@ const CAPABILITY_SLUGS = {
   ],
 } as const
 
+// Marketing tiers use anchor links, not service slugs
+const MARKETING_SLUGS = ['essential', 'growth', 'premier'] as const
+const MARKETING_TIERS = [
+  {
+    id: 'essential',
+    labelEn: 'Essential',
+    labelAr: 'الأساسية',
+    lineEn: 'From AED 9,500/month',
+    lineAr: 'يبدأ من ٩٫٥٠٠ درهم/شهرياً',
+  },
+  {
+    id: 'growth',
+    labelEn: 'Growth',
+    labelAr: 'النمو',
+    lineEn: 'From AED 19,500/month',
+    lineAr: 'يبدأ من ١٩٫٥٠٠ درهم/شهرياً',
+  },
+  {
+    id: 'premier',
+    labelEn: 'Premier',
+    labelAr: 'بريميير',
+    lineEn: 'Custom pricing',
+    lineAr: 'تسعير مخصص',
+  },
+]
+
 const DIVISIONS = [
   {
     id: 'cinematic',
@@ -50,14 +76,60 @@ const DIVISIONS = [
     capabilitiesAr: ['مواقع الأعمال', 'تطوير التطبيقات', 'صفحات الهبوط', 'أنظمة الحجز', 'منصات الأعمال', 'بوابات العملاء', 'مساعدون أذكياء وأتمتة', 'صيانة المواقع'],
     image: IMAGES.pillarTechnology,
   },
+  {
+    id: 'marketing',
+    nameEn: 'MARKETING SERVICES',
+    nameAr: 'خدمات التسويق',
+    lineEn: 'We build marketing that actually works.',
+    lineAr: 'نبني تسويقاً يعمل فعلاً.',
+    image: IMAGES.pillarAiGrowth,
+  },
 ]
+
+function MarketingTierLink({ tier, locale, isArabic }: { tier: typeof MARKETING_TIERS[0]; locale: string; isArabic: boolean }) {
+  const href = `/${locale}/marketing#${tier.id}`
+  return (
+    <li style={{
+      borderBottom: '1px solid var(--color-card-border)',
+      paddingBottom: '0.5rem',
+      marginBottom: '0.5rem',
+    }}>
+      <a
+        href={href}
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          textDecoration: 'none',
+          gap: '0.5rem',
+        }}
+      >
+        <span style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--body-sm)',
+          color: 'var(--color-text-dim)',
+        }}>
+          {isArabic ? tier.labelAr : tier.labelEn}
+        </span>
+        <span style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--body-sm)',
+          color: 'var(--color-gold)',
+        }}>
+          {isArabic ? tier.lineAr : tier.lineEn}
+        </span>
+      </a>
+    </li>
+  )
+}
 
 function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
   const locale = useLocale()
   const isArabic = locale === 'ar'
   const [hovered, setHovered] = useState(false)
-  const slugs = CAPABILITY_SLUGS[division.id as keyof typeof CAPABILITY_SLUGS]
+  const slugs = CAPABILITY_SLUGS[division.id as keyof typeof CAPABILITY_SLUGS] ?? []
   const capabilities = isArabic ? division.capabilitiesAr : division.capabilitiesEn
+  const isMarketing = division.id === 'marketing'
 
   return (
     <div
@@ -127,7 +199,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
         </p>
 
         <ul className="division-capabilities" style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
-          {capabilities.map((cap, i) => {
+          {!isMarketing && capabilities && capabilities.map((cap, i) => {
             const slug = slugs[i]
             if (!slug) return null
             return (
@@ -145,6 +217,9 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
               </li>
             )
           })}
+          {isMarketing && MARKETING_TIERS.map((tier) => (
+            <MarketingTierLink key={tier.id} tier={tier} locale={locale} isArabic={isArabic} />
+          ))}
         </ul>
       </div>
     </div>
