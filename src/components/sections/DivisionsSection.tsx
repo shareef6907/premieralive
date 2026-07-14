@@ -19,7 +19,7 @@ const CAPABILITY_SLUGS = {
   ],
   digital: [
     'business-website-development-saudi-arabia',
-    'business-software-development-saudi-arabia',
+    'app-development-saudi-arabia',
     'landing-page-design-saudi-arabia',
     'booking-system-development-saudi-arabia',
     'business-platform-development-saudi-arabia',
@@ -46,8 +46,8 @@ const DIVISIONS = [
     nameAr: 'التجارب الرقمية',
     lineEn: 'Software that turns attention into growth.',
     lineAr: 'نبني برمجيات تحوّل الانتباه إلى نمو.',
-    capabilitiesEn: ['Business Websites', 'Business Software', 'Landing Pages', 'Booking Systems', 'Business Platforms', 'Client Portals', 'AI Assistants & Automation', 'Website Maintenance'],
-    capabilitiesAr: ['مواقع الأعمال', 'برمجيات الأعمال', 'صفحات الهبوط', 'أنظمة الحجز', 'منصات الأعمال', 'بوابات العملاء', 'مساعدون أذكياء وأتمتة', 'صيانة المواقع'],
+    capabilitiesEn: ['Business Websites', 'App Development', 'Landing Pages', 'Booking Systems', 'Business Platforms', 'Client Portals', 'AI Assistants & Automation', 'Website Maintenance'],
+    capabilitiesAr: ['مواقع الأعمال', 'تطوير التطبيقات', 'صفحات الهبوط', 'أنظمة الحجز', 'منصات الأعمال', 'بوابات العملاء', 'مساعدون أذكياء وأتمتة', 'صيانة المواقع'],
     image: IMAGES.pillarTechnology,
   },
 ]

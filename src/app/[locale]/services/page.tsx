@@ -34,7 +34,7 @@ const DIVISIONS = [
     labelAr: 'التجارب الرقمية',
     slugs: [
       'business-website-development-saudi-arabia',
-      'business-software-development-saudi-arabia',
+      'app-development-saudi-arabia',
       'landing-page-design-saudi-arabia',
       'booking-system-development-saudi-arabia',
       'business-platform-development-saudi-arabia',
