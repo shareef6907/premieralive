@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   },
 }
 
+// Briefing-exact copy only — no invented content
+
 const HOW_IT_WORKS = [
   {
     en: 'Audit & Strategy',
@@ -48,7 +50,7 @@ const HOW_IT_WORKS = [
   {
     en: 'Scale or Pause',
     ar: 'التوسيع أو الإيقاف',
-    descEn: 'When something works, we scale it. When it doesn\'t, we stop it fast. No contracts that lock you in.',
+    descEn: "When something works, we scale it. When it doesn't, we stop it fast. No contracts that lock you in.",
     descAr: 'حين ينجح شيء، نوسّعه. وحين لا ينجح، نوقفه بسرعة. لا عقود تُقيّدك.',
   },
 ]
@@ -92,81 +94,29 @@ const CAPABILITIES = [
   },
 ]
 
+// Tier card content from briefing EXACTLY
+
 const TIERS = [
   {
     id: 'essential',
-    labelEn: 'Essential',
-    labelAr: 'الأساسية',
-    priceEn: 'From AED 9,500/month',
-    priceAr: 'يبدأ من ٩٫٥٠٠ درهم/شهرياً',
-    taglineEn: 'Everything you need to show up professionally and start generating leads.',
-    taglineAr: 'كل ما تحتاجه لتظهر بشكل احترافي وتبدأ في استقطاب العملاء.',
-    itemsEn: [
-      'Social media management (2 platforms)',
-      '12 pieces of content per month',
-      'Basic performance ads (AED 5K budget managed)',
-      'WhatsApp AI lead assistant',
-      'Monthly performance report',
-    ],
-    itemsAr: [
-      'إدارة وسائل التواصل (منصتان)',
-      '١٢ قطعة محتوى شهرياً',
-      'إعلانات أدائية أساسية (إدارة ميزانية ٥ آلاف درهم)',
-      'مساعد ذكي على واتساب لاستقطاب العملاء',
-      'تقرير أداء شهري',
-    ],
+    labelEn: 'ESSENTIAL',
+    labelAr: 'القسم 01',
+    taglineEn: 'For businesses building a consistent presence. One primary platform, a monthly content calendar, publishing and community management, and a clear monthly report.',
+    taglineAr: 'للأعمال التي تبني حضوراً مستمراً. منصة رئيسية واحدة، تقويم محتوى شهري، نشر وإدارة مجتمع، وتقرير شهري واضح.',
   },
   {
     id: 'growth',
-    labelEn: 'Growth',
-    labelAr: 'النمو',
-    priceEn: 'From AED 19,500/month',
-    priceAr: 'يبدأ من ١٩٫٥٠٠ درهم/شهرياً',
-    taglineEn: 'Full-funnel marketing with paid ads at scale and a dedicated content studio.',
-    taglineAr: 'تسويق قاع قمع كامل مع إعلانات مدفوعة بالتوسع واستوديو محتوى مخصص.',
-    itemsEn: [
-      'Everything in Essential',
-      'Social media management (4 platforms)',
-      '24 pieces of content per month',
-      'Advanced performance ads (AED 15K budget managed)',
-      'Email & SMS automation',
-      'Bi-weekly strategy calls',
-    ],
-    itemsAr: [
-      'كل ما في الأساسية',
-      'إدارة وسائل التواصل (٤ منصات)',
-      '٢٤ قطعة محتوى شهرياً',
-      'إعلانات أدائية متقدمة (إدارة ميزانية ١٥ ألف درهم)',
-      'أتمتة البريد الإلكتروني والإس إم إس',
-      'مكالمات استراتيجية نصف أسبوعية',
-    ],
+    labelEn: 'GROWTH',
+    labelAr: 'القسم 02',
+    taglineEn: 'For businesses ready to scale. Multi-platform management, paid ads, SEO foundations, and reporting twice a month.',
+    taglineAr: 'للأعمال الجاهزة للتوسع. إدارة منصات متعددة، إعلانات مدفوعة، أساسيات تحسين محركات البحث، وتقارير نصف شهرية.',
   },
   {
     id: 'premier',
-    labelEn: 'Premier',
-    labelAr: 'بريميير',
-    priceEn: 'Custom pricing',
-    priceAr: 'تسعير مخصص',
-    taglineEn: 'A full in-house marketing team — without the overhead. For brands that are serious about growth.',
-    taglineAr: 'فريق تسويق داخلي كامل — بلا تكاليف ثابتة. للعلامات الجادة في النمو.',
-    itemsEn: [
-      'Everything in Growth',
-      'Full content studio (film, photo, design)',
-      'Unlimited content pieces',
-      'Unlimited ad budget managed',
-      'Custom AI systems & automations',
-      'Dedicated account manager',
-      'Weekly reporting & strategy',
-    ],
-    itemsAr: [
-      'كل ما في النمو',
-      'استوديو محتوى كامل (فيلم وتصوير وتصميم)',
-      'قطع محتوى غير محدودة',
-      'إدارة ميزانية إعلانية غير محدودة',
-      'أنظمة وأتمتة ذكاء اصطناعي مخصصة',
-      'مدير حساب مخصص',
-      'تقارير واستراتيجية أسبوعية',
-    ],
+    labelEn: 'PREMIER',
+    labelAr: 'القسم 03',
+    taglineEn: 'Full-funnel marketing. Everything in Growth, plus a dedicated strategy lead, video content from our Cinematic Production division, and weekly reporting.',
+    taglineAr: 'تسويق قاع قمع كامل. كل ما في القسم 02، بالإضافة إلى قائد استراتيجية مخصص، ومحتوى فيديو من قسم الإنتاج السينمائي، وتقارير أسبوعية.',
   },
 ]
 
@@ -249,8 +199,8 @@ export default async function MarketingPage({
           letterSpacing: '0.01em', marginBottom: '1.5rem',
         }}>
           {isArabic
-            ? 'نبني تسويقاً يعمل فعلاً — استراتيجي ومبدع ومبني لزيادة التحويل.'
-            : 'We build marketing that actually works — strategic, creative, and built to convert.'}
+            ? 'نصنع تسويقاً يُضاعف العائدات شهراً بعد شهر.'
+            : 'Growth that compounds, month after month.'}
         </h1>
         <p style={{
           fontFamily: 'var(--font-body)', fontSize: 'var(--body)',
@@ -367,7 +317,7 @@ export default async function MarketingPage({
         </div>
       </section>
 
-      {/* Plans */}
+      {/* Plans — capability strip + three tier cards */}
       <section id="essential" style={{
         background: 'var(--color-bg-elevated)',
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
@@ -381,6 +331,22 @@ export default async function MarketingPage({
           }}>
             {plansLabel}
           </p>
+
+          {/* Capability strip — briefing-exact */}
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--body-sm)',
+            color: 'var(--color-text-dim)',
+            textAlign: 'center',
+            marginBottom: '2.5rem',
+            letterSpacing: '0.02em',
+          }}>
+            {isArabic
+              ? 'إدارة وسائل التواصل · إنتاج المحتوى · إدارة الإعلانات المدفوعة · تحسين محركات البحث · التقارير الشهرية'
+              : 'Social Media Management · Content Creation · Paid Ads Management · SEO · Monthly Reporting'}
+          </p>
+
+          {/* Three tier cards */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
@@ -393,7 +359,7 @@ export default async function MarketingPage({
                 id={tier.id}
                 style={{
                   padding: '2rem',
-                  background: 'var(--color-card)',
+                  background: '#16161B',
                   border: '1px solid var(--color-card-border)',
                   borderRadius: 'var(--radius)',
                   display: 'flex',
@@ -401,44 +367,21 @@ export default async function MarketingPage({
                   gap: '1.25rem',
                 }}
               >
-                <div>
-                  <p style={{
-                    fontFamily: 'var(--font-body)', fontWeight: 600,
-                    fontSize: 'var(--body)', color: 'var(--color-text)',
-                    marginBottom: '0.25rem',
-                  }}>
-                    {isArabic ? tier.labelAr : tier.labelEn}
-                  </p>
-                  <p style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
-                    color: 'var(--color-gold)',
-                    marginBottom: '0.75rem',
-                  }}>
-                    {isArabic ? tier.priceAr : tier.priceEn}
-                  </p>
-                  <p style={{
-                    fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                    color: 'var(--color-text-dim)', lineHeight: 1.6,
-                  }}>
-                    {isArabic ? tier.taglineAr : tier.taglineEn}
-                  </p>
-                </div>
-                <ul style={{
-                  listStyle: 'none', padding: 0, margin: 0,
-                  display: 'flex', flexDirection: 'column', gap: '0.625rem',
+                <p style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
+                  color: '#C9A24B',
+                  letterSpacing: '0.02em',
+                  marginBottom: '0.5rem',
                 }}>
-                  {(isArabic ? tier.itemsAr : tier.itemsEn).map((item, i) => (
-                    <li key={i} style={{
-                      display: 'flex', alignItems: 'flex-start', gap: '0.625rem',
-                      fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                      color: 'var(--color-text-dim)', lineHeight: 1.5,
-                    }}>
-                      <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.1em' }}>—</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                  {isArabic ? tier.labelAr : tier.labelEn}
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                  color: 'var(--color-text-dim)', lineHeight: 1.7,
+                }}>
+                  {isArabic ? tier.taglineAr : tier.taglineEn}
+                </p>
                 <a
                   href={whatsappUrl}
                   target="_blank"
@@ -446,14 +389,14 @@ export default async function MarketingPage({
                   style={{
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
                     padding: '0.75rem 1.5rem',
-                    background: 'var(--color-gold)', color: '#0A0A0B',
+                    background: '#C9A24B', color: '#0A0A0B',
                     fontFamily: 'var(--font-display)', fontSize: '0.75rem',
                     letterSpacing: '0.1em', textDecoration: 'none',
                     borderRadius: '9999px', fontWeight: 700,
                     marginTop: '0.5rem',
                   }}
                 >
-                  {isArabic ? 'احجز جلسة' : 'BOOK A CALL'}
+                  {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
                 </a>
               </div>
             ))}
@@ -461,7 +404,7 @@ export default async function MarketingPage({
         </div>
       </section>
 
-      {/* Compliance block */}
+      {/* Compliance block — briefing-exact */}
       <section style={{
         padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem)',
         maxWidth: '80rem', margin: '0 auto',
@@ -474,7 +417,7 @@ export default async function MarketingPage({
         }}>
           {isArabic
             ? 'تعمل بريميرا لايف وفق معايير المحتوى الخاصة بهيئة الإعلام المرئي والمسموع في المملكة العربية السعودية. نضمن التزام جميع المواد الإبداعية بالأنظمة المعمول بها.'
-            : 'Premiera Live operates in compliance with Saudi Arabia\'s Saudi Media Quality Certification requirements. All creative materials are reviewed to meet regulatory standards.'}
+            : "Premiera Live operates in compliance with Saudi Arabia's advertising and content regulations. All creative materials are reviewed to meet regulatory standards before publishing."}
         </p>
       </section>
 

@@ -31,29 +31,13 @@ const CAPABILITY_SLUGS = {
 
 // Marketing tiers use anchor links, not service slugs
 const MARKETING_SLUGS = ['essential', 'growth', 'premier'] as const
-const MARKETING_TIERS = [
-  {
-    id: 'essential',
-    labelEn: 'Essential',
-    labelAr: 'الأساسية',
-    lineEn: 'From AED 9,500/month',
-    lineAr: 'يبدأ من ٩٫٥٠٠ درهم/شهرياً',
-  },
-  {
-    id: 'growth',
-    labelEn: 'Growth',
-    labelAr: 'النمو',
-    lineEn: 'From AED 19,500/month',
-    lineAr: 'يبدأ من ١٩٫٥٠٠ درهم/شهرياً',
-  },
-  {
-    id: 'premier',
-    labelEn: 'Premier',
-    labelAr: 'بريميير',
-    lineEn: 'Custom pricing',
-    lineAr: 'تسعير مخصص',
-  },
-]
+// Tiers use anchor links to /marketing#essential|#growth|#premier
+// Tier content (descriptions, capabilities, prices) lives on /marketing page
+const MARKETING_TIER_LINKS = [
+  { id: 'essential', labelEn: 'Essential',  labelAr: 'القسم 01' },
+  { id: 'growth',     labelEn: 'Growth',      labelAr: 'القسم 02' },
+  { id: 'premier',   labelEn: 'Premier',     labelAr: 'القسم 03' },
+] as const
 
 const DIVISIONS = [
   {
@@ -80,13 +64,13 @@ const DIVISIONS = [
     id: 'marketing',
     nameEn: 'MARKETING SERVICES',
     nameAr: 'خدمات التسويق',
-    lineEn: 'We build marketing that actually works.',
-    lineAr: 'نبني تسويقاً يعمل فعلاً.',
+    lineEn: 'Growth that compounds, month after month.',
+    lineAr: 'نصنع تسويقاً يُضاعف العائدات شهراً بعد شهر.',
     image: IMAGES.pillarAiGrowth,
   },
 ]
 
-function MarketingTierLink({ tier, locale, isArabic }: { tier: typeof MARKETING_TIERS[0]; locale: string; isArabic: boolean }) {
+function MarketingTierLink({ tier, locale, isArabic }: { tier: typeof MARKETING_TIER_LINKS[number]; locale: string; isArabic: boolean }) {
   const href = `/${locale}/marketing#${tier.id}`
   return (
     <li style={{
@@ -116,7 +100,7 @@ function MarketingTierLink({ tier, locale, isArabic }: { tier: typeof MARKETING_
           fontSize: 'var(--body-sm)',
           color: 'var(--color-gold)',
         }}>
-          {isArabic ? tier.lineAr : tier.lineEn}
+          {isArabic ? 'طالع التفاصيل ←' : 'See details →'}
         </span>
       </a>
     </li>
@@ -217,7 +201,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
               </li>
             )
           })}
-          {isMarketing && MARKETING_TIERS.map((tier) => (
+          {isMarketing && MARKETING_TIER_LINKS.map((tier) => (
             <MarketingTierLink key={tier.id} tier={tier} locale={locale} isArabic={isArabic} />
           ))}
         </ul>
