@@ -1,5 +1,5 @@
+import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
-import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -194,8 +194,9 @@ export default async function MarketingPage({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const locale = await getLocale()
-  const isArabic = locale === 'ar'
+  const { locale: urlLocale } = await params
+  setRequestLocale(urlLocale)
+  const isArabic = urlLocale === 'ar'
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500000000'
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(
@@ -220,7 +221,7 @@ export default async function MarketingPage({
         color: 'var(--color-text-faint)',
         direction: isArabic ? 'rtl' : 'ltr',
       }}>
-        <Link href={`/${locale}`} style={{ color: 'inherit', textDecoration: 'none' }}>{homeLabel}</Link>
+        <Link href={`/${urlLocale}`} style={{ color: 'inherit', textDecoration: 'none' }}>{homeLabel}</Link>
         <span>/</span>
         <span style={{ color: 'var(--color-text-dim)' }}>
           {isArabic ? 'خدمات التسويق' : 'Marketing Services'}
