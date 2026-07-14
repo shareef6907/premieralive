@@ -12,6 +12,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/en/services/business-software-development-saudi-arabia',
+        destination: '/en/services/app-development-saudi-arabia',
+        permanent: true,
+      },
+      {
+        source: '/ar/services/business-software-development-saudi-arabia',
+        destination: '/ar/services/app-development-saudi-arabia',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = withNextIntl(nextConfig)

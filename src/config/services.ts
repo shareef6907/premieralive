@@ -14,7 +14,7 @@ export type ServiceSlug =
   | 'event-coverage-saudi-arabia'
   | 'multi-cam-live-streaming-saudi-arabia'
   | 'business-website-development-saudi-arabia'
-  | 'business-software-development-saudi-arabia'
+  | 'app-development-saudi-arabia'
   | 'landing-page-design-saudi-arabia'
   | 'booking-system-development-saudi-arabia'
   | 'business-platform-development-saudi-arabia'
@@ -439,56 +439,56 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss a business website project.',
     ctaMessageAr: 'أرغب في مناقشة مشروع موقع عمل.',
-    relatedSlugs: ['landing-page-design-saudi-arabia', 'business-software-development-saudi-arabia', 'website-maintenance-saudi-arabia'],
+    relatedSlugs: ['landing-page-design-saudi-arabia', 'app-development-saudi-arabia', 'website-maintenance-saudi-arabia'],
   },
   {
-    slug: 'business-software-development-saudi-arabia',
-    shortName: 'business-software',
-    nameEn: 'Business Software Development in Saudi Arabia',
-    nameAr: 'بناء البرمجيات المؤسسية في السعودية',
+    slug: 'app-development-saudi-arabia',
+    shortName: 'app-development',
+    nameEn: 'App Development in Saudi Arabia',
+    nameAr: 'تطوير التطبيقات في السعودية',
     heroImage: SB + 'business-software.jpg',
-    valuePropEn: 'Custom software built for your specific operations — not adapted from a template, but engineered around how your business actually works.',
-    valuePropAr: 'برمجيات مخصصة تُبنى لعملياتك المحددة — ليست معدّلة من قالب، بل مصمّمة حول طريقة عمل عملك فعلاً.',
+    valuePropEn: 'Mobile and web apps, engineered for your business.',
+    valuePropAr: 'نبني تطبيقات جوال وويب مصممة لأعمالك.',
     whatWeDeliverEn: [
-      'Requirements and technical specification',
-      'Custom web and mobile application development',
-      'Database design and API development',
-      'Integration with existing business tools',
-      'Testing, deployment, and documentation',
+      'iOS & Android apps',
+      'Web applications',
+      'Internal business tools',
+      'Customer-facing platforms',
+      'APIs & backend systems',
     ],
     whatWeDeliverAr: [
-      'تحليل المتطلبات والمواصفات التقنية',
-      'تطوير تطبيقات الويب والهاتف المخصصة',
-      'تصميم قواعد البيانات وتطوير واجهات برمجة',
-      'التكامل مع أدوات العمل القائمة',
-      'الاختبار والنشر والتوثيق',
+      'تطبيقات iOS وAndroid',
+      'تطبيقات ويب',
+      'أنظمة داخلية للأعمال',
+      'منصات لعملائك',
+      'واجهات برمجية وأنظمة خلفية',
     ],
     howWeWorkEn: [
-      { step: 'Analysis', desc: 'We map your current workflows, identify inefficiencies, and define what the software needs to achieve.' },
-      { step: 'Architecture', desc: 'Technical specification covering database design, API structure, and how the system connects to your existing stack.' },
-      { step: 'Build', desc: 'Iterative development with regular demos — you see progress and can direct the build throughout.' },
-      { step: 'Deploy', desc: 'Testing, documentation, training, and handover — we stay involved until your team is confident with the system.' },
+      { step: 'Discovery', desc: 'We map your operations, users, and goals — and define exactly what the app needs to do.' },
+      { step: 'Architecture', desc: 'We design the data model, API structure, and user flows before we write a line of code.' },
+      { step: 'Build', desc: 'Iterative development with regular demos — you see progress and direct the build throughout.' },
+      { step: 'Launch & Support', desc: 'Testing, deployment, documentation, and ongoing support — we stay involved after go-live.' },
     ],
     howWeWorkAr: [
-      { step: 'التحليل', desc: 'نرسم خريطة سير العمل الحالي ونحدد أوجه القصور ونحدد ما يجب أن تحققه البرمجيات.' },
-      { step: 'التصميم', desc: 'مواصفات تقنية تشمل تصميم قاعدة البيانات وهيكل API وكيف يتصل النظام بمكدسك القائم.' },
+      { step: 'الاكتشاف', desc: 'نرسم خريطة عملياتك ومستخدميك وأهدافك — ونحدد بالضبط ما يجب أن يفعله التطبيق.' },
+      { step: 'التصميم', desc: 'نبني نموذج البيانات وهيكل API وسير المستخدمين قبل كتابة أي سطر كود.' },
       { step: 'البناء', desc: 'تطوير تكراري مع عروض توضيحية منتظمة — ترى التقدم وتوجّه البناء طوال الوقت.' },
-      { step: 'النشر', desc: 'الاختبار والتوثيق والتدريب والتسليم — نبقى مشاركين حتى يصبح فريقك واثقاً بالنظام.' },
+      { step: 'الإطلاق والدعم', desc: 'الاختبار والنشر والتوثيق والدعم المستمر — نبقى مشاركين بعد الإطلاق.' },
     ],
-    whereWeWorkEn: 'We develop custom business software for organisations across Saudi Arabia — in Riyadh, Jeddah, Khobar, Dammam, and Jubail — and deliver to clients throughout the Gulf.',
-    whereWeWorkAr: 'نطوّر برمجيات أعمال مخصصة للمنظمات في أرجاء السعودية — في الرياض وجدة والخبر والدمام والجبيل — ونسلّم للعملاء في مختلف دول الخليج.',
+    whereWeWorkEn: 'We develop custom applications for organisations across Saudi Arabia — in Riyadh, Jeddah, Khobar, Dammam, and Jubail — and deliver to clients throughout the Gulf.',
+    whereWeWorkAr: 'نبني تطبيقات مخصصة للمنظمات في أرجاء السعودية — في الرياض وجدة والخبر والدمام والجبيل — ونسلّم للعملاء في مختلف دول الخليج.',
     faqEn: [
-      { q: 'What technologies do you use?', a: 'We build on modern, proven technology — Node.js, React, and cloud infrastructure — chosen for performance, security, and longevity.' },
-      { q: 'Can you integrate with our existing systems?', a: 'Yes — API integration is part of most enterprise software projects. We map your existing tools and build the connections before we write any new code.' },
-      { q: 'How do you handle data security?', a: 'Security is built into our architecture from the start — including role-based access, encrypted storage, and compliance with relevant data protection standards.' },
+      { q: 'Native or cross-platform?', a: 'We recommend the right approach for your case — native iOS/Android when performance is critical, cross-platform (React Native / Flutter) when speed to market matters more.' },
+      { q: 'Can you integrate with our existing systems?', a: 'Yes — API integration is part of most projects. We map your existing tools and build the connections before we write any new code.' },
+      { q: 'How do you handle data security?', a: 'Security is built into our architecture from the start — including role-based access, encrypted storage, and compliance with Saudi data protection standards.' },
     ],
     faqAr: [
-      { q: 'ما التقنيات التي تستخدمونها؟', a: 'نبني على تقنيات حديثة مجرَّبة — Node.js وReact وبنية سحابية — نختارها للأداء والأمان وطول العمر.' },
-      { q: 'هل يمكنكم التكامل مع أنظمتنا القائمة؟', a: 'نعم — التكامل عبر API هو جزء من معظم مشاريع البرمجيات المؤسسية. نرسم خريطة أدواتك القائمة ونبني الاتصالات قبل كتابة أي كود جديد.' },
-      { q: 'كيف تتعاملون مع أمان البيانات؟', a: 'الأمان يُبنى في هندستنا من البداية — بما في ذلك الوصول المستند إلى الأدوار والتشفير والامتثال لمعايير حماية البيانات ذات الصلة.' },
+      { q: 'هل تطبيقات أصلية أم متعددة المنصات؟', a: 'نرشّح النهج المناسب لكل حالة — التطبيقات الأصلية لـiOS/Android حين يكون الأداء أولوية، والتطبيقات المتعددة المنصات حين تكون سرعة الوصول إلى السوق أهم.' },
+      { q: 'هل يمكنكم التكامل مع أنظمتنا القائمة؟', a: 'نعم — التكامل عبر API جزء من معظم المشاريع. نرسم خريطة أدواتك القائمة ونبني الاتصالات قبل كتابة أي كود جديد.' },
+      { q: 'كيف تتعاملون مع أمان البيانات؟', a: 'الأمان يُبنى في هندستنا من البداية — بما في ذلك الوصول المستند إلى الأدوار والتشفير والامتثال لمعايير حماية البيانات في المملكة.' },
     ],
-    ctaMessageEn: 'I\'d like to discuss a business software project.',
-    ctaMessageAr: 'أرغب في مناقشة مشروع برمجيات أعمال.',
+    ctaMessageEn: 'I\'d like to discuss an app development project.',
+    ctaMessageAr: 'أرغب في مناقشة مشروع تطوير تطبيق.',
     relatedSlugs: ['business-website-development-saudi-arabia', 'business-platform-development-saudi-arabia', 'ai-assistants-automation-saudi-arabia'],
   },
   {
@@ -537,7 +537,7 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss a landing page for an upcoming campaign.',
     ctaMessageAr: 'أرغب في مناقشة صفحة هبوط لحملة قادمة.',
-    relatedSlugs: ['business-website-development-saudi-arabia', 'business-software-development-saudi-arabia', 'ai-assistants-automation-saudi-arabia'],
+    relatedSlugs: ['business-website-development-saudi-arabia', 'app-development-saudi-arabia', 'ai-assistants-automation-saudi-arabia'],
   },
   {
     slug: 'booking-system-development-saudi-arabia',
@@ -587,7 +587,7 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss a booking system for our business.',
     ctaMessageAr: 'أرغب في مناقشة نظام حجز لعمالنا.',
-    relatedSlugs: ['business-software-development-saudi-arabia', 'business-platform-development-saudi-arabia', 'client-portal-development-saudi-arabia'],
+    relatedSlugs: ['app-development-saudi-arabia', 'business-platform-development-saudi-arabia', 'client-portal-development-saudi-arabia'],
   },
   {
     slug: 'business-platform-development-saudi-arabia',
@@ -637,7 +637,7 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss building a business platform.',
     ctaMessageAr: 'أرغب في مناقشة بناء منصة أعمال.',
-    relatedSlugs: ['business-software-development-saudi-arabia', 'business-website-development-saudi-arabia', 'booking-system-development-saudi-arabia'],
+    relatedSlugs: ['app-development-saudi-arabia', 'business-website-development-saudi-arabia', 'booking-system-development-saudi-arabia'],
   },
   {
     slug: 'client-portal-development-saudi-arabia',
@@ -687,7 +687,7 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss a client portal for our business.',
     ctaMessageAr: 'أرغب في مناقشة بوابة عملاء لعمالنا.',
-    relatedSlugs: ['business-software-development-saudi-arabia', 'business-platform-development-saudi-arabia', 'booking-system-development-saudi-arabia'],
+    relatedSlugs: ['app-development-saudi-arabia', 'business-platform-development-saudi-arabia', 'booking-system-development-saudi-arabia'],
   },
   {
     slug: 'ai-assistants-automation-saudi-arabia',
@@ -737,7 +737,7 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss AI assistants and automation for our business.',
     ctaMessageAr: 'أرغب في مناقشة مساعدين أذكياء وأتمتة لعمالنا.',
-    relatedSlugs: ['business-software-development-saudi-arabia', 'business-website-development-saudi-arabia', 'landing-page-design-saudi-arabia'],
+    relatedSlugs: ['app-development-saudi-arabia', 'business-website-development-saudi-arabia', 'landing-page-design-saudi-arabia'],
   },
   {
     slug: 'website-maintenance-saudi-arabia',
@@ -785,7 +785,7 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss website maintenance for our platform.',
     ctaMessageAr: 'أرغب في مناقشة صيانة الموقع ل منصتنا.',
-    relatedSlugs: ['business-website-development-saudi-arabia', 'business-software-development-saudi-arabia', 'landing-page-design-saudi-arabia'],
+    relatedSlugs: ['business-website-development-saudi-arabia', 'app-development-saudi-arabia', 'landing-page-design-saudi-arabia'],
   },
 ]
 
