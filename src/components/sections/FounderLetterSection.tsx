@@ -1,27 +1,6 @@
 import { useLocale } from 'next-intl'
 import Section from '../Section'
 
-const WHATSAPP_NUM = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500000000'
-
-const SA_FLAG = (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 60 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-    style={{ flexShrink: 0 }}
-  >
-    <rect width="60" height="40" fill="#006C35" />
-    <rect x="18" y="11" width="24" height="18" fill="white" />
-    <path d="M21 20 L21 15 L27 11 L30 20 Z" fill="#006C35" />
-    <path d="M21 20 L21 25 L27 29 L30 20 Z" fill="#006C35" />
-    <path d="M39 20 L39 15 L33 11 L30 20 Z" fill="#006C35" />
-    <path d="M39 20 L39 25 L33 29 L30 20 Z" fill="#006C35" />
-  </svg>
-)
-
 export default function FounderLetterSection() {
   const locale = useLocale()
   const isArabic = locale === 'ar'

@@ -2,6 +2,8 @@ import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PlatformCard from '@/components/PlatformCard'
+import { MEDIA_BASE } from '@/config/media'
+import ContactActions from '@/components/ContactActions'
 
 export const metadata: Metadata = {
   title: 'Digital Platforms | Premiera Live',
@@ -15,78 +17,79 @@ export const metadata: Metadata = {
   },
 }
 
-// 10 platforms we built and operate
-// Image keys and description copy come from Shareef in a future PR
+// 8 platforms — copy from Shareef verbatim
 const PLATFORMS = [
   {
     id: 'film-production-bahrain',
-    name: 'FilmProductionBahrain.com',
+    nameEn: 'FilmProductionBahrain.com',
+    nameAr: 'FilmProductionBahrain.com',
     url: 'https://filmproductionbahrain.com',
-    imageKey: 'platform-film-production-bahrain',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'filmproductionbahrain.com',
+    descEn: 'Film production portfolio and enquiry platform — designed, built, and maintained in-house.',
+    descAr: 'نعرض أعمال الإنتاج السينمائي ونستقبل الطلبات عبر منصة بنيناها بالكامل.',
   },
   {
     id: 'bahrain-nights',
-    name: 'BahrainNights.com',
+    nameEn: 'BahrainNights.com',
+    nameAr: 'BahrainNights.com',
     url: 'https://bahrainnights.com',
-    imageKey: 'platform-bahrain-nights',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'bahrainnights.com',
+    descEn: 'Venue and event discovery for Bahrain — thousands of listings, automated event ingestion, newsletters, and partner booking. Built and operated by us.',
+    descAr: 'نشغّل منصة اكتشاف الأماكن والفعاليات في البحرين — آلاف القوائم، وإدخال آلي للفعاليات، ونشرة بريدية، وحجز عبر الشركاء.',
   },
   {
     id: 'events-bahrain',
-    name: 'EventsBahrain.com',
+    nameEn: 'EventsBahrain.com',
+    nameAr: 'EventsBahrain.com',
     url: 'https://eventsbahrain.com',
-    imageKey: 'platform-events-bahrain',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'eventsbahrain.com',
+    descEn: 'Event listings and discovery, running on the same platform infrastructure we build for clients.',
+    descAr: 'ندرج فعاليات البحرين ونتيح اكتشافها على البنية نفسها التي نبنيها لعملائنا.',
   },
   {
     id: 'student-photos',
-    name: 'StudentPhotos.com',
+    nameEn: 'StudentPhotos.com',
+    nameAr: 'StudentPhotos.com',
     url: 'https://studentphotos.com',
-    imageKey: 'platform-student-photos',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'studentphotos.com',
+    descEn: 'School photography sales platform — private galleries per student, online ordering, local payment gateway, and automated watermarking.',
+    descAr: 'نبيع صور المدارس عبر منصة كاملة: معارض خاصة لكل طالب، وطلب إلكتروني، وبوابة دفع محلية، وعلامة مائية آلية.',
   },
   {
     id: 'podcast-bahrain',
-    name: 'PodcastBahrain.com',
+    nameEn: 'PodcastBahrain.com',
+    nameAr: 'PodcastBahrain.com',
     url: 'https://podcastbahrain.com',
-    imageKey: 'platform-podcast-bahrain',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'podcastbahrain.com',
+    descEn: 'Podcast production booking and showcase platform.',
+    descAr: 'نتيح حجز إنتاج البودكاست وعرض الأعمال عبر منصة بنيناها.',
   },
   {
     id: 'videography-bahrain',
-    name: 'VideographyBahrain.com',
+    nameEn: 'VideographyBahrain.com',
+    nameAr: 'VideographyBahrain.com',
     url: 'https://videographybahrain.com',
-    imageKey: 'platform-videography-bahrain',
-    description: 'TODO: copy from Shareef',
-  },
-  {
-    id: 'bangalore-life',
-    name: 'BangaloreLife.com',
-    url: 'https://bangalorelife.com',
-    imageKey: 'platform-bangalore-life',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'videographybahrain.com',
+    descEn: 'Videography portfolio and enquiry platform.',
+    descAr: 'نعرض أعمال التصوير ونستقبل الطلبات عبر منصة مخصصة.',
   },
   {
     id: 'cinematic-web-works',
-    name: 'CinematicWebWorks.com',
+    nameEn: 'CinematicWebWorks.com',
+    nameAr: 'CinematicWebWorks.com',
     url: 'https://cinematicwebworks.com',
-    imageKey: 'platform-cinematic-web-works',
-    description: 'TODO: copy from Shareef',
-  },
-  {
-    id: 'thursday-football',
-    name: 'ThursdayFootball.com',
-    url: 'https://thursdayfootball.com',
-    imageKey: 'platform-thursday-football',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'cinematicwebworks.com',
+    descEn: 'Our enterprise web development arm — the team behind the platforms on this page.',
+    descAr: 'نطوّر أنظمة المؤسسات — وهذا الفريق نفسه بنى المنصات المعروضة هنا.',
   },
   {
     id: 'property-coorg',
-    name: 'PropertyCoorg.com',
+    nameEn: 'PropertyCoorg.com',
+    nameAr: 'PropertyCoorg.com',
     url: 'https://propertycoorg.com',
-    imageKey: 'platform-property-coorg',
-    description: 'TODO: copy from Shareef',
+    imageKey: 'propertycoorg.com',
+    descEn: 'Property listings platform for the Coorg region in India.',
+    descAr: 'ندرج العقارات في منطقة كورغ بالهند عبر منصة بنيناها.',
   },
 ]
 
@@ -98,11 +101,6 @@ export default async function DigitalPage({
   const { locale: urlLocale } = await params
   setRequestLocale(urlLocale)
   const isArabic = urlLocale === 'ar'
-
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500000000'
-  const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(
-    isArabic ? 'أرغب في مناقشة خدمات رقمية.' : 'Hi, I\'d like to discuss your digital services.'
-  )}&type=phone_number&app_absent=0`
 
   return (
     <>
@@ -172,17 +170,14 @@ export default async function DigitalPage({
               key={platform.id}
               href={platform.url}
               imageSlot={
-                <span style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 'var(--body-sm)',
-                  color: 'var(--color-text-faint)',
-                  letterSpacing: '0.05em',
-                }}>
-                  IMAGE: {platform.imageKey}
-                </span>
+                <img
+                  src={`${MEDIA_BASE}/Digital/${platform.imageKey}.png`}
+                  alt={platform.nameEn}
+                  style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+                />
               }
-              name={platform.name}
-              description={platform.description}
+              name={isArabic ? platform.nameAr : platform.nameEn}
+              description={isArabic ? platform.descAr : platform.descEn}
               linkLabel={isArabic ? 'زيارة المنصة ←' : 'Visit Platform →'}
               isArabic={isArabic}
             />
@@ -205,21 +200,7 @@ export default async function DigitalPage({
           }}>
             {isArabic ? 'هل تريد منصة مثل هذه؟' : 'READY TO BUILD YOUR PLATFORM?'}
           </h2>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.625rem',
-              padding: '0.875rem 2rem',
-              background: 'var(--color-gold)', color: '#0A0A0B',
-              fontFamily: 'var(--font-display)', fontSize: '0.8rem',
-              letterSpacing: '0.1em', textDecoration: 'none',
-              borderRadius: '9999px', fontWeight: 700,
-            }}
-          >
-            {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
-          </a>
+          <ContactActions />
         </div>
       </section>
     </>

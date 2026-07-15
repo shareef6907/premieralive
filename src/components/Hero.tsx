@@ -20,25 +20,6 @@ const SERVICE_LABELS = [
   { en: 'Live Streaming', ar: 'البث المباشر متعدد الكاميرات' },
 ]
 
-function SaudiFlag() {
-  return (
-    <svg
-      width="20"
-      height="14"
-      viewBox="0 0 20 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block', verticalAlign: 'middle' }}
-    >
-      <rect width="20" height="14" fill="#006C35" />
-      <rect x="0" y="3.5" width="20" height="1.4" fill="white" />
-      <rect x="0" y="7" width="20" height="1.4" fill="white" />
-      <rect x="0" y="10.5" width="20" height="1.4" fill="white" />
-      <text x="1.5" y="10.5" fontSize="6" fill="#006C35" fontWeight="bold">الله</text>
-    </svg>
-  )
-}
-
 export default function Hero() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
