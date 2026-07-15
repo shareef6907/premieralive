@@ -11,11 +11,22 @@ export default function TierCard({ tier, index, isArabic }: { tier: MarketingTie
   ]
   const c = configs[index]
 
-  const tagline = isArabic ? tier.taglineAr : tier.taglineEn
-  const builtFor = isArabic ? tier.builtForAr : tier.builtForEn
+  const tagline    = isArabic ? tier.taglineAr : tier.taglineEn
+  const builtFor   = isArabic ? tier.builtForAr : tier.builtForEn
   const deliverables = isArabic ? tier.deliverablesAr : tier.deliverablesEn
   const notIncluded = isArabic ? tier.notIncludedAr : tier.notIncludedEn
   const ctaText = isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'
+
+  // LEAD-IN: "Everything in Foundation, plus:" / "كل ما في الأساس، إضافة إلى:"
+  // Only present on GROWTH and SCALE cards.
+  const leadIn = deliverables.find(d =>
+    d.category.startsWith('Everything in') || d.category.startsWith('كل ما في')
+  )
+
+  // Category deliverables — filter out the lead-in row so it doesn't appear twice.
+  const categoryItems = deliverables.filter(d =>
+    !d.category.startsWith('Everything in') && !d.category.startsWith('كل ما في')
+  )
 
   return (
     <div style={{
@@ -29,7 +40,7 @@ export default function TierCard({ tier, index, isArabic }: { tier: MarketingTie
       minWidth: '240px',
       maxWidth: '340px',
     }}>
-      {/* Tier name: FOUNDATION / GROWTH / SCALE — large, bold, gold */}
+      {/* Tier name: FOUNDATION / GROWTH / SCALE */}
       <div style={{
         fontFamily: 'var(--font-display)',
         fontSize: 'clamp(1.5rem, 2vw, 1.875rem)',
@@ -64,53 +75,53 @@ export default function TierCard({ tier, index, isArabic }: { tier: MarketingTie
         {builtFor}
       </p>
 
-      <div style={{ flex: 1 }} />
+      {/* LEAD-IN: "Everything in Foundation, plus:" — appears only on GROWTH and SCALE */}
+      {leadIn && (
+        <p style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(1.125rem, 1.5vw, 1.375rem)',
+          color: '#C9A24B',
+          lineHeight: 1.2,
+          marginBottom: '1.25rem',
+          paddingBottom: '1rem',
+          borderBottom: '1px solid rgba(201,162,75,0.2)',
+        }}>
+          {leadIn.category}
+        </p>
+      )}
 
+      {/* Category deliverables */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-        {deliverables
-          .filter(d => !d.category.startsWith('Everything in') && !d.category.startsWith('كل ما في'))
-          .map((del, i) => (
-            <div key={i}>
-              <p style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                color: 'var(--color-gold)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                marginBottom: '0.375rem',
-              }}>
-                {del.category}
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                {del.items.map((item, j) => (
-                  <div key={j} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
-                    <CheckCircle2 size={13} strokeWidth={1.5} style={{ color: c.accent, flexShrink: 0, marginTop: '2px' }} />
-                    <p style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '0.8125rem',
-                      color: 'rgba(245,244,240,0.6)',
-                      lineHeight: 1.5,
-                    }}>
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        {deliverables
-          .filter(d => d.category.startsWith('Everything in') || d.category.startsWith('كل ما في'))
-          .map((del, i) => (
-            <p key={i} style={{
+        {categoryItems.map((del, i) => (
+          <div key={i}>
+            <p style={{
               fontFamily: 'var(--font-body)',
-              fontSize: '0.8125rem',
+              fontSize: '0.75rem',
+              fontWeight: 600,
               color: 'var(--color-gold)',
-              fontStyle: 'italic',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              marginBottom: '0.375rem',
             }}>
               {del.category}
             </p>
-          ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+              {del.items.map((item, j) => (
+                <div key={j} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+                  <CheckCircle2 size={13} strokeWidth={1.5} style={{ color: c.accent, flexShrink: 0, marginTop: '2px' }} />
+                  <p style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.8125rem',
+                    color: 'rgba(245,244,240,0.6)',
+                    lineHeight: 1.5,
+                  }}>
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
       {notIncluded && (
