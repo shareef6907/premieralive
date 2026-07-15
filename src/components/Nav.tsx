@@ -135,7 +135,7 @@ export default function Nav() {
             onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 4px 28px rgba(201,162,75,0.5)')}
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,162,75,0.3)')}
           >
-            {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
+            {isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'}
           </a>
 
           {/* Hamburger */}
@@ -222,7 +222,7 @@ export default function Nav() {
               marginTop: '1rem',
             }}
           >
-            {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
+            {isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'}
           </a>
         </div>
       )}

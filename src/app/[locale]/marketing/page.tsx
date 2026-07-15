@@ -1,7 +1,8 @@
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Calendar, MessageCircle } from 'lucide-react'
+import { Phone } from 'lucide-react'
+import ContactActions from '@/components/ContactActions'
 
 export const metadata: Metadata = {
   title: 'Marketing Services | Premiera Live',
@@ -118,25 +119,6 @@ const TIERS = [
   },
 ]
 
-function SaudiFlag() {
-  return (
-    <svg
-      width="20"
-      height="14"
-      viewBox="0 0 20 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block', verticalAlign: 'middle' }}
-    >
-      <rect width="20" height="14" fill="#006C35" />
-      <rect x="0" y="3.5" width="20" height="1.4" fill="white" />
-      <rect x="0" y="7" width="20" height="1.4" fill="white" />
-      <rect x="0" y="10.5" width="20" height="1.4" fill="white" />
-      <text x="1.5" y="10.5" fontSize="6" fill="#006C35" fontWeight="bold">الله</text>
-    </svg>
-  )
-}
-
 export default async function MarketingPage({
   params,
 }: {
@@ -146,12 +128,7 @@ export default async function MarketingPage({
   setRequestLocale(urlLocale)
   const isArabic = urlLocale === 'ar'
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500000000'
-  const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(
-    isArabic ? 'أرغب في مناقشة خدمات التسويق.' : 'Hi, I\'d like to discuss your marketing services.'
-  )}&type=phone_number&app_absent=0`
-
-  const ctaLabel = isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'
+  const ctaLabel = isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'
   const howItWorksLabel = isArabic ? 'كيف نعمل' : 'HOW IT WORKS'
   const capabilitiesLabel = isArabic ? 'ما نقدّمه' : 'CAPABILITIES'
   const plansLabel = isArabic ? 'اختر خطتك' : 'CHOOSE YOUR PLAN'
@@ -210,9 +187,7 @@ export default async function MarketingPage({
             : 'From social media to performance ads — we focus on what actually drives revenue.'}
         </p>
         <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={`/${urlLocale}#contact`}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.625rem',
             padding: '0.875rem 2rem',
@@ -222,8 +197,7 @@ export default async function MarketingPage({
             borderRadius: '9999px', fontWeight: 700,
           }}
         >
-          <Calendar size={16} color="#0A0A0B" strokeWidth={2.5} />
-          <SaudiFlag />
+          <Phone size={16} color="#0A0A0B" strokeWidth={2.5} />
           {ctaLabel}
         </a>
       </section>
@@ -409,9 +383,7 @@ export default async function MarketingPage({
 
                   {/* CTA — always at card bottom */}
                   <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`/${urlLocale}#contact`}
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
                       padding: '0.75rem 1.5rem',
@@ -422,8 +394,8 @@ export default async function MarketingPage({
                       marginTop: 'auto',
                     }}
                   >
-                    <Calendar size={14} color="#0A0A0B" strokeWidth={2.5} />
-                    {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
+                    <Phone size={14} color="#0A0A0B" strokeWidth={2.5} />
+                    {isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'}
                   </a>
                 </div>
               )
@@ -462,26 +434,10 @@ export default async function MarketingPage({
         }}>
           {isArabic ? 'هل أنت مستعد للبدء؟' : 'READY TO GET STARTED?'}
         </h2>
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.625rem',
-            padding: '0.875rem 2rem',
-            background: 'var(--color-gold)', color: '#0A0A0B',
-            fontFamily: 'var(--font-body)', fontWeight: 600,
-            fontSize: 'var(--body)', textDecoration: 'none',
-            borderRadius: '9999px',
-          }}
-        >
-          <MessageCircle size={18} color="#0A0A0B" strokeWidth={2} />
-          <SaudiFlag />
-          {isArabic ? 'ابدأ عبر واتساب' : 'Start on WhatsApp'}
-        </a>
+        <ContactActions />
         <p style={{
           fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-          color: 'var(--color-text-faint)', marginTop: '1rem',
+          color: 'var(--color-text-faint)', marginTop: '1.5rem',
         }}>
           {isArabic ? 'نرد خلال يوم عمل واحد.' : 'Replies within one business day.'}
         </p>
