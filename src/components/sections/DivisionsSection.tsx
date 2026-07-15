@@ -29,15 +29,27 @@ const CAPABILITY_SLUGS = {
   ],
 } as const
 
-// Marketing tiers use anchor links, not service slugs
-const MARKETING_SLUGS = ['essential', 'growth', 'premier'] as const
-// Tiers use anchor links to /marketing#essential|#growth|#premier
-// Tier content (descriptions, capabilities, prices) lives on /marketing page
-const MARKETING_TIER_LINKS = [
-  { id: 'essential', labelEn: 'Essential', labelAr: 'الأساس' },
-  { id: 'growth',     labelEn: 'Growth',      labelAr: 'النمو' },
-  { id: 'premier',   labelEn: 'Premier',      labelAr: 'الريادة' },
-] as const
+// Marketing service links — routes land in PR-M2; will 404 until then
+const MARKETING_SERVICE_LINKS = {
+  en: [
+    { slug: 'social-media-management-saudi',           label: 'Social Media Management' },
+    { slug: 'google-ads-saudi',                          label: 'Google Ads' },
+    { slug: 'facebook-instagram-ads-saudi',             label: 'Facebook & Instagram Ads' },
+    { slug: 'snapchat-tiktok-ads-saudi',               label: 'Snapchat & TikTok Ads' },
+    { slug: 'seo-saudi',                                label: 'SEO' },
+    { slug: 'whatsapp-ai-saudi',                       label: 'WhatsApp AI' },
+    { slug: 'content-production-saudi',                 label: 'Content Production' },
+  ],
+  ar: [
+    { slug: 'social-media-management-saudi',            label: 'إدارة وسائل التواصل' },
+    { slug: 'google-ads-saudi',                         label: 'إعلانات قوقل' },
+    { slug: 'facebook-instagram-ads-saudi',             label: 'إعلانات فيسبوك وإنستغرام' },
+    { slug: 'snapchat-tiktok-ads-saudi',               label: 'إعلانات سناب وتيك توك' },
+    { slug: 'seo-saudi',                               label: 'تحسين محركات البحث' },
+    { slug: 'whatsapp-ai-saudi',                       label: 'واتساب الذكاء الاصطناعي' },
+    { slug: 'content-production-saudi',                 label: 'إنتاج المحتوى' },
+  ],
+} as const
 
 const DIVISIONS = [
   {
@@ -70,43 +82,6 @@ const DIVISIONS = [
   },
 ]
 
-function MarketingTierLink({ tier, locale, isArabic }: { tier: typeof MARKETING_TIER_LINKS[number]; locale: string; isArabic: boolean }) {
-  const href = `/${locale}/marketing#${tier.id}`
-  return (
-    <li style={{
-      borderBottom: '1px solid var(--color-card-border)',
-      paddingBottom: '0.5rem',
-      marginBottom: '0.5rem',
-    }}>
-      <a
-        href={href}
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          textDecoration: 'none',
-          gap: '0.5rem',
-        }}
-      >
-        <span style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: 'var(--body-sm)',
-          color: 'var(--color-text-dim)',
-        }}>
-          {isArabic ? tier.labelAr : tier.labelEn}
-        </span>
-        <span style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: 'var(--body-sm)',
-          color: 'var(--color-gold)',
-        }}>
-          {isArabic ? 'طالع التفاصيل ←' : 'See details →'}
-        </span>
-      </a>
-    </li>
-  )
-}
-
 function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
   const locale = useLocale()
   const isArabic = locale === 'ar'
@@ -114,6 +89,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
   const slugs = CAPABILITY_SLUGS[division.id as keyof typeof CAPABILITY_SLUGS] ?? []
   const capabilities = isArabic ? division.capabilitiesAr : division.capabilitiesEn
   const isMarketing = division.id === 'marketing'
+  const marketingLinks = isArabic ? MARKETING_SERVICE_LINKS.ar : MARKETING_SERVICE_LINKS.en
 
   return (
     <div
@@ -201,9 +177,20 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
               </li>
             )
           })}
-          {isMarketing && MARKETING_TIER_LINKS.map((tier) => (
-            <MarketingTierLink key={tier.id} tier={tier} locale={locale} isArabic={isArabic} />
-          ))}
+          {isMarketing && marketingLinks.map((link) => (
+              <li key={link.slug} className="capability-item" style={{
+                borderBottom: '1px solid var(--color-card-border)',
+                paddingBottom: '0.5rem',
+                marginBottom: '0.5rem',
+              }}>
+                <ServiceCardLink
+                  href={`/${locale}/marketing/${link.slug}`}
+                  name={link.label}
+                  description=""
+                  isArabic={isArabic}
+                />
+              </li>
+            ))}
         </ul>
       </div>
     </div>

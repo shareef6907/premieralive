@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Calendar, MessageCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Marketing Services | Premiera Live',
@@ -55,6 +56,7 @@ const HOW_IT_WORKS = [
   },
 ]
 
+// Email & SMS removed — 5 capabilities remain
 const CAPABILITIES = [
   {
     en: 'Social Media Management',
@@ -81,12 +83,6 @@ const CAPABILITIES = [
     descAr: 'مساعد ذكي يُدرَّب على أعمالك يجيب ويصنّف ويحجز العملاء المحتملين داخل واتساب.',
   },
   {
-    en: 'Email & SMS Marketing',
-    ar: 'التسويق بالبريد والإس إم إس',
-    descEn: 'Automated sequences that nurture leads and re-engage customers — in Arabic and English.',
-    descAr: 'تسلسلات آلية تُربّي العملاء المحتملين وإعادة تفاعل العملاء — بالعربية والإنجليزية.',
-  },
-  {
     en: 'Analytics & Reporting',
     ar: 'التحليل والتقارير',
     descEn: 'A real-time dashboard showing traffic, leads, conversions, and revenue per channel — updated daily.',
@@ -94,29 +90,43 @@ const CAPABILITIES = [
   },
 ]
 
-// Tier card content from briefing EXACTLY
+// Tier deliverables — Shareef supplies actual list items in next PR
+const TIER_DELIVERABLES = {
+  essential: {
+    en: ['One primary platform', 'Monthly content calendar', 'Publishing & community management', 'Monthly report'],
+    ar: ['منصة رئيسية واحدة', 'تقويم محتوى شهري', 'نشر وإدارة مجتمع', 'تقرير شهري'],
+  },
+  growth: {
+    en: ['Multi-platform management', 'Paid ads management', 'SEO foundations', 'Reporting twice a month'],
+    ar: ['إدارة منصات متعددة', 'إدارة الإعلانات المدفوعة', 'أساسيات تحسين محركات البحث', 'تقارير نصف شهرية'],
+  },
+  premier: {
+    en: ['Everything in Growth', 'Dedicated strategy lead', 'Video content (Cinematic Production)', 'Weekly reporting'],
+    ar: ['كل ما في النمو', 'قائد استراتيجية مخصص', 'محتوى فيديو (الإنتاج السينمائي)', 'تقارير أسبوعية'],
+  },
+}
 
 const TIERS = [
   {
     id: 'essential',
     labelEn: 'ESSENTIAL',
     labelAr: 'الأساس',
-    taglineEn: 'For businesses building a consistent presence. One primary platform, a monthly content calendar, publishing and community management, and a clear monthly report.',
-    taglineAr: 'للأعمال التي تبني حضوراً مستمراً. منصة رئيسية واحدة، تقويم محتوى شهري، نشر وإدارة مجتمع، وتقرير شهري واضح.',
+    taglineEn: 'For businesses building a consistent presence.',
+    taglineAr: 'للأعمال التي تبني حضوراً مستمراً.',
   },
   {
     id: 'growth',
     labelEn: 'GROWTH',
     labelAr: 'النمو',
-    taglineEn: 'For businesses ready to scale. Multi-platform management, paid ads, SEO foundations, and reporting twice a month.',
-    taglineAr: 'للأعمال الجاهزة للتوسع. إدارة منصات متعددة، إعلانات مدفوعة، أساسيات تحسين محركات البحث، وتقارير نصف شهرية.',
+    taglineEn: 'For businesses ready to scale.',
+    taglineAr: 'للأعمال الجاهزة للتوسع.',
   },
   {
     id: 'premier',
     labelEn: 'PREMIER',
     labelAr: 'الريادة',
-    taglineEn: 'Full-funnel marketing. Everything in Growth, plus a dedicated strategy lead, video content from our Cinematic Production division, and weekly reporting.',
-    taglineAr: 'تسويق قاع قمع كامل. كل ما في القسم 02، بالإضافة إلى قائد استراتيجية مخصص، ومحتوى فيديو من قسم الإنتاج السينمائي، وتقارير أسبوعية.',
+    taglineEn: 'Full-funnel marketing.',
+    taglineAr: 'تسويق قاع قمع كامل.',
   },
 ]
 
@@ -216,7 +226,7 @@ export default async function MarketingPage({
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            display: 'inline-flex', alignItems: 'center', gap: '0.625rem',
             padding: '0.875rem 2rem',
             background: 'var(--color-gold)', color: '#0A0A0B',
             fontFamily: 'var(--font-display)', fontSize: '0.8rem',
@@ -224,12 +234,13 @@ export default async function MarketingPage({
             borderRadius: '9999px', fontWeight: 700,
           }}
         >
+          <Calendar size={16} color="#0A0A0B" strokeWidth={2.5} />
           <SaudiFlag />
           {ctaLabel}
         </a>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works — FIX: locale-correct rendering per card */}
       <section style={{
         background: 'var(--color-bg-elevated)',
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
@@ -260,7 +271,7 @@ export default async function MarketingPage({
                   fontSize: '0.875rem', color: 'var(--color-gold)',
                   marginBottom: '0.5rem', letterSpacing: '0.05em',
                 }}>
-                  {String(i + 1).padStart(2, '0')} — {isArabic ? step.en : step.ar}
+                  {String(i + 1).padStart(2, '0')} — {isArabic ? step.ar : step.en}
                 </p>
                 <p style={{
                   fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
@@ -274,7 +285,7 @@ export default async function MarketingPage({
         </div>
       </section>
 
-      {/* Capabilities */}
+      {/* Capabilities — 5 cards, no Email & SMS */}
       <section style={{
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
         maxWidth: '80rem', margin: '0 auto',
@@ -317,7 +328,7 @@ export default async function MarketingPage({
         </div>
       </section>
 
-      {/* Plans — capability strip + three tier cards */}
+      {/* Plans — capability strip + three tier cards, centered, equal heights */}
       <section id="essential" style={{
         background: 'var(--color-bg-elevated)',
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
@@ -332,7 +343,7 @@ export default async function MarketingPage({
             {plansLabel}
           </p>
 
-          {/* Capability strip — briefing-exact */}
+          {/* Capability strip */}
           <p style={{
             fontFamily: 'var(--font-body)',
             fontSize: 'var(--body-sm)',
@@ -346,65 +357,94 @@ export default async function MarketingPage({
               : 'Social Media Management · Content Creation · Paid Ads Management · SEO · Monthly Reporting'}
           </p>
 
-          {/* Three tier cards */}
+          {/* Three tier cards — grid with fixed min-height, equal columns */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
             gap: '1.5rem',
-            alignItems: 'start',
+            alignItems: 'stretch',
           }}>
-            {TIERS.map((tier) => (
-              <div
-                key={tier.id}
-                id={tier.id}
-                style={{
-                  padding: '2rem',
-                  background: '#16161B',
-                  border: '1px solid var(--color-card-border)',
-                  borderRadius: 'var(--radius)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '1.25rem',
-                }}
-              >
-                <p style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
-                  color: '#C9A24B',
-                  letterSpacing: '0.02em',
-                  marginBottom: '0.5rem',
-                }}>
-                  {isArabic ? tier.labelAr : tier.labelEn}
-                </p>
-                <p style={{
-                  fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                  color: 'var(--color-text-dim)', lineHeight: 1.7,
-                }}>
-                  {isArabic ? tier.taglineAr : tier.taglineEn}
-                </p>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            {TIERS.map((tier) => {
+              const deliverables = TIER_DELIVERABLES[tier.id as keyof typeof TIER_DELIVERABLES]
+              const deliverablesList = isArabic ? deliverables.ar : deliverables.en
+              return (
+                <div
+                  key={tier.id}
+                  id={tier.id}
                   style={{
-                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
-                    padding: '0.75rem 1.5rem',
-                    background: '#C9A24B', color: '#0A0A0B',
-                    fontFamily: 'var(--font-display)', fontSize: '0.75rem',
-                    letterSpacing: '0.1em', textDecoration: 'none',
-                    borderRadius: '9999px', fontWeight: 700,
-                    marginTop: '0.5rem',
+                    padding: '2rem',
+                    background: '#16161B',
+                    border: '1px solid var(--color-card-border)',
+                    borderRadius: 'var(--radius)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.25rem',
                   }}
                 >
-                  {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
-                </a>
-              </div>
-            ))}
+                  {/* Tier name */}
+                  <p style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
+                    color: '#C9A24B',
+                    letterSpacing: '0.02em',
+                  }}>
+                    {isArabic ? tier.labelAr : tier.labelEn}
+                  </p>
+
+                  {/* One-line positioning */}
+                  <p style={{
+                    fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                    color: 'var(--color-text-dim)', lineHeight: 1.7,
+                  }}>
+                    {isArabic ? tier.taglineAr : tier.taglineEn}
+                  </p>
+
+                  {/* Deliverables list */}
+                  <ul style={{
+                    listStyle: 'none', padding: 0, margin: 0,
+                    display: 'flex', flexDirection: 'column', gap: '0.625rem',
+                    flex: 1,
+                  }}>
+                    {deliverablesList.map((item: string, idx: number) => (
+                      <li key={idx} style={{
+                        fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                        color: 'var(--color-text-dim)',
+                        paddingLeft: isArabic ? 0 : '1rem',
+                        paddingRight: isArabic ? '1rem' : 0,
+                        borderLeft: isArabic ? 'none' : '2px solid var(--color-card-border)',
+                        borderRight: isArabic ? '2px solid var(--color-card-border)' : 'none',
+                      }}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA — always at card bottom */}
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
+                      padding: '0.75rem 1.5rem',
+                      background: '#C9A24B', color: '#0A0A0B',
+                      fontFamily: 'var(--font-display)', fontSize: '0.75rem',
+                      letterSpacing: '0.1em', textDecoration: 'none',
+                      borderRadius: '9999px', fontWeight: 700,
+                      marginTop: 'auto',
+                    }}
+                  >
+                    <Calendar size={14} color="#0A0A0B" strokeWidth={2.5} />
+                    {isArabic ? 'احجز جلسة استراتيجية' : 'BOOK A STRATEGY SESSION'}
+                  </a>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Compliance block — briefing-exact */}
+      {/* Compliance block */}
       <section style={{
         padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem)',
         maxWidth: '80rem', margin: '0 auto',
@@ -447,6 +487,7 @@ export default async function MarketingPage({
             borderRadius: '9999px',
           }}
         >
+          <MessageCircle size={18} color="#0A0A0B" strokeWidth={2} />
           <SaudiFlag />
           {isArabic ? 'ابدأ عبر واتساب' : 'Start on WhatsApp'}
         </a>
