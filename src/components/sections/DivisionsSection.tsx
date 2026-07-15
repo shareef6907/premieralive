@@ -34,9 +34,9 @@ const MARKETING_SLUGS = ['essential', 'growth', 'premier'] as const
 // Tiers use anchor links to /marketing#essential|#growth|#premier
 // Tier content (descriptions, capabilities, prices) lives on /marketing page
 const MARKETING_TIER_LINKS = [
-  { id: 'essential', labelEn: 'Essential',  labelAr: 'القسم 01' },
-  { id: 'growth',     labelEn: 'Growth',      labelAr: 'القسم 02' },
-  { id: 'premier',   labelEn: 'Premier',     labelAr: 'القسم 03' },
+  { id: 'essential', labelEn: 'Essential', labelAr: 'الأساس' },
+  { id: 'growth',     labelEn: 'Growth',      labelAr: 'النمو' },
+  { id: 'premier',   labelEn: 'Premier',      labelAr: 'الريادة' },
 ] as const
 
 const DIVISIONS = [
@@ -65,7 +65,7 @@ const DIVISIONS = [
     nameEn: 'MARKETING SERVICES',
     nameAr: 'خدمات التسويق',
     lineEn: 'Growth that compounds, month after month.',
-    lineAr: 'نصنع تسويقاً يُضاعف العائدات شهراً بعد شهر.',
+    lineAr: 'ينمو أثرك شهرًا بعد شهر.',
     image: IMAGES.pillarAiGrowth,
   },
 ]

@@ -100,21 +100,21 @@ const TIERS = [
   {
     id: 'essential',
     labelEn: 'ESSENTIAL',
-    labelAr: 'القسم 01',
+    labelAr: 'الأساس',
     taglineEn: 'For businesses building a consistent presence. One primary platform, a monthly content calendar, publishing and community management, and a clear monthly report.',
     taglineAr: 'للأعمال التي تبني حضوراً مستمراً. منصة رئيسية واحدة، تقويم محتوى شهري، نشر وإدارة مجتمع، وتقرير شهري واضح.',
   },
   {
     id: 'growth',
     labelEn: 'GROWTH',
-    labelAr: 'القسم 02',
+    labelAr: 'النمو',
     taglineEn: 'For businesses ready to scale. Multi-platform management, paid ads, SEO foundations, and reporting twice a month.',
     taglineAr: 'للأعمال الجاهزة للتوسع. إدارة منصات متعددة، إعلانات مدفوعة، أساسيات تحسين محركات البحث، وتقارير نصف شهرية.',
   },
   {
     id: 'premier',
     labelEn: 'PREMIER',
-    labelAr: 'القسم 03',
+    labelAr: 'الريادة',
     taglineEn: 'Full-funnel marketing. Everything in Growth, plus a dedicated strategy lead, video content from our Cinematic Production division, and weekly reporting.',
     taglineAr: 'تسويق قاع قمع كامل. كل ما في القسم 02، بالإضافة إلى قائد استراتيجية مخصص، ومحتوى فيديو من قسم الإنتاج السينمائي، وتقارير أسبوعية.',
   },
@@ -199,7 +199,7 @@ export default async function MarketingPage({
           letterSpacing: '0.01em', marginBottom: '1.5rem',
         }}>
           {isArabic
-            ? 'نصنع تسويقاً يُضاعف العائدات شهراً بعد شهر.'
+            ? 'ينمو أثرك شهرًا بعد شهر.'
             : 'Growth that compounds, month after month.'}
         </h1>
         <p style={{
