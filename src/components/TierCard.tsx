@@ -3,13 +3,19 @@
 import { CheckCircle2 } from 'lucide-react'
 import type { MarketingTier } from '@/config/marketingServices'
 
-export default function TierCard({ tier, index }: { tier: MarketingTier, index: number }) {
+export default function TierCard({ tier, index, isArabic }: { tier: MarketingTier, index: number, isArabic: boolean }) {
   const configs = [
     { accent: '#C9A24B', bg: 'rgba(201,162,75,0.08)',   border: 'rgba(201,162,75,0.4)',  labelColor: '#C9A24B', ctaSolid: false },
     { accent: '#FFFFFF', bg: 'rgba(255,255,255,0.04)',   border: 'rgba(255,255,255,0.15)', labelColor: 'rgba(245,244,240,0.9)', ctaSolid: true  },
     { accent: '#E8D5A3', bg: 'rgba(201,162,75,0.04)',   border: 'rgba(201,162,75,0.25)', labelColor: 'rgba(245,244,240,0.7)', ctaSolid: false },
   ]
   const c = configs[index]
+
+  const tagline = isArabic ? tier.taglineAr : tier.taglineEn
+  const builtFor = isArabic ? tier.builtForAr : tier.builtForEn
+  const deliverables = isArabic ? tier.deliverablesAr : tier.deliverablesEn
+  const notIncluded = isArabic ? tier.notIncludedAr : tier.notIncludedEn
+  const ctaText = isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'
 
   return (
     <div style={{
@@ -23,41 +29,46 @@ export default function TierCard({ tier, index }: { tier: MarketingTier, index: 
       minWidth: '240px',
       maxWidth: '340px',
     }}>
+      {/* Tier name: FOUNDATION / GROWTH / SCALE — large, bold, gold */}
       <div style={{
         fontFamily: 'var(--font-display)',
-        fontSize: '0.7rem',
-        letterSpacing: '0.2em',
+        fontSize: 'clamp(1.5rem, 2vw, 1.875rem)',
+        fontWeight: 700,
+        letterSpacing: '0.02em',
         color: c.accent,
         marginBottom: '0.75rem',
       }}>
         {tier.name}
       </div>
 
+      {/* Tagline */}
       <p style={{
         fontFamily: 'var(--font-display)',
-        fontSize: '1.25rem',
+        fontSize: 'clamp(1.125rem, 1.5vw, 1.375rem)',
         color: c.labelColor,
         lineHeight: 1.2,
         marginBottom: '0.5rem',
       }}>
-        {tier.taglineEn}
+        {tagline}
       </p>
 
+      {/* Audience block — fixed min-height for card alignment */}
       <p style={{
         fontFamily: 'var(--font-body)',
         fontSize: 'var(--body-sm)',
         color: 'rgba(245,244,240,0.45)',
         marginBottom: '1.5rem',
         lineHeight: 1.5,
+        minHeight: '3rem',
       }}>
-        {tier.builtForEn}
+        {builtFor}
       </p>
 
       <div style={{ flex: 1 }} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-        {tier.deliverablesEn
-          .filter(d => !d.category.startsWith('Everything in'))
+        {deliverables
+          .filter(d => !d.category.startsWith('Everything in') && !d.category.startsWith('كل ما في'))
           .map((del, i) => (
             <div key={i}>
               <p style={{
@@ -88,8 +99,8 @@ export default function TierCard({ tier, index }: { tier: MarketingTier, index: 
               </div>
             </div>
           ))}
-        {tier.deliverablesEn
-          .filter(d => d.category.startsWith('Everything in'))
+        {deliverables
+          .filter(d => d.category.startsWith('Everything in') || d.category.startsWith('كل ما في'))
           .map((del, i) => (
             <p key={i} style={{
               fontFamily: 'var(--font-body)',
@@ -102,7 +113,7 @@ export default function TierCard({ tier, index }: { tier: MarketingTier, index: 
           ))}
       </div>
 
-      {tier.notIncludedEn && (
+      {notIncluded && (
         <p style={{
           fontFamily: 'var(--font-body)',
           fontSize: '0.75rem',
@@ -110,7 +121,7 @@ export default function TierCard({ tier, index }: { tier: MarketingTier, index: 
           lineHeight: 1.5,
           marginBottom: '1.5rem',
         }}>
-          <strong>Not included:</strong> {tier.notIncludedEn}
+          <strong>{isArabic ? 'غير مشمول:' : 'Not included:'}</strong> {notIncluded}
         </p>
       )}
 
@@ -132,7 +143,7 @@ export default function TierCard({ tier, index }: { tier: MarketingTier, index: 
           marginTop: 'auto',
         }}
       >
-        Call to Discuss
+        {ctaText}
       </a>
     </div>
   )

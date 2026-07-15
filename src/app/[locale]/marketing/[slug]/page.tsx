@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import React from 'react'
+import Image from 'next/image'
 import { getMarketingService, getRelatedServices, MARKETING_SLUGS } from '@/config/marketingServices'
+import { MEDIA_BASE } from '@/config/media'
 import type { MarketingTier } from '@/config/marketingServices'
 import ContactActions from '@/components/ContactActions'
 import Section from '@/components/Section'
@@ -41,12 +44,38 @@ function HeroP({ text, label }: { text: string; label: string }) {
   )
 }
 
-function PageHeroSection({ service }: { service: NonNullable<ReturnType<typeof getMarketingService>> }) {
-  const isArabic = false
-  const heroText = (service as { packagesHeroEn?: string }).packagesHeroEn ?? service.heroEn
+// ─── Hero image mapping ────────────────────────────────────────────────────────
+const MARKETING_HERO_IMAGES: Record<string, string> = {
+  'social-media-management-saudi': `${MEDIA_BASE}/marketing/socialmediamanagement.jpg`,
+  'google-ads-saudi':            `${MEDIA_BASE}/marketing/googleads.jpg`,
+  'facebook-instagram-ads-saudi':`${MEDIA_BASE}/marketing/facebookinstagramads.jpg`,
+  'snapchat-tiktok-ads-saudi':   `${MEDIA_BASE}/marketing/snapchattiktokads.jpg`,
+  'seo-saudi':                   `${MEDIA_BASE}/marketing/seo.jpg`,
+  'content-production-saudi':     `${MEDIA_BASE}/marketing/contentproduction.jpg`,
+  'marketing-packages-saudi':     `${MEDIA_BASE}/marketing/marketingpackages.jpg`,
+}
+
+function PageHeroSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const heroText = isArabic
+    ? (service as { packagesHeroAr?: string }).packagesHeroAr ?? service.heroAr
+    : (service as { packagesHeroEn?: string }).packagesHeroEn ?? service.heroEn
+  const ctaText = isArabic ? service.ctaAr : service.ctaEn
+  const heroImgSrc = MARKETING_HERO_IMAGES[service.slug]
   return (
     <Section>
-      <div style={{ maxWidth: '720px', marginInline: 'auto', textAlign: 'center', paddingBlock: '4rem 2rem' }}>
+      {heroImgSrc && (
+        <div style={{ position: 'relative', width: '100%', height: 'clamp(280px, 40vw, 520px)', marginBottom: '2.5rem', borderRadius: '12px', overflow: 'hidden' }}>
+          <Image
+            src={heroImgSrc}
+            alt={isArabic ? service.titleAr : service.titleEn}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+      )}
+      <div style={{ maxWidth: '720px', marginInline: 'auto', textAlign: 'center', paddingBlock: heroImgSrc ? '0 2rem' : '4rem 2rem' }}>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '1rem' }}>
           PREMIERA LIVE
         </p>
@@ -58,7 +87,7 @@ function PageHeroSection({ service }: { service: NonNullable<ReturnType<typeof g
         </p>
         <div style={{ marginTop: '2rem' }}>
           <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.75rem', background: 'var(--color-gold)', color: '#0A0A0B', fontFamily: 'var(--font-display)', fontSize: '0.8rem', letterSpacing: '0.08em', fontWeight: 700, borderRadius: '100px', textDecoration: 'none' }}>
-            Call to Discuss
+            {ctaText}
           </a>
         </div>
       </div>
@@ -66,14 +95,17 @@ function PageHeroSection({ service }: { service: NonNullable<ReturnType<typeof g
   )
 }
 
-function WhySection({ text }: { text: string }) {
-  if (!text) return null
+function WhySection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const text = isArabic ? service.whyAr : service.whyEn
+  const eyebrow = isArabic ? service.whyHeadingAr : service.whyHeadingEn
+  if (!text && !eyebrow) return null
   const paragraphs = text.split('\n\n').filter(Boolean)
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>WHY THIS MATTERS</p>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', color: 'var(--color-text)', marginBottom: '1.5rem', lineHeight: 1.15 }}>Why it works</h2>
+        {eyebrow && (
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+        )}
         {paragraphs.map((para, i) => (
           <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.65)', lineHeight: 1.8, marginBottom: '1rem' }}>{para}</p>
         ))}
@@ -82,13 +114,16 @@ function WhySection({ text }: { text: string }) {
   )
 }
 
-function DeliverablesSection({ items }: { items: string[] }) {
-  if (!items?.length) return null
+function DeliverablesSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const items = isArabic ? service.deliverablesAr : service.deliverablesEn
+  const eyebrow = isArabic ? service.deliverablesHeadingAr : service.deliverablesHeadingEn
+  if (!items?.length && !eyebrow) return null
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>WHAT WE DELIVER</p>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', color: 'var(--color-text)', marginBottom: '2rem', lineHeight: 1.15 }}>What you get</h2>
+        {eyebrow && (
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+        )}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
           {items.map((item, i) => (
             <div key={i} style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start' }}>
@@ -102,13 +137,13 @@ function DeliverablesSection({ items }: { items: string[] }) {
   )
 }
 
-function ProcessSection({ steps }: { steps: { label: string; text: string }[] }) {
+function ProcessSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const steps = isArabic ? service.processStepsAr : service.processStepsEn
   if (!steps?.length) return null
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>HOW WE WORK</p>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', color: 'var(--color-text)', marginBottom: '2rem', lineHeight: 1.15 }}>The process</h2>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'كيف نعمل' : 'HOW WE WORK'}</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {steps.map((step, i) => (
             <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
@@ -127,25 +162,33 @@ function ProcessSection({ steps }: { steps: { label: string; text: string }[] })
   )
 }
 
-function IndustriesSection({ text }: { text: string }) {
-  if (!text) return null
+function IndustriesSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const text = isArabic ? service.industriesAr : service.industriesEn
+  const eyebrow = isArabic ? service.industriesHeadingAr : service.industriesHeadingEn
+  if (!text && !eyebrow) return null
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>INDUSTRIES WE SERVE</p>
+        {eyebrow && (
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+        )}
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.8 }}>{text}</p>
       </div>
     </Section>
   )
 }
 
-function WhyPremieraSection({ text }: { text: string }) {
-  if (!text) return null
+function WhyPremieraSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const text = isArabic ? service.whyPremieraAr : service.whyPremieraEn
+  const eyebrow = isArabic ? service.whyPremieraHeadingAr : service.whyPremieraHeadingEn
+  if (!text && !eyebrow) return null
   const paragraphs = text.split('\n\n').filter(Boolean)
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>WHY PREMIERA LIVE</p>
+        {eyebrow && (
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+        )}
         {paragraphs.map((para, i) => (
           <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.65)', lineHeight: 1.8, marginBottom: '1rem' }}>{para}</p>
         ))}
@@ -154,19 +197,22 @@ function WhyPremieraSection({ text }: { text: string }) {
   )
 }
 
-function ComplianceSection({ text }: { text: string }) {
-  if (!text) return null
+function ComplianceSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const text = isArabic ? service.complianceAr : service.complianceEn
+  const eyebrow = isArabic ? service.complianceHeadingAr : service.complianceHeadingEn
+  if (!text && !eyebrow) return null
   return (
     <Section>
       <div style={{ background: 'rgba(201,162,75,0.05)', border: '1px solid rgba(201,162,75,0.15)', borderRadius: '8px', padding: '2rem', maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.15em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>Compliance-First</p>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.15em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>{eyebrow}</p>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.75 }}>{text}</p>
       </div>
     </Section>
   )
 }
 
-function FAQSection({ faqs }: { faqs: { q: string; a: string }[] }) {
+function FAQSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const faqs = isArabic ? service.faqsAr : service.faqsEn
   if (!faqs?.length) return null
   return (
     <Section>
@@ -175,8 +221,8 @@ function FAQSection({ faqs }: { faqs: { q: string; a: string }[] }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {faqs.map((faq, i) => (
             <div key={i}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.9375rem', color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.4 }}>{faq.q}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.55)', lineHeight: 1.75 }}>{faq.a}</p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.4, fontWeight: 600 }}>{faq.q}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.55)', lineHeight: 1.75 }}>{faq.a}</p>
             </div>
           ))}
         </div>
@@ -185,7 +231,7 @@ function FAQSection({ faqs }: { faqs: { q: string; a: string }[] }) {
   )
 }
 
-function RelatedSection({ slugs, locale }: { slugs: string[]; locale: string }) {
+function RelatedSection({ slugs, locale, isArabic }: { slugs: string[]; locale: string; isArabic: boolean }) {
   if (!slugs?.length) return null
   const related = getRelatedServices(slugs)
   if (!related.length) return null
@@ -196,7 +242,7 @@ function RelatedSection({ slugs, locale }: { slugs: string[]; locale: string }) 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
           {related.map((s) => (
             <a key={s.slug} href={`/${locale}/marketing/${s.slug}`} style={{ display: 'inline-block', padding: '0.5rem 1.25rem', background: '#16161B', border: '1px solid rgba(201,162,75,0.2)', borderRadius: '100px', fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.7)', textDecoration: 'none' }}>
-              {s.titleEn}
+              {isArabic ? s.titleAr : s.titleEn}
             </a>
           ))}
         </div>
@@ -207,9 +253,11 @@ function RelatedSection({ slugs, locale }: { slugs: string[]; locale: string }) 
 
 // ─── Packages page sections ──────────────────────────────────────────────────
 
-function PackagesHeroSection({ service }: { service: NonNullable<ReturnType<typeof getMarketingService>> }) {
-  const isArabic = false
-  const heroText = (service as { packagesHeroEn?: string }).packagesHeroEn ?? service.heroEn
+function PackagesHeroSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const heroText = isArabic
+    ? (service as { packagesHeroAr?: string }).packagesHeroAr ?? service.heroAr
+    : (service as { packagesHeroEn?: string }).packagesHeroEn ?? service.heroEn
+  const ctaText = isArabic ? service.ctaAr : service.ctaEn
   return (
     <Section>
       <div style={{ maxWidth: '720px', marginInline: 'auto', textAlign: 'center', paddingBlock: '4rem 2rem' }}>
@@ -224,7 +272,7 @@ function PackagesHeroSection({ service }: { service: NonNullable<ReturnType<type
         </p>
         <div style={{ marginTop: '2rem' }}>
           <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.75rem', background: 'var(--color-gold)', color: '#0A0A0B', fontFamily: 'var(--font-display)', fontSize: '0.8rem', letterSpacing: '0.08em', fontWeight: 700, borderRadius: '100px', textDecoration: 'none' }}>
-            Call to Discuss
+            {ctaText}
           </a>
         </div>
       </div>
@@ -232,14 +280,14 @@ function PackagesHeroSection({ service }: { service: NonNullable<ReturnType<type
   )
 }
 
-function PackagesTiersSection({ tiers }: { tiers: MarketingTier[] }) {
+function PackagesTiersSection({ tiers, isArabic }: { tiers: MarketingTier[]; isArabic: boolean }) {
   if (!tiers?.length) return null
   return (
     <Section>
       <div style={{ maxWidth: '1000px', marginInline: 'auto' }}>
         <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'stretch', flexWrap: 'wrap', justifyContent: 'center' }}>
           {tiers.map((tier, i) => (
-            <TierCard key={tier.name} tier={tier} index={i} />
+            <TierCard key={tier.name} tier={tier} index={i} isArabic={isArabic} />
           ))}
         </div>
       </div>
@@ -247,52 +295,101 @@ function PackagesTiersSection({ tiers }: { tiers: MarketingTier[] }) {
   )
 }
 
-function WebsiteDevSection({ service }: { service: NonNullable<ReturnType<typeof getMarketingService>> }) {
-  if (!service.websiteDevEn) return null
+// website dev items are shaped: { heading?: string; paragraph?: string; subHeading?: string; items?: string[]; subItems?: string[] }
+type WebsiteDevItem = { heading?: string; paragraph?: string; subHeading?: string; items?: string[]; subItems?: string[] }
+
+function WebsiteDevSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const heading = isArabic ? service.websiteDevAr : service.websiteDevEn
+  const rawItems = isArabic ? service.websiteDevItemsAr : service.websiteDevItemsEn
+  if (!heading && !rawItems?.length) return null
+  const items: WebsiteDevItem[] = rawItems ?? []
   return (
     <Section>
       <div style={{ maxWidth: '640px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>WEBSITE DEVELOPMENT</p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.7, marginBottom: '1.25rem' }}>{service.websiteDevEn}</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          {(service.websiteDevItemsEn ?? []).map((item, i) => (
-            <div key={i} style={{ display: 'flex', gap: '0.625rem', alignItems: 'flex-start' }}>
-              <CheckCircle2 size={15} strokeWidth={1.5} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }} />
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.6 }}>{item}</p>
-            </div>
-          ))}
-        </div>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'تطوير المواقع' : 'WEBSITE DEVELOPMENT'}</p>
+
+        {items.map((item, i) => (
+          <div key={i} style={{ marginBottom: '1.25rem' }}>
+            {item.heading && (
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', color: 'var(--color-text)', marginBottom: '0.5rem', fontWeight: 600 }}>{item.heading}</p>
+            )}
+            {item.paragraph && (
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.7, marginBottom: '0.75rem' }}>{item.paragraph}</p>
+            )}
+            {item.items?.length && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem', marginBottom: item.subItems?.length ? '0.5rem' : 0 }}>
+                {item.items.map((t, j) => (
+                  <div key={j} style={{ display: 'flex', gap: '0.625rem', alignItems: 'flex-start' }}>
+                    <CheckCircle2 size={15} strokeWidth={1.5} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }} />
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.6 }}>{t}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {item.subHeading && (
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', color: 'var(--color-text)', marginBottom: '0.5rem', fontWeight: 600, marginTop: '0.75rem' }}>{item.subHeading}</p>
+            )}
+            {item.subItems?.length && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
+                {item.subItems.map((t, j) => (
+                  <div key={j} style={{ display: 'flex', gap: '0.625rem', alignItems: 'flex-start' }}>
+                    <CheckCircle2 size={15} strokeWidth={1.5} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }} />
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.6 }}>{t}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </Section>
   )
 }
 
-function WebsiteCareSection({ service }: { service: NonNullable<ReturnType<typeof getMarketingService>> }) {
-  if (!service.websiteCareEn) return null
+// website care items: { heading?: string; paragraph?: string; items?: string[] }
+type WebsiteCareItem = { heading?: string; paragraph?: string; items?: string[] }
+
+function WebsiteCareSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const heading = isArabic ? service.websiteCareAr : service.websiteCareEn
+  const rawItems = isArabic ? service.websiteCareItemsAr : service.websiteCareItemsEn
+  if (!heading && !rawItems?.length) return null
+  const items: WebsiteCareItem[] = rawItems ?? []
   return (
     <Section>
       <div style={{ maxWidth: '640px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>ONGOING WEBSITE CARE</p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.7, marginBottom: '1.25rem' }}>{service.websiteCareEn}</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          {(service.websiteCareItemsEn ?? []).map((item, i) => (
-            <div key={i} style={{ display: 'flex', gap: '0.625rem', alignItems: 'flex-start' }}>
-              <CheckCircle2 size={15} strokeWidth={1.5} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }} />
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.6 }}>{item}</p>
-            </div>
-          ))}
-        </div>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'العناية المستمرة بالموقع' : 'ONGOING WEBSITE CARE'}</p>
+
+        {items.map((item, i) => (
+          <div key={i} style={{ marginBottom: '1.25rem' }}>
+            {item.heading && (
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', color: 'var(--color-text)', marginBottom: '0.5rem', fontWeight: 600 }}>{item.heading}</p>
+            )}
+            {item.paragraph && (
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.7, marginBottom: '0.75rem' }}>{item.paragraph}</p>
+            )}
+            {item.items?.length && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
+                {item.items.map((t, j) => (
+                  <div key={j} style={{ display: 'flex', gap: '0.625rem', alignItems: 'flex-start' }}>
+                    <CheckCircle2 size={15} strokeWidth={1.5} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }} />
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.6 }}>{t}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </Section>
   )
 }
 
-function ScaleBenefitsSection({ items }: { items: string[] }) {
+function ScaleBenefitsSection({ items, isArabic }: { items: string[]; isArabic: boolean }) {
   if (!items?.length) return null
   return (
     <Section>
       <div style={{ background: 'rgba(201,162,75,0.05)', border: '1px solid rgba(201,162,75,0.15)', borderRadius: '8px', padding: '2rem', maxWidth: '640px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.15em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>Premium Benefits for Scale Clients</p>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.15em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>{isArabic ? 'مزايا عملاء الريادة' : 'Premium Benefits for Scale Clients'}</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
           {items.map((item, i) => (
             <div key={i} style={{ display: 'flex', gap: '0.625rem', alignItems: 'flex-start' }}>
@@ -306,7 +403,8 @@ function ScaleBenefitsSection({ items }: { items: string[] }) {
   )
 }
 
-function PackagesFAQLocalSection({ faqs }: { faqs: { q: string; a: string }[] }) {
+function PackagesFAQLocalSection({ service, isArabic }: { service: NonNullable<ReturnType<typeof getMarketingService>>, isArabic: boolean }) {
+  const faqs = isArabic ? service.packagesFaqsAr : service.packagesFaqsEn
   if (!faqs?.length) return null
   return (
     <Section>
@@ -315,8 +413,8 @@ function PackagesFAQLocalSection({ faqs }: { faqs: { q: string; a: string }[] })
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {faqs.map((faq, i) => (
             <div key={i}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.9375rem', color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.4 }}>{faq.q}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.55)', lineHeight: 1.75 }}>{faq.a}</p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.4, fontWeight: 600 }}>{faq.q}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.55)', lineHeight: 1.75 }}>{faq.a}</p>
             </div>
           ))}
         </div>
@@ -338,6 +436,7 @@ export default async function MarketingSlugPage({ params }: Props) {
   const service = getMarketingService(slug)
   if (!service) notFound()
 
+  const isArabic = locale === 'ar'
   const isPackages = service.slug === 'marketing-packages-saudi'
 
   const serviceSchema = {
@@ -349,7 +448,9 @@ export default async function MarketingSlugPage({ params }: Props) {
     areaServed: { '@type': 'Country', name: 'Saudi Arabia' },
   }
 
-  const faqs = isPackages ? (service.packagesFaqsEn ?? []) : (service.faqsEn ?? [])
+  const faqs = isPackages
+    ? (isArabic ? service.packagesFaqsAr : service.packagesFaqsEn) ?? []
+    : (isArabic ? service.faqsAr : service.faqsEn) ?? []
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -367,25 +468,25 @@ export default async function MarketingSlugPage({ params }: Props) {
 
       {isPackages ? (
         <>
-          <PackagesHeroSection service={service} />
-          <PackagesTiersSection tiers={service.packagesTiers ?? []} />
-          <WebsiteDevSection service={service} />
-          <WebsiteCareSection service={service} />
-          <ScaleBenefitsSection items={service.scaleBenefitsEn ?? []} />
-          <PackagesFAQLocalSection faqs={service.packagesFaqsEn ?? []} />
-          <RelatedSection slugs={service.relatedSlugs} locale={locale} />
+          <PackagesHeroSection service={service} isArabic={isArabic} />
+          <PackagesTiersSection tiers={service.packagesTiers ?? []} isArabic={isArabic} />
+          <WebsiteDevSection service={service} isArabic={isArabic} />
+          <WebsiteCareSection service={service} isArabic={isArabic} />
+          <ScaleBenefitsSection items={isArabic ? (service.scaleBenefitsAr ?? []) : (service.scaleBenefitsEn ?? [])} isArabic={isArabic} />
+          <PackagesFAQLocalSection service={service} isArabic={isArabic} />
+          <RelatedSection slugs={service.relatedSlugs} locale={locale} isArabic={isArabic} />
         </>
       ) : (
         <>
-          <PageHeroSection service={service} />
-          <WhySection text={service.whyEn} />
-          <DeliverablesSection items={service.deliverablesEn} />
-          <ProcessSection steps={service.processStepsEn} />
-          <IndustriesSection text={service.industriesEn} />
-          <WhyPremieraSection text={service.whyPremieraEn} />
-          <ComplianceSection text={service.complianceEn} />
-          <FAQSection faqs={service.faqsEn} />
-          <RelatedSection slugs={service.relatedSlugs} locale={locale} />
+          <PageHeroSection service={service} isArabic={isArabic} />
+          <WhySection service={service} isArabic={isArabic} />
+          <DeliverablesSection service={service} isArabic={isArabic} />
+          <ProcessSection service={service} isArabic={isArabic} />
+          <IndustriesSection service={service} isArabic={isArabic} />
+          <WhyPremieraSection service={service} isArabic={isArabic} />
+          <ComplianceSection service={service} isArabic={isArabic} />
+          <FAQSection service={service} isArabic={isArabic} />
+          <RelatedSection slugs={service.relatedSlugs} locale={locale} isArabic={isArabic} />
         </>
       )}
 
