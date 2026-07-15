@@ -5,7 +5,7 @@ const LABELS = [
   { s: 0.00, e: 0.10, en: "Marketing that makes your brand impossible to ignore.", ar: "نصنع علامات تجارية لا يمكن تجاهلها" },
   { s: 0.10, e: 0.19, en: "Marketing Retainers",                                           ar: "عقود تسويق شهرية" },
   { s: 0.19, e: 0.28, en: "Websites",                                                       ar: "مواقع إلكترونية" },
-  { s: 0.28, e: 0.37, en: "Software & Apps",                                                ar: "برمجيات وتطبيقات" },
+  { s: 0.28, e: 0.37, en: "App Development",                                               ar: "تطوير التطبيقات" },
   { s: 0.37, e: 0.46, en: "Social Media Management",                                       ar: "إدارة وسائل التواصل" },
   { s: 0.46, e: 0.55, en: "Animation & 3D",                                                ar: "أنيميشن وثري دي" },
   { s: 0.55, e: 0.64, en: "Video Production & Photography",                                 ar: "إنتاج الفيديو والتصوير" },

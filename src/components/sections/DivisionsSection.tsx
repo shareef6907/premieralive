@@ -29,6 +29,26 @@ const CAPABILITY_SLUGS = {
   ],
 } as const
 
+// Marketing service links — routes land in PR-M2; will 404 until then
+const MARKETING_SERVICE_LINKS = {
+  en: [
+    { slug: 'social-media-management-saudi',           label: 'Social Media Management' },
+    { slug: 'google-ads-saudi',                          label: 'Google Ads' },
+    { slug: 'facebook-instagram-ads-saudi',             label: 'Facebook & Instagram Ads' },
+    { slug: 'snapchat-tiktok-ads-saudi',               label: 'Snapchat & TikTok Ads' },
+    { slug: 'seo-saudi',                                label: 'SEO' },
+    { slug: 'content-production-saudi',                 label: 'Content Production' },
+  ],
+  ar: [
+    { slug: 'social-media-management-saudi',            label: 'إدارة وسائل التواصل' },
+    { slug: 'google-ads-saudi',                         label: 'إعلانات قوقل' },
+    { slug: 'facebook-instagram-ads-saudi',             label: 'إعلانات فيسبوك وإنستغرام' },
+    { slug: 'snapchat-tiktok-ads-saudi',               label: 'إعلانات سناب وتيك توك' },
+    { slug: 'seo-saudi',                               label: 'تحسين محركات البحث' },
+    { slug: 'content-production-saudi',                 label: 'إنتاج المحتوى' },
+  ],
+} as const
+
 const DIVISIONS = [
   {
     id: 'cinematic',
@@ -50,14 +70,24 @@ const DIVISIONS = [
     capabilitiesAr: ['مواقع الأعمال', 'تطوير التطبيقات', 'صفحات الهبوط', 'أنظمة الحجز', 'منصات الأعمال', 'بوابات العملاء', 'مساعدون أذكياء وأتمتة', 'صيانة المواقع'],
     image: IMAGES.pillarTechnology,
   },
+  {
+    id: 'marketing',
+    nameEn: 'MARKETING SERVICES',
+    nameAr: 'خدمات التسويق',
+    lineEn: 'Growth that compounds, month after month.',
+    lineAr: 'ينمو أثرك شهرًا بعد شهر.',
+    image: IMAGES.pillarAiGrowth,
+  },
 ]
 
 function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
   const locale = useLocale()
   const isArabic = locale === 'ar'
   const [hovered, setHovered] = useState(false)
-  const slugs = CAPABILITY_SLUGS[division.id as keyof typeof CAPABILITY_SLUGS]
+  const slugs = CAPABILITY_SLUGS[division.id as keyof typeof CAPABILITY_SLUGS] ?? []
   const capabilities = isArabic ? division.capabilitiesAr : division.capabilitiesEn
+  const isMarketing = division.id === 'marketing'
+  const marketingLinks = isArabic ? MARKETING_SERVICE_LINKS.ar : MARKETING_SERVICE_LINKS.en
 
   return (
     <div
@@ -127,7 +157,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
         </p>
 
         <ul className="division-capabilities" style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
-          {capabilities.map((cap, i) => {
+          {!isMarketing && capabilities && capabilities.map((cap, i) => {
             const slug = slugs[i]
             if (!slug) return null
             return (
@@ -145,6 +175,20 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
               </li>
             )
           })}
+          {isMarketing && marketingLinks.map((link) => (
+              <li key={link.slug} className="capability-item" style={{
+                borderBottom: '1px solid var(--color-card-border)',
+                paddingBottom: '0.5rem',
+                marginBottom: '0.5rem',
+              }}>
+                <ServiceCardLink
+                  href={`/${locale}/marketing/${link.slug}`}
+                  name={link.label}
+                  description=""
+                  isArabic={isArabic}
+                />
+              </li>
+            ))}
         </ul>
       </div>
     </div>
