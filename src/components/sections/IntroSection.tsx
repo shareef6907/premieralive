@@ -8,13 +8,14 @@ export default function IntroSection() {
   return (
     <Section>
       <p style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--body)',
-        color: 'var(--color-text-dim)',
-        lineHeight: 1.8,
+        fontFamily: 'var(--font-display)',
+        fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+        color: 'rgba(245,244,240,0.75)',
+        lineHeight: 1.4,
         textAlign: 'center',
         maxWidth: '640px',
         marginInline: 'auto',
+        paddingBlock: '2rem',
       }}>
         {isArabic
           ? 'نصنع أفلاماً تبقى في الذاكرة، وتجارب رقمية تنمو بها الأعمال.'

@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/HeroSection'
 import BrandMarqueeSection from '@/components/sections/BrandMarqueeSection'
 import IntroSection from '@/components/sections/IntroSection'
 import DivisionsSection from '@/components/sections/DivisionsSection'
+import GrowthSystemSection from '@/components/sections/GrowthSystemSection'
 import FeaturedProductionsSection from '@/components/sections/FeaturedProductionsSection'
 import WhyBothSection from '@/components/sections/WhyBothSection'
 import ProcessSection from '@/components/sections/ProcessSection'
@@ -24,6 +25,7 @@ export default async function Page({
       <BrandMarqueeSection />
       <IntroSection />
       <DivisionsSection />
+      <GrowthSystemSection />
       <FeaturedProductionsSection />
       <WhyBothSection />
       <ProcessSection />
