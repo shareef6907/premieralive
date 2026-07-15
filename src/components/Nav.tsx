@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
+import { FOOTER_LINKS } from '@/config/navLinks'
 
 export default function Nav() {
   const locale = useLocale()
@@ -15,19 +16,6 @@ export default function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  const navLinks = [
-    { href: `/${locale}/#films`,    en: 'Films',       ar: 'الأفلام' },
-    { href: `/${locale}/digital`,   en: 'Digital',     ar: 'رقمي' },
-    { href: `/${locale}/marketing`, en: 'Marketing',   ar: 'التسويق' },
-    { href: `/${locale}/#process`, en: 'Process',     ar: 'منهجية العمل' },
-    { href: `/${locale}/#contact`, en: 'Contact',     ar: 'تواصل معنا' },
-  ]
-
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP
-  const whatsappUrl = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isArabic ? 'أرغب في حجز جلسة استراتيجية.' : "Hi, I'd like to book a strategy session.")}`
-    : '#'
 
   return (
     <>
@@ -63,31 +51,6 @@ export default function Nav() {
           </span>
         </Link>
 
-        {/* Desktop nav links */}
-        <div
-          className="desktop-nav"
-          style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '0.8rem',
-                letterSpacing: '0.18em',
-                color: 'rgba(245,244,240,0.65)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.65)')}
-            >
-              {isArabic ? link.ar : link.en}
-            </a>
-          ))}
-        </div>
-
         {/* Right side */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           {/* Locale switcher */}
@@ -112,9 +75,7 @@ export default function Nav() {
 
           {/* Gold CTA button */}
           <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/${locale}#contact`}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -135,7 +96,7 @@ export default function Nav() {
             onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 4px 28px rgba(201,162,75,0.5)')}
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 4px 20px rgba(201,162,75,0.3)')}
           >
-            {isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'}
+            {isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'}
           </a>
 
           {/* Hamburger */}
@@ -193,10 +154,10 @@ export default function Nav() {
             gap: '2.5rem',
           }}
         >
-          {navLinks.map((link) => (
+          {FOOTER_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={`/${locale}${link.href}`}
               onClick={() => setMenuOpen(false)}
               style={{
                 fontFamily: 'var(--font-display)',
@@ -210,9 +171,8 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/${locale}#contact`}
+            onClick={() => setMenuOpen(false)}
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: '1rem',
@@ -222,7 +182,7 @@ export default function Nav() {
               marginTop: '1rem',
             }}
           >
-            {isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'}
+            {isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'}
           </a>
         </div>
       )}

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import ContactActions from '@/components/ContactActions'
+import { MARKETING_SLUGS, getServiceLabel } from '@/config/marketingServices'
 
 export const metadata: Metadata = {
   title: 'Marketing Services | Premiera Live',
@@ -128,7 +129,7 @@ export default async function MarketingPage({
   setRequestLocale(urlLocale)
   const isArabic = urlLocale === 'ar'
 
-  const ctaLabel = isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'
+  const ctaLabel = isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'
   const howItWorksLabel = isArabic ? 'كيف نعمل' : 'HOW IT WORKS'
   const capabilitiesLabel = isArabic ? 'ما نقدّمه' : 'CAPABILITIES'
   const plansLabel = isArabic ? 'اختر خطتك' : 'CHOOSE YOUR PLAN'
@@ -395,7 +396,7 @@ export default async function MarketingPage({
                     }}
                   >
                     <Phone size={14} color="#0A0A0B" strokeWidth={2.5} />
-                    {isArabic ? 'اتصل بنا للنقاش' : 'CALL TO DISCUSS'}
+                    {isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'}
                   </a>
                 </div>
               )
@@ -419,6 +420,47 @@ export default async function MarketingPage({
             ? 'تعمل بريميرا لايف وفق معايير المحتوى الخاصة بهيئة الإعلام المرئي والمسموع في المملكة العربية السعودية. نضمن التزام جميع المواد الإبداعية بالأنظمة المعمول بها.'
             : "Premiera Live operates in compliance with Saudi Arabia's advertising and content regulations. All creative materials are reviewed to meet regulatory standards before publishing."}
         </p>
+      </section>
+
+      {/* Our Services — internal linking map */}
+      <section style={{
+        padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem)',
+        maxWidth: '80rem', margin: '0 auto',
+        textAlign: 'center',
+      }}>
+        <p style={{
+          fontFamily: 'var(--font-body)', fontWeight: 500,
+          fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--color-gold)',
+          marginBottom: '2rem',
+        }}>
+          {isArabic ? 'خدماتنا' : 'OUR SERVICES'}
+        </p>
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', gap: '0.75rem',
+          justifyContent: 'center',
+        }}>
+          {MARKETING_SLUGS.map((slug) => (
+            <Link
+              key={slug}
+              href={`/${urlLocale}/marketing/${slug}`}
+              style={{
+                display: 'inline-block',
+                padding: '0.5rem 1.25rem',
+                background: '#16161B',
+                border: '1px solid rgba(201,162,75,0.2)',
+                borderRadius: '100px',
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                color: 'rgba(245,244,240,0.7)',
+                textDecoration: 'none',
+                textTransform: 'capitalize',
+              }}
+            >
+              {getServiceLabel(slug, isArabic)}
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Final CTA */}

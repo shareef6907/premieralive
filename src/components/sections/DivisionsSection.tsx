@@ -38,14 +38,16 @@ const MARKETING_SERVICE_LINKS = {
     { slug: 'snapchat-tiktok-ads-saudi',               label: 'Snapchat & TikTok Ads' },
     { slug: 'seo-saudi',                                label: 'SEO' },
     { slug: 'content-production-saudi',                 label: 'Content Production' },
+    { slug: 'marketing-packages-saudi',                 label: 'Marketing Packages' },
   ],
   ar: [
     { slug: 'social-media-management-saudi',            label: 'إدارة وسائل التواصل' },
     { slug: 'google-ads-saudi',                         label: 'إعلانات قوقل' },
     { slug: 'facebook-instagram-ads-saudi',             label: 'إعلانات فيسبوك وإنستغرام' },
-    { slug: 'snapchat-tiktok-ads-saudi',               label: 'إعلانات سناب وتيك توك' },
+    { slug: 'snapchat-tiktok-ads-saudi',              label: 'إعلانات سناب وتيك توك' },
     { slug: 'seo-saudi',                               label: 'تحسين محركات البحث' },
     { slug: 'content-production-saudi',                 label: 'إنتاج المحتوى' },
+    { slug: 'marketing-packages-saudi',                 label: 'باقات التسويق' },
   ],
 } as const
 

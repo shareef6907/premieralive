@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
+import { FOOTER_LINKS } from '@/config/navLinks'
 
 export default function Footer() {
   const locale = useLocale()
@@ -46,7 +49,36 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Row 2: tagline */}
+      {/* Row 2: Nav links */}
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '1.5rem 2.5rem',
+          marginBottom: '2rem',
+          flexDirection: isArabic ? 'row-reverse' : 'row',
+        }}
+      >
+        {FOOTER_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={`/${locale}${link.href}`}
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--body-sm)',
+              color: 'rgba(245,244,240,0.55)',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+          >
+            {isArabic ? link.ar : link.en}
+          </a>
+        ))}
+      </div>
+
+      {/* Row 3: tagline */}
       <p
         style={{
           fontFamily: 'var(--font-body)',
@@ -61,7 +93,7 @@ export default function Footer() {
           : 'Launching in Saudi Arabia — serving clients across the Gulf.'}
       </p>
 
-      {/* Row 3: copyright + locale switcher */}
+      {/* Row 4: copyright + locale switcher */}
       <div
         style={{
           borderTop: '1px solid var(--card-border)',
