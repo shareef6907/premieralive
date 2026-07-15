@@ -37,7 +37,6 @@ const MARKETING_SERVICE_LINKS = {
     { slug: 'facebook-instagram-ads-saudi',             label: 'Facebook & Instagram Ads' },
     { slug: 'snapchat-tiktok-ads-saudi',               label: 'Snapchat & TikTok Ads' },
     { slug: 'seo-saudi',                                label: 'SEO' },
-    { slug: 'whatsapp-ai-saudi',                       label: 'WhatsApp AI' },
     { slug: 'content-production-saudi',                 label: 'Content Production' },
   ],
   ar: [
@@ -46,7 +45,6 @@ const MARKETING_SERVICE_LINKS = {
     { slug: 'facebook-instagram-ads-saudi',             label: 'إعلانات فيسبوك وإنستغرام' },
     { slug: 'snapchat-tiktok-ads-saudi',               label: 'إعلانات سناب وتيك توك' },
     { slug: 'seo-saudi',                               label: 'تحسين محركات البحث' },
-    { slug: 'whatsapp-ai-saudi',                       label: 'واتساب الذكاء الاصطناعي' },
     { slug: 'content-production-saudi',                 label: 'إنتاج المحتوى' },
   ],
 } as const

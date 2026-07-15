@@ -37,12 +37,6 @@ const HOW_IT_WORKS = [
     descAr: 'نفعّل القنوات المدفوعة والعضوية في وقت واحد — ليوصلك رسالتك إلى الأشخاص المناسبين في الوقت المناسب.',
   },
   {
-    en: 'AI Lead Automation',
-    ar: 'أتمتة العملاء المحتملين بالذكاء الاصطناعي',
-    descEn: 'WhatsApp AI captures, qualifies, and follows up with every lead — automatically, 24/7.',
-    descAr: 'يلتقط مساعد واتساب الذكي كل عميل محتمل ويصنّفه ويتابعه تلقائياً، على مدار الساعة.',
-  },
-  {
     en: 'Analytics & Optimisation',
     ar: 'التحليل والتحسين',
     descEn: 'We track every riyal spent and report on what is actually driving revenue — then adjust weekly.',
@@ -56,7 +50,7 @@ const HOW_IT_WORKS = [
   },
 ]
 
-// Email & SMS removed — 5 capabilities remain
+// Email & SMS removed — 4 capabilities remain
 const CAPABILITIES = [
   {
     en: 'Social Media Management',
@@ -75,12 +69,6 @@ const CAPABILITIES = [
     ar: 'إنتاج المحتوى',
     descEn: 'Cinema-grade film, photography, and design — packaged for every platform your customers use.',
     descAr: 'أفلام وتصوير وتصميم بمستوى سينمائي — مُهيّأ لكل منصة يستخدمها عملاؤك.',
-  },
-  {
-    en: 'WhatsApp AI',
-    ar: 'واتساب الذكاء الاصطناعي',
-    descEn: 'An AI assistant trained on your business that answers, qualifies, and books leads inside WhatsApp.',
-    descAr: 'مساعد ذكي يُدرَّب على أعمالك يجيب ويصنّف ويحجز العملاء المحتملين داخل واتساب.',
   },
   {
     en: 'Analytics & Reporting',
@@ -218,8 +206,8 @@ export default async function MarketingPage({
           maxWidth: '560px', margin: '0 auto 2.5rem',
         }}>
           {isArabic
-            ? 'من إدارة السوشيال ميديا إلى الإعلانات المدفوعة ومساعد واتساب الذكي — نفهم ما يدفع الإيرادات فعلاً.'
-            : 'From social media to performance ads and WhatsApp AI — we focus on what actually drives revenue.'}
+            ? 'من إدارة السوشيال ميديا إلى الإعلانات المدفوعة — نفهم ما يدفع الإيرادات فعلاً.'
+            : 'From social media to performance ads — we focus on what actually drives revenue.'}
         </p>
         <a
           href={whatsappUrl}
