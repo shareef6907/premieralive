@@ -61,6 +61,7 @@ export default function GrowthSystemSection() {
         justifyContent: 'center',
         gap: 0,
         direction: isArabic ? 'rtl' : 'ltr',
+        paddingBlock: '2rem',
       }}>
         {STEPS.map((step, i) => {
           const isLast = i === STEPS.length - 1
@@ -75,17 +76,17 @@ export default function GrowthSystemSection() {
                 background: '#16161B',
                 border: '1px solid rgba(201,162,75,0.2)',
                 borderRadius: '8px',
-                padding: '1.25rem 1rem',
-                minWidth: '130px',
+                padding: '1.5rem',
+                minWidth: '200px',
                 textAlign: 'center',
                 flexShrink: 0,
               }}>
                 {/* Number */}
                 <div style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.15em',
-                  color: 'rgba(201,162,75,0.5)',
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.1em',
+                  color: 'var(--color-gold)',
                   marginBottom: '0.5rem',
                 }}>
                   {String(i + 1).padStart(2, '0')}
@@ -93,7 +94,7 @@ export default function GrowthSystemSection() {
                 {/* Label */}
                 <div style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: '0.875rem',
+                  fontSize: 'clamp(0.9375rem, 1.2vw, 1.125rem)',
                   fontWeight: 600,
                   color: '#C9A24B',
                   lineHeight: 1.3,
@@ -107,10 +108,11 @@ export default function GrowthSystemSection() {
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  paddingInline: '0.375rem',
+                  paddingInline: '0.5rem',
                   color: 'rgba(201,162,75,0.35)',
                   flexShrink: 0,
                   alignSelf: 'center',
+                  transform: 'scale(1.25)',
                 }}
                   className="growth-arrow"
                 >
