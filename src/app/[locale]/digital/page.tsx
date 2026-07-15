@@ -15,44 +15,78 @@ export const metadata: Metadata = {
   },
 }
 
-// 4 platforms we built and operate
+// 10 platforms we built and operate
 // Image keys and description copy come from Shareef in a future PR
 const PLATFORMS = [
   {
-    id: 'film-production',
-    nameEn: 'FilmProductionBahrain.com',
-    nameAr: 'FilmProductionBahrain.com',
+    id: 'film-production-bahrain',
+    name: 'FilmProductionBahrain.com',
     url: 'https://filmproductionbahrain.com',
-    imageKey: 'platform-film-production',   // Shareef supplies
-    descEn: '',                              // Shareef supplies
-    descAr: '',                               // Shareef supplies
+    imageKey: 'platform-film-production-bahrain',
+    description: 'TODO: copy from Shareef',
   },
   {
     id: 'bahrain-nights',
-    nameEn: 'BahrainNights.com',
-    nameAr: 'BahrainNights.com',
+    name: 'BahrainNights.com',
     url: 'https://bahrainnights.com',
-    imageKey: 'platform-bahrain-nights',      // Shareef supplies
-    descEn: '',
-    descAr: '',
+    imageKey: 'platform-bahrain-nights',
+    description: 'TODO: copy from Shareef',
   },
   {
     id: 'events-bahrain',
-    nameEn: 'EventsBahrain.com',
-    nameAr: 'EventsBahrain.com',
+    name: 'EventsBahrain.com',
     url: 'https://eventsbahrain.com',
-    imageKey: 'platform-events-bahrain',      // Shareef supplies
-    descEn: '',
-    descAr: '',
+    imageKey: 'platform-events-bahrain',
+    description: 'TODO: copy from Shareef',
   },
   {
     id: 'student-photos',
-    nameEn: 'StudentPhotos.com',
-    nameAr: 'StudentPhotos.com',
+    name: 'StudentPhotos.com',
     url: 'https://studentphotos.com',
-    imageKey: 'platform-student-photos',     // Shareef supplies
-    descEn: '',
-    descAr: '',
+    imageKey: 'platform-student-photos',
+    description: 'TODO: copy from Shareef',
+  },
+  {
+    id: 'podcast-bahrain',
+    name: 'PodcastBahrain.com',
+    url: 'https://podcastbahrain.com',
+    imageKey: 'platform-podcast-bahrain',
+    description: 'TODO: copy from Shareef',
+  },
+  {
+    id: 'videography-bahrain',
+    name: 'VideographyBahrain.com',
+    url: 'https://videographybahrain.com',
+    imageKey: 'platform-videography-bahrain',
+    description: 'TODO: copy from Shareef',
+  },
+  {
+    id: 'bangalore-life',
+    name: 'BangaloreLife.com',
+    url: 'https://bangalorelife.com',
+    imageKey: 'platform-bangalore-life',
+    description: 'TODO: copy from Shareef',
+  },
+  {
+    id: 'cinematic-web-works',
+    name: 'CinematicWebWorks.com',
+    url: 'https://cinematicwebworks.com',
+    imageKey: 'platform-cinematic-web-works',
+    description: 'TODO: copy from Shareef',
+  },
+  {
+    id: 'thursday-football',
+    name: 'ThursdayFootball.com',
+    url: 'https://thursdayfootball.com',
+    imageKey: 'platform-thursday-football',
+    description: 'TODO: copy from Shareef',
+  },
+  {
+    id: 'property-coorg',
+    name: 'PropertyCoorg.com',
+    url: 'https://propertycoorg.com',
+    imageKey: 'platform-property-coorg',
+    description: 'TODO: copy from Shareef',
   },
 ]
 
@@ -110,7 +144,7 @@ export default async function DigitalPage({
           color: 'var(--color-text)', lineHeight: 1.0,
           letterSpacing: '0.01em', marginBottom: '1.5rem',
         }}>
-          {isArabic ? 'منصات نبنيها ونشغّلها' : 'PLATFORMS WE BUILD AND RUN'}
+          {isArabic ? 'من المنصات التي بنيناها' : 'Some of the Platforms we Built'}
         </h1>
         <p style={{
           fontFamily: 'var(--font-body)', fontSize: 'var(--body)',
@@ -138,7 +172,6 @@ export default async function DigitalPage({
               key={platform.id}
               href={platform.url}
               imageSlot={
-                // Placeholder — Shareef supplies actual image per platform
                 <span style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 'var(--body-sm)',
@@ -148,8 +181,8 @@ export default async function DigitalPage({
                   IMAGE: {platform.imageKey}
                 </span>
               }
-              name={isArabic ? platform.nameAr : platform.nameEn}
-              description={(isArabic ? platform.descAr : platform.descEn) || undefined}
+              name={platform.name}
+              description={platform.description}
               linkLabel={isArabic ? 'زيارة المنصة ←' : 'Visit Platform →'}
               isArabic={isArabic}
             />
