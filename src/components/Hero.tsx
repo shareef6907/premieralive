@@ -11,7 +11,7 @@ const POSTER_SRC = `${MEDIA_URL}/premiera-poster.jpg`
 const SERVICE_LABELS = [
   { en: 'Marketing Retainers', ar: 'حسابات التسويق' },
   { en: 'Websites', ar: 'المواقع الإلكترونية' },
-  { en: 'Software & Apps', ar: 'البرمجيات والتطبيقات' },
+  { en: 'App Development', ar: 'تطوير التطبيقات' },
   { en: 'Social Media', ar: 'إدارة السوشيال ميديا' },
   { en: 'Animation & 3D', ar: 'الأنيميشن والتصميم ثلاثي الأبعاد' },
   { en: 'Video Production', ar: 'إنتاج الفيديو والتصوير' },
