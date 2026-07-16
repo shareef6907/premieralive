@@ -272,7 +272,7 @@ export default function FeaturedProductionsSection() {
       </Section>
 
       {/* Shorts strip */}
-      <section style={{ background: 'var(--color-bg-elevated)', paddingBlock: 'clamp(4rem, 8vw, 7rem)' }}>
+      <section style={{ background: 'var(--color-bg-elevated)' }}>
         <div style={{ maxWidth: 'var(--container)', marginInline: 'auto', paddingInline: 'clamp(1.25rem, 5vw, 4rem)' }}>
           <p style={{
             fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: 'var(--eyebrow)',

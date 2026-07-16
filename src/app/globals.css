@@ -198,3 +198,8 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Part 1 — Step body ::first-letter uppercase (EN only, AR excluded via :lang) */
+.step-body-text:lang(en)::first-letter {
+  text-transform: uppercase;
+}

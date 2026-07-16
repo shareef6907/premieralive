@@ -146,18 +146,6 @@ function GrowthCard({
     <div
       className="growth-card-animate"
       data-index={index}
-      style={{
-        background: '#16161B',
-        border: '1px solid rgba(201,162,75,0.2)',
-        borderRadius: '12px',
-        padding: '2rem',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '1rem',
-        opacity: 0,
-        transform: 'translateY(20px)',
-        transition: `opacity 0.6s ease-out ${index * 100}ms, transform 0.6s ease-out ${index * 100}ms`,
-      }}
       ref={(el) => {
         if (!el) return
         const observer = new IntersectionObserver(
@@ -170,9 +158,21 @@ function GrowthCard({
               }
             })
           },
-          { threshold: 0.15 }
+          { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
         )
         observer.observe(el)
+      }}
+      style={{
+        background: '#16161B',
+        border: '1px solid rgba(201,162,75,0.2)',
+        borderRadius: '12px',
+        padding: '2rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+        opacity: 0,
+        transform: 'translateY(24px)',
+        transition: `opacity 800ms cubic-bezier(0.22,1,0.36,1) ${index * 150}ms, transform 800ms cubic-bezier(0.22,1,0.36,1) ${index * 150}ms`,
       }}
     >
       {/* Number + Icon row */}

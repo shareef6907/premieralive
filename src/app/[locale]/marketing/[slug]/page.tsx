@@ -151,8 +151,8 @@ function ProcessSection({ service, isArabic }: { service: NonNullable<ReturnType
                 {i + 1}
               </div>
               <div>
-                <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.875rem', letterSpacing: '0.08em', color: 'var(--color-text)', marginBottom: '0.25rem', textTransform: 'uppercase' }}>{step.label}</p>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.55)', lineHeight: 1.65 }}>{step.text}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', fontWeight: 600, color: 'var(--color-text)', marginBottom: '0.25rem' }}>{step.label}</p>
+                <p className="step-body-text" style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.7 }}>{step.text}</p>
               </div>
             </div>
           ))}
