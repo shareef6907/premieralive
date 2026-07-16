@@ -4,10 +4,15 @@ import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { Mail, Phone, MessageCircle } from 'lucide-react'
-import { FOOTER_LINKS } from '@/config/navLinks'
-import { MARKETING_SLUGS } from '@/config/marketingServices'
+import { SERVICES } from '@/config/services'
+import { MARKETING_SLUGS, getServiceLabel } from '@/config/marketingServices'
 
-// Short labels for footer marketing links (strip " in Saudi Arabia" suffix)
+// Cinematic services (first 8) — in display order
+const CINEMATIC_SERVICES = SERVICES.slice(0, 8)
+
+// Digital services (remaining 8) — in display order
+const DIGITAL_SERVICES = SERVICES.slice(8)
+
 const MARKETING_SHORT_LABELS_EN: Record<string, string> = {
   'social-media-management-saudi': 'Social Media Management',
   'google-ads-saudi': 'Google Ads',
@@ -50,8 +55,6 @@ export default function Footer() {
     isArabic ? 'مرحباً، أريد التواصل مع Premiera Live' : "Hi, I'd like to get in touch with Premiera Live"
   )}`
 
-  const colDir = isArabic ? 'column-reverse' : 'column'
-
   return (
     <footer
       style={{
@@ -61,6 +64,36 @@ export default function Footer() {
         direction: isArabic ? 'rtl' : 'ltr',
       }}
     >
+      {/* ── Logo row ── */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem' }}>
+        <div
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: '50%',
+            border: '1px solid var(--gold)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1rem',
+              color: 'var(--gold)',
+              lineHeight: 1,
+            }}
+          >
+            P
+          </span>
+        </div>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', letterSpacing: '0.25em', color: 'var(--gold)' }}>
+          PREMIERA LIVE
+        </div>
+      </div>
+
       {/* ── 4-column grid ── */}
       <div
         style={{
@@ -71,56 +104,11 @@ export default function Footer() {
         }}
         className="footer-grid"
       >
-        {/* Col 1 — Brand */}
+        {/* Col 1 — Filming */}
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <div
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: '50%',
-                border: '1px solid var(--gold)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '1rem',
-                  color: 'var(--gold)',
-                  lineHeight: 1,
-                }}
-              >
-                P
-              </span>
-            </div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', letterSpacing: '0.25em', color: 'var(--gold)' }}>
-              PREMIERA LIVE
-            </div>
-          </div>
           <p
             style={{
               fontFamily: 'var(--font-body)',
-              fontSize: 'var(--body-sm)',
-              color: 'rgba(245,244,240,0.55)',
-              lineHeight: 1.7,
-              margin: 0,
-            }}
-          >
-            {isArabic
-              ? 'نطلق في المملكة العربية السعودية — ونخدم عملاء في أنحاء الخليج.'
-              : 'Launching in Saudi Arabia — serving clients across the Gulf.'}
-          </p>
-        </div>
-
-        {/* Col 2 — Company */}
-        <div>
-          <p
-            style={{
-              fontFamily: 'var(--eyebrow)',
               fontSize: 'var(--eyebrow)',
               color: 'var(--color-gold)',
               textTransform: 'uppercase',
@@ -128,25 +116,62 @@ export default function Footer() {
               marginBottom: '1rem',
             }}
           >
-            {isArabic ? 'الشركة' : 'Company'}
+            {isArabic ? 'الإنتاج السينمائي' : 'Filming'}
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            {FOOTER_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={`/${locale}${link.href}`}
+            {CINEMATIC_SERVICES.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/${locale}/services/${s.slug}`}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 'var(--body-sm)',
                   color: 'rgba(245,244,240,0.55)',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
+                  lineHeight: 1.6,
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
               >
-                {isArabic ? link.ar : link.en}
-              </a>
+                {isArabic ? s.nameAr.replace(' في السعودية', '') : s.nameEn.replace(' in Saudi Arabia', '')}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Col 2 — Digital */}
+        <div>
+          <p
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--eyebrow)',
+              color: 'var(--color-gold)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.2em',
+              marginBottom: '1rem',
+            }}
+          >
+            {isArabic ? 'التجارب الرقمية' : 'Digital'}
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {DIGITAL_SERVICES.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/${locale}/services/${s.slug}`}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'var(--body-sm)',
+                  color: 'rgba(245,244,240,0.55)',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s',
+                  lineHeight: 1.6,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+              >
+                {isArabic ? s.nameAr.replace(' في السعودية', '') : s.nameEn.replace(' in Saudi Arabia', '')}
+              </Link>
             ))}
           </div>
         </div>
@@ -155,7 +180,7 @@ export default function Footer() {
         <div>
           <p
             style={{
-              fontFamily: 'var(--eyebrow)',
+              fontFamily: 'var(--font-body)',
               fontSize: 'var(--eyebrow)',
               color: 'var(--color-gold)',
               textTransform: 'uppercase',
@@ -167,7 +192,7 @@ export default function Footer() {
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {(isArabic ? marketingLinksAr : marketingLinksEn).map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 style={{
@@ -176,12 +201,13 @@ export default function Footer() {
                   color: 'rgba(245,244,240,0.55)',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
+                  lineHeight: 1.6,
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -190,7 +216,7 @@ export default function Footer() {
         <div>
           <p
             style={{
-              fontFamily: 'var(--eyebrow)',
+              fontFamily: 'var(--font-body)',
               fontSize: 'var(--eyebrow)',
               color: 'var(--color-gold)',
               textTransform: 'uppercase',
@@ -268,17 +294,16 @@ export default function Footer() {
           paddingTop: '1.25rem',
         }}
       >
+        {/* Company info — two lines */}
         <p
           style={{
             fontFamily: 'var(--font-body)',
             fontSize: 'var(--body-sm)',
             color: 'var(--text-faint)',
-            marginBottom: '0.5rem',
+            marginBottom: '0.25rem',
           }}
         >
-          {isArabic
-            ? 'شركة بريمييرا لايف | سجل تجاري 7054807941'
-            : 'Premiera Live Company | CR 7054807941'}
+          {isArabic ? 'شركة بريمييرا لايف' : 'Premiera Live Company'} | {isArabic ? 'سجل تجاري' : 'CR'}: 7054807941
         </p>
         <p
           style={{
@@ -286,12 +311,15 @@ export default function Footer() {
             fontSize: 'var(--body-sm)',
             color: 'var(--text-faint)',
             marginBottom: '1rem',
+            lineHeight: 1.6,
           }}
         >
           {isArabic
-            ? 'كورنيش 5، حي الكورنيش، ص.ب. 34414، الخبر، المملكة العربية السعودية'
-            : 'Corniche 5, Al Kurniash Dist, PO Box 34414, Al Khobar, Kingdom of Saudi Arabia'}
+            ? 'سبيسز أجدان ووك، كورنيش 5، ص.ب. 34414، الخبر، المملكة العربية السعودية'
+            : 'Spaces Ajdan Walk, Corniche 5, PO Box 34414, Al Khobar, Kingdom of Saudi Arabia'}
         </p>
+
+        {/* Copyright + language toggle */}
         <div
           style={{
             display: 'flex',

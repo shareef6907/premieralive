@@ -13,6 +13,7 @@ export type ServiceSlug =
   | 'documentary-production-saudi-arabia'
   | 'event-coverage-saudi-arabia'
   | 'multi-cam-live-streaming-saudi-arabia'
+  | 'podcast-filming-saudi-arabia'
   | 'business-website-development-saudi-arabia'
   | 'app-development-saudi-arabia'
   | 'landing-page-design-saudi-arabia'
@@ -388,6 +389,72 @@ export const SERVICES: ServicePage[] = [
     ctaMessageEn: 'I\'d like to discuss live streaming for an upcoming event.',
     ctaMessageAr: 'أرغب في مناقشة بث مباشر لفعالية قادمة.',
     relatedSlugs: ['event-coverage-saudi-arabia', 'corporate-video-production-saudi-arabia', 'commercial-film-production-saudi-arabia'],
+  },
+
+  // ── DIGITAL EXPERIENCES ───────────────────────────────────────────────────
+  {
+    slug: 'podcast-filming-saudi-arabia',
+    shortName: 'podcast',
+    nameEn: 'Podcast Filming in Saudi Arabia',
+    nameAr: 'تصوير البودكاست في السعودية',
+    heroImage: SB + 'podcast.jpg',
+    valuePropEn: 'We film podcasts at your location — up to 4 Sony 4K cameras, studio audio, lighting, and live switching. Session on a hard drive same day, edited episode in 2–3 days.',
+    valuePropAr: 'نصوّر البودكاست في موقعك — حتى 4 كاميرات Sony بدقة 4K، وصوت استوديو، وإضاءة، وتبديل مباشر. نسلّم الجلسة على قرص صلب في اليوم نفسه، والحلقة المونتجة خلال 2 إلى 3 أيام.',
+    whatWeDeliverEn: [
+      'Up to 4 Sony 4K cameras — A7S III, FX3, or FX6, matched and graded together.',
+      '4 podcast microphones — one per speaker, recorded on separate channels.',
+      'Studio lighting and backlights — your space lit properly, not by the ceiling.',
+      'Video mixer, monitor, and camera switcher — cuts made live as you record.',
+      'Live recording — the session is switched and captured as it happens.',
+      'Same-day handover — the complete session on a hard drive before we pack up.',
+      'Edited episode in 2–3 days — cut, graded, and sound-mixed.',
+    ],
+    whatWeDeliverAr: [
+      'نصوّر بحتى 4 كاميرات Sony بدقة 4K — A7S III أو FX3 أو FX6، متطابقة ومصححة الألوان معًا.',
+      'نسجّل بأربعة ميكروفونات بودكاست — ميكروفون لكل متحدث، على قنوات منفصلة.',
+      'نضيء المكان بإضاءة استوديو وإضاءة خلفية — لا بإضاءة السقف.',
+      'نشغّل وحدة مزج ومونيتور ومبدّل كاميرات — ننفّذ القطع مباشرة أثناء التسجيل.',
+      'نسجّل مباشرة — تُبدّل الجلسة وتُلتقط لحظة حدوثها.',
+      'نسلّم في اليوم نفسه — الجلسة كاملة على قرص صلب قبل أن نحزم المعدات.',
+      'نسلّم الحلقة المونتجة خلال 2 إلى 3 أيام — مونتاج وتصحيح ألوان ومزج صوت.',
+    ],
+    howWeWorkEn: [
+      { step: 'Plan the session', desc: 'Episode format, number of speakers, and how you want it to look.' },
+      { step: 'Set up', desc: 'The crew arrives early and turns your space into a studio.' },
+      { step: 'Record', desc: 'Cameras switched live, audio captured on separate channels.' },
+      { step: 'Same-day handover', desc: 'You get the complete session on a hard drive before we leave.' },
+      { step: 'Edit and deliver', desc: 'The finished episode lands within 2–3 days.' },
+    ],
+    howWeWorkAr: [
+      { step: 'نخطط الجلسة', desc: 'نحدد صيغة الحلقة وعدد المتحدثين والشكل الذي تريده.' },
+      { step: 'نجهّز المكان', desc: 'يصل الفريق مبكرًا ويحوّل مساحتك إلى استوديو.' },
+      { step: 'نسجّل', desc: 'نبدّل الكاميرات مباشرة ونلتقط الصوت على قنوات منفصلة.' },
+      { step: 'نسلّم في اليوم نفسه', desc: 'تستلم الجلسة كاملة على قرص صلب قبل أن نغادر.' },
+      { step: 'نمنتج ونسلّم', desc: 'تصلك الحلقة النهائية خلال 2 إلى 3 أيام.' },
+    ],
+    whereWeWorkEn: 'We film podcasts across Saudi Arabia — for hosts and brands in Riyadh, Jeddah, Khobar, Dammam, and Jubail — and serve clients throughout the Gulf.',
+    whereWeWorkAr: 'نصوّر البودكاست في أرجاء السعودية — للمضيفين والعلامات في الرياض وجدة والخبر والدمام والجبيل — ونخدم العملاء في مختلف دول الخليج.',
+    faqEn: [
+      { q: 'Where do you film?', a: 'At your location, always. We bring every piece of equipment and set your space up as a studio for the day.' },
+      { q: 'How many people can you record?', a: 'Up to 4 speakers with our standard setup — 4 cameras, 4 microphones.' },
+      { q: 'What cameras do you use?', a: 'Sony 4K — A7S III, FX3, or FX6, matched so the cut looks like one camera package.' },
+      { q: 'Do we get the raw files?', a: 'Yes. The complete session goes onto a hard drive before we pack up.' },
+      { q: 'How long does the edit take?', a: '2–3 days from the shoot.' },
+      { q: 'Do we need our own studio?', a: 'No. That is the point — we bring the lighting, the backdrop lighting, and the audio, and we build the studio in your space.' },
+      { q: 'Is the audio recorded separately?', a: 'Yes. Each speaker gets their own microphone on its own channel.' },
+    ],
+    faqAr: [
+      { q: 'أين تصوّرون؟', a: 'في موقعك دائمًا. نحضر كل المعدات ونجهّز مكانك كاستوديو ليوم كامل.' },
+      { q: 'كم شخصًا تستطيعون تسجيله؟', a: 'حتى 4 متحدثين بتجهيزنا القياسي — 4 كاميرات و4 ميكروفونات.' },
+      { q: 'ما الكاميرات التي تستخدمونها؟', a: 'كاميرات Sony بدقة 4K — A7S III أو FX3 أو FX6، متطابقة ليبدو المونتاج كأنه من حزمة كاميرات واحدة.' },
+      { q: 'هل نستلم الملفات الخام؟', a: 'نعم. تنتقل الجلسة كاملة إلى قرص صلب قبل أن نحزم المعدات.' },
+      { q: 'كم يستغرق المونتاج؟', a: 'من 2 إلى 3 أيام بعد التصوير.' },
+      { q: 'هل نحتاج إلى استوديو خاص بنا؟', a: 'لا. وهذا جوهر الفكرة — نحضر الإضاءة والإضاءة الخلفية والصوت، ونبني الاستوديو في مكانك.' },
+      { q: 'هل يُسجَّل الصوت منفصلًا؟', a: 'نعم. يحصل كل متحدث على ميكروفون خاص على قناة مستقلة.' },
+    ],
+    ctaMessageEn: 'I\'d like to discuss podcast filming for our show.',
+    ctaMessageAr: 'أرغب في مناقشة تصوير البودكاست لبرنامجنا.',
+    relatedSlugs: ['multi-cam-live-streaming-saudi-arabia', 'event-coverage-saudi-arabia', 'corporate-video-production-saudi-arabia', 'commercial-film-production-saudi-arabia'],
   },
 
   // ── DIGITAL EXPERIENCES ───────────────────────────────────────────────────
