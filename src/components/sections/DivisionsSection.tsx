@@ -59,8 +59,8 @@ const DIVISIONS = [
     nameAr: 'الإنتاج السينمائي',
     lineEn: 'Films built to be remembered.',
     lineAr: 'ننتج أفلاماً تبقى في الذاكرة.',
-    capabilitiesEn: ['Commercial Films', 'Corporate Films', 'Professional Photography', 'Animation & CGI', 'Documentary', 'Event Coverage', 'Multi-Cam Live Streaming'],
-    capabilitiesAr: ['أفلام إعلانية', 'أفلام مؤسسية', 'تصوير احترافي', 'رسوم متحركة ومؤثرات', 'أفلام وثائقية', 'تغطية الفعاليات', 'بث مباشر متعدد الكاميرات'],
+    capabilitiesEn: ['Commercial Films', 'Corporate Films', 'Professional Photography', 'Animation & CGI', 'Documentary', 'Event Coverage', 'Multi-Cam Live Streaming', 'Podcast Filming'],
+    capabilitiesAr: ['أفلام إعلانية', 'أفلام مؤسسية', 'تصوير احترافي', 'رسوم متحركة ومؤثرات', 'أفلام وثائقية', 'تغطية الفعاليات', 'بث مباشر متعدد الكاميرات', 'تصوير البودكاست'],
     image: IMAGES.pillarContent,
   },
   {

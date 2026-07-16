@@ -70,9 +70,10 @@ export default function Footer() {
         <Image
           src={`${process.env.NEXT_PUBLIC_MEDIA_BASE || 'https://premiera-live-media.s3.us-east-1.amazonaws.com'}/premiera-live-white.png`}
           alt="Premiera Live"
-          width={160}
-          height={40}
-          style={{ height: '40px', width: 'auto' }}
+          width={180}
+          height={120}
+          className="footer-logo-img"
+          style={{ height: '120px', width: 'auto' }}
         />
       </div>
 
@@ -350,6 +351,9 @@ export default function Footer() {
           .footer-grid {
             grid-template-columns: 1fr;
           }
+        }
+        @media (max-width: 767px) {
+          .footer-logo-img { height: 96px !important; }
         }
       `}</style>
     </footer>
