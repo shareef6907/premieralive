@@ -15,7 +15,6 @@ export default function IntroSection() {
         textAlign: 'center',
         maxWidth: '640px',
         marginInline: 'auto',
-        paddingBlock: '2rem',
       }}>
         {isArabic
           ? 'نصنع أفلاماً تبقى في الذاكرة، وتجارب رقمية تنمو بها الأعمال.'

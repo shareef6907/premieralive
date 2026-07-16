@@ -4,6 +4,7 @@ const BRANDS = [
   "BBC Studios", "McLaren F1", "Four Seasons", "HSBC",
   "Aston Martin", "Audi", "ALDO", "Calvin Klein",
   "Tommy Hilfiger", "Puma", "LC Waikiki", "Bahrain International Circuit",
+  "Gulf Air", "DXB Live", "Invest Bank, Sharjah", "Bahrain Development Bank",
 ];
 
 export default function Marquee() {
