@@ -21,9 +21,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getMarketingService(slug)
   if (!service) return {}
   const isArabic = locale === 'ar'
+  const domain = 'https://www.premieralive.com'
+  const canonical = `${domain}/${locale}/marketing/${slug}`
   return {
     title: isArabic ? service.metaTitleAr : service.metaTitleEn,
     description: isArabic ? service.metaDescAr : service.metaDescEn,
+    alternates: {
+      canonical,
+      languages: {
+        'en-SA': `${domain}/en/marketing/${slug}`,
+        'ar-SA': `${domain}/ar/marketing/${slug}`,
+        'x-default': `${domain}/en/marketing/${slug}`,
+      },
+    },
   }
 }
 
