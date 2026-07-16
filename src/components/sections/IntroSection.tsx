@@ -78,7 +78,7 @@ export default function IntroSection() {
             ref={(el) => { refs.current[i] = el }}
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1.1rem, 2.2vw, 1.6rem)',
+              fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
               fontWeight: 700,
               color: '#FFFFFF',
               lineHeight: 1.5,
