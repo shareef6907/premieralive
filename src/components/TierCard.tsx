@@ -40,7 +40,7 @@ export default function TierCard({ tier, index, isArabic }: { tier: MarketingTie
       minWidth: '240px',
       maxWidth: '340px',
     }}>
-      {/* Tier name: FOUNDATION / GROWTH / SCALE */}
+      {/* Tier name: الأساس / النمو / الريادة */}
       <div style={{
         fontFamily: 'var(--font-display)',
         fontSize: 'clamp(1.5rem, 2vw, 1.875rem)',
@@ -49,7 +49,7 @@ export default function TierCard({ tier, index, isArabic }: { tier: MarketingTie
         color: c.accent,
         marginBottom: '0.75rem',
       }}>
-        {tier.name}
+        {isArabic ? tier.nameAr : tier.name}
       </div>
 
       {/* Tagline */}

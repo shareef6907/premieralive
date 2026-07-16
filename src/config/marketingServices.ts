@@ -1,5 +1,6 @@
 export interface MarketingTier {
   name: string
+  nameAr: string
   taglineEn: string
   taglineAr: string
   builtForEn: string
@@ -630,6 +631,7 @@ const SERVICES: MarketingService[] = [
     packagesTiers: [
       {
         name: 'FOUNDATION',
+        nameAr: 'الأساس',
         taglineEn: 'Establish your digital presence.',
         taglineAr: 'نؤسس حضورك الرقمي.',
         builtForEn: 'Startups · Restaurants · Cafés · Clinics · Small businesses · Retail stores',
@@ -655,6 +657,7 @@ const SERVICES: MarketingService[] = [
       },
       {
         name: 'GROWTH',
+        nameAr: 'النمو',
         taglineEn: 'Accelerate leads and sales.',
         taglineAr: 'نضاعف العملاء المحتملين والمبيعات.',
         builtForEn: 'SMEs · Manufacturers · Construction · Healthcare · Corporate companies · Hotels',
@@ -680,6 +683,7 @@ const SERVICES: MarketingService[] = [
       },
       {
         name: 'SCALE',
+        nameAr: 'الريادة',
         taglineEn: 'Your dedicated growth partner.',
         taglineAr: 'نكون شريك نموك المخصص.',
         builtForEn: 'Large companies · Enterprise · Government · Luxury brands · Multi-location businesses',

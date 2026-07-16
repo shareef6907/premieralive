@@ -104,10 +104,10 @@ function WhySection({ service, isArabic }: { service: NonNullable<ReturnType<typ
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
         {eyebrow && (
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
         )}
         {paragraphs.map((para, i) => (
-          <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.65)', lineHeight: 1.8, marginBottom: '1rem' }}>{para}</p>
+          <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.7, marginBottom: '1rem' }}>{para}</p>
         ))}
       </div>
     </Section>
@@ -122,13 +122,13 @@ function DeliverablesSection({ service, isArabic }: { service: NonNullable<Retur
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
         {eyebrow && (
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
         )}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
           {items.map((item, i) => (
             <div key={i} style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start' }}>
               <CheckCircle2 size={18} strokeWidth={1.5} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '3px' }} />
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.7)', lineHeight: 1.65 }}>{item}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.6 }}>{item}</p>
             </div>
           ))}
         </div>
@@ -170,9 +170,9 @@ function IndustriesSection({ service, isArabic }: { service: NonNullable<ReturnT
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
         {eyebrow && (
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
         )}
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.8 }}>{text}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.7 }}>{text}</p>
       </div>
     </Section>
   )
@@ -187,10 +187,10 @@ function WhyPremieraSection({ service, isArabic }: { service: NonNullable<Return
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
         {eyebrow && (
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{eyebrow}</p>
         )}
         {paragraphs.map((para, i) => (
-          <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.65)', lineHeight: 1.8, marginBottom: '1rem' }}>{para}</p>
+          <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.7, marginBottom: '1rem' }}>{para}</p>
         ))}
       </div>
     </Section>
@@ -203,9 +203,9 @@ function ComplianceSection({ service, isArabic }: { service: NonNullable<ReturnT
   if (!text && !eyebrow) return null
   return (
     <Section>
-      <div style={{ background: 'rgba(201,162,75,0.05)', border: '1px solid rgba(201,162,75,0.15)', borderRadius: '8px', padding: '2rem', maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.15em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>{eyebrow}</p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.6)', lineHeight: 1.75 }}>{text}</p>
+      <div style={{ background: 'rgba(201,162,75,0.05)', border: '1px solid rgba(201,162,75,0.15)', borderLeft: '3px solid var(--color-gold)', borderRadius: '8px', padding: '2rem', maxWidth: '680px', marginInline: 'auto' }}>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--eyebrow)', letterSpacing: '0.15em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>{eyebrow}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.8 }}>{text}</p>
       </div>
     </Section>
   )
@@ -217,12 +217,12 @@ function FAQSection({ service, isArabic }: { service: NonNullable<ReturnType<typ
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem', textAlign: 'center' }}>FAQ</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '3rem', textAlign: 'center' }}>FAQ</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {faqs.map((faq, i) => (
             <div key={i}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.4, fontWeight: 600 }}>{faq.q}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.55)', lineHeight: 1.75 }}>{faq.a}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', fontWeight: 600, color: 'var(--color-text)', marginBottom: '0.75rem' }}>{faq.q}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'var(--color-text-dim)', lineHeight: 1.7 }}>{faq.a}</p>
             </div>
           ))}
         </div>
@@ -260,14 +260,14 @@ function PackagesHeroSection({ service, isArabic }: { service: NonNullable<Retur
   const ctaText = isArabic ? service.ctaAr : service.ctaEn
   return (
     <Section>
-      <div style={{ maxWidth: '720px', marginInline: 'auto', textAlign: 'center', paddingBlock: '4rem 2rem' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '1rem' }}>
+      <div style={{ maxWidth: '80rem', marginInline: 'auto', textAlign: 'center', paddingBlock: '4rem 2rem' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '1rem' }}>
           PREMIERA LIVE
         </p>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: 'var(--color-text)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: 'var(--color-text)', lineHeight: 1.0, marginBottom: '1.5rem' }}>
           {isArabic ? service.titleAr : service.titleEn}
         </h1>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.95rem, 1.5vw, 1.125rem)', color: 'rgba(245,244,240,0.65)', lineHeight: 1.7, maxWidth: '640px', marginInline: 'auto' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.7, maxWidth: '600px', marginInline: 'auto' }}>
           {heroText}
         </p>
         <div style={{ marginTop: '2rem' }}>
@@ -409,12 +409,12 @@ function PackagesFAQLocalSection({ service, isArabic }: { service: NonNullable<R
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem', textAlign: 'center' }}>FAQ</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '3rem', textAlign: 'center' }}>FAQ</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {faqs.map((faq, i) => (
             <div key={i}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.4, fontWeight: 600 }}>{faq.q}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'rgba(245,244,240,0.55)', lineHeight: 1.75 }}>{faq.a}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', fontWeight: 600, color: 'var(--color-text)', marginBottom: '0.75rem' }}>{faq.q}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'var(--color-text-dim)', lineHeight: 1.7 }}>{faq.a}</p>
             </div>
           ))}
         </div>
