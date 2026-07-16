@@ -13,6 +13,7 @@ type AspectRatio = '16/9' | '9/16'
 interface VideoItem {
   src: string
   title: string
+  titleAr?: string
   posterTime?: number
   poster?: string
 }
@@ -42,20 +43,23 @@ function SliderCard({
   aspectRatio,
   cardWidth,
   isTouch,
+  isArabic,
 }: {
   item: VideoItem
   aspectRatio: AspectRatio
   cardWidth: string
   isTouch: boolean
+  isArabic: boolean
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [errored, setErrored] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)   // all start muted
+  const [isMuted, setIsMuted] = useState(true)
   const [isVisible, setIsVisible] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const ioRef = useRef<IntersectionObserver | null>(null)
-  const isCurrentlyPlaying = useRef(false)
+  const clickStartedRef = useRef(false)
 
-  // IO: set src + autoplay when card enters viewport (mobile)
+  // IO: set src + autoplay when card enters viewport (mobile only)
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
@@ -64,7 +68,7 @@ function SliderCard({
       (entries) => {
         entries.forEach((entry) => {
           setIsVisible(entry.isIntersecting)
-          if (entry.isIntersecting && isTouch) {
+          if (entry.isIntersecting && isTouch && !clickStartedRef.current) {
             video.src = item.src
             video.load()
             video.play().catch(() => {})
@@ -90,7 +94,7 @@ function SliderCard({
     }
   }, [isVisible, isTouch, item.posterTime])
 
-  // Per-slide unmute toggle — handles both desktop and touch
+  // Per-slide toggle — click-to-play on first interaction, unmute on subsequent
   function toggleMute(e: React.MouseEvent) {
     e.stopPropagation()
     const video = videoRef.current
@@ -102,23 +106,37 @@ function SliderCard({
       setIsMuted(true)
       video.pause()
       video.currentTime = item.posterTime ?? 1.0
-      isCurrentlyPlaying.current = false
+      setIsPlaying(false)
       if (_globalUnmutedSrc === item.src) _globalUnmutedSrc = null
     } else {
-      // Unmute this card with global exclusivity
+      // Unmute with global exclusivity
       if (_globalUnmutedSrc && _globalUnmutedSrc !== item.src) {
         _globalUnmutedSrc = null
         notifyGlobalMute()
       }
+      // First click: load video from poster, then play
+      if (!clickStartedRef.current && !isTouch) {
+        video.src = item.src
+        video.load()
+        clickStartedRef.current = true
+      }
       video.muted = false
       setIsMuted(false)
+      setIsPlaying(true)
       _globalUnmutedSrc = item.src
       video.play().catch(() => {})
-      isCurrentlyPlaying.current = true
     }
   }
 
-  // Global mute broadcast — received when another card unmutes
+  // Keyboard accessibility
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      toggleMute(e as unknown as React.MouseEvent)
+    }
+  }
+
+  // Global mute broadcast
   function handleGlobalMute() {
     const video = videoRef.current
     if (!video || video.muted) return
@@ -126,7 +144,7 @@ function SliderCard({
     setIsMuted(true)
     video.pause()
     video.currentTime = item.posterTime ?? 1.0
-    isCurrentlyPlaying.current = false
+    setIsPlaying(false)
     if (_globalUnmutedSrc === item.src) _globalUnmutedSrc = null
   }
 
@@ -162,21 +180,25 @@ function SliderCard({
   return (
     <div
       onClick={toggleMute}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label={`Play ${item.title}`}
       style={{
         flexShrink: 0, width: cardWidth, aspectRatio,
         background: '#000', borderRadius: 'var(--radius)', overflow: 'hidden',
         cursor: 'pointer', position: 'relative',
-        border: isCurrentlyPlaying.current ? '1px solid var(--color-gold-soft)' : '1px solid transparent',
+        border: isPlaying ? '2px solid var(--color-gold)' : '1px solid transparent',
         transition: 'border-color 0.3s',
+        outline: 'none',
       }}
     >
-      <video disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
+      <video disablePictureInPicture controlsList="nodownload nofullscreen"
         ref={videoRef}
-        src={item.src}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         poster={item.poster}
         onLoadedMetadata={() => {
           const v = videoRef.current
@@ -186,7 +208,20 @@ function SliderCard({
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
 
-      {/* Per-slide unmute pill — visible only when this card is unmuted */}
+      {/* Play affordance — shown before video loads */}
+      {!isPlaying && (
+        <div style={{
+          position: 'absolute', inset: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          pointerEvents: 'none',
+        }}>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(201,162,75,0.9)" stroke="none" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
+            <polygon points="5 3 19 12 5 21 5 3" />
+          </svg>
+        </div>
+      )}
+
+      {/* Per-slide unmute pill */}
       {!isMuted && (
         <div
           onClick={toggleMute}
@@ -199,7 +234,6 @@ function SliderCard({
             border: '1px solid rgba(201,162,75,0.5)',
           }}
         >
-          {/* Speaker icon */}
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
@@ -216,7 +250,7 @@ function SliderCard({
         background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)',
         pointerEvents: 'none',
       }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', fontWeight: 500, color: '#fff', lineHeight: 1.3 }}>{item.title}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', fontWeight: 500, color: '#fff', lineHeight: 1.3 }}>{isArabic ? (item.titleAr ?? item.title) : item.title}</p>
       </div>
     </div>
   )
@@ -230,10 +264,10 @@ export default function FeaturedProductionsSection() {
   const isArabic = locale === 'ar'
   const [isTouch, setIsTouch] = useState(false)
 
-  // Al Hamra at top of brand films
+  // Al Hamra at top, then new 3 films, then existing BRAND_FILMS
   const allFilms: VideoItem[] = [
     { src: `${MEDIA_BASE}/Horizontal%20Videos/Hamra%20Jewellery%20new2.mp4`, title: 'Al Hamra Jewellery' },
-    ...BRAND_FILMS.map((f) => ({ src: f.src, title: f.title, posterTime: (f as any).posterTime })),
+    ...BRAND_FILMS.map((f) => ({ src: f.src, title: f.title, titleAr: f.titleAr, posterTime: (f as any).posterTime, poster: f.poster })),
   ]
 
   useEffect(() => {
@@ -265,6 +299,7 @@ export default function FeaturedProductionsSection() {
                 aspectRatio="16/9"
                 cardWidth={isTouch ? '75vw' : '480px'}
                 isTouch={isTouch}
+                isArabic={isArabic}
               />
             </div>
           ))}
@@ -295,6 +330,7 @@ export default function FeaturedProductionsSection() {
                   aspectRatio="9/16"
                   cardWidth="200px"
                   isTouch={isTouch}
+                  isArabic={isArabic}
                 />
               </div>
             ))}
