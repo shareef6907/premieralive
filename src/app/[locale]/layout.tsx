@@ -33,16 +33,17 @@ export async function generateMetadata({
     title,
     description: desc,
     alternates: {
-      canonical: `https://premieralive.com/${locale}`,
+      canonical: `https://www.premieralive.com/${locale}`,
       languages: {
-        en: 'https://premieralive.com/en',
-        ar: 'https://premieralive.com/ar',
+        'en-SA': 'https://www.premieralive.com/en',
+        'ar-SA': 'https://www.premieralive.com/ar',
+        'x-default': 'https://www.premieralive.com/en',
       },
     },
     openGraph: {
       title,
       description: desc,
-      url: `https://premieralive.com/${locale}`,
+      url: `https://www.premieralive.com/${locale}`,
       siteName: brand.name,
       locale: isArabic ? 'ar_SA' : 'en_US',
       type: 'website',
