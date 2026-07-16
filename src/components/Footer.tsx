@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { Mail, Phone, MessageCircle } from 'lucide-react'
@@ -65,33 +66,14 @@ export default function Footer() {
       }}
     >
       {/* ── Logo row ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem' }}>
-        <div
-          style={{
-            width: 36,
-            height: 36,
-            borderRadius: '50%',
-            border: '1px solid var(--gold)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-          }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1rem',
-              color: 'var(--gold)',
-              lineHeight: 1,
-            }}
-          >
-            P
-          </span>
-        </div>
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', letterSpacing: '0.25em', color: 'var(--gold)' }}>
-          PREMIERA LIVE
-        </div>
+      <div style={{ marginBottom: '2.5rem' }}>
+        <Image
+          src={`${process.env.NEXT_PUBLIC_MEDIA_BASE || 'https://premiera-live-media.s3.us-east-1.amazonaws.com'}/premiera-live-white.png`}
+          alt="Premiera Live"
+          width={160}
+          height={40}
+          style={{ height: '40px', width: 'auto' }}
+        />
       </div>
 
       {/* ── 4-column grid ── */}
