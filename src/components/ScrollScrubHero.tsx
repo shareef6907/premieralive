@@ -12,7 +12,7 @@ const LABELS = [
   { s: 0.64, e: 0.73, en: "Branding & Design",                                               ar: "الهوية والتصميم" },
   { s: 0.73, e: 0.82, en: "Podcast Filming",                                                ar: "تصوير البودكاست" },
   { s: 0.82, e: 0.93, en: "Multi-Camera Live Streaming",                                    ar: "بث مباشر متعدد الكاميرات" },
-  { s: 0.93, e: 1.00, en: "One team. Launching in Saudi Arabia.",                           ar: "فريق واحد — قريباً في السعودية" },
+  { s: 0.93, e: 1.00, en: "One team. Now in Saudi Arabia.",                           ar: "فريق واحد — الآن في السعودية." },
 ];
 
 function MobileHero({ locale }: { locale: string }) {

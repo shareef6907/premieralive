@@ -65,7 +65,7 @@ export default function IntroSection() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '0.6rem',
+          gap: 'clamp(1.5rem, 3vw, 2.5rem)',
           maxWidth: '700px',
           marginInline: 'auto',
           textAlign: 'center',
@@ -81,7 +81,7 @@ export default function IntroSection() {
               fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
               fontWeight: 700,
               color: '#FFFFFF',
-              lineHeight: 1.5,
+              lineHeight: 1.25,
               margin: 0,
             }}
           >

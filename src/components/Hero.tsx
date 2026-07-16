@@ -184,7 +184,7 @@ export default function Hero() {
               marginBottom: '2.5rem',
             }}
           >
-            {isArabic ? 'قريباً في السعودية' : 'Launching in Saudi Arabia'}
+            {isArabic ? 'الآن في السعودية' : 'Now in Saudi Arabia'}
           </p>
 
           {!isMobile && (
