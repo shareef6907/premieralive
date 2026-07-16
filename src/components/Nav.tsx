@@ -3,13 +3,20 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
+import { usePathname } from 'next/navigation'
 import { FOOTER_LINKS } from '@/config/navLinks'
 
 export default function Nav() {
   const locale = useLocale()
+  const pathname = usePathname()
   const isArabic = locale === 'ar'
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const otherLocale = locale === 'en' ? 'ar' : 'en'
+  const pathnameSegments = pathname.split('/')
+  pathnameSegments[1] = otherLocale
+  const localeSwitchHref = pathnameSegments.join('/')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -55,7 +62,7 @@ export default function Nav() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           {/* Locale switcher */}
           <Link
-            href={locale === 'en' ? '/ar' : '/en'}
+            href={localeSwitchHref}
             className="locale-toggle"
             style={{
               fontFamily: 'var(--font-display)',
