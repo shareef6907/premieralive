@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { FOOTER_LINKS } from '@/config/navLinks'
@@ -47,15 +48,17 @@ export default function Nav() {
         {/* Logo */}
         <Link
           href={`/${locale}`}
-          style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', lineHeight: 1 }}
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexDirection: 'row' }}
           aria-label="Premiera Live home"
         >
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', letterSpacing: '0.2em', color: 'var(--gold)' }}>
-            PREMIERA
-          </span>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.55rem', letterSpacing: '0.45em', color: 'rgba(201,162,75,0.65)', marginTop: '-2px' }}>
-            LIVE
-          </span>
+          <Image
+            src={`${process.env.NEXT_PUBLIC_MEDIA_BASE || 'https://premiera-live-media.s3.us-east-1.amazonaws.com'}/premiera-live-white.png`}
+            alt="Premiera Live"
+            width={120}
+            height={32}
+            priority
+            style={{ height: '32px', width: 'auto' }}
+          />
         </Link>
 
         {/* Right side */}

@@ -23,11 +23,11 @@ export async function generateMetadata({
   const { locale } = await params
   const isArabic = locale === 'ar'
   const title = isArabic
-    ? 'بريمييرا لايف | وكالة تسويق في السعودية'
-    : 'Premiera Live | Marketing Agency in Saudi Arabia'
+    ? 'بريمييرا لايف | أفلام ومواقع وتسويق في السعودية'
+    : 'Premiera Live | Film, Web & Marketing Agency in Saudi Arabia'
   const desc = isArabic
-    ? 'وكالة تسويق وإبداع في السعودية — نصنع علامات تجارية لا يمكن تجاهلها.'
-    : 'Marketing and creative agency in Saudi Arabia — making brands impossible to ignore.'
+    ? 'ننتج الأفلام، ونبني المواقع المخصصة، وندير حملات التسويق للشركات في السعودية. أكثر من 15 عامًا، وأكثر من 1,000 مشروع، وأكثر من 20 علامة عالمية.'
+    : 'We produce films, build custom websites, and run marketing retainers for businesses in Saudi Arabia. 15+ years, 1,000+ projects, 20+ global brands.'
 
   return {
     title,
@@ -45,7 +45,7 @@ export async function generateMetadata({
       description: desc,
       url: `https://www.premieralive.com/${locale}`,
       siteName: brand.name,
-      locale: isArabic ? 'ar_SA' : 'en_US',
+      locale: isArabic ? 'ar_SA' : 'en_SA',
       type: 'website',
       images: [
         {
@@ -55,6 +55,11 @@ export async function generateMetadata({
           alt: title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
     },
     robots: {
       index: brand.siteIndexable,
