@@ -6,11 +6,11 @@ import { Mail, MessageCircle, Phone } from 'lucide-react'
 export default function ContactActions() {
   const locale = useLocale()
   const isArabic = locale === 'ar'
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500440235'
+  const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP ?? '966500440235').replace(',', '')
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     isArabic
-      ? 'مرحباً، أريد التواصل مع بريميرا لايف'
+      ? 'مرحباً، أريد التواصل مع بريمييرا لايف'
       : "Hi, I'd like to get in touch with Premiera Live"
   )}`
 

@@ -1,6 +1,6 @@
 export const brand = {
   name: 'Premiera Live',
-  nameAr: 'بريميرا لايف',
+  nameAr: 'بريمييرا لايف',
   tagline: 'Marketing Agency in Saudi Arabia',
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? '',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://premieralive.com',

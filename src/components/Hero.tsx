@@ -156,7 +156,7 @@ export default function Hero() {
               marginBottom: '1.25rem',
             }}
           >
-            {isArabic ? 'بريميرا لايف' : 'PREMIERA LIVE'}
+            {isArabic ? 'بريمييرا لايف' : 'PREMIERA LIVE'}
           </p>
 
           <h1

@@ -79,7 +79,7 @@ export default function GrowthSystemSection() {
           color: 'var(--color-text)',
           lineHeight: 1.05,
         }}>
-          {isArabic ? 'من الانطباع الأول إلى عميل دائم' : 'From First Impression to Loyal Customer'}
+          {isArabic ? 'من الانطباع الأول إلى عميل دائم' : 'From First Impression to a Loyal Customer'}
         </h2>
       </div>
 
