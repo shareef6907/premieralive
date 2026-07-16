@@ -32,11 +32,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function HeroP({ text, label }: { text: string; label: string }) {
   return (
     <Section>
-      <div style={{ maxWidth: '720px', marginInline: 'auto', textAlign: 'center', paddingBlock: '4rem 2rem' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '1rem' }}>
+      <div style={{ maxWidth: '80rem', marginInline: 'auto', textAlign: 'center', paddingBlock: '4rem 2rem' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '1rem' }}>
           {label}
         </p>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: 'var(--color-text)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: 'var(--color-text)', lineHeight: 1.0, marginBottom: '1.5rem' }}>
           {text}
         </h1>
       </div>
@@ -75,14 +75,14 @@ function PageHeroSection({ service, isArabic }: { service: NonNullable<ReturnTyp
           />
         </div>
       )}
-      <div style={{ maxWidth: '720px', marginInline: 'auto', textAlign: 'center', paddingBlock: heroImgSrc ? '0 2rem' : '4rem 2rem' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '1rem' }}>
+      <div style={{ maxWidth: '80rem', marginInline: 'auto', textAlign: 'center', paddingBlock: heroImgSrc ? '0 2rem' : '4rem 2rem' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '1rem' }}>
           PREMIERA LIVE
         </p>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: 'var(--color-text)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: 'var(--color-text)', lineHeight: 1.0, marginBottom: '1.5rem' }}>
           {isArabic ? service.titleAr : service.titleEn}
         </h1>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.95rem, 1.5vw, 1.125rem)', color: 'rgba(245,244,240,0.65)', lineHeight: 1.7, maxWidth: '640px', marginInline: 'auto' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body)', color: 'var(--color-text-dim)', lineHeight: 1.7, maxWidth: '600px', marginInline: 'auto' }}>
           {heroText}
         </p>
         <div style={{ marginTop: '2rem' }}>
@@ -143,7 +143,7 @@ function ProcessSection({ service, isArabic }: { service: NonNullable<ReturnType
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'كيف نعمل' : 'HOW WE WORK'}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'كيف نعمل' : 'HOW WE WORK'}</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {steps.map((step, i) => (
             <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
@@ -238,7 +238,7 @@ function RelatedSection({ slugs, locale, isArabic }: { slugs: string[]; locale: 
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>RELATED SERVICES</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>RELATED SERVICES</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
           {related.map((s) => (
             <a key={s.slug} href={`/${locale}/marketing/${s.slug}`} style={{ display: 'inline-block', padding: '0.5rem 1.25rem', background: '#16161B', border: '1px solid rgba(201,162,75,0.2)', borderRadius: '100px', fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.7)', textDecoration: 'none' }}>
@@ -306,7 +306,7 @@ function WebsiteDevSection({ service, isArabic }: { service: NonNullable<ReturnT
   return (
     <Section>
       <div style={{ maxWidth: '640px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'تطوير المواقع' : 'WEBSITE DEVELOPMENT'}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'تطوير المواقع' : 'WEBSITE DEVELOPMENT'}</p>
 
         {items.map((item, i) => (
           <div key={i} style={{ marginBottom: '1.25rem' }}>
@@ -357,7 +357,7 @@ function WebsiteCareSection({ service, isArabic }: { service: NonNullable<Return
   return (
     <Section>
       <div style={{ maxWidth: '640px', marginInline: 'auto' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'العناية المستمرة بالموقع' : 'ONGOING WEBSITE CARE'}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'العناية المستمرة بالموقع' : 'ONGOING WEBSITE CARE'}</p>
 
         {items.map((item, i) => (
           <div key={i} style={{ marginBottom: '1.25rem' }}>
