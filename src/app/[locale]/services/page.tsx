@@ -27,6 +27,7 @@ const DIVISIONS = [
       'documentary-production-saudi-arabia',
       'event-coverage-saudi-arabia',
       'multi-cam-live-streaming-saudi-arabia',
+      'podcast-filming-saudi-arabia',
     ],
   },
   {

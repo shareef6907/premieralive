@@ -16,7 +16,8 @@ const CAPABILITY_SLUGS = {
     'documentary-production-saudi-arabia',
     'event-coverage-saudi-arabia',
     'multi-cam-live-streaming-saudi-arabia',
-  ],
+    'podcast-filming-saudi-arabia',
+    ],
   digital: [
     'business-website-development-saudi-arabia',
     'app-development-saudi-arabia',
