@@ -34,7 +34,7 @@ export default function Nav() {
           left: 0,
           right: 0,
           zIndex: 100,
-          height: '72px',
+          height: '120px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -54,10 +54,11 @@ export default function Nav() {
           <Image
             src={`${process.env.NEXT_PUBLIC_MEDIA_BASE || 'https://premiera-live-media.s3.us-east-1.amazonaws.com'}/premiera-live-white.png`}
             alt="Premiera Live"
-            width={120}
-            height={32}
+            width={144}
+            height={96}
             priority
-            style={{ height: '32px', width: 'auto' }}
+            className="nav-logo-img"
+            style={{ height: '96px', width: 'auto' }}
           />
         </Link>
 
@@ -201,6 +202,9 @@ export default function Nav() {
         @media (max-width: 767px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+        }
+        @media (max-width: 767px) {
+          .nav-logo-img { height: 72px !important; }
         }
       `}</style>
     </>
