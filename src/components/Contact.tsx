@@ -19,7 +19,7 @@ export default function Contact() {
   const t = useTranslations('contact')
   const locale = useLocale()
   const isArabic = locale === 'ar'
-  const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP ?? '966500440235'
+  const whatsappNum = (process.env.NEXT_PUBLIC_WHATSAPP ?? '966500440235').replace(',', '')
 
   return (
     <section
@@ -65,7 +65,7 @@ export default function Contact() {
       </motion.p>
 
       <motion.a
-        href={`https://wa.me/${whatsappNum}?text=${encodeURIComponent(isArabic ? 'مرحباً، أريد التواصل مع بريميرا لايف' : "Hi, I'd like to get in touch with Premiera Live")}`}
+        href={`https://wa.me/${whatsappNum}?text=${encodeURIComponent(isArabic ? 'مرحباً، أريد التواصل مع بريمييرا لايف' : "Hi, I'd like to get in touch with Premiera Live")}`}
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, y: 20 }}

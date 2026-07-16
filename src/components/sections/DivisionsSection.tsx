@@ -167,6 +167,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
                 borderBottom: '1px solid var(--color-card-border)',
                 paddingBottom: '0.5rem',
                 marginBottom: '0.5rem',
+                minHeight: '2.5rem',
               }}>
                 <ServiceCardLink
                   href={`/${locale}/services/${slug}`}
@@ -182,6 +183,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
                 borderBottom: '1px solid var(--color-card-border)',
                 paddingBottom: '0.5rem',
                 marginBottom: '0.5rem',
+                minHeight: '2.5rem',
               }}>
                 <ServiceCardLink
                   href={`/${locale}/marketing/${link.slug}`}
@@ -206,10 +208,9 @@ export default function DivisionsSection() {
       <div
         className="divisions-container"
         style={{
-          display: 'flex',
-          flexDirection: isArabic ? 'row-reverse' : 'row',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '1.5rem',
-          flexWrap: 'wrap',
         }}
       >
         {DIVISIONS.map((d) => (
@@ -220,7 +221,7 @@ export default function DivisionsSection() {
       <style>{`
         @media (max-width: 767px) {
           .divisions-container {
-            flex-direction: column !important;
+            grid-template-columns: 1fr !important;
             gap: 2.5rem !important;
           }
           .division-half {

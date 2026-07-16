@@ -5,16 +5,43 @@ import PlatformCard from '@/components/PlatformCard'
 import { MEDIA_BASE } from '@/config/media'
 import ContactActions from '@/components/ContactActions'
 
-export const metadata: Metadata = {
-  title: 'Digital Platforms | Premiera Live',
-  description: 'Real software we built and operate — platforms that run businesses across the Gulf.',
-  alternates: {
-    canonical: 'https://www.premieralive.com/en/digital',
-    languages: {
-      en: 'https://www.premieralive.com/en/digital',
-      ar: 'https://www.premieralive.com/ar/digital',
+type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const isArabic = locale === 'ar'
+  const domain = 'https://www.premieralive.com'
+  const canonical = `${domain}/${locale}/digital`
+  return {
+    title: isArabic ? 'المنصات الرقمية | بريمييرا لايف' : 'Digital Platforms | Premiera Live',
+    description: isArabic
+      ? 'برمجيات حقيقية بنيناها ونشغّلها — منصات تدير أعمالًا في أنحاء الخليج.'
+      : 'Real software we built and operate — platforms that run businesses across the Gulf.',
+    openGraph: {
+      title: isArabic ? 'المنصات الرقمية | بريمييرا لايف' : 'Digital Platforms | Premiera Live',
+      description: isArabic
+        ? 'برمجيات حقيقية بنيناها ونشغّلها — منصات تدير أعمالًا في أنحاء الخليج.'
+        : 'Real software we built and operate — platforms that run businesses across the Gulf.',
+      url: canonical,
+      locale: isArabic ? 'ar_SA' : 'en_SA',
+      images: [{ url: `${MEDIA_BASE}/homepage-photos/og-image.jpg`, width: 1200, height: 630 }],
     },
-  },
+    twitter: {
+      card: 'summary_large_image',
+      title: isArabic ? 'المنصات الرقمية | بريمييرا لايف' : 'Digital Platforms | Premiera Live',
+      description: isArabic
+        ? 'برمجيات حقيقية بنيناها ونشغّلها — منصات تدير أعمالًا في أنحاء الخليج.'
+        : 'Real software we built and operate — platforms that run businesses across the Gulf.',
+    },
+    alternates: {
+      canonical,
+      languages: {
+        'en-SA': `${domain}/en/digital`,
+        'ar-SA': `${domain}/ar/digital`,
+        'x-default': `${domain}/en/digital`,
+      },
+    },
+  }
 }
 
 // 8 platforms — copy from Shareef verbatim
@@ -150,7 +177,7 @@ export default async function DigitalPage({
           maxWidth: '520px', margin: '0 auto',
         }}>
           {isArabic
-            ? 'برمجيات حقيقية، بنيناها ونشغّلها فريق بريميرا لايف — ليست تصاميمAgency.'
+            ? 'برمجيات حقيقية، بنيناها ونشغّلها فريق بريمييرا لايف — ليست تصاميمAgency.'
             : 'Real software, built and operated by Premiera Live — not agency mockups.'}
         </p>
       </section>

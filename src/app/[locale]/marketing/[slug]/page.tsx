@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import React from 'react'
 import Image from 'next/image'
-import { getMarketingService, getRelatedServices, MARKETING_SLUGS } from '@/config/marketingServices'
+import { getMarketingService, getRelatedServices, getServiceLabel, MARKETING_SLUGS } from '@/config/marketingServices'
 import { MEDIA_BASE } from '@/config/media'
 import type { MarketingTier } from '@/config/marketingServices'
 import ContactActions from '@/components/ContactActions'
@@ -26,6 +26,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: isArabic ? service.metaTitleAr : service.metaTitleEn,
     description: isArabic ? service.metaDescAr : service.metaDescEn,
+    openGraph: {
+      title: isArabic ? service.metaTitleAr : service.metaTitleEn,
+      description: isArabic ? service.metaDescAr : service.metaDescEn,
+      url: canonical,
+      locale: isArabic ? 'ar_SA' : 'en_SA',
+      images: [{ url: `${MEDIA_BASE}/homepage-photos/og-image.jpg`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: isArabic ? service.metaTitleAr : service.metaTitleEn,
+      description: isArabic ? service.metaDescAr : service.metaDescEn,
+    },
     alternates: {
       canonical,
       languages: {
@@ -248,11 +260,11 @@ function RelatedSection({ slugs, locale, isArabic }: { slugs: string[]; locale: 
   return (
     <Section>
       <div style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>RELATED SERVICES</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--eyebrow)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{isArabic ? 'خدمات ذات صلة' : 'RELATED SERVICES'}</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
           {related.map((s) => (
             <a key={s.slug} href={`/${locale}/marketing/${s.slug}`} style={{ display: 'inline-block', padding: '0.5rem 1.25rem', background: '#16161B', border: '1px solid rgba(201,162,75,0.2)', borderRadius: '100px', fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)', color: 'rgba(245,244,240,0.7)', textDecoration: 'none' }}>
-              {isArabic ? s.titleAr : s.titleEn}
+              {getServiceLabel(s.slug, isArabic)}
             </a>
           ))}
         </div>

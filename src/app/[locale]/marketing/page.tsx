@@ -4,17 +4,45 @@ import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import ContactActions from '@/components/ContactActions'
 import { MARKETING_SLUGS, getServiceLabel } from '@/config/marketingServices'
+import { MEDIA_BASE } from '@/config/media'
 
-export const metadata: Metadata = {
-  title: 'Marketing Services | Premiera Live',
-  description: 'Strategic, creative marketing built to convert — from social media and performance ads to AI-powered lead automation. Serving Saudi Arabia and the Gulf.',
-  alternates: {
-    canonical: 'https://www.premieralive.com/en/marketing',
-    languages: {
-      en: 'https://www.premieralive.com/en/marketing',
-      ar: 'https://www.premieralive.com/ar/marketing',
+type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const isArabic = locale === 'ar'
+  const domain = 'https://www.premieralive.com'
+  const canonical = `${domain}/${locale}/marketing`
+  return {
+    title: isArabic ? 'خدمات التسويق | بريمييرا لايف' : 'Marketing Services | Premiera Live',
+    description: isArabic
+      ? 'تسويق استراتيجي وإبداعي مبني للتحويل — من إدارة التواصل الاجتماعي إلى إعلانات الأداء ومساعدات الذكاء الاصطناعي.'
+      : 'Strategic, creative marketing built to convert — from social media and performance ads to AI-powered lead automation. Serving Saudi Arabia and the Gulf.',
+    openGraph: {
+      title: isArabic ? 'خدمات التسويق | بريمييرا لايف' : 'Marketing Services | Premiera Live',
+      description: isArabic
+        ? 'تسويق استراتيجي وإبداعي مبني للتحويل — من إدارة التواصل الاجتماعي إلى إعلانات الأداء ومساعدات الذكاء الاصطناعي.'
+        : 'Strategic, creative marketing built to convert — from social media and performance ads to AI-powered lead automation. Serving Saudi Arabia and the Gulf.',
+      url: canonical,
+      locale: isArabic ? 'ar_SA' : 'en_SA',
+      images: [{ url: `${MEDIA_BASE}/homepage-photos/og-image.jpg`, width: 1200, height: 630 }],
     },
-  },
+    twitter: {
+      card: 'summary_large_image',
+      title: isArabic ? 'خدمات التسويق | بريمييرا لايف' : 'Marketing Services | Premiera Live',
+      description: isArabic
+        ? 'تسويق استراتيجي وإبداعي مبني للتحويل — من إدارة التواصل الاجتماعي إلى إعلانات الأداء ومساعدات الذكاء الاصطناعي.'
+        : 'Strategic, creative marketing built to convert — from social media and performance ads to AI-powered lead automation. Serving Saudi Arabia and the Gulf.',
+    },
+    alternates: {
+      canonical,
+      languages: {
+        'en-SA': `${domain}/en/marketing`,
+        'ar-SA': `${domain}/ar/marketing`,
+        'x-default': `${domain}/en/marketing`,
+      },
+    },
+  }
 }
 
 // Briefing-exact copy only — no invented content
@@ -417,7 +445,7 @@ export default async function MarketingPage({
           maxWidth: '600px', margin: '0 auto',
         }}>
           {isArabic
-            ? 'تعمل بريميرا لايف وفق معايير المحتوى الخاصة بهيئة الإعلام المرئي والمسموع في المملكة العربية السعودية. نضمن التزام جميع المواد الإبداعية بالأنظمة المعمول بها.'
+            ? 'تعمل بريمييرا لايف وفق معايير المحتوى الخاصة بهيئة الإعلام المرئي والمسموع في المملكة العربية السعودية. نضمن التزام جميع المواد الإبداعية بالأنظمة المعمول بها.'
             : "Premiera Live operates in compliance with Saudi Arabia's advertising and content regulations. All creative materials are reviewed to meet regulatory standards before publishing."}
         </p>
       </section>

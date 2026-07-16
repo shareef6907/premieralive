@@ -23,7 +23,7 @@ export async function generateMetadata({
   const { locale } = await params
   const isArabic = locale === 'ar'
   const title = isArabic
-    ? 'بريميرا لايف | وكالة تسويق في السعودية'
+    ? 'بريمييرا لايف | وكالة تسويق في السعودية'
     : 'Premiera Live | Marketing Agency in Saudi Arabia'
   const desc = isArabic
     ? 'وكالة تسويق وإبداع في السعودية — نصنع علامات تجارية لا يمكن تجاهلها.'
