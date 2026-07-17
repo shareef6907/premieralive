@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import Section from '../Section'
@@ -92,6 +93,13 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
   const isMarketing = division.id === 'marketing'
   const marketingLinks = isArabic ? MARKETING_SERVICE_LINKS.ar : MARKETING_SERVICE_LINKS.en
 
+  const divisionHref =
+    division.id === 'cinematic'
+      ? `/${locale}/services`
+      : division.id === 'digital'
+      ? `/${locale}/digital`
+      : `/${locale}/marketing`
+
   return (
     <div
       className="division-half"
@@ -138,17 +146,26 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
 
       {/* Content */}
       <div className="division-content" style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <p className="division-eyebrow" style={{
-          fontFamily: 'var(--font-body)',
-          fontWeight: 500,
-          fontSize: 'var(--eyebrow)',
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: 'var(--color-gold)',
-          marginBottom: '0.75rem',
-        }}>
+        <Link
+          href={divisionHref}
+          className="division-eyebrow"
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontWeight: 500,
+            fontSize: 'var(--eyebrow)',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: 'var(--color-gold)',
+            marginBottom: '0.75rem',
+            display: 'block',
+            textDecoration: 'none',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-gold)')}
+        >
           {isArabic ? division.nameAr : division.nameEn}
-        </p>
+        </Link>
         <p className="division-line" style={{
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(1.25rem, 2.5vw, 2rem)',
