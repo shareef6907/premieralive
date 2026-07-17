@@ -89,7 +89,8 @@ export default function Footer() {
       >
         {/* Col 1 — Filming */}
         <div>
-          <p
+          <Link
+            href={`/${locale}/services`}
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'var(--eyebrow)',
@@ -97,10 +98,15 @@ export default function Footer() {
               textTransform: 'uppercase',
               letterSpacing: '0.2em',
               marginBottom: '1rem',
+              display: 'block',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-gold)')}
           >
             {isArabic ? 'الإنتاج السينمائي' : 'Filming'}
-          </p>
+          </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {CINEMATIC_SERVICES.map((s) => (
               <Link
@@ -125,7 +131,8 @@ export default function Footer() {
 
         {/* Col 2 — Digital */}
         <div>
-          <p
+          <Link
+            href={`/${locale}/digital`}
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'var(--eyebrow)',
@@ -133,10 +140,15 @@ export default function Footer() {
               textTransform: 'uppercase',
               letterSpacing: '0.2em',
               marginBottom: '1rem',
+              display: 'block',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-gold)')}
           >
             {isArabic ? 'التجارب الرقمية' : 'Digital'}
-          </p>
+          </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {DIGITAL_SERVICES.map((s) => (
               <Link
@@ -161,7 +173,8 @@ export default function Footer() {
 
         {/* Col 3 — Marketing */}
         <div>
-          <p
+          <Link
+            href={`/${locale}/marketing`}
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'var(--eyebrow)',
@@ -169,10 +182,15 @@ export default function Footer() {
               textTransform: 'uppercase',
               letterSpacing: '0.2em',
               marginBottom: '1rem',
+              display: 'block',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-gold)')}
           >
             {isArabic ? 'خدمات التسويق' : 'Marketing'}
-          </p>
+          </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {(isArabic ? marketingLinksAr : marketingLinksEn).map((link) => (
               <Link
