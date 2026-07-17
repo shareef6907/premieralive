@@ -96,10 +96,6 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <SmoothScroll>
             <CursorGlow />
-            <div className="bg-atmosphere">
-              <div className="bg-atmo-gradient-1" />
-              <div className="bg-atmo-gradient-2" />
-            </div>
             <Nav />
             <main>{children}</main>
             <Footer />
