@@ -21,7 +21,7 @@ const MARKETING_SHORT_LABELS_EN: Record<string, string> = {
   'snapchat-tiktok-ads-saudi': 'Snapchat & TikTok Ads',
   'seo-saudi': 'SEO',
   'content-production-saudi': 'Content Production',
-  'marketing-packages-saudi': 'Growth Partnership Packages',
+  'marketing-packages-saudi': 'Marketing Packages',
 }
 
 const MARKETING_SHORT_LABELS_AR: Record<string, string> = {
@@ -31,7 +31,7 @@ const MARKETING_SHORT_LABELS_AR: Record<string, string> = {
   'snapchat-tiktok-ads-saudi': 'إعلانات سناب شات وتيك توك',
   'seo-saudi': 'تحسين محركات البحث',
   'content-production-saudi': 'إنتاج المحتوى',
-  'marketing-packages-saudi': 'باقات شراكة النمو',
+  'marketing-packages-saudi': 'باقات التسويق',
 }
 
 export default function Footer() {

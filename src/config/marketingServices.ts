@@ -588,8 +588,8 @@ const SERVICES: MarketingService[] = [
   },
   {
     slug: 'marketing-packages-saudi',
-    titleEn: 'Growth Partnership Packages',
-    titleAr: 'باقات شراكة النمو',
+    titleEn: 'Marketing Packages',
+    titleAr: 'باقات التسويق',
     descEn: 'Three growth partnership tiers — Foundation, Growth, and Scale. Monthly retainers covering strategy, content, advertising, SEO, and reporting.',
     descAr: 'نعمل بثلاث باقات شراكة للنمو — الأساس والنمو والريادة. اشتراكات شهرية تغطي الاستراتيجية والمحتوى والإعلانات وتحسين محركات البحث والتقارير.',
     metaTitleEn: 'Marketing Packages in Saudi Arabia | Premiera Live',
