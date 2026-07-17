@@ -55,12 +55,12 @@ const CARDS = [
   },
 ]
 
-export default function GrowthSystemSection() {
+export default function GrowthSystemSection({ id }: { id?: string }) {
   const locale = useLocale()
   const isArabic = locale === 'ar'
 
   return (
-    <Section>
+    <Section id={id}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
         <p style={{

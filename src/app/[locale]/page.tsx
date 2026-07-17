@@ -6,7 +6,6 @@ import DivisionsSection from '@/components/sections/DivisionsSection'
 import GrowthSystemSection from '@/components/sections/GrowthSystemSection'
 import FeaturedProductionsSection from '@/components/sections/FeaturedProductionsSection'
 import WhyBothSection from '@/components/sections/WhyBothSection'
-import ProcessSection from '@/components/sections/ProcessSection'
 import WhyPremieraSection from '@/components/sections/WhyPremieraSection'
 import FounderLetterSection from '@/components/sections/FounderLetterSection'
 import FinalCTASection from '@/components/sections/FinalCTASection'
@@ -25,10 +24,9 @@ export default async function Page({
       <BrandMarqueeSection />
       <IntroSection />
       <DivisionsSection />
-      <GrowthSystemSection />
+      <GrowthSystemSection id="process" />
       <FeaturedProductionsSection />
       <WhyBothSection />
-      <ProcessSection />
       <WhyPremieraSection />
       <FounderLetterSection />
       <FinalCTASection />

@@ -266,7 +266,7 @@ export default function FeaturedProductionsSection() {
 
   // Al Hamra at top, then new 3 films, then existing BRAND_FILMS
   const allFilms: VideoItem[] = [
-    { src: `${MEDIA_BASE}/Horizontal%20Videos/Hamra%20Jewellery%20new2.mp4`, title: 'Al Hamra Jewellery' },
+    { src: `${MEDIA_BASE}/Horizontal%20Videos/Hamra%20Jewellery%20new2.mp4`, title: 'Al Hamra Jewellery', poster: `${MEDIA_BASE}/work/posters/Hamra-Jewellery-poster.jpg` },
     ...BRAND_FILMS.map((f) => ({ src: f.src, title: f.title, titleAr: f.titleAr, posterTime: (f as any).posterTime, poster: f.poster })),
   ]
 
