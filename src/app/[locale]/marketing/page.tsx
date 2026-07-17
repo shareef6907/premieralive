@@ -45,8 +45,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// Briefing-exact copy only — no invented content
-
 const HOW_IT_WORKS = [
   {
     en: 'Audit & Strategy',
@@ -80,74 +78,6 @@ const HOW_IT_WORKS = [
   },
 ]
 
-// Email & SMS removed — 4 capabilities remain
-const CAPABILITIES = [
-  {
-    en: 'Social Media Management',
-    ar: 'إدارة وسائل التواصل',
-    descEn: 'Daily posting, community management, and growth strategy across Instagram, LinkedIn, X, and more.',
-    descAr: 'نشر يومي وإدارة مجتمع واستراتيجية نمو عبر إنستغرام ولينكدإن وإكس والمزيد.',
-  },
-  {
-    en: 'Performance Marketing',
-    ar: 'التسويق الأدائي',
-    descEn: 'Google, Meta, and X ads that track to revenue — not vanity metrics. You see exactly what each riyal returns.',
-    descAr: 'إعلانات قوقل وميتا وإكس تتتبع الإيرادات — لا أرقاماً صورية. ترى بالضبط ما يُعيده كل ريال.',
-  },
-  {
-    en: 'Content Creation',
-    ar: 'إنتاج المحتوى',
-    descEn: 'Cinema-grade film, photography, and design — packaged for every platform your customers use.',
-    descAr: 'أفلام وتصوير وتصميم بمستوى سينمائي — مُهيّأ لكل منصة يستخدمها عملاؤك.',
-  },
-  {
-    en: 'Analytics & Reporting',
-    ar: 'التحليل والتقارير',
-    descEn: 'A real-time dashboard showing traffic, leads, conversions, and revenue per channel — updated daily.',
-    descAr: 'لوحة معلومات فورية تعرض الزيارات والعملاء المحتملين والتحويلات والإيرادات لكل قناة — محدّثة يومياً.',
-  },
-]
-
-// Tier deliverables — Shareef supplies actual list items in next PR
-const TIER_DELIVERABLES = {
-  essential: {
-    en: ['One primary platform', 'Monthly content calendar', 'Publishing & community management', 'Monthly report'],
-    ar: ['منصة رئيسية واحدة', 'تقويم محتوى شهري', 'نشر وإدارة مجتمع', 'تقرير شهري'],
-  },
-  growth: {
-    en: ['Multi-platform management', 'Paid ads management', 'SEO foundations', 'Reporting twice a month'],
-    ar: ['إدارة منصات متعددة', 'إدارة الإعلانات المدفوعة', 'أساسيات تحسين محركات البحث', 'تقارير نصف شهرية'],
-  },
-  premier: {
-    en: ['Everything in Growth', 'Dedicated strategy lead', 'Video content (Cinematic Production)', 'Weekly reporting'],
-    ar: ['كل ما في النمو', 'قائد استراتيجية مخصص', 'محتوى فيديو (الإنتاج السينمائي)', 'تقارير أسبوعية'],
-  },
-}
-
-const TIERS = [
-  {
-    id: 'essential',
-    labelEn: 'ESSENTIAL',
-    labelAr: 'الأساس',
-    taglineEn: 'For businesses building a consistent presence.',
-    taglineAr: 'للأعمال التي تبني حضوراً مستمراً.',
-  },
-  {
-    id: 'growth',
-    labelEn: 'GROWTH',
-    labelAr: 'النمو',
-    taglineEn: 'For businesses ready to scale.',
-    taglineAr: 'للأعمال الجاهزة للتوسع.',
-  },
-  {
-    id: 'premier',
-    labelEn: 'PREMIER',
-    labelAr: 'الريادة',
-    taglineEn: 'Full-funnel marketing.',
-    taglineAr: 'تسويق قاع قمع كامل.',
-  },
-]
-
 export default async function MarketingPage({
   params,
 }: {
@@ -159,9 +89,7 @@ export default async function MarketingPage({
 
   const ctaLabel = isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'
   const howItWorksLabel = isArabic ? 'كيف نعمل' : 'HOW IT WORKS'
-  const capabilitiesLabel = isArabic ? 'ما نقدّمه' : 'CAPABILITIES'
-  const plansLabel = isArabic ? 'اختر خطتك' : 'CHOOSE YOUR PLAN'
-  const complianceLabel = isArabic ? 'مهمتنا' : 'OUR COMMITMENT'
+  const whatWeHandleLabel = isArabic ? 'ما الذي ندير له' : 'WHAT WE HANDLE'
   const homeLabel = isArabic ? 'الرئيسية' : 'Home'
 
   return (
@@ -212,8 +140,8 @@ export default async function MarketingPage({
           maxWidth: '560px', margin: '0 auto 2.5rem',
         }}>
           {isArabic
-            ? 'من إدارة السوشيال ميديا إلى الإعلانات المدفوعة — نفهم ما يدفع الإيرادات فعلاً.'
-            : 'From social media to performance ads — we focus on what actually drives revenue.'}
+            ? 'تتلاشى الحملات المتفرقة سريعًا. نعمل بنظام الاشتراك الشهري لأن نتائج التسويق الحقيقية تأتي من الاستمرارية — ننشر ونختبر ونحسّن كل شهر. تحصل على فريق يعرف علامتك، وخطة توافق عليها مسبقًا، وأرقام تحاسبنا عليها.'
+            : "One-off campaigns fade. We work on monthly retainers because real marketing results come from consistency — publishing, testing, and improving every single month. You get a team that knows your brand, a plan you approve in advance, and numbers you can hold us to."}
         </p>
         <a
           href={`/${urlLocale}#contact`}
@@ -231,7 +159,278 @@ export default async function MarketingPage({
         </a>
       </section>
 
-      {/* How It Works — FIX: locale-correct rendering per card */}
+      {/* Section 2 — Why most marketing fails here */}
+      <section style={{
+        background: 'var(--color-bg-elevated)',
+        padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
+      }}>
+        <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
+          <p style={{
+            fontFamily: 'var(--font-body)', fontWeight: 500,
+            fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
+            textTransform: 'uppercase', color: 'var(--color-gold)',
+            marginBottom: '1.5rem',
+          }}>
+            {isArabic ? 'ما نقدم' : 'WHAT WE DO'}
+          </p>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            color: 'var(--color-text)', lineHeight: 1.0,
+            letterSpacing: '0.01em', marginBottom: '2.5rem',
+          }}>
+            {isArabic
+              ? 'لماذا يفشل معظم التسويق هنا'
+              : 'Why most marketing fails here.'}
+          </h2>
+          <p style={{
+            fontFamily: 'var(--font-body)', fontSize: 'var(--body)',
+            color: 'var(--color-text-dim)', lineHeight: 1.7,
+            marginBottom: '3rem',
+            maxWidth: '600px',
+          }}>
+            {isArabic
+              ? 'تكسر ثلاثة أشياء التسويق لدى الشركات السعودية، وتتكرر هي نفسها في كل مرة تقريبًا.'
+              : 'Three things break marketing for Saudi businesses, and it is almost always the same three.'}
+          </p>
+
+          {/* Three failure blocks */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: '1.5rem',
+          }}>
+            {/* Block 1 */}
+            <div style={{
+              padding: '1.75rem',
+              background: 'var(--color-card)',
+              border: '1px solid var(--color-card-border)',
+              borderRadius: 'var(--radius)',
+            }}>
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                color: 'var(--color-gold)',
+                marginBottom: '1rem',
+                letterSpacing: '0.01em',
+              }}>
+                {isArabic
+                  ? 'لا يصل المحتوى أبدًا.'
+                  : 'The content never comes.'}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                color: 'var(--color-text-dim)', lineHeight: 1.7,
+              }}>
+                {isArabic
+                  ? 'تُعتمد الاستراتيجية، وتُبنى الروزنامة، ثم يجب أن يصوّر أحدهم شيئًا فعلًا. ترسل الوكالة بريفًا لمصوّر مستقل، ويكون مشغولًا، فيتأخر التصوير أسبوعين، وتُطلق الحملة بلقطات أرشيفية وشعار ممدود.'
+                  : 'The strategy gets approved. The calendar gets built. Then someone has to actually shoot something. The agency briefs a freelancer, the freelancer is busy, the shoot slips two weeks, and the campaign launches with stock footage and a stretched logo.'}
+              </p>
+            </div>
+
+            {/* Block 2 */}
+            <div style={{
+              padding: '1.75rem',
+              background: 'var(--color-card)',
+              border: '1px solid var(--color-card-border)',
+              borderRadius: 'var(--radius)',
+            }}>
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                color: 'var(--color-gold)',
+                marginBottom: '1rem',
+                letterSpacing: '0.01em',
+              }}>
+                {isArabic
+                  ? 'تُترجم العربية ولا تُكتب.'
+                  : 'The Arabic is translated.'}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                color: 'var(--color-text-dim)', lineHeight: 1.7,
+              }}>
+                {isArabic
+                  ? 'تُقرأ التعليقات المكتوبة بالإنجليزية ثم الممرّرة على مترجم كما هي بالضبط. يلاحظ الجمهور السعودي ذلك من السطر الأول، ويمرّر. لا تكون العربية إعدادًا تشغّله في النهاية — بل هي المكان الذي تبدأ منه الكتابة.'
+                  : "Captions written in English and pushed through a translator read exactly like that. Saudi audiences notice in the first line, and they scroll. Arabic is not a setting you switch on at the end — it is where the writing starts."}
+              </p>
+            </div>
+
+            {/* Block 3 */}
+            <div style={{
+              padding: '1.75rem',
+              background: 'var(--color-card)',
+              border: '1px solid var(--color-card-border)',
+              borderRadius: 'var(--radius)',
+            }}>
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                color: 'var(--color-gold)',
+                marginBottom: '1rem',
+                letterSpacing: '0.01em',
+              }}>
+                {isArabic
+                  ? 'لا أحد يملك السلسلة كاملة.'
+                  : "Nobody owns the whole chain."}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                color: 'var(--color-text-dim)', lineHeight: 1.7,
+              }}>
+                {isArabic
+                  ? 'تدير وكالة الإعلانات، وتبني أخرى الموقع، وتنتج ثالثة المحتوى. وحين لا يتحوّل العملاء المحتملون، يلوم كل طرف الطرفين الآخرين — وتدفع أنت ثمن الجدال.'
+                  : "One agency runs the ads. Another built the website. A third makes the content. When the leads do not convert, all three blame the other two — and you pay for the argument."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3 — What we do differently */}
+      <section style={{
+        padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
+        maxWidth: '80rem', margin: '0 auto',
+      }}>
+        <p style={{
+          fontFamily: 'var(--font-body)', fontWeight: 500,
+          fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--color-gold)',
+          marginBottom: '1.5rem',
+        }}>
+          {isArabic ? 'ما نقدم' : 'WHAT WE DO'}
+        </p>
+        <h2 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+          color: 'var(--color-text)', lineHeight: 1.0,
+          letterSpacing: '0.01em', marginBottom: '3rem',
+        }}>
+          {isArabic
+            ? 'ما الذي نفعله بشكل مختلف'
+            : 'What we do differently.'}
+        </h2>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: '1.5rem',
+        }}>
+          {/* Card 1 */}
+          <div style={{
+            padding: '1.75rem',
+            background: 'var(--color-card)',
+            border: '1px solid var(--color-card-border)',
+            borderRadius: 'var(--radius)',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+              color: 'var(--color-gold)',
+              marginBottom: '1rem',
+              letterSpacing: '0.01em',
+            }}>
+              {isArabic
+                ? 'نحن شركة أفلام تدير التسويق أيضًا.'
+                : 'We are a film company that also runs marketing.'}
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+              color: 'var(--color-text-dim)', lineHeight: 1.7,
+            }}>
+              {isArabic
+                ? 'ينتج محتواك الفريق نفسه الذي يصوّر أفلامًا تجارية لعلامات عالمية — أكثر من 15 عامًا، وأكثر من 1,000 مشروع، وأكثر من 20 علامة عالمية. لا نرسل بريفًا لمصوّر مستقل ونتمنى. نصوّره بأنفسنا. وحين يستهلك المحتوى نفسه في الأسبوع الثالث، نصوّر المزيد. يُصوَّر معظم محتوى التواصل في هذا السوق بهاتف على يد متدرب. ولا يلزم أن يكون محتواك كذلك.'
+                : "Your content is produced by the same crew that shoots commercial films for global brands — 15+ years, 1,000+ projects, 20+ global brands. We do not brief a freelancer and hope. We shoot it ourselves. And when creative fatigues in week three, we shoot more. Most social content in this market is filmed on a phone by an intern. Yours does not have to be."}
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div style={{
+            padding: '1.75rem',
+            background: 'var(--color-card)',
+            border: '1px solid var(--color-card-border)',
+            borderRadius: 'var(--radius)',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+              color: 'var(--color-gold)',
+              marginBottom: '1rem',
+              letterSpacing: '0.01em',
+            }}>
+              {isArabic
+                ? 'نبني الموقع الذي تصل إليه النقرة.'
+                : 'We build the website the ad lands on.'}
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+              color: 'var(--color-text-dim)', lineHeight: 1.7,
+            }}>
+              {isArabic
+                ? 'تتوقف معظم الوكالات عند النقرة. نشغّل أكثر من 25 منصة خاصة بنا — بنيناها ورتّبناها وندير تشغيلها، حيث لا يوجد عميل نلومه. وحين تكون صفحة الهبوط هي العائق، وهي كذلك غالبًا، نصلحها بدل أن نكتب عنها تقريرًا وننتظر مطوّر شخص آخر.'
+                : "Most agencies stop at the click. We run 25+ platforms of our own — built, ranked, and operated by us, where there was no client to blame. When your landing page is the bottleneck, and it usually is, we fix it instead of writing it up in a report and waiting on someone else's developer."}
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div style={{
+            padding: '1.75rem',
+            background: 'var(--color-card)',
+            border: '1px solid var(--color-card-border)',
+            borderRadius: 'var(--radius)',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+              color: 'var(--color-gold)',
+              marginBottom: '1rem',
+              letterSpacing: '0.01em',
+            }}>
+              {isArabic
+                ? 'نكتب بالعربية، لا إليها.'
+                : 'We write in Arabic, not into it.'}
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+              color: 'var(--color-text-dim)', lineHeight: 1.7,
+            }}>
+              {isArabic
+                ? 'نكتب كل تعليق وإعلان وصفحة أصالةً بالعربية والإنجليزية. استعلامات مختلفة، ونية مختلفة، وإيقاع مختلف. لا يمر شيء على مترجم. وحين يكون جمهورك ثنائي اللغة، نكتب النسختين من الصفر.'
+                : "Every caption, ad, and page is written natively in Arabic and English. Different queries, different intent, different rhythm. Nothing goes through a translator. Where your audience is bilingual, both versions are written from scratch."}
+            </p>
+          </div>
+
+          {/* Card 4 */}
+          <div style={{
+            padding: '1.75rem',
+            background: 'var(--color-card)',
+            border: '1px solid var(--color-card-border)',
+            borderRadius: 'var(--radius)',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+              color: 'var(--color-gold)',
+              marginBottom: '1rem',
+              letterSpacing: '0.01em',
+            }}>
+              {isArabic
+                ? 'نصمّم الالتزام من البداية، ولا نراجعه في النهاية.'
+                : 'Compliance is designed in, not checked at the end.'}
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+              color: 'var(--color-text-dim)', lineHeight: 1.7,
+            }}>
+              {isArabic
+                ? 'نخطط كل إنتاج وفق معايير الإعلان في المملكة من مرحلة قائمة اللقطات — لباس محتشم، وبلا استعراض للثراء، وبلا أطفال في المحتوى الترويجي، وبلا ادعاءات لا نستطيع إثباتها. ننفّذ التعاون مع صنّاع المحتوى حصريًا عبر مرخّصين في منصة موثوق. نقدّم تسويقًا ينمّي علامتك — ويحميها.'
+                : "Every production is planned to Saudi advertising standards from the shot list stage — modest dress, no wealth flaunting, no children in promotional content, no claims we cannot support. Creator collaborations run exclusively through Mawthooq-licensed talent. Marketing that grows your brand — and protects it."}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4 — What we handle (7 service link cards) */}
       <section style={{
         background: 'var(--color-bg-elevated)',
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
@@ -243,40 +442,37 @@ export default async function MarketingPage({
             textTransform: 'uppercase', color: 'var(--color-gold)',
             marginBottom: '3rem', textAlign: 'center',
           }}>
-            {howItWorksLabel}
+            {whatWeHandleLabel}
           </p>
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: '1.5rem',
+            display: 'flex', flexWrap: 'wrap', gap: '0.75rem',
+            justifyContent: 'center',
           }}>
-            {HOW_IT_WORKS.map((step, i) => (
-              <div key={i} style={{
-                padding: '1.5rem',
-                background: 'var(--color-card)',
-                border: '1px solid var(--color-card-border)',
-                borderRadius: 'var(--radius)',
-              }}>
-                <p style={{
-                  fontFamily: 'var(--font-body)', fontWeight: 600,
-                  fontSize: '0.875rem', color: 'var(--color-gold)',
-                  marginBottom: '0.5rem', letterSpacing: '0.05em',
-                }}>
-                  {String(i + 1).padStart(2, '0')} — {isArabic ? step.ar : step.en}
-                </p>
-                <p style={{
-                  fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                  color: 'var(--color-text-dim)', lineHeight: 1.6,
-                }}>
-                  {isArabic ? step.descAr : step.descEn}
-                </p>
-              </div>
+            {MARKETING_SLUGS.map((slug) => (
+              <Link
+                key={slug}
+                href={`/${urlLocale}/marketing/${slug}`}
+                style={{
+                  display: 'inline-block',
+                  padding: '0.5rem 1.25rem',
+                  background: '#16161B',
+                  border: '1px solid rgba(201,162,75,0.2)',
+                  borderRadius: '100px',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'var(--body-sm)',
+                  color: 'rgba(245,244,240,0.7)',
+                  textDecoration: 'none',
+                  textTransform: 'capitalize',
+                }}
+              >
+                {getServiceLabel(slug, isArabic)}
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Capabilities — 5 cards, no Email & SMS */}
+      {/* Section 5 — How It Works */}
       <section style={{
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
         maxWidth: '80rem', margin: '0 auto',
@@ -287,211 +483,82 @@ export default async function MarketingPage({
           textTransform: 'uppercase', color: 'var(--color-gold)',
           marginBottom: '3rem', textAlign: 'center',
         }}>
-          {capabilitiesLabel}
+          {howItWorksLabel}
         </p>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '1rem',
+          gap: '1.5rem',
         }}>
-          {CAPABILITIES.map((cap, i) => (
+          {HOW_IT_WORKS.map((step, i) => (
             <div key={i} style={{
-              padding: '1.25rem 1.5rem',
+              padding: '1.5rem',
               background: 'var(--color-card)',
               border: '1px solid var(--color-card-border)',
               borderRadius: 'var(--radius)',
             }}>
               <p style={{
                 fontFamily: 'var(--font-body)', fontWeight: 600,
-                fontSize: 'var(--body-sm)', color: 'var(--color-text)',
-                marginBottom: '0.5rem',
+                fontSize: '0.875rem', color: 'var(--color-gold)',
+                marginBottom: '0.5rem', letterSpacing: '0.05em',
               }}>
-                {isArabic ? cap.ar : cap.en}
+                {String(i + 1).padStart(2, '0')} — {isArabic ? step.ar : step.en}
               </p>
               <p style={{
                 fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
                 color: 'var(--color-text-dim)', lineHeight: 1.6,
               }}>
-                {isArabic ? cap.descAr : cap.descEn}
+                {isArabic ? step.descAr : step.descEn}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Plans — capability strip + three tier cards, centered, equal heights */}
-      <section id="essential" style={{
+      {/* Section 6 — Retainers, not projects */}
+      <section style={{
         background: 'var(--color-bg-elevated)',
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
       }}>
-        <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
-          <p style={{
-            fontFamily: 'var(--font-body)', fontWeight: 500,
-            fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
-            textTransform: 'uppercase', color: 'var(--color-gold)',
-            marginBottom: '3rem', textAlign: 'center',
-          }}>
-            {plansLabel}
-          </p>
-
-          {/* Capability strip */}
-          <p style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 'var(--body-sm)',
-            color: 'var(--color-text-dim)',
-            textAlign: 'center',
-            marginBottom: '2.5rem',
-            letterSpacing: '0.02em',
+        <div style={{ maxWidth: '80rem', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            color: 'var(--color-text)', lineHeight: 1.0,
+            letterSpacing: '0.01em', marginBottom: '1.5rem',
           }}>
             {isArabic
-              ? 'إدارة وسائل التواصل · إنتاج المحتوى · إدارة الإعلانات المدفوعة · تحسين محركات البحث · التقارير الشهرية'
-              : 'Social Media Management · Content Creation · Paid Ads Management · SEO · Monthly Reporting'}
-          </p>
-
-          {/* Three tier cards — grid with fixed min-height, equal columns */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-            gap: '1.5rem',
-            alignItems: 'stretch',
+              ? 'اشتراكات شهرية، لا مشاريع متفرقة'
+              : 'Retainers, not projects.'}
+          </h2>
+          <p style={{
+            fontFamily: 'var(--font-body)', fontSize: 'var(--body)',
+            color: 'var(--color-text-dim)', lineHeight: 1.7,
+            maxWidth: '560px', margin: '0 auto 2rem',
           }}>
-            {TIERS.map((tier) => {
-              const deliverables = TIER_DELIVERABLES[tier.id as keyof typeof TIER_DELIVERABLES]
-              const deliverablesList = isArabic ? deliverables.ar : deliverables.en
-              return (
-                <div
-                  key={tier.id}
-                  id={tier.id}
-                  style={{
-                    padding: '2rem',
-                    background: '#16161B',
-                    border: '1px solid var(--color-card-border)',
-                    borderRadius: 'var(--radius)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.25rem',
-                  }}
-                >
-                  {/* Tier name */}
-                  <p style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
-                    color: '#C9A24B',
-                    letterSpacing: '0.02em',
-                  }}>
-                    {isArabic ? tier.labelAr : tier.labelEn}
-                  </p>
-
-                  {/* One-line positioning */}
-                  <p style={{
-                    fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                    color: 'var(--color-text-dim)', lineHeight: 1.7,
-                  }}>
-                    {isArabic ? tier.taglineAr : tier.taglineEn}
-                  </p>
-
-                  {/* Deliverables list */}
-                  <ul style={{
-                    listStyle: 'none', padding: 0, margin: 0,
-                    display: 'flex', flexDirection: 'column', gap: '0.625rem',
-                    flex: 1,
-                  }}>
-                    {deliverablesList.map((item: string, idx: number) => (
-                      <li key={idx} style={{
-                        fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-                        color: 'var(--color-text-dim)',
-                        paddingLeft: isArabic ? 0 : '1rem',
-                        paddingRight: isArabic ? '1rem' : 0,
-                        borderLeft: isArabic ? 'none' : '2px solid var(--color-card-border)',
-                        borderRight: isArabic ? '2px solid var(--color-card-border)' : 'none',
-                      }}>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA — always at card bottom */}
-                  <a
-                    href={`/${urlLocale}#contact`}
-                    style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
-                      padding: '0.75rem 1.5rem',
-                      background: '#C9A24B', color: '#0A0A0B',
-                      fontFamily: 'var(--font-display)', fontSize: '0.75rem',
-                      letterSpacing: '0.1em', textDecoration: 'none',
-                      borderRadius: '9999px', fontWeight: 700,
-                      marginTop: 'auto',
-                    }}
-                  >
-                    <Phone size={14} color="#0A0A0B" strokeWidth={2.5} />
-                    {isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'}
-                  </a>
-                </div>
-              )
-            })}
-          </div>
+            {isArabic
+              ? 'نعمل بثلاث باقات — الأساس والنمو والريادة. كل واحدة نظام متكامل لا قائمة مهام. ويعتمد أين تبدأ على موضع عملك اليوم، ونحدده معك في مكالمة.'
+              : 'We work in three tiers — Foundation, Growth, and Scale. Each one is a complete system rather than a list of tasks. Where you start depends on where your business is today, and we work that out together on a call.'}
+          </p>
+          <Link
+            href={`/${urlLocale}/marketing/marketing-packages-saudi`}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+              padding: '0.75rem 1.75rem',
+              background: 'transparent',
+              border: '1px solid var(--color-gold)',
+              color: 'var(--color-gold)',
+              fontFamily: 'var(--font-display)', fontSize: '0.8rem',
+              letterSpacing: '0.1em', textDecoration: 'none',
+              borderRadius: '9999px', fontWeight: 700,
+            }}
+          >
+            {isArabic ? 'اطّلع على الباقات' : 'See the packages'}
+          </Link>
         </div>
       </section>
 
-      {/* Compliance block */}
-      <section style={{
-        padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem)',
-        maxWidth: '80rem', margin: '0 auto',
-        textAlign: 'center',
-      }}>
-        <p style={{
-          fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
-          color: 'var(--color-text-faint)', lineHeight: 1.8,
-          maxWidth: '600px', margin: '0 auto',
-        }}>
-          {isArabic
-            ? 'تعمل بريمييرا لايف وفق معايير المحتوى الخاصة بهيئة الإعلام المرئي والمسموع في المملكة العربية السعودية. نضمن التزام جميع المواد الإبداعية بالأنظمة المعمول بها.'
-            : "Premiera Live operates in compliance with Saudi Arabia's advertising and content regulations. All creative materials are reviewed to meet regulatory standards before publishing."}
-        </p>
-      </section>
-
-      {/* Our Services — internal linking map */}
-      <section style={{
-        padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem)',
-        maxWidth: '80rem', margin: '0 auto',
-        textAlign: 'center',
-      }}>
-        <p style={{
-          fontFamily: 'var(--font-body)', fontWeight: 500,
-          fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
-          textTransform: 'uppercase', color: 'var(--color-gold)',
-          marginBottom: '2rem',
-        }}>
-          {isArabic ? 'خدماتنا' : 'OUR SERVICES'}
-        </p>
-        <div style={{
-          display: 'flex', flexWrap: 'wrap', gap: '0.75rem',
-          justifyContent: 'center',
-        }}>
-          {MARKETING_SLUGS.map((slug) => (
-            <Link
-              key={slug}
-              href={`/${urlLocale}/marketing/${slug}`}
-              style={{
-                display: 'inline-block',
-                padding: '0.5rem 1.25rem',
-                background: '#16161B',
-                border: '1px solid rgba(201,162,75,0.2)',
-                borderRadius: '100px',
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--body-sm)',
-                color: 'rgba(245,244,240,0.7)',
-                textDecoration: 'none',
-                textTransform: 'capitalize',
-              }}
-            >
-              {getServiceLabel(slug, isArabic)}
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Final CTA */}
+      {/* Section 7 — Final CTA */}
       <section style={{
         padding: 'clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 4rem)',
         textAlign: 'center',

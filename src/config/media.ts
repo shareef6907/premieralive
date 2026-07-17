@@ -57,19 +57,19 @@ export const BRAND_FILMS: { src: string; title: string; poster?: string; titleAr
     src: `${M}/work/NYE-Fort-1080p.mp4`,
     title: 'NYE Fort',
     titleAr: 'حفل رأس السنة — القلعة',
-    poster: `${M}/work/posters/NYE-Fort-poster.jpg`,
+    poster: `${M}/work/NYE-Fort-poster.jpg`,
   },
   {
     src: `${M}/work/MEOS-Day2-1080p.mp4`,
     title: 'MEOS Day 2',
     titleAr: 'MEOS اليوم 2',
-    poster: `${M}/work/posters/MEOS-Day2-poster.jpg`,
+    poster: `${M}/work/MEOS-Day2-poster.jpg`,
   },
   {
     src: `${M}/work/Daniel-Decor-1080p.mp4`,
     title: 'Daniel Decor',
     titleAr: 'دانيال ديكور',
-    poster: `${M}/work/posters/Daniel-Decor-poster.jpg`,
+    poster: `${M}/work/Daniel-Decor-poster.jpg`,
   },
   {
     src: `${M}/work/Atme-Fintech-1080p.mp4`,
