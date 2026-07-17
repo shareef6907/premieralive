@@ -57,39 +57,39 @@ export const BRAND_FILMS: { src: string; title: string; poster?: string; titleAr
     src: `${M}/work/NYE-Fort-1080p.mp4`,
     title: 'NYE Fort',
     titleAr: 'حفل رأس السنة — القلعة',
-    poster: `${M}/work/NYE-Fort-poster.jpg`,
+    poster: `${M}/work/posters/NYE-Fort-1080p-poster.jpg`,
   },
   {
     src: `${M}/work/MEOS-Day2-1080p.mp4`,
     title: 'MEOS Day 2',
     titleAr: 'MEOS اليوم 2',
-    poster: `${M}/work/MEOS-Day2-poster.jpg`,
+    poster: `${M}/work/posters/MEOS-Day2-1080p-poster.jpg`,
   },
   {
     src: `${M}/work/Daniel-Decor-1080p.mp4`,
     title: 'Daniel Decor',
     titleAr: 'دانيال ديكور',
-    poster: `${M}/work/Daniel-Decor-poster.jpg`,
+    poster: `${M}/work/posters/Daniel-Decor-1080p-poster.jpg`,
   },
   {
     src: `${M}/work/Atme-Fintech-1080p.mp4`,
     title: 'Atme Press Conference',
-    poster: `${M}/work/Atme-Fintech-poster.jpg`,
+    poster: `${M}/work/posters/Atme-Fintech-1080p-poster.jpg`,
   },
   {
     src: `${M}/work/Empire-Limo-1080p.mp4`,
     title: 'Empire Limo',
-    poster: `${M}/work/Empire-Limo-poster.jpg`,
+    poster: `${M}/work/posters/Empire-Limo-1080p-poster.jpg`,
   },
   {
     src: `${M}/work/Horse-Slowmo-1080p.mp4`,
     title: 'Horse Slow Mo',
-    poster: `${M}/work/Horse-Slowmo-poster.jpg`,
+    poster: `${M}/work/posters/Horse-Slowmo-1080p-poster.jpg`,
   },
   {
     src: `${M}/work/MEOS-1080p.mp4`,
     title: 'MEOS Day 1',
-    poster: `${M}/work/MEOS-poster.jpg`,
+    poster: `${M}/work/posters/MEOS-1080p-poster.jpg`,
   },
 ];
 
