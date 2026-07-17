@@ -4,6 +4,16 @@ import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import ContactActions from '@/components/ContactActions'
 import { MARKETING_SLUGS, getServiceLabel } from '@/config/marketingServices'
+
+const SHORT_LABELS: Record<string, { en: string; ar: string }> = {
+  'social-media-management-saudi':    { en: 'Social Media Management',   ar: 'إدارة وسائل التواصل' },
+  'google-ads-saudi':                  { en: 'Google Ads',               ar: 'إعلانات قوقل' },
+  'facebook-instagram-ads-saudi':      { en: 'Facebook & Instagram Ads',  ar: 'إعلانات فيسبوك وإنستغرام' },
+  'snapchat-tiktok-ads-saudi':         { en: 'Snapchat & TikTok Ads',    ar: 'إعلانات سناب وتيك توك' },
+  'seo-saudi':                         { en: 'SEO',                      ar: 'تحسين محركات البحث' },
+  'content-production-saudi':          { en: 'Content Production',        ar: 'إنتاج المحتوى' },
+  'marketing-packages-saudi':          { en: 'Marketing Packages',        ar: 'باقات التسويق' },
+}
 import { MEDIA_BASE } from '@/config/media'
 
 type Props = { params: Promise<{ locale: string }> }
@@ -17,12 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: isArabic ? 'خدمات التسويق | بريمييرا لايف' : 'Marketing Services | Premiera Live',
     description: isArabic
       ? 'تسويق استراتيجي وإبداعي مبني للتحويل — من إدارة التواصل الاجتماعي إلى إعلانات الأداء ومساعدات الذكاء الاصطناعي.'
-      : 'Strategic, creative marketing built to convert — from social media and performance ads to AI-powered lead automation. Serving Saudi Arabia and the Gulf.',
+      : 'Monthly marketing retainers for Saudi businesses — social media, paid ads, SEO, and content produced in-house by our own film crew.',
     openGraph: {
       title: isArabic ? 'خدمات التسويق | بريمييرا لايف' : 'Marketing Services | Premiera Live',
       description: isArabic
-        ? 'تسويق استراتيجي وإبداعي مبني للتحويل — من إدارة التواصل الاجتماعي إلى إعلانات الأداء ومساعدات الذكاء الاصطناعي.'
-        : 'Strategic, creative marketing built to convert — from social media and performance ads to AI-powered lead automation. Serving Saudi Arabia and the Gulf.',
+        ? 'ندير اشتراكات تسويق شهرية للشركات السعودية — وسائل التواصل والإعلانات المدفوعة وتحسين محركات البحث ومحتوى ينتجه فريق أفلامنا داخليًا.'
+        : 'Monthly marketing retainers for Saudi businesses — social media, paid ads, SEO, and content produced in-house by our own film crew.',
       url: canonical,
       locale: isArabic ? 'ar_SA' : 'en_SA',
       images: [{ url: `${MEDIA_BASE}/homepage-photos/og-image.jpg`, width: 1200, height: 630 }],
@@ -31,8 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: isArabic ? 'خدمات التسويق | بريمييرا لايف' : 'Marketing Services | Premiera Live',
       description: isArabic
-        ? 'تسويق استراتيجي وإبداعي مبني للتحويل — من إدارة التواصل الاجتماعي إلى إعلانات الأداء ومساعدات الذكاء الاصطناعي.'
-        : 'Strategic, creative marketing built to convert — from social media and performance ads to AI-powered lead automation. Serving Saudi Arabia and the Gulf.',
+        ? 'ندير اشتراكات تسويق شهرية للشركات السعودية — وسائل التواصل والإعلانات المدفوعة وتحسين محركات البحث ومحتوى ينتجه فريق أفلامنا داخليًا.'
+        : 'Monthly marketing retainers for Saudi businesses — social media, paid ads, SEO, and content produced in-house by our own film crew.',
     },
     alternates: {
       canonical,
@@ -171,7 +181,7 @@ export default async function MarketingPage({
             textTransform: 'uppercase', color: 'var(--color-gold)',
             marginBottom: '1.5rem',
           }}>
-            {isArabic ? 'ما نقدم' : 'WHAT WE DO'}
+            {isArabic ? 'المشكلة' : 'THE PROBLEM'}
           </p>
           <h2 style={{
             fontFamily: 'var(--font-display)',
@@ -465,7 +475,7 @@ export default async function MarketingPage({
                   textTransform: 'capitalize',
                 }}
               >
-                {getServiceLabel(slug, isArabic)}
+                {(SHORT_LABELS[slug]?.[isArabic ? 'ar' : 'en']) ?? slug}
               </Link>
             ))}
           </div>
