@@ -154,7 +154,7 @@ export default function HeroSection() {
             {isArabic ? 'شاهد الأفلام' : 'View Films'}
           </a>
           <a
-            href="#digital"
+            href={`/${locale}/digital`}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
