@@ -579,7 +579,7 @@ export default async function MarketingPage({
           color: 'var(--color-text)', lineHeight: 1.0,
           letterSpacing: '0.01em', marginBottom: '2.5rem',
         }}>
-          {isArabic ? 'هل أنت مستعد للبدء؟' : 'READY TO GET STARTED?'}
+          {isArabic ? 'نبني معًا شيئًا يستحق التذكر.' : "Let's Build Something Remarkable."}
         </h2>
         <ContactActions />
         <p style={{

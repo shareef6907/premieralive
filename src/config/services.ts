@@ -42,6 +42,7 @@ export interface ServicePage {
   ctaMessageEn: string
   ctaMessageAr: string
   relatedSlugs: ServiceSlug[]
+  division: 'cinematic' | 'digital'
 }
 
 const SB = MEDIA_BASE + '/service-headers/'
@@ -49,6 +50,7 @@ const SB = MEDIA_BASE + '/service-headers/'
 export const SERVICES: ServicePage[] = [
   // ── CINEMATIC PRODUCTION ─────────────────────────────────────────────────
   {
+    division: 'cinematic',
     slug: 'commercial-film-production-saudi-arabia',
     shortName: 'commercial-films',
     nameEn: 'Commercial Film Production in Saudi Arabia',
@@ -99,6 +101,7 @@ export const SERVICES: ServicePage[] = [
     relatedSlugs: ['corporate-video-production-saudi-arabia', 'professional-photography-saudi-arabia', 'animation-cgi-studio-saudi-arabia'],
   },
   {
+    division: 'cinematic',
     slug: 'corporate-video-production-saudi-arabia',
     shortName: 'corporate-films',
     nameEn: 'Corporate Video Production in Saudi Arabia',
@@ -149,6 +152,7 @@ export const SERVICES: ServicePage[] = [
     relatedSlugs: ['commercial-film-production-saudi-arabia', 'event-coverage-saudi-arabia', 'professional-photography-saudi-arabia'],
   },
   {
+    division: 'cinematic',
     slug: 'professional-photography-saudi-arabia',
     shortName: 'professional-photography',
     nameEn: 'Professional Photography in Saudi Arabia',
@@ -197,6 +201,7 @@ export const SERVICES: ServicePage[] = [
     relatedSlugs: ['commercial-film-production-saudi-arabia', 'corporate-video-production-saudi-arabia', 'event-coverage-saudi-arabia'],
   },
   {
+    division: 'cinematic',
     slug: 'animation-cgi-studio-saudi-arabia',
     shortName: 'animation-cgi',
     nameEn: 'Animation and CGI Studio in Saudi Arabia',
@@ -247,6 +252,7 @@ export const SERVICES: ServicePage[] = [
     relatedSlugs: ['commercial-film-production-saudi-arabia', 'multi-cam-live-streaming-saudi-arabia', 'documentary-production-saudi-arabia'],
   },
   {
+    division: 'cinematic',
     slug: 'documentary-production-saudi-arabia',
     shortName: 'documentary',
     nameEn: 'Documentary Production in Saudi Arabia',
@@ -295,6 +301,7 @@ export const SERVICES: ServicePage[] = [
     relatedSlugs: ['commercial-film-production-saudi-arabia', 'corporate-video-production-saudi-arabia', 'event-coverage-saudi-arabia'],
   },
   {
+    division: 'cinematic',
     slug: 'event-coverage-saudi-arabia',
     shortName: 'event-coverage',
     nameEn: 'Event Coverage in Saudi Arabia',
@@ -343,6 +350,7 @@ export const SERVICES: ServicePage[] = [
     relatedSlugs: ['multi-cam-live-streaming-saudi-arabia', 'corporate-video-production-saudi-arabia', 'commercial-film-production-saudi-arabia'],
   },
   {
+    division: 'cinematic',
     slug: 'multi-cam-live-streaming-saudi-arabia',
     shortName: 'live-streaming',
     nameEn: 'Multi-Cam Live Streaming in Saudi Arabia',
@@ -395,6 +403,7 @@ export const SERVICES: ServicePage[] = [
   {
     slug: 'podcast-filming-saudi-arabia',
     shortName: 'podcast',
+    division: 'cinematic',
     nameEn: 'Podcast Filming in Saudi Arabia',
     nameAr: 'تصوير البودكاست في السعودية',
     heroImage: SB + 'podcast.jpg',
@@ -460,6 +469,7 @@ export const SERVICES: ServicePage[] = [
   // ── DIGITAL EXPERIENCES ───────────────────────────────────────────────────
   {
     slug: 'business-website-development-saudi-arabia',
+    division: 'digital',
     shortName: 'business-websites',
     nameEn: 'Business Website Development in Saudi Arabia',
     nameAr: 'بناء مواقع الأعمال في السعودية',
@@ -510,6 +520,7 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'app-development-saudi-arabia',
+    division: 'digital',
     shortName: 'app-development',
     nameEn: 'App Development in Saudi Arabia',
     nameAr: 'تطوير التطبيقات في السعودية',
@@ -560,6 +571,7 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'landing-page-design-saudi-arabia',
+    division: 'digital',
     shortName: 'landing-pages',
     nameEn: 'Landing Page Design in Saudi Arabia',
     nameAr: 'تصميم صفحات الهبوط في السعودية',
@@ -608,6 +620,7 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'booking-system-development-saudi-arabia',
+    division: 'digital',
     shortName: 'booking-systems',
     nameEn: 'Booking System Development in Saudi Arabia',
     nameAr: 'بناء أنظمة الحجز في السعودية',
@@ -658,6 +671,7 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'business-platform-development-saudi-arabia',
+    division: 'digital',
     shortName: 'business-platforms',
     nameEn: 'Business Platform Development in Saudi Arabia',
     nameAr: 'بناء منصات الأعمال في السعودية',
@@ -708,6 +722,7 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'client-portal-development-saudi-arabia',
+    division: 'digital',
     shortName: 'client-portals',
     nameEn: 'Client Portal Development in Saudi Arabia',
     nameAr: 'بناء بوابات العملاء في السعودية',
@@ -758,6 +773,7 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'ai-assistants-automation-saudi-arabia',
+    division: 'digital',
     shortName: 'ai-assistants',
     nameEn: 'AI Assistants and Automation in Saudi Arabia',
     nameAr: 'المساعدون الأذكياء والأتمتة في السعودية',
@@ -808,6 +824,7 @@ export const SERVICES: ServicePage[] = [
   },
   {
     slug: 'website-maintenance-saudi-arabia',
+    division: 'digital',
     shortName: 'website-maintenance',
     nameEn: 'Website Maintenance in Saudi Arabia',
     nameAr: 'صيانة المواقع في السعودية',
