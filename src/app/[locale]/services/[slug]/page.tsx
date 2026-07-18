@@ -193,7 +193,9 @@ export default async function ServicePage({ params }: Props) {
             textTransform: 'uppercase', color: 'var(--color-gold)',
             marginBottom: '1rem',
           }}>
-            {isArabic ? 'الإنتاج السينمائي' : 'CINEMATIC PRODUCTION'}
+            {isArabic
+            ? (service.division === 'digital' ? 'التجارب الرقمية' : 'الإنتاج السينمائي')
+            : (service.division === 'digital' ? 'DIGITAL EXPERIENCES' : 'CINEMATIC PRODUCTION')}
           </p>
           <h1 style={{
             fontFamily: 'var(--font-display)',
@@ -397,7 +399,7 @@ export default async function ServicePage({ params }: Props) {
           color: 'var(--color-text)', lineHeight: 1.0,
           letterSpacing: '0.01em', marginBottom: '2.5rem',
         }}>
-          {isArabic ? 'هل أنت مستعد للبدء؟' : 'READY TO GET STARTED?'}
+          {isArabic ? 'نبني معًا شيئًا يستحق التذكر.' : "Let's Build Something Remarkable."}
         </h2>
         <ContactActions />
       </section>
