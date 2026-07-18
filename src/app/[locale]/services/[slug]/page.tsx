@@ -63,10 +63,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function BreadcrumbJsonLd({ locale, slug, name }: { locale: string; slug: string; name: string }) {
   const domain = 'https://www.premieralive.com'
   const items = [
-    { '@type': 'ListItem', name: 'Home', url: `${domain}/${locale}` },
-    { '@type': 'ListItem', name: 'Services', url: `${domain}/${locale}/services` },
-    { '@type': 'ListItem', name, url: `${domain}/${locale}/services/${slug}` },
-  ]
+    { '@type': 'ListItem', name: 'Home', item: `${domain}/${locale}` },
+    { '@type': 'ListItem', name: 'Services', item: `${domain}/${locale}/services` },
+    { '@type': 'ListItem', name, item: `${domain}/${locale}/services/${slug}` },
+  ].map((item, i) => ({ ...item, position: i + 1 }))
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
