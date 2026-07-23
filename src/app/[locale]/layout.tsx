@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import Script from 'next/script'
+import { GOOGLE_ADS_ID } from '@/config/analytics'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
@@ -91,6 +93,18 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `}
+        </Script>
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
