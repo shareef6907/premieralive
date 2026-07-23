@@ -1,0 +1,16 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premiera Live: P monogram, bowl counter is a play button -->
+  <rect width="512" height="512" rx="96" fill="#000000"/>
+  <path fill="#FFFFFF" fill-rule="evenodd" d="
+    M 156 116
+    L 254 116
+    A 94 94 0 0 1 254 304
+    L 216 304
+    L 216 396
+    L 156 396
+    Z
+    M 232 168
+    L 232 252
+    L 304 210
+    Z"/>
+</svg>
