@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl'
 import { Mail, MessageCircle, Phone } from 'lucide-react'
+import { GOOGLE_ADS_ID, PHONE_CONVERSION_LABEL } from '@/config/analytics'
 
 export default function ContactActions() {
   const locale = useLocale()
@@ -77,6 +78,13 @@ export default function ContactActions() {
       {/* Call */}
       <a
         href="tel:+966500440235"
+        onClick={() => {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', {
+              send_to: `${GOOGLE_ADS_ID}/${PHONE_CONVERSION_LABEL}`,
+            })
+          }
+        }}
         style={{
           display: 'inline-flex',
           alignItems: 'center',
