@@ -11,7 +11,7 @@ const POSTER_SRC = `${MEDIA_URL}/premiera-poster.jpg`
 const SERVICE_LABELS = [
   { en: 'Marketing Retainers', ar: 'حسابات التسويق' },
   { en: 'Websites', ar: 'المواقع الإلكترونية' },
-  { en: 'Software & Apps', ar: 'البرمجيات والتطبيقات' },
+  { en: 'App Development', ar: 'تطوير التطبيقات' },
   { en: 'Social Media', ar: 'إدارة السوشيال ميديا' },
   { en: 'Animation & 3D', ar: 'الأنيميشن والتصميم ثلاثي الأبعاد' },
   { en: 'Video Production', ar: 'إنتاج الفيديو والتصوير' },
@@ -19,25 +19,6 @@ const SERVICE_LABELS = [
   { en: 'Podcast Filming', ar: 'تصوير البودكاست' },
   { en: 'Live Streaming', ar: 'البث المباشر متعدد الكاميرات' },
 ]
-
-function SaudiFlag() {
-  return (
-    <svg
-      width="20"
-      height="14"
-      viewBox="0 0 20 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block', verticalAlign: 'middle' }}
-    >
-      <rect width="20" height="14" fill="#006C35" />
-      <rect x="0" y="3.5" width="20" height="1.4" fill="white" />
-      <rect x="0" y="7" width="20" height="1.4" fill="white" />
-      <rect x="0" y="10.5" width="20" height="1.4" fill="white" />
-      <text x="1.5" y="10.5" fontSize="6" fill="#006C35" fontWeight="bold">الله</text>
-    </svg>
-  )
-}
 
 export default function Hero() {
   const locale = useLocale()
@@ -175,7 +156,7 @@ export default function Hero() {
               marginBottom: '1.25rem',
             }}
           >
-            {isArabic ? 'بريميرا لايف' : 'PREMIERA LIVE'}
+            {isArabic ? 'بريمييرا لايف' : 'PREMIERA LIVE'}
           </p>
 
           <h1
@@ -203,7 +184,7 @@ export default function Hero() {
               marginBottom: '2.5rem',
             }}
           >
-            {isArabic ? 'قريباً في السعودية' : 'Launching in Saudi Arabia'}
+            {isArabic ? 'الآن في السعودية' : 'Now in Saudi Arabia'}
           </p>
 
           {!isMobile && (

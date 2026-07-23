@@ -1,12 +1,95 @@
 @import "tailwindcss";
 
 @theme {
+  /* Color */
   --color-bg: #0A0A0B;
-  --color-gold: #C9A24B;
+  --color-bg-elevated: #101014;
   --color-card: #16161B;
-  --color-card-border: rgba(255,255,255,0.06);
-  --font-display: var(--font-bebas), sans-serif;
-  --font-body: var(--font-poppins), sans-serif;
+  --color-card-border: #26262E;
+  --color-gold: #C9A24B;
+  --color-gold-soft: #C9A24B33;
+  --color-text: #F5F4F0;
+  --color-text-dim: #A6A49E;
+  --color-text-faint: #6B6A66;
+
+  /* Fonts — display: Playfair Display (replaces Bebas Neue); body: DM Sans (replaces Poppins) */
+  --font-display: 'Playfair Display', 'Noto Sans Arabic', system-ui, serif;
+  --font-body: 'DM Sans', 'Noto Sans Arabic', system-ui, sans-serif;
+
+  /* Type scale */
+  /* H1: clamp(2.5rem, 5vw, 4rem) — page titles */
+  --h1: clamp(2.5rem, 5vw, 4rem);
+  /* H2: clamp(1.875rem, 3.5vw, 2.75rem) — section headings */
+  --h2: clamp(1.875rem, 3.5vw, 2.75rem);
+  --h3: clamp(1.375rem, 2vw, 1.75rem);
+  /* Eyebrow: 0.8125rem + letter-spacing 0.12em */
+  --eyebrow: 0.8125rem;
+  /* Body: clamp(1rem, 0.95rem + 0.3vw, 1.125rem) = 16→18px */
+  --body: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --body-sm: 0.9375rem;
+
+  /* Rhythm */
+  --section-y: clamp(6rem, 12vw, 10rem);
+  --container: 80rem;
+  --radius: 0.75rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.6s;
+}
+
+.v2-section {
+  padding-block: var(--section-y);
+  background: var(--color-bg);
+  position: relative;
+}
+.v2-section--elevated {
+  background: var(--color-bg-elevated);
+}
+.v2-container {
+  width: 100%;
+  max-width: var(--container); /* 80rem */
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+.v2-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--eyebrow);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  white-space: nowrap;           /* eyebrows NEVER wrap */
+  margin-bottom: 1.25rem;
+}
+.v2-title {
+  font-family: var(--font-display);
+  font-size: var(--h2);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--color-text);
+  max-width: 16ch;               /* wraps as a block, never one word per line */
+  margin-bottom: 2.5rem;
+}
+[dir="rtl"] .v2-title {
+  max-width: 24ch;                /* Arabic titles need more width than EN-tuned 16ch */
+}
+
+/* Four pillars grid — 4-col desktop, 2-col tablet, 1-col mobile */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .pillars-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 * {
@@ -20,25 +103,103 @@ html {
 }
 
 body {
-  background: #0A0A0B;
-  color: #fff;
-  font-family: var(--font-poppins), sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Arabic body text — higher line-height for RTL */
+[dir="rtl"] body,
+[dir="rtl"] p,
+[dir="rtl"] li {
+  line-height: 1.9;
+}
+
 ::selection {
-  background: #C9A24B;
-  color: #0A0A0B;
+  background: var(--color-gold);
+  color: var(--color-bg);
 }
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0B;
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #C9A24B;
+  background: var(--color-gold);
   border-radius: 3px;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+[dir="rtl"] .animate-marquee {
+  animation-name: marquee-rtl;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Entrance animation */
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RTL border fix for goal picker panel */
+[dir="rtl"] .goal-panel {
+  border-left: none;
+  border-right: 2px solid var(--color-gold);
+}
+
+/* Gold rule */
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Part 1 — Step body ::first-letter uppercase (EN only, AR excluded via :lang) */
+.step-body-text:lang(en)::first-letter {
+  text-transform: uppercase;
 }

@@ -1,58 +1,91 @@
 {
   "nav": {
-    "work": "Work",
-    "services": "Services",
-    "whyUs": "Why Us",
+    "films": "Films",
+    "digital": "Digital",
+    "process": "Process",
     "contact": "Contact",
-    "startProject": "Start Project"
+    "bookSession": "Book a Strategy Session"
   },
   "hero": {
-    "eyebrow": "PREMIERA LIVE",
-    "headline": "Marketing that makes your brand impossible to ignore.",
-    "headlineAr": "نصنع علامات تجارية لا يمكن تجاهلها",
-    "sub": "Launching in Saudi Arabia",
-    "subAr": "قريباً في السعودية"
+    "eyebrow": "CINEMATIC PRODUCTION \u00b7 DIGITAL EXPERIENCES",
+    "headline": "EVERY GREAT BUSINESS DESERVES A GREAT STORY.",
+    "sub": "We create cinematic productions and digital experiences that help businesses communicate, launch, and grow.",
+    "viewFilms": "View Films",
+    "exploreDigital": "Explore Digital Experiences"
   },
-  "services": {
+  "stats": {
+    "years": "15+ Years of Experience",
+    "projects": "1,000+ Projects Delivered",
+    "brands": "20+ Global Brands",
+    "platforms": "25+ Platforms Mastered"
+  },
+  "brandMarquee": {
+    "eyebrow": "TRUSTED BY GLOBAL BRANDS"
+  },
+  "intro": {
+    "body": "We create films people remember — and digital experiences businesses grow on."
+  },
+  "divisions": {
     "eyebrow": "WHAT WE DO",
-    "heading": "Everything Your Brand Needs. One Studio.",
-    "items": [
-      { "name": "Marketing Retainers", "nameAr": "حسابات التسويق", "desc": "Your full marketing department, without the headcount.", "descAr": "قسم التسويق الكامل الخاص بك، بدون زيادات في الفريق." },
-      { "name": "Websites", "nameAr": "المواقع الإلكترونية", "desc": "100% coded and custom-built from scratch. No templates.", "descAr": "مصمم ومبرمج بالكامل من الصفر. بدون قوالب." },
-      { "name": "Software & Apps", "nameAr": "البرمجيات والتطبيقات", "desc": "Custom web apps, mobile apps & internal tools — built from scratch.", "descAr": "تطبيقات ويب مخصصة، تطبيقات جوال وأدوات داخلية — مبنية من الصفر." },
-      { "name": "Social Media Management", "nameAr": "إدارة السوشيال ميديا", "desc": "Consistent, professional, always-on.", "descAr": "محتوى احترافي متسق، متاح دائماً." },
-      { "name": "Animation & 3D", "nameAr": "الأنيميشن والتصميم ثلاثي الأبعاد", "desc": "Worlds built from imagination.", "descAr": "عالم مبني من خيالنا." },
-      { "name": "Video Production & Photography", "nameAr": "إنتاج الفيديو والتصوير", "desc": "Cinema-grade films and stills that sell.", "descAr": "أفلام وصور فوتوغرافية بجودة سينمائية تُبيع." },
-      { "name": "Branding & Design", "nameAr": "الهوية البصرية والتصميم", "desc": "Logos, identity systems and print — a brand that looks the part.", "descAr": "شعارات وأنظمة هوية وتصميم مطبوعة — علامة تجارية بملامح احترافية." },
-      { "name": "Podcast Filming", "nameAr": "تصوير البودكاست", "desc": "Studio-grade podcast production, filmed and edited.", "descAr": "إنتاج بودكاست بجودة الاستوديو، مصور ومونتاج." },
-      { "name": "Multi-Camera Live Streaming", "nameAr": "البث المباشر متعدد الكاميرات", "desc": "Live event broadcasting with high-end cinema cameras.", "descAr": "بث مباشر للفعاليات بكاميرات سينمائية عالية المستوى." }
-    ]
+    "cinematic": {
+      "name": "CINEMATIC PRODUCTION",
+      "line": "Films built to be remembered.",
+      "capabilities": ["Commercial Films", "Corporate Films", "Professional Photography", "Event Coverage", "Animation & CGI", "Documentary"]
+    },
+    "digital": {
+      "name": "DIGITAL EXPERIENCES",
+      "line": "Websites and systems, built from scratch.",
+      "capabilities": ["Business Websites", "Landing Pages", "Booking Systems", "Business Platforms", "Client Portals", "AI Assistants & Automation"]
+    }
   },
-  "work": {
-    "eyebrow": "SELECTED WORK",
-    "heading": "Brands We've Brought to Life",
-    "comingSoon": "Coming Soon",
-    "comingSoonAr": "قريباً"
+  "featuredProductions": {
+    "eyebrow": "FEATURED PRODUCTION",
+    "shortsHeading": "VERTICAL & SOCIAL FILMS",
+    "cgiHeading": "CGI THAT SELLS THE UNSHOOTABLE"
   },
-  "whyUs": {
-    "eyebrow": "WHY PREMIERA LIVE",
-    "heading": "Built Different. Delivered Faster.",
-    "stats": [
-      { "value": "15+", "label": "Years of Experience", "labelAr": "سنوات خبرة" },
-      { "value": "1,000+", "label": "Projects Delivered", "labelAr": "مشروع منجز" },
-      { "value": "25+", "label": "Platforms Mastered", "labelAr": "منصة مُتقنة" },
-      { "value": "20+", "label": "Global Brands", "labelAr": "علامة تجارية عالمية" }
-    ]
+  "digitalShowcase": {
+    "eyebrow": "DIGITAL SHOWCASE",
+    "heading": "PLATFORMS WE BUILT AND RUN.",
+    "intro": "We don't just talk about software — we build it. These are live platforms we designed, coded, and operate end to end.",
+    "closingLine": "Platforms of this scope are typically quoted at tens of thousands of dollars and take a senior development team months to deliver. We design, code, and launch them in a fraction of that time — the same systems run our own businesses.",
+    "viewDashboard": "View dashboard"
   },
-  "contact": {
-    "heading": "Ready to start?",
-    "sub": "Message us on WhatsApp — we respond fast.",
-    "subAr": "راسلنا على واتساب — نرد بسرعة.",
-    "btn": "Chat on WhatsApp"
+  "whyBoth": {
+    "beat1": "Film earns attention.",
+    "beat2": "Digital converts it.",
+    "beat3": "Your business grows."
+  },
+  "process": {
+    "eyebrow": "HOW WE WORK",
+    "heading": "A PROCESS, NOT A GAMBLE.",
+    "step01": "Discover",
+    "step01Desc": "We learn your business before we touch a pixel.",
+    "step02": "Strategy",
+    "step02Desc": "Goals, audience, message, and the plan to win.",
+    "step03": "Production",
+    "step03Desc": "Film, design, and content at cinema grade.",
+    "step04": "Development",
+    "step04Desc": "Websites, platforms, and systems — custom-coded.",
+    "step05": "Launch",
+    "step05Desc": "Everything live, tested, and tracked.",
+    "step06": "Support",
+    "step06Desc": "We stay after launch — maintenance, updates, growth."
+  },
+  "whyPremiera": {
+    "tagline": "Fifteen years. One standard."
+  },
+  "founder": {
+    "eyebrow": "FROM THE FOUNDER",
+    "body": "Most businesses don't need another agency. They need one partner who sees the whole picture — the brand, the film, the website, and the system underneath that makes it all grow.\n\nFor more than fifteen years I've built campaigns, films, and platforms for brands you know. Every project taught me the same lesson: great creative without technology stalls, and technology without story is invisible.\nPremiera Live exists to do both — and when you work with us, you work with me.",
+    "signature": "Shareef, Founder"
+  },
+  "finalCta": {
+    "heading": "LET'S BUILD SOMETHING REMARKABLE.",
+    "sub": "Replies within one business day.",
+    "cta": "Book a Discovery Call"
   },
   "footer": {
-    "tagline": "Launching in Saudi Arabia — serving clients across the Gulf.",
-    "taglineAr": "قريباً في السعودية — نخدم العملاء في جميع أنحاء الخليج.",
-    "copyright": "© 2026 Premiera Live. All rights reserved."
+    "tagline": "Now in Saudi Arabia — serving clients across the Gulf.",
+    "copyright": "\u00a9 2026 Premiera Live"
   }
 }
