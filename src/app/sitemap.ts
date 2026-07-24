@@ -25,6 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/ar/services`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/en/marketing`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/ar/marketing`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/en/about`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    { url: `${BASE}/ar/about`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    { url: `${BASE}/en/film-production-company-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${BASE}/ar/film-production-company-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     ...serviceUrls,
     ...marketingUrls,
   ]

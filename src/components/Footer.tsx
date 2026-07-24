@@ -90,7 +90,7 @@ export default function Footer() {
         {/* Col 1 — Filming */}
         <div>
           <Link
-            href={`/${locale}/services`}
+            href={`/${locale}/film-production-company-saudi-arabia`}
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'var(--eyebrow)',
@@ -108,6 +108,22 @@ export default function Footer() {
             {isArabic ? 'الإنتاج السينمائي' : 'Filming'}
           </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <Link
+              href={`/${locale}/film-production-company-saudi-arabia`}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                color: 'rgba(245,244,240,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+                lineHeight: 1.6,
+                fontWeight: 600,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+            >
+              {isArabic ? 'شركة إنتاج الأفلام' : 'Film Production Company'}
+            </Link>
             {CINEMATIC_SERVICES.map((s) => (
               <Link
                 key={s.slug}
@@ -320,7 +336,7 @@ export default function Footer() {
             : 'Spaces Ajdan Walk, Corniche 5, PO Box 34414, Al Khobar, Kingdom of Saudi Arabia'}
         </p>
 
-        {/* Copyright + language toggle */}
+        {/* Copyright + language toggle + About link */}
         <div
           style={{
             display: 'flex',
@@ -330,16 +346,32 @@ export default function Footer() {
             gap: '1rem',
           }}
         >
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'var(--body-sm)',
-              color: 'var(--text-faint)',
-              margin: 0,
-            }}
-          >
-            &copy; 2026 Premiera Live
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                color: 'var(--text-faint)',
+                margin: 0,
+              }}
+            >
+              &copy; 2026 Premiera Live
+            </p>
+            <Link
+              href={`/${locale}/about`}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                color: 'var(--text-faint)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-faint)')}
+            >
+              {isArabic ? 'عن الشركة' : 'About'}
+            </Link>
+          </div>
           <Link
             href={localeSwitchHref}
             style={{
