@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Premiera Live',
-  description: 'Marketing Agency in Saudi Arabia',
+  description: 'Film Production Company in Saudi Arabia',
 }
 
 export default function RootLayout({

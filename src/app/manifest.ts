@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Premiera Live',
     short_name: 'Premiera',
-    description: 'Marketing Agency in Saudi Arabia',
+    description: 'A film production company in Al Khobar producing commercial films, corporate videos, documentaries, photography, and animation across Saudi Arabia — with custom websites and marketing built in-house. 15+ years, 1,000+ projects.',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',

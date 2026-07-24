@@ -101,7 +101,7 @@ export default function HeroSection() {
           textTransform: 'uppercase',
           marginBottom: '1.25rem',
         }}>
-          {isArabic ? 'إنتاج سينمائي · تجارب رقمية' : 'CINEMATIC PRODUCTION · DIGITAL EXPERIENCES'}
+          {isArabic ? 'إنتاج الأفلام · المواقع · التسويق' : 'FILM PRODUCTION · WEBSITES · MARKETING'}
         </p>
 
         {/* H1 */}

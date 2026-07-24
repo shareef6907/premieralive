@@ -1,10 +1,11 @@
 import { setRequestLocale } from 'next-intl/server'
 import HeroSection from '@/components/sections/HeroSection'
 import BrandMarqueeSection from '@/components/sections/BrandMarqueeSection'
+import IdentitySection from '@/components/sections/IdentitySection'
 import IntroSection from '@/components/sections/IntroSection'
+import FeaturedProductionsSection from '@/components/sections/FeaturedProductionsSection'
 import DivisionsSection from '@/components/sections/DivisionsSection'
 import GrowthSystemSection from '@/components/sections/GrowthSystemSection'
-import FeaturedProductionsSection from '@/components/sections/FeaturedProductionsSection'
 import WhyBothSection from '@/components/sections/WhyBothSection'
 import WhyPremieraSection from '@/components/sections/WhyPremieraSection'
 import FounderLetterSection from '@/components/sections/FounderLetterSection'
@@ -22,10 +23,11 @@ export default async function Page({
     <>
       <HeroSection />
       <BrandMarqueeSection />
+      <IdentitySection />
       <IntroSection />
+      <FeaturedProductionsSection />
       <DivisionsSection />
       <GrowthSystemSection id="process" />
-      <FeaturedProductionsSection />
       <WhyBothSection />
       <WhyPremieraSection />
       <FounderLetterSection />

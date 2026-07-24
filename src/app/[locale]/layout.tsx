@@ -25,11 +25,11 @@ export async function generateMetadata({
   const { locale } = await params
   const isArabic = locale === 'ar'
   const title = isArabic
-    ? 'بريمييرا لايف | أفلام ومواقع وتسويق في السعودية'
-    : 'Premiera Live | Film, Web & Marketing Agency in Saudi Arabia'
+    ? 'بريمييرا لايف | شركة إنتاج أفلام في السعودية'
+    : 'Premiera Live | Film Production Company in Saudi Arabia'
   const desc = isArabic
-    ? 'ننتج الأفلام، ونبني المواقع المخصصة، وندير حملات التسويق للشركات في السعودية. أكثر من 15 عامًا، وأكثر من 1,000 مشروع، وأكثر من 20 علامة عالمية.'
-    : 'We produce films, build custom websites, and run marketing retainers for businesses in Saudi Arabia. 15+ years, 1,000+ projects, 20+ global brands.'
+    ? 'ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والرسوم المتحركة من الخبر لعملاء في أنحاء السعودية — ونبني المواقع والمنصات الرقمية داخليًا. أكثر من 15 عامًا وأكثر من 1,000 مشروع.'
+    : 'A film production company in Al Khobar producing commercial films, corporate videos, documentaries, photography, and animation across Saudi Arabia — with custom websites and marketing built in-house. 15+ years, 1,000+ projects.'
 
   return {
     title,
