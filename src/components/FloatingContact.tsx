@@ -1,13 +1,13 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 const PHONE = '966500440235';
 const EMAIL = 'ceo@premieralive.com';
 
 export default function FloatingContact() {
- const pathname = usePathname() ?? '';
+ const pathname = usePathname();
  const isArabic = pathname.startsWith('/ar');
 
  const waText = isArabic
@@ -27,33 +27,29 @@ export default function FloatingContact() {
  'duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/60 ' +
  'w-[52px] h-[52px] md:w-14 md:h-14';
 
- // Option A: fade out when footer enters viewport
+ // Option A: fade out when footer enters viewport.
+ // Re-establish observer on every route change so a fresh footer element
+ // is always watched and state always resets to visible on navigation.
  const [hidden, setHidden] = useState(false);
- const observerRef = useRef<IntersectionObserver | null>(null);
 
  useEffect(() => {
+  // Always show buttons on navigation — reset whatever state the previous page left behind
+  setHidden(false);
+
   const footer = document.querySelector('footer');
   if (!footer) {
-   // No footer found — default to visible
+   // No footer in DOM — stay visible (this branch never hides buttons)
    return;
   }
 
-  observerRef.current = new IntersectionObserver(
-   ([entry]) => {
-    setHidden(entry.isIntersecting);
-   },
-   {
-    // Start fading as soon as any part of footer enters viewport
-    threshold: 0,
-   }
+  const obs = new IntersectionObserver(
+   ([entry]) => setHidden(entry.isIntersecting),
+   { threshold: 0 } // fires the moment any pixel of footer enters viewport
   );
 
-  observerRef.current.observe(footer);
-
-  return () => {
-   observerRef.current?.disconnect();
-  };
- }, []);
+  obs.observe(footer);
+  return () => obs.disconnect();
+ }, [pathname]);
 
  const wrapperClass = [
   'fixed right-4 z-[9999] flex flex-col gap-3 md:right-6',
