@@ -8,6 +8,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
 import CursorGlow from '@/components/CursorGlow'
+import FloatingContact from '@/components/FloatingContact'
 import { brand } from '@/config/brand'
 import { IMAGES } from '@/config/media'
 
@@ -115,6 +116,7 @@ export default async function LocaleLayout({
             <Footer />
           </SmoothScroll>
         </NextIntlClientProvider>
+        <FloatingContact />
       </body>
     </html>
   )
