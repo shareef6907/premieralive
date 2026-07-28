@@ -81,6 +81,7 @@ export default function Footer() {
       {/* ── 4-column grid ── */}
       <div
         style={{
+          display: 'grid',
           gap: '3rem 2.5rem',
           marginBottom: '3rem',
         }}
@@ -228,112 +229,107 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Col 4 — Contact */}
-        <div>
+      </div>
+
+      {/* ── Contact + Credentials (below the 3-column grid) ── */}
+      <div
+        style={{
+          borderTop: '1px solid var(--card-border)',
+          paddingTop: '2rem',
+          marginTop: '2rem',
+        }}
+      >
+        {/* Contact links — centered */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '2rem',
+            marginBottom: '1.5rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          <a
+            href="mailto:ceo@premieralive.com"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--body-sm)',
+              color: 'rgba(245,244,240,0.55)',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+          >
+            <Mail size={13} strokeWidth={2} style={{ flexShrink: 0 }} />
+            ceo@premieralive.com
+          </a>
+          <a
+            href="tel:+966500440235"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--body-sm)',
+              color: 'rgba(245,244,240,0.55)',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+          >
+            <Phone size={13} strokeWidth={2} style={{ flexShrink: 0 }} />
+            +966 50 044 0235
+          </a>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--body-sm)',
+              color: 'rgba(245,244,240,0.55)',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+          >
+            <MessageCircle size={13} strokeWidth={2} style={{ flexShrink: 0 }} />
+            {isArabic ? 'واتساب' : 'WhatsApp'}
+          </a>
+        </div>
+
+        {/* Credentials block — centered, muted */}
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <p
             style={{
               fontFamily: 'var(--font-body)',
-              fontSize: 'var(--eyebrow)',
-              color: 'var(--color-gold)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.2em',
-              marginBottom: '1rem',
+              fontSize: 'clamp(0.7rem, 1.5vw, 0.8rem)',
+              color: 'rgba(245,244,240,0.35)',
+              lineHeight: 1.7,
             }}
           >
-            {isArabic ? 'تواصل معنا' : 'Contact'}
+            {isArabic ? 'شركة بريمييرا لايف' : 'Premiera Live Company'} | {isArabic ? 'سجل تجاري' : 'CR'}: 7054807941
+            <br />
+            Spaces Ajdan Walk, Corniche 5, PO Box 34414, Al Khobar, Kingdom of Saudi Arabia
           </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            <a
-              href="mailto:ceo@premieralive.com"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--body-sm)',
-                color: 'rgba(245,244,240,0.55)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
-            >
-              <Mail size={14} strokeWidth={2} style={{ flexShrink: 0 }} />
-              ceo@premieralive.com
-            </a>
-            <a
-              href="tel:+966500440235"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--body-sm)',
-                color: 'rgba(245,244,240,0.55)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
-            >
-              <Phone size={14} strokeWidth={2} style={{ flexShrink: 0 }} />
-              +966 50 044 0235
-            </a>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--body-sm)',
-                color: 'rgba(245,244,240,0.55)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
-            >
-              <MessageCircle size={14} strokeWidth={2} style={{ flexShrink: 0 }} />
-              {isArabic ? 'واتساب' : 'WhatsApp'}
-            </a>
-          </div>
         </div>
       </div>
 
       {/* ── Bottom bar ── */}
       <div
         style={{
-          borderTop: '1px solid var(--card-border)',
           paddingTop: '1.25rem',
         }}
       >
-        {/* Company info — two lines */}
-        <p
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 'var(--body-sm)',
-            color: 'var(--text-faint)',
-            marginBottom: '0.25rem',
-          }}
-        >
-          {isArabic ? 'شركة بريمييرا لايف' : 'Premiera Live Company'} | {isArabic ? 'سجل تجاري' : 'CR'}: 7054807941
-        </p>
-        <p
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 'var(--body-sm)',
-            color: 'var(--text-faint)',
-            marginBottom: '1rem',
-            lineHeight: 1.6,
-          }}
-        >
-          {isArabic
-            ? 'سبيسز أجدان ووك، كورنيش 5، ص.ب. 34414، الخبر، المملكة العربية السعودية'
-            : 'Spaces Ajdan Walk, Corniche 5, PO Box 34414, Al Khobar, Kingdom of Saudi Arabia'}
-        </p>
 
         {/* Copyright + language toggle + About link */}
         <div
@@ -389,14 +385,14 @@ export default function Footer() {
 
       <style>{`
         .footer-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1023px) {
           .footer-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
-        @media (max-width: 540px) {
+        @media (max-width: 639px) {
           .footer-grid {
             grid-template-columns: 1fr;
           }
