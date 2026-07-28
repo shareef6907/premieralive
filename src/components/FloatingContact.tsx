@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useState, useEffect, useRef } from 'react';
 
 const PHONE = '966500440235';
 const EMAIL = 'ceo@premieralive.com';
@@ -26,9 +27,43 @@ export default function FloatingContact() {
  'duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/60 ' +
  'w-[52px] h-[52px] md:w-14 md:h-14';
 
+ // Option A: fade out when footer enters viewport
+ const [hidden, setHidden] = useState(false);
+ const observerRef = useRef<IntersectionObserver | null>(null);
+
+ useEffect(() => {
+  const footer = document.querySelector('footer');
+  if (!footer) {
+   // No footer found — default to visible
+   return;
+  }
+
+  observerRef.current = new IntersectionObserver(
+   ([entry]) => {
+    setHidden(entry.isIntersecting);
+   },
+   {
+    // Start fading as soon as any part of footer enters viewport
+    threshold: 0,
+   }
+  );
+
+  observerRef.current.observe(footer);
+
+  return () => {
+   observerRef.current?.disconnect();
+  };
+ }, []);
+
+ const wrapperClass = [
+  'fixed right-4 z-[9999] flex flex-col gap-3 md:right-6',
+  'transition-opacity duration-200',
+  hidden ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto',
+ ].join(' ');
+
  return (
  <div
- className="fixed right-4 z-[9999] flex flex-col gap-3 md:right-6"
+ className={wrapperClass}
  style={{ bottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
  >
  {/* WhatsApp */}
