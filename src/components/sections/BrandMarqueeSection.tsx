@@ -43,7 +43,7 @@ export default function BrandMarqueeSection() {
 
   return (
     <section
-      style={{ padding: 'var(--section-y) 0', overflow: 'hidden', background: 'var(--bg-elevated)' }}
+      style={{ padding: 'var(--section-y) 0', overflow: 'hidden', background: 'var(--bg-elevated)', width: '100%' }}
       aria-label={isArabic ? 'العلامات التجارية الموثوق بها' : 'Trusted by global brands'}
     >
       <p
@@ -62,7 +62,7 @@ export default function BrandMarqueeSection() {
 
       {/* Row 1 — scrolls left */}
       <div
-        style={{ overflow: 'hidden', marginBottom: '1.5rem', cursor: 'default' }}
+        style={{ overflow: 'hidden', width: '100%', marginBottom: '1.5rem', cursor: 'default' }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -71,6 +71,7 @@ export default function BrandMarqueeSection() {
           style={{
             display: 'flex',
             width: 'max-content',
+            minWidth: 0,
             animation: prefersReduced ? 'none' : 'marquee-left 30s linear infinite',
             animationPlayState: paused ? 'paused' : 'running',
           }}
@@ -99,7 +100,7 @@ export default function BrandMarqueeSection() {
 
       {/* Row 2 — scrolls right */}
       <div
-        style={{ overflow: 'hidden', cursor: 'default' }}
+        style={{ overflow: 'hidden', width: '100%', cursor: 'default' }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -107,6 +108,7 @@ export default function BrandMarqueeSection() {
           style={{
             display: 'flex',
             width: 'max-content',
+            minWidth: 0,
             animation: prefersReduced ? 'none' : 'marquee-right 35s linear infinite',
             animationPlayState: paused ? 'paused' : 'running',
           }}

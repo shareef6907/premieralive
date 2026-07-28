@@ -63,6 +63,7 @@ export default function Footer() {
         borderTop: '1px solid var(--card-border)',
         padding: '4rem clamp(1.5rem, 5vw, 4rem) 2rem',
         direction: isArabic ? 'rtl' : 'ltr',
+        overflowX: 'hidden',
       }}
     >
       {/* ── Logo row ── */}
@@ -80,8 +81,6 @@ export default function Footer() {
       {/* ── 4-column grid ── */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: '3rem 2.5rem',
           marginBottom: '3rem',
         }}

@@ -8,6 +8,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
 import CursorGlow from '@/components/CursorGlow'
+import FloatingContact from '@/components/FloatingContact'
 import { brand } from '@/config/brand'
 import { IMAGES } from '@/config/media'
 
@@ -107,14 +108,23 @@ export default async function LocaleLayout({
         </Script>
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <SmoothScroll>
-            <CursorGlow />
-            <Nav />
-            <main>{children}</main>
-            <Footer />
-          </SmoothScroll>
-        </NextIntlClientProvider>
+        {/*
+         * overflow-x: hidden clips site-wide mobile overflow (AR +113px, EN +233px at 375px).
+         * NOTE: this breaks position:sticky on any descendant. Hero.tsx and ScrollScrubHero.tsx
+         * both use position:sticky and are currently unimported. If either is reinstated, this rule
+         * must be reworked — overflow-x:hidden on an ancestor silently disables sticky behaviour.
+         */}
+        <div id="__page-wrapper" style={{ width: '100%', overflowX: 'hidden' }}>
+          <NextIntlClientProvider messages={messages}>
+            <SmoothScroll>
+              <CursorGlow />
+              <Nav />
+              <main>{children}</main>
+              <Footer />
+            </SmoothScroll>
+          </NextIntlClientProvider>
+          <FloatingContact />
+        </div>
       </body>
     </html>
   )
