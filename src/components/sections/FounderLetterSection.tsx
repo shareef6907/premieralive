@@ -26,11 +26,11 @@ export default function FounderLetterSection() {
           </>
         ) : (
           <>
-            Most businesses don&apos;t need another agency. They need one partner who sees the whole picture — the brand, the film, the website, and the system underneath that makes it all grow.
+            You don&apos;t need another agency. You need one partner who sees the whole picture — the film, the website it lives on, and the system underneath that makes them grow.
             <br /><br />
-            For more than fifteen years — from Bahrain, across the Gulf — I&apos;ve built campaigns, films, and platforms for brands you know. Every project taught me the same lesson: great creative without technology stalls, and technology without story is invisible.
+            Fifteen years across the Gulf as a filmmaker and web developer taught me the same lesson every time: a beautiful film nobody sees does nothing, and a website without proper architecture never gets found.
             <br /><br />
-            Premiera Live exists to do both — and when you work with us, you work with me.
+            Premiera Live does both. And you&apos;ll deal with me directly — not an account manager.
           </>
         )}
         <br /><br />
@@ -44,7 +44,7 @@ export default function FounderLetterSection() {
           }}
         />
         <span style={{ color: 'var(--color-gold)' }}>
-          — {isArabic ? 'شريف، المؤسس' : 'Shareef, Founder'}
+          — {isArabic ? 'شريف، المؤسس' : 'Shareef Ali, Founder'}
         </span>
       </div>
     </Section>
