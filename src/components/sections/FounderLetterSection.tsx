@@ -30,7 +30,7 @@ export default function FounderLetterSection() {
             <br /><br />
             Fifteen years across the Gulf as a filmmaker and web developer taught me the same lesson every time: a beautiful film nobody sees does nothing, and a website without proper architecture never gets found.
             <br /><br />
-            Premiera Live does both. And you&apos;ll deal with me directly — not an account manager.
+            That&apos;s what Premiera Live is for. And when you hire us, you work with me — not an account manager.
           </>
         )}
         <br /><br />
