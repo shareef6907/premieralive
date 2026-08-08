@@ -124,6 +124,21 @@ export default function Footer() {
             >
               {isArabic ? 'شركة إنتاج الأفلام' : 'Film Production Company'}
             </Link>
+            <Link
+              href={`/${locale}/podcast-production-saudi-arabia`}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                color: 'rgba(245,244,240,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+                lineHeight: 1.6,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+            >
+              {isArabic ? 'إنتاج البودكاست' : 'Podcast Production'}
+            </Link>
             {CINEMATIC_SERVICES.map((s) => (
               <Link
                 key={s.slug}

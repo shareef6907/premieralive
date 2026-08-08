@@ -14,6 +14,7 @@ export type ServiceSlug =
   | 'event-coverage-saudi-arabia'
   | 'multi-cam-live-streaming-saudi-arabia'
   | 'podcast-filming-saudi-arabia'
+  | 'podcast-production-saudi-arabia'
   | 'business-website-development-saudi-arabia'
   | 'app-development-saudi-arabia'
   | 'landing-page-design-saudi-arabia'

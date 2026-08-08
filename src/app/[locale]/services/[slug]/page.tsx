@@ -424,7 +424,10 @@ export default async function ServicePage({ params }: Props) {
             }}>
               {related.map((rel) => {
                 const relName = isArabic ? rel.nameAr : rel.nameEn
-                const relHref = `/${locale}/services/${rel.slug}`
+                // pillar is not a service leaf — direct href, not /services/
+                const relHref = rel.slug === 'podcast-production-saudi-arabia'
+                  ? `/${locale}/podcast-production-saudi-arabia`
+                  : `/${locale}/services/${rel.slug}`
                 return (
                   <RelatedServiceLink key={rel.slug} href={relHref}>
                     {relName}

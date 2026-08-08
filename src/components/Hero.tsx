@@ -16,7 +16,7 @@ const SERVICE_LABELS = [
   { en: 'Animation & 3D', ar: 'الأنيميشن والتصميم ثلاثي الأبعاد' },
   { en: 'Video Production', ar: 'إنتاج الفيديو والتصوير' },
   { en: 'Branding & Design', ar: 'الهوية البصرية والتصميم' },
-  { en: 'Podcast Filming', ar: 'تصوير البودكاست' },
+  { en: 'Podcast Production', ar: 'إنتاج البودكاست' },
   { en: 'Live Streaming', ar: 'البث المباشر متعدد الكاميرات' },
 ]
 
