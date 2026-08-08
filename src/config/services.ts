@@ -464,7 +464,7 @@ export const SERVICES: ServicePage[] = [
     ],
     ctaMessageEn: 'I\'d like to discuss podcast filming for our show.',
     ctaMessageAr: 'أرغب في مناقشة تصوير البودكاست لبرنامجنا.',
-    relatedSlugs: ['multi-cam-live-streaming-saudi-arabia', 'event-coverage-saudi-arabia', 'corporate-video-production-saudi-arabia', 'commercial-film-production-saudi-arabia', 'podcast-production-saudi-arabia'],
+    relatedSlugs: ['multi-cam-live-streaming-saudi-arabia', 'event-coverage-saudi-arabia', 'corporate-video-production-saudi-arabia', 'commercial-film-production-saudi-arabia'],
   },
 
   // ── DIGITAL EXPERIENCES ───────────────────────────────────────────────────

@@ -17,8 +17,9 @@ const CAPABILITY_SLUGS = {
     'documentary-production-saudi-arabia',
     'event-coverage-saudi-arabia',
     'multi-cam-live-streaming-saudi-arabia',
-    'podcast-production-saudi-arabia',
-    ],
+    // index 7: podcast-production is NOT a service leaf — use hrefOverride below
+    null as unknown as string,
+  ],
   digital: [
     'business-website-development-saudi-arabia',
     'app-development-saudi-arabia',
@@ -62,6 +63,9 @@ const DIVISIONS = [
     lineAr: 'ننتج أفلاماً تبقى في الذاكرة.',
     capabilitiesEn: ['Commercial Films', 'Corporate Films', 'Professional Photography', 'Animation & CGI', 'Documentary', 'Event Coverage', 'Multi-Cam Live Streaming', 'Podcast Production'],
     capabilitiesAr: ['أفلام إعلانية', 'أفلام مؤسسية', 'تصوير احترافي', 'رسوم متحركة ومؤثرات', 'أفلام وثائقية', 'تغطية الفعاليات', 'بث مباشر متعدد الكاميرات', 'إنتاج البودكاست'],
+    hrefOverrides: {
+      7: (locale: string) => `/${locale}/podcast-production-saudi-arabia`,
+    } as Partial<Record<number, (locale: string) => string>>,
     image: IMAGES.pillarContent,
   },
   {
@@ -179,7 +183,11 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
         <ul className="division-capabilities" style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
           {!isMarketing && capabilities && capabilities.map((cap, i) => {
             const slug = slugs[i]
-            if (!slug) return null
+            // index 7: podcast-production — not a service leaf, use hrefOverride
+            if (!slug && i !== 7) return null
+            const href = division.hrefOverrides?.[i]
+              ? division.hrefOverrides[i]!(locale)
+              : `/${locale}/services/${slug}`
             return (
               <li key={i} className="capability-item" style={{
                 borderBottom: '1px solid var(--color-card-border)',
@@ -188,7 +196,7 @@ function DivisionHalf({ division }: { division: typeof DIVISIONS[0] }) {
                 minHeight: '2.5rem',
               }}>
                 <ServiceCardLink
-                  href={`/${locale}/services/${slug}`}
+                  href={href}
                   name={cap}
                   description=""
                   isArabic={isArabic}
