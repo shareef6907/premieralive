@@ -1,3 +1,4 @@
+import HeroVideo from '@/components/HeroVideo'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -203,10 +204,9 @@ export default async function PodcastProductionPage({ params }: Props) {
 
   const canonical = `${DOMAIN}/${locale}/${PATH_EN}`
 
-  // Hero poster — use existing podcast hero as placeholder until Shareef uploads the loop
-  const heroPoster = `${MEDIA_BASE}/podcast.jpg`
-  const heroWebM = undefined // not yet uploaded
-  const heroMp4 = undefined // not yet uploaded
+  const heroPoster = 'https://premiera-live-media.s3.us-east-1.amazonaws.com/page-headers/podcast-hero-poster.webp'
+  const heroWebM = 'https://premiera-live-media.s3.us-east-1.amazonaws.com/page-headers/podcast-hero.webm'
+  const heroMp4 = 'https://premiera-live-media.s3.us-east-1.amazonaws.com/page-headers/podcast-hero.mp4'
 
   return (
     <>
@@ -305,6 +305,14 @@ export default async function PodcastProductionPage({ params }: Props) {
             objectFit: 'cover',
             objectPosition: 'center',
           }}
+        />
+
+        <HeroVideo
+          poster={heroPoster}
+          webm={heroWebM}
+          mp4={heroMp4}
+          width={1920}
+          height={1080}
         />
 
         {/* Dark gradient overlay for text legibility */}
