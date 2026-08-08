@@ -1,4 +1,5 @@
 import HeroVideo from '@/components/HeroVideo'
+import Image from 'next/image'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -291,20 +292,16 @@ export default async function PodcastProductionPage({ params }: Props) {
         background: '#0A0A0B',
         direction: isArabic ? 'rtl' : 'ltr',
       }}>
-        {/* Poster/placeholder */}
-        <img
+        {/* Poster/placeholder — next/image for LCP optimisation */}
+        <Image
           src={heroPoster}
           alt=""
-          aria-hidden="true"
+          fill
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
           loading="eager"
           fetchPriority="high"
-          decoding="async"
-          style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
+          priority
         />
 
         <HeroVideo
