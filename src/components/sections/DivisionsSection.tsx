@@ -17,7 +17,7 @@ const CAPABILITY_SLUGS = {
     'documentary-production-saudi-arabia',
     'event-coverage-saudi-arabia',
     'multi-cam-live-streaming-saudi-arabia',
-    'podcast-filming-saudi-arabia',
+    'podcast-production-saudi-arabia',
     ],
   digital: [
     'business-website-development-saudi-arabia',
@@ -60,8 +60,8 @@ const DIVISIONS = [
     nameAr: 'الإنتاج السينمائي',
     lineEn: 'Films built to be remembered.',
     lineAr: 'ننتج أفلاماً تبقى في الذاكرة.',
-    capabilitiesEn: ['Commercial Films', 'Corporate Films', 'Professional Photography', 'Animation & CGI', 'Documentary', 'Event Coverage', 'Multi-Cam Live Streaming', 'Podcast Filming'],
-    capabilitiesAr: ['أفلام إعلانية', 'أفلام مؤسسية', 'تصوير احترافي', 'رسوم متحركة ومؤثرات', 'أفلام وثائقية', 'تغطية الفعاليات', 'بث مباشر متعدد الكاميرات', 'تصوير البودكاست'],
+    capabilitiesEn: ['Commercial Films', 'Corporate Films', 'Professional Photography', 'Animation & CGI', 'Documentary', 'Event Coverage', 'Multi-Cam Live Streaming', 'Podcast Production'],
+    capabilitiesAr: ['أفلام إعلانية', 'أفلام مؤسسية', 'تصوير احترافي', 'رسوم متحركة ومؤثرات', 'أفلام وثائقية', 'تغطية الفعاليات', 'بث مباشر متعدد الكاميرات', 'إنتاج البودكاست'],
     image: IMAGES.pillarContent,
   },
   {

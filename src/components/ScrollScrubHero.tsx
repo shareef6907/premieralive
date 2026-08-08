@@ -10,7 +10,7 @@ const LABELS = [
   { s: 0.46, e: 0.55, en: "Animation & 3D",                                                ar: "أنيميشن وثري دي" },
   { s: 0.55, e: 0.64, en: "Video Production & Photography",                                 ar: "إنتاج الفيديو والتصوير" },
   { s: 0.64, e: 0.73, en: "Branding & Design",                                               ar: "الهوية والتصميم" },
-  { s: 0.73, e: 0.82, en: "Podcast Filming",                                                ar: "تصوير البودكاست" },
+  { s: 0.73, e: 0.82, en: "Podcast Production",                                                ar: "إنتاج البودكاست" },
   { s: 0.82, e: 0.93, en: "Multi-Camera Live Streaming",                                    ar: "بث مباشر متعدد الكاميرات" },
   { s: 0.93, e: 1.00, en: "One team. Now in Saudi Arabia.",                           ar: "فريق واحد — الآن في السعودية." },
 ];

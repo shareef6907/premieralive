@@ -408,6 +408,30 @@ export default async function FilmProductionPage({ params }: Props) {
         </div>
       </Section>
 
+      {/* Related */}
+      <Section>
+        <div style={{
+          marginTop: '2.5rem',
+          paddingTop: '2rem',
+          borderTop: '1px solid var(--color-card-border)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.75rem 1.5rem',
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--body-sm)',
+        }}>
+          <span style={{ color: 'var(--color-text-dim)' }}>
+            {isArabic ? 'related:' : 'related:'}{' '}
+          </span>
+          <Link
+            href={`/${locale}/podcast-production-saudi-arabia`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {isArabic ? 'إنتاج البودكاست' : 'podcast production'}
+          </Link>
+        </div>
+      </Section>
+
       {/* Final CTA */}
       <section style={{
         padding: 'clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 4rem)',
