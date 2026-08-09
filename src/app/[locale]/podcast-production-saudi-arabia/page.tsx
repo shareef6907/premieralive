@@ -89,9 +89,9 @@ const EN = {
   ],
 
   setup1Title: 'Host and guest',
-  setup1Body: 'Two cameras. A focused one-on-one conversation, cut clean.',
+  setup1Body: 'Three cameras. A single on each speaker plus a wide holding both — cut clean, never a static frame.',
   setup2Title: 'Flagship show',
-  setup2Body: 'Four cameras. Our standard setup — every angle covered, built for a clip-first release.',
+  setup2Body: 'Four cameras. Everything above plus a roaming angle for detail and reaction — built for a clip-first release.',
   setup3Title: 'Signature',
   setup3Body: 'Up to eight cameras. Panels, live audiences, and flagship shows where every reaction needs covering.',
 
@@ -157,9 +157,9 @@ const AR = {
   ],
 
   setup1Title: 'مضيف وضيف',
-  setup1Body: 'كاميرتان. حوار ثنائي مركّز، بمونتاج نظيف.',
+  setup1Body: 'ثلاث كاميرات. كاميرا لكل متحدث وكاميرا واسعة تجمعهما — مونتاج نظيف بلا لقطة ثابتة.',
   setup2Title: 'البرنامج الأساسي',
-  setup2Body: 'أربع كاميرات. إعدادنا القياسي، يغطي كل الزوايا ومصمم للنشر بالمقاطع القصيرة.',
+  setup2Body: 'أربع كاميرات. كل ما سبق مع زاوية متحركة لالتقاط التفاصيل وردود الفعل — مصمم للنشر بالمقاطع القصيرة.',
   setup3Title: 'الإعداد المميز',
   setup3Body: 'حتى ثماني كاميرات. للحلقات الحوارية، والجمهور المباشر، والبرامج التي لا تحتمل تفويت أي ردّ فعل.',
 
