@@ -205,9 +205,9 @@ export default async function PodcastProductionPage({ params }: Props) {
 
   const canonical = `${DOMAIN}/${locale}/${PATH_EN}`
 
-  const heroPoster = 'https://premiera-live-media.s3.us-east-1.amazonaws.com/page-headers/podcast-hero-poster.webp'
-  const heroWebM = 'https://premiera-live-media.s3.us-east-1.amazonaws.com/page-headers/podcast-hero.webm'
-  const heroMp4 = 'https://premiera-live-media.s3.us-east-1.amazonaws.com/page-headers/podcast-hero.mp4'
+  const heroPoster = '/images/SandwichCase-header-poster.webp'
+  const heroWebM = `${MEDIA_BASE}/work/SandwichCase-header.webm`
+  const heroMp4 = `${MEDIA_BASE}/work/SandwichCase-header.mp4`
 
   return (
     <>

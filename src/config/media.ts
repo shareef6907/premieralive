@@ -54,6 +54,12 @@ export const media = {
 
 export const BRAND_FILMS: { src: string; title: string; poster?: string; titleAr?: string }[] = [
   {
+    src: `${M}/work/SandwichCase-1080p.mp4`,
+    title: 'The Sandwich Case',
+    titleAr: 'قضية الساندويتش',
+    poster: `${M}/work/SandwichCase-poster.jpg`,
+  },
+  {
     src: `${M}/work/NYE-Fort-1080p.mp4`,
     title: 'NYE Fort',
     titleAr: 'حفل رأس السنة — القلعة',
