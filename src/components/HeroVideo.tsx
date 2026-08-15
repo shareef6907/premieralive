@@ -24,26 +24,38 @@ export default function HeroVideo({ poster, webm, mp4, width, height }: HeroVide
   if (reducedMotion) return null
 
   return (
-    <video
-      width={width}
-      height={height}
-      poster={poster}
-      preload="none"
-      muted
-      loop
-      playsInline
-      autoPlay
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'center',
-      }}
-    >
-      <source src={webm} type="video/webm" />
-      <source src={mp4} type="video/mp4" />
-    </video>
+    <>
+      <video
+        width={width}
+        height={height}
+        poster={poster}
+        preload="none"
+        muted
+        loop
+        playsInline
+        autoPlay
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+        }}
+      >
+        <source src={webm} type="video/webm" />
+        <source src={mp4} type="video/mp4" />
+      </video>
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%)',
+          pointerEvents: 'none',
+        }}
+      />
+    </>
   )
 }
