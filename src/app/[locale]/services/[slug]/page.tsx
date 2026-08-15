@@ -1,3 +1,4 @@
+import HeroVideo from '@/components/HeroVideo'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Image from 'next/image'
@@ -174,6 +175,16 @@ export default async function ServicePage({ params }: Props) {
           sizes="100vw"
           style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
+        {/* Video loop — rendered when video fields are present */}
+        {service.videoWebm && service.videoMp4 && (
+          <HeroVideo
+            poster={`/images/${service.videoWebm.split('/').pop()!.replace('.webm', '-poster.webp')}`}
+            webm={service.videoWebm}
+            mp4={service.videoMp4}
+            width={1920}
+            height={1080}
+          />
+        )}
         {/* Dark overlay */}
         <div style={{
           position: 'absolute', inset: 0,

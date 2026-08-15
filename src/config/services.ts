@@ -43,6 +43,8 @@ export interface ServicePage {
   ctaMessageEn: string
   ctaMessageAr: string
   relatedSlugs: ServiceSlug[]
+  videoWebm?: string
+  videoMp4?: string
   division: 'cinematic' | 'digital'
 }
 
@@ -408,6 +410,8 @@ export const SERVICES: ServicePage[] = [
     nameEn: 'Podcast Filming in Saudi Arabia',
     nameAr: 'تصوير البودكاست في السعودية',
     heroImage: SB + 'podcast.jpg',
+    videoWebm: `${MEDIA_BASE}/work/SandwichCase-header.webm`,
+    videoMp4: `${MEDIA_BASE}/work/SandwichCase-header.mp4`,
     valuePropEn: 'We film podcasts at your location — up to 4 Sony 4K cameras, studio audio, lighting, and live switching. Session on a hard drive same day, edited episode in 2–3 days.',
     valuePropAr: 'نصوّر البودكاست في موقعك — حتى 4 كاميرات Sony بدقة 4K، وصوت استوديو، وإضاءة، وتبديل مباشر. نسلّم الجلسة على قرص صلب في اليوم نفسه، والحلقة المونتجة خلال 2 إلى 3 أيام.',
     whatWeDeliverEn: [
