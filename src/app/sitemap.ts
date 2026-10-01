@@ -25,6 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/ar/services`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/en/marketing`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/ar/marketing`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    // Podcast pillar — dedicated page at /podcast-production-saudi-arabia (separate route from /services/podcast-filming)
+    { url: `${BASE}/en/podcast-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/podcast-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     ...serviceUrls,
     ...marketingUrls,
   ]
