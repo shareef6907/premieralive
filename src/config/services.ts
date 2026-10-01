@@ -410,7 +410,7 @@ export const SERVICES: ServicePage[] = [
     valuePropEn: 'We film podcasts at your location — up to 4 Sony 4K cameras, studio audio, lighting, and live switching. Session on a hard drive same day, edited episode in 2–3 days.',
     valuePropAr: 'نصوّر البودكاست في موقعك — حتى 4 كاميرات Sony بدقة 4K، وصوت استوديو، وإضاءة، وتبديل مباشر. نسلّم الجلسة على قرص صلب في اليوم نفسه، والحلقة المونتجة خلال 2 إلى 3 أيام.',
     whatWeDeliverEn: [
-      'Up to 4 Sony 4K cameras — A7S III, FX3, or FX6, matched and graded together.',
+      'Up to 4 Sony full-frame 4K cameras, matched and graded together.',
       '4 podcast microphones — one per speaker, recorded on separate channels.',
       'Studio lighting and backlights — your space lit properly, not by the ceiling.',
       'Video mixer, monitor, and camera switcher — cuts made live as you record.',
@@ -419,7 +419,7 @@ export const SERVICES: ServicePage[] = [
       'Edited episode in 2–3 days — cut, graded, and sound-mixed.',
     ],
     whatWeDeliverAr: [
-      'نصوّر بحتى 4 كاميرات Sony بدقة 4K — A7S III أو FX3 أو FX6، متطابقة ومصححة الألوان معًا.',
+      'نصوّر بما يصل إلى 4 كاميرات Sony كاملة الإطار بدقة 4K، متطابقة ومصححة الألوان معًا.',
       'نسجّل بأربعة ميكروفونات بودكاست — ميكروفون لكل متحدث، على قنوات منفصلة.',
       'نضيء المكان بإضاءة استوديو وإضاءة خلفية — لا بإضاءة السقف.',
       'نشغّل وحدة مزج ومونيتور ومبدّل كاميرات — ننفّذ القطع مباشرة أثناء التسجيل.',
@@ -446,7 +446,7 @@ export const SERVICES: ServicePage[] = [
     faqEn: [
       { q: 'Where do you film?', a: 'At your location, always. We bring every piece of equipment and set your space up as a studio for the day.' },
       { q: 'How many people can you record?', a: 'Up to 4 speakers with our standard setup — 4 cameras, 4 microphones.' },
-      { q: 'What cameras do you use?', a: 'Sony 4K — A7S III, FX3, or FX6, matched so the cut looks like one camera package.' },
+      { q: 'What cameras do you use?', a: 'Sony full-frame 4K cinema cameras, matched so the cut looks like one camera package.' },
       { q: 'Do we get the raw files?', a: 'Yes. The complete session goes onto a hard drive before we pack up.' },
       { q: 'How long does the edit take?', a: '2–3 days from the shoot.' },
       { q: 'Do we need our own studio?', a: 'No. That is the point — we bring the lighting, the backdrop lighting, and the audio, and we build the studio in your space.' },
@@ -455,7 +455,7 @@ export const SERVICES: ServicePage[] = [
     faqAr: [
       { q: 'أين تصوّرون؟', a: 'في موقعك دائمًا. نحضر كل المعدات ونجهّز مكانك كاستوديو ليوم كامل.' },
       { q: 'كم شخصًا تستطيعون تسجيله؟', a: 'حتى 4 متحدثين بتجهيزنا القياسي — 4 كاميرات و4 ميكروفونات.' },
-      { q: 'ما الكاميرات التي تستخدمونها؟', a: 'كاميرات Sony بدقة 4K — A7S III أو FX3 أو FX6، متطابقة ليبدو المونتاج كأنه من حزمة كاميرات واحدة.' },
+      { q: 'ما الكاميرات التي تستخدمونها؟', a: 'نستخدم كاميرات Sony سينمائية كاملة الإطار بدقة 4K، متطابقة ليبدو المونتاج كأنه من حزمة كاميرات واحدة.' },
       { q: 'هل نستلم الملفات الخام؟', a: 'نعم. تنتقل الجلسة كاملة إلى قرص صلب قبل أن نحزم المعدات.' },
       { q: 'كم يستغرق المونتاج؟', a: 'من 2 إلى 3 أيام بعد التصوير.' },
       { q: 'هل نحتاج إلى استوديو خاص بنا؟', a: 'لا. وهذا جوهر الفكرة — نحضر الإضاءة والإضاءة الخلفية والصوت، ونبني الاستوديو في مكانك.' },
