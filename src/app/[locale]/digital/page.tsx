@@ -2,7 +2,9 @@ import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PlatformCard from '@/components/PlatformCard'
+import RelatedServiceLink from '@/components/RelatedServiceLink'
 import { MEDIA_BASE } from '@/config/media'
+import { SERVICES } from '@/config/services'
 import ContactActions from '@/components/ContactActions'
 
 type Props = { params: Promise<{ locale: string }> }
@@ -209,6 +211,50 @@ export default async function DigitalPage({
               isArabic={isArabic}
             />
           ))}
+        </div>
+      </section>
+
+      {/* Explore our digital services */}
+      <section style={{
+        background: 'var(--color-bg-elevated)',
+        padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem)',
+      }}>
+        <div style={{ maxWidth: '80rem', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{
+            fontFamily: 'var(--font-body)', fontWeight: 500,
+            fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
+            textTransform: 'uppercase', color: 'var(--color-gold)',
+            marginBottom: '1.5rem',
+          }}>
+            {isArabic ? 'الخدمات الرقمية' : 'DIGITAL SERVICES'}
+          </p>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+            color: 'var(--color-text)', lineHeight: 1.1,
+            letterSpacing: '0.01em', marginBottom: '3rem',
+          }}>
+            {isArabic ? 'منصات وبرمجيات حسب احتياجك' : 'Platforms and software, built around your need'}
+          </h2>
+          <div style={{
+            display: 'flex', flexWrap: 'wrap', gap: '1rem',
+            justifyContent: 'center',
+          }}>
+            {SERVICES
+              .filter((s) => s.division === 'digital')
+              .map((service) => {
+                const name = isArabic ? service.nameAr : service.nameEn
+                const relHref =
+                  service.slug === 'podcast-filming-saudi-arabia'
+                    ? `/${urlLocale}/podcast-production-saudi-arabia`
+                    : `/${urlLocale}/services/${service.slug}`
+                return (
+                  <RelatedServiceLink key={service.slug} href={relHref}>
+                    {name}
+                  </RelatedServiceLink>
+                )
+              })}
+          </div>
         </div>
       </section>
 
