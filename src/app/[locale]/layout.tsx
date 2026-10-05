@@ -106,6 +106,65 @@ export default async function LocaleLayout({
             gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Organization',
+                  '@id': 'https://www.premieralive.com/#organization',
+                  name: 'Premiera Live',
+                  alternateName: 'بريمييرا لايف',
+                  url: 'https://www.premieralive.com',
+                  logo: {
+                    '@type': 'ImageObject',
+                    url: 'https://www.premieralive.com/icon-512.png',
+                    width: 512,
+                    height: 512,
+                  },
+                  address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: 'Al Khobar',
+                    addressLocality: 'Al Khobar',
+                    addressRegion: 'Eastern Province',
+                    addressCountry: 'SA',
+                  },
+                  areaServed: {
+                    '@type': 'Country',
+                    name: 'Saudi Arabia',
+                  },
+                  foundingDate: '2017',
+                  telephone: '+966 50 044 0235',
+                  email: 'ceo@premieralive.com',
+                  sameAs: [],
+                  description:
+                    locale === 'ar'
+                      ? 'شركة إنتاج أفلام في الخبر تعمل في أرجاء السعودية.'
+                      : 'A film production company in Al Khobar producing across Saudi Arabia.',
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://www.premieralive.com/#website',
+                  url: 'https://www.premieralive.com',
+                  name: 'Premiera Live',
+                  publisher: { '@id': 'https://www.premieralive.com/#organization' },
+                  potentialAction: {
+                    '@type': 'SearchAction',
+                    target: {
+                      '@type': 'EntryPoint',
+                      urlTemplate:
+                        'https://www.premieralive.com/en/services?q={search_term_string}',
+                    },
+                    'query-input': 'required name=search_term_string',
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         {/*
