@@ -263,6 +263,30 @@ export default async function PodcastProductionPage({ params }: Props) {
           }),
         }}
       />
+      {/* VideoObject — hosted video on this page (SandwichCase showreel, 16s) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'VideoObject',
+            name: isArabic ? 'إنتاج البودكاست | بريمييرا لايف' : 'Podcast Production | Premiera Live',
+            description: isArabic
+              ? 'بريمييرا لايف — نصوّر البودكاست في السعودية بأربع كاميرات سوني 4K'
+              : 'Premiera Live podcast production in Saudi Arabia — 4 Sony 4K cameras, mobile studio.',
+            contentUrl: heroMp4,
+            thumbnailUrl: `${DOMAIN}${heroPoster}`,
+            uploadDate: '2025-01-01',
+            duration: 'PT16S',
+            embedUrl: canonical,
+            publisher: {
+              '@type': 'Organization',
+              name: isArabic ? 'بريمييرا لايف' : 'Premiera Live',
+              url: DOMAIN,
+            },
+          }),
+        }}
+      />
 
       {/* Breadcrumb */}
       <div style={{
