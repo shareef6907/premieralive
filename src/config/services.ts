@@ -267,6 +267,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'documentary.jpg',
     valuePropEn: 'Documentary filmmaking that earns attention — real stories, real people, structured and shot to hold an audience and communicate something that matters.',
     valuePropAr: 'صناعة الأفلام الوثائقية التي تستحق الانتباه — قصص حقيقية وأشخاص حقيقيون، تُبنى وتُصوَّر لامتصاص الجمهور والتواصل حول شيء يهم.',
+    metaDescriptionEn: 'Documentary production in Saudi Arabia. Premiera Live produces real-story documentaries for clients and organisations across the Kingdom — from Riyadh and Jeddah to Al Khobar and Dammam.',
+    metaDescriptionAr: 'إنتاج الأفلام الوثائقية في السعودية. تنتج بريمييرا لايف أفلاماً وثائقية بقصص حقيقية لعملائها ومنظماتهم في المملكة — من الرياض وجدة إلى الخبر والدمام.',
     whatWeDeliverEn: [
       'Research and narrative development',
       'On-location filming with broadcast-quality cameras',
