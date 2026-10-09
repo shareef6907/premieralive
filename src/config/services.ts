@@ -32,6 +32,8 @@ export interface ServicePage {
   heroImage: string         // full URL
   valuePropEn: string
   valuePropAr: string
+  metaDescriptionEn?: string  // overrides valuePropEn in <meta> only; page body uses valuePropEn
+  metaDescriptionAr?: string  // overrides valuePropAr in <meta> only; page body uses valuePropAr
   whatWeDeliverEn: string[]
   whatWeDeliverAr: string[]
   howWeWorkEn: { step: string; desc: string }[]
@@ -110,8 +112,10 @@ export const SERVICES: ServicePage[] = [
     nameEn: 'Corporate Video Production in Saudi Arabia',
     nameAr: 'إنتاج الأفلام المؤسسية في السعودية',
     heroImage: SB + 'corporate-films.jpg',
-    valuePropEn: 'Corporate films that actually represent your organisation — not generic talking heads, but content built for your audience and your objectives.',
-    valuePropAr: 'أفلام مؤسسية تعكس مؤسستك فعلاً — ليست لقطات نمطية مكررة، بل محتوى يُبنى لجمهورك ولأهدافك.',
+    valuePropEn: 'Professional corporate video production in Saudi Arabia — Premiera Live produces brand films, training content, and event recaps for organisations across the Gulf.',
+    valuePropAr: 'إنتاج احترافي للأفلام المؤسسية في السعودية — تنتج بريمييرا لايف أفلام العلامة ومحتوى التدريب وتلخيصات الفعاليات للمنظمات في أنحاء الخليج.',
+    metaDescriptionEn: 'Corporate video production in Saudi Arabia. Premiera Live in Al Khobar produces brand films, training videos, event recaps, and executive profiles for organisations across the Gulf — in Arabic and English.',
+    metaDescriptionAr: 'إنتاج الأفلام المؤسسية في السعودية. تنتج بريمييرا لايف في الخبر أفلام العلامة التجارية ومقاطع التدريب وتلخيصات الفعاليات وبروفايلات التنفيذيين للشركات في أنحاء الخليج — بالعربية والإنجليزية.',
     whatWeDeliverEn: [
       'Brand and message development',
       'Filming with cinema and broadcast-quality cameras',
@@ -263,6 +267,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'documentary.jpg',
     valuePropEn: 'Documentary filmmaking that earns attention — real stories, real people, structured and shot to hold an audience and communicate something that matters.',
     valuePropAr: 'صناعة الأفلام الوثائقية التي تستحق الانتباه — قصص حقيقية وأشخاص حقيقيون، تُبنى وتُصوَّر لامتصاص الجمهور والتواصل حول شيء يهم.',
+    metaDescriptionEn: 'Documentary production in Saudi Arabia. Premiera Live produces real-story documentaries for clients and organisations across the Kingdom — from Riyadh and Jeddah to Al Khobar and Dammam.',
+    metaDescriptionAr: 'إنتاج الأفلام الوثائقية في السعودية. تنتج بريمييرا لايف أفلاماً وثائقية بقصص حقيقية لعملائها ومنظماتهم في المملكة — من الرياض وجدة إلى الخبر والدمام.',
     whatWeDeliverEn: [
       'Research and narrative development',
       'On-location filming with broadcast-quality cameras',
@@ -734,6 +740,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'client-portals.jpg',
     valuePropEn: 'Client portals that replace the WhatsApp chains and email threads — a single place for your clients to access their projects, documents, and communications with your team.',
     valuePropAr: 'بوابات عملاء تحل محل سلاسل واتساب ومواضيع البريد — مكان واحد لعملائك للوصول إلى مشاريعهم ومستنداتهم والتواصل مع فريقك.',
+    metaDescriptionEn: 'Client portal development in Saudi Arabia. Premiera Live builds secure client portals, project management platforms, and document-sharing systems for businesses across the Gulf — replacing WhatsApp chaos with a custom-built portal.',
+    metaDescriptionAr: 'بناء بوابات العملاء في السعودية. تنتج بريمييرا لايف بوابات عملاء آمنة ومنصات إدارة مشاريع ومنظومات مشاركة مستندات للشركات في أنحاء الخليج — استبدل فوضى واتساب بمنصة مخصصة بناها فريقنا.',
     whatWeDeliverEn: [
       'Secure client-facing portal design and development',
       'Project and document sharing',
