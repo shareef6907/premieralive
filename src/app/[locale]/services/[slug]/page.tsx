@@ -118,6 +118,8 @@ export default async function ServicePage({ params }: Props) {
   const howWeWork = isArabic ? service.howWeWorkAr : service.howWeWorkEn
   const whereWeWork = isArabic ? service.whereWeWorkAr : service.whereWeWorkEn
   const faq = isArabic ? service.faqAr : service.faqEn
+  const industries = isArabic ? service.industriesAr : service.industriesEn
+  const industriesHeading = isArabic ? service.industriesHeadingAr : service.industriesHeadingEn
   const showCustomCode = [
     'business-website-development-saudi-arabia',
     'app-development-saudi-arabia',
@@ -265,6 +267,54 @@ export default async function ServicePage({ params }: Props) {
           ))}
         </ul>
       </section>
+
+      {/* ── Industries / Use Cases (optional) ── */}
+      {industries && industries.length > 0 && (
+        <section style={{
+          padding: '0 clamp(1.25rem, 5vw, 4rem) clamp(4rem, 8vw, 7rem)',
+          maxWidth: '80rem', margin: '0 auto',
+        }}>
+          <p style={{
+            fontFamily: 'var(--font-body)', fontWeight: 500,
+            fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
+            textTransform: 'uppercase', color: 'var(--color-gold)',
+            marginBottom: '2rem',
+          }}>
+            {industriesHeading || (isArabic ? 'القطاعات' : 'INDUSTRIES')}
+          </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+            gap: '1.25rem',
+          }}>
+            {industries.map((item, i) => (
+              <div key={i} style={{
+                padding: '1.5rem',
+                background: 'var(--color-card)',
+                border: '1px solid var(--color-card-border)',
+                borderRadius: 'var(--radius)',
+              }}>
+                <h3 style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.25rem',
+                  color: 'var(--color-text)',
+                  lineHeight: 1.2,
+                  marginBottom: '0.75rem',
+                  letterSpacing: '0.01em',
+                }}>
+                  {item.name}
+                </h3>
+                <p style={{
+                  fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                  color: 'var(--color-text-dim)', lineHeight: 1.7,
+                }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── Custom Code Paragraph (website/software/platform/portal only) ── */}
       {showCustomCode && (

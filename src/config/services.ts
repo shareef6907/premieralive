@@ -46,6 +46,11 @@ export interface ServicePage {
   videoWebm?: string
   videoMp4?: string
   division: 'cinematic' | 'digital'
+  // Optional industry / use-case section — rendered between What We Deliver and How We Work
+  industriesHeadingEn?: string
+  industriesHeadingAr?: string
+  industriesEn?: { name: string; desc: string }[]
+  industriesAr?: { name: string; desc: string }[]
 }
 
 const SB = MEDIA_BASE + '/service-headers/'
@@ -513,15 +518,73 @@ export const SERVICES: ServicePage[] = [
       { q: 'How long does a business website take to build?', a: 'Most business websites are typically delivered within 1–2 weeks from brief to launch.' },
       { q: 'Do you build bilingual Arabic and English websites?', a: 'Yes — bilingual builds are standard for us. We handle RTL, Arabic typography, and proper language versioning as part of every project.' },
       { q: 'Can you migrate our existing website?', a: 'Yes — we manage the full migration process including DNS, content transfer, and redirect mapping to preserve existing search visibility.' },
+      { q: 'Can the site be updated by our own team after launch?', a: 'Yes — we set up a content management system your team can use directly, and we run a short training session at handover so updates are quick and safe.' },
+      { q: 'Will the site work well on mobile and on slow networks?', a: 'We build mobile-first and test across devices and connection speeds. Performance budgets are set during design and verified before launch.' },
     ],
     faqAr: [
       { q: 'كم يستغرق بناء موقع عمل؟', a: 'نسلّم معظم مواقع الأعمال خلال أسبوع إلى أسبوعين من الملخص إلى الإطلاق عادةً.' },
       { q: 'هل تبون مواقع ثنائية اللغة عربية وإنجليزية؟', a: 'نعم — البناء الثنائي اللغة معيار أساسي لدينا. نتعامل مع RTL والخط العربي وإصدار اللغة كجزء من كل مشروع.' },
       { q: 'هل يمكنكم نقل موقعنا القائم؟', a: 'نعم — ندير عملية النقل الكاملة بما في ذلك DNS ونقل المحتوى وتخطيط الـ Redirect للحفاظ على ظهور البحث.' },
+      { q: 'هل يستطيع فريقنا تحديث الموقع بعد الإطلاق؟', a: 'نعم — نعدّ نظام إدارة محتوى يمكن لفريقك استخدامه مباشرة، ونُجري جلسة تدريب قصيرة عند التسليم لتكون التحديثات سريعة وآمنة.' },
+      { q: 'هل يعمل الموقع جيدًا على الجوال وعلى الشبكات البطيئة؟', a: 'نبني Mobile-First ونختبر عبر الأجهزة وسرعات الاتصال. تُحدَّد ميزانيات الأداء خلال التصميم وتُتحقَّق قبل الإطلاق.' },
     ],
     ctaMessageEn: 'I\'d like to discuss a business website project.',
     ctaMessageAr: 'أرغب في مناقشة مشروع موقع عمل.',
-    relatedSlugs: ['landing-page-design-saudi-arabia', 'app-development-saudi-arabia', 'website-maintenance-saudi-arabia'],
+    relatedSlugs: ['landing-page-design-saudi-arabia', 'app-development-saudi-arabia', 'website-maintenance-saudi-arabia', 'ai-assistants-automation-saudi-arabia'],
+    industriesHeadingEn: 'Industries we build websites for',
+    industriesHeadingAr: 'القطاعات التي نبني لها مواقع',
+    industriesEn: [
+      {
+        name: 'Real estate and property developers',
+        desc: 'Project showcase sites with bilingual listings, floor plan galleries, lead capture for off-plan sales, and integrations with the CRM your sales team already uses. Built to support campaigns during project launches in Riyadh, Jeddah, and the Eastern Province.',
+      },
+      {
+        name: 'Clinics, hospitals, and healthcare groups',
+        desc: 'Doctor profile pages, service catalogues, online appointment requests, and patient resource sections. Structured so patients can find the right speciality in both Arabic and English without a phone call.',
+      },
+      {
+        name: 'Restaurants, cafés, and hospitality venues',
+        desc: 'Menu-driven sites with location pages, reservation flows, and galleries updated from the same dashboard your team uses for daily operations. Designed to perform on mobile where most diners browse.',
+      },
+      {
+        name: 'Professional services and consultancies',
+        desc: 'Firm websites that explain what the practice does, who it does it for, and how to engage — including gated insights, team profiles, and direct enquiry routing to the right partner.',
+      },
+      {
+        name: 'Government suppliers and contractors',
+        desc: 'Bilingual corporate sites for companies bidding on public sector work — capability statements, project archives, certifications, and tender enquiry handling aligned to the way Saudi buyers evaluate vendors.',
+      },
+      {
+        name: 'E-commerce and direct-to-consumer brands',
+        desc: 'Product catalogues, secure checkout, and inventory flows built on the same custom-code stack we use for our own platforms — no template bloat, no plugin patching, and full ownership of the data.',
+      },
+    ],
+    industriesAr: [
+      {
+        name: 'العقارات والمطوّرون العقاريون',
+        desc: 'مواقع عرض المشاريع مع قوائم ثنائية اللغة ومعارض المخططات وجمع العملاء المحتملين للمبيعات على الخارطة، وربط مع نظام الـ CRM الذي يستخدمه فريق المبيعات. مصمّمة لدعم الحملات خلال إطلاق المشاريع في الرياض وجدة والمنطقة الشرقية.',
+      },
+      {
+        name: 'العيادات والمستشفيات ومجموعات الرعاية الصحية',
+        desc: 'صفحات تعريفية بالأطباء وكتالوجات الخدمات ونماذج طلب موعد وأقسام موارد للمرضى. مهيكلة ليتمكن المرضى من إيجاد التخصص المناسب بالعربية والإنجليزية دون اتصال هاتفي.',
+      },
+      {
+        name: 'المطاعم والمقاهي وأماكن الضيافة',
+        desc: 'مواقع قائمة على المينيو مع صفحات مواقع وتدفقات حجز ومعارض تُحدَّث من لوحة التحكم نفسها التي يستخدمها فريقك للعمليات اليومية. مصمّمة للأداء على الجوال حيث يتصفح معظم الزبائن.',
+      },
+      {
+        name: 'الخدمات المهنية والاستشارات',
+        desc: 'مواقع شركات تشرح ما تفعله ومن تخدمه وكيف تبدأ التعامل — بما في ذلك رؤى مقيّدة وصفحات فريق وتوجيه استفسارات مباشرة إلى الشريك المناسب.',
+      },
+      {
+        name: 'موردو الجهات الحكومية والمقاولون',
+        desc: 'مواقع مؤسسية ثنائية اللغة للشركات المتقدمة للمناقصات الحكومية — بيانات القدرات وأرشيف المشاريع والشهادات ومعالجة استفسارات المناقصات بما يتوافق مع طريقة تقييم الموردين في السعودية.',
+      },
+      {
+        name: 'التجارة الإلكترونية والعلامات المباشرة للمستهلك',
+        desc: 'كتالوجات منتجات ودفع آمن وتدفقات مخزون مبنية على حزمة الشيفرة المخصصة نفسها التي نستخدمها لمنصاتنا — دون تضخم القوالب ودون رقع الإضافات، مع ملكية كاملة للبيانات.',
+      },
+    ],
   },
   {
     slug: 'app-development-saudi-arabia',
