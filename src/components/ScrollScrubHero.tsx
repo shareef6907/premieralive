@@ -19,7 +19,7 @@ function MobileHero({ locale }: { locale: string }) {
   const l = LABELS[0];
   return (
     <section className="relative h-screen overflow-hidden bg-[#0A0A0B]">
-      <video
+      <video onContextMenu={(e) => e.preventDefault()}
         src=""
         autoPlay
         loop
@@ -94,7 +94,7 @@ export default function ScrollScrubHero({ locale }: { locale: string }) {
   return (
     <section ref={sectionRef} className="relative h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-[#0A0A0B]">
-        <video
+        <video onContextMenu={(e) => e.preventDefault()}
           ref={videoRef}
           src=""
           muted

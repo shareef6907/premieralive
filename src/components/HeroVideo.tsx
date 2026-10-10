@@ -25,7 +25,7 @@ export default function HeroVideo({ poster, webm, mp4, width, height }: HeroVide
 
   return (
     <>
-      <video
+      <video onContextMenu={(e) => e.preventDefault()}
         width={width}
         height={height}
         poster={poster}

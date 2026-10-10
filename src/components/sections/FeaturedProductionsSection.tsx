@@ -193,7 +193,7 @@ function SliderCard({
         outline: 'none',
       }}
     >
-      <video disablePictureInPicture controlsList="nodownload nofullscreen"
+      <video onContextMenu={(e) => e.preventDefault()} disablePictureInPicture controlsList="nodownload nofullscreen"
         ref={videoRef}
         muted
         loop
@@ -351,7 +351,7 @@ export default function FeaturedProductionsSection() {
             {isArabic ? 'ننفّذ بالمؤثرات ما تعجز الكاميرا عن تصويره' : 'CGI THAT SELLS THE UNSHOOTABLE'}
           </p>
           <div style={{ width: '100%', aspectRatio: '16 / 9', background: '#000', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
-            <video disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
+            <video onContextMenu={(e) => e.preventDefault()} disablePictureInPicture controlsList="nodownload nofullscreen" webkit-playsinline
               src={CGI_SHOWREEL}
               muted
               autoPlay

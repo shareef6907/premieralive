@@ -50,7 +50,7 @@ export default function HeroSection() {
       }}
     >
       {/* Background video */}
-      <video
+      <video onContextMenu={(e) => e.preventDefault()}
         ref={videoRef}
         src={HERO_VIDEO}
         autoPlay

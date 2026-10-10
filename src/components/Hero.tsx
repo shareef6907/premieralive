@@ -100,7 +100,7 @@ export default function Hero() {
         {/* Video element */}
         {isMobile ? (
           // Mobile: autoplay loop fallback
-          <video
+          <video onContextMenu={(e) => e.preventDefault()}
             src={VIDEO_SRC}
             autoPlay
             loop
@@ -114,7 +114,7 @@ export default function Hero() {
             }}
           />
         ) : (
-          <video
+          <video onContextMenu={(e) => e.preventDefault()}
             ref={videoRef}
             src={VIDEO_SRC}
             preload="auto"
