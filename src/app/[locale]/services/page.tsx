@@ -5,23 +5,50 @@ import ServiceCardLink from '@/components/ServiceCardLink'
 import { SERVICES } from '@/config/services'
 import { MEDIA_BASE } from '@/config/media'
 
-export const metadata: Metadata = {
-  title: 'Services | Premiera Live',
-  description: 'All 16 services — film production, photography, websites, apps, and business systems — built in-house for businesses in Saudi Arabia.',
-  alternates: {
-    canonical: 'https://www.premieralive.com/en/services',
-    languages: {
-      'en': 'https://www.premieralive.com/en/services',
-      'ar': 'https://www.premieralive.com/ar/services',
+const DOMAIN = 'https://www.premieralive.com'
+
+type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const isArabic = locale === 'ar'
+  const canonical = `${DOMAIN}/${locale}/services`
+
+  return {
+    title: isArabic
+      ? 'خدماتنا | إنتاج سينمائي وتجارب رقمية | بريمييرا لايف'
+      : 'Our Services | Cinematic Production & Digital Experiences | Premiera Live',
+    description: isArabic
+      ? 'كل خدماتنا في الخبر بالسعودية: إنتاج سينمائي (أفلام تجارية، أفلام شركات، تصوير احترافي، رسوم متحركة، وثائقيات، تغطية فعاليات، بث مباشر متعدد الكاميرات، إنتاج بودكاست) وتجارب رقمية (مواقع الأعمال، تطبيقات، صفحات هبوط، أنظمة حجز، منصات أعمال، بوابات عملاء، مساعدون أذكياء وأتمتة، صيانة مواقع).'
+      : 'All our services in Al Khobar, Saudi Arabia: cinematic production (commercial films, corporate videos, professional photography, animation, documentaries, event coverage, multi-camera live streaming, podcast production) and digital experiences (business websites, apps, landing pages, booking systems, business platforms, client portals, AI assistants and automation, website maintenance).',
+    alternates: {
+      canonical,
+      languages: {
+        'en-SA': `${DOMAIN}/en/services`,
+        'ar-SA': `${DOMAIN}/ar/services`,
+        'x-default': `${DOMAIN}/en/services`,
+      },
     },
-  },
-  openGraph: {
-    url: 'https://www.premieralive.com/en/services',
-    description: 'All 16 services — film production, photography, websites, apps, and business systems — built in-house for businesses in Saudi Arabia.',
-  },
-  twitter: {
-    description: 'All 16 services — film production, photography, websites, apps, and business systems — built in-house for businesses in Saudi Arabia.',
-  },
+    openGraph: {
+      title: isArabic
+        ? 'خدماتنا | إنتاج سينمائي وتجارب رقمية | بريمييرا لايف'
+        : 'Our Services | Cinematic Production & Digital Experiences | Premiera Live',
+      description: isArabic
+        ? 'كل خدماتنا في الخبر بالسعودية: إنتاج سينمائي وتجارب رقمية.'
+        : 'All our services in Al Khobar, Saudi Arabia: cinematic production and digital experiences.',
+      url: canonical,
+      locale: isArabic ? 'ar_SA' : 'en_SA',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: isArabic
+        ? 'خدماتنا | إنتاج سينمائي وتجارب رقمية | بريمييرا لايف'
+        : 'Our Services | Cinematic Production & Digital Experiences | Premiera Live',
+      description: isArabic
+        ? 'كل خدماتنا في الخبر بالسعودية: إنتاج سينمائي وتجارب رقمية.'
+        : 'All our services in Al Khobar, Saudi Arabia: cinematic production and digital experiences.',
+    },
+  }
 }
 
 const DIVISIONS = [
