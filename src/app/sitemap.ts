@@ -32,6 +32,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Podcast pillar — dedicated page at /podcast-production-saudi-arabia (separate route from /services/podcast-filming)
     { url: `${BASE}/en/podcast-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/podcast-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    // Film production in Riyadh — city landing under the film production pillar
+    { url: `${BASE}/en/film-production-company-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/film-production-company-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     ...serviceUrls,
     ...marketingUrls,
   ]
