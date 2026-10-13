@@ -12,9 +12,7 @@ import WhyPremieraSection from '@/components/sections/WhyPremieraSection'
 import FounderLetterSection from '@/components/sections/FounderLetterSection'
 import FinalCTASection from '@/components/sections/FinalCTASection'
 
-type Props = {
-  params: Promise<{ locale: string }>
-}
+type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
@@ -24,11 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: isArabic
-      ? 'بريمييرا لايف | إنتاج سينمائي وتجارب رقمية في السعودية'
-      : 'Premiera Live | Cinematic Production & Digital Experiences in Saudi Arabia',
+      ? 'بريمييرا لايف | إنتاج أفلام وبث مباشر في السعودية'
+      : 'Premiera Live | Live Streaming & Film Production in Saudi Arabia',
     description: isArabic
-      ? 'بريمييرا لايف شركة إنتاج سينمائي وتجارب رقمية من مقرها في الخبر بالسعودية — نصنع الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير الاحترافي، ونبني المواقع والمنصات وأنظمة الذكاء الاصطناعي للشركات في أنحاء السعودية.'
-      : 'Premiera Live is a cinematic production and digital experiences company based in Al Khobar, Saudi Arabia — producing commercial films, corporate videos, documentaries, and professional photography, and building websites, platforms, and AI systems for businesses across Saudi Arabia.',
+      ? 'بريمييرا لايف شركة إنتاج سينمائي وبث مباشر من مقرها في الخبر بالسعودية. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والبث متعدد الكاميرات والفعاليات المباشرة.'
+      : 'Premiera Live is a live streaming and film production company in Al Khobar, Saudi Arabia — producing commercial films, corporate videos, documentaries, and multi-camera live broadcasts across the Gulf.',
     alternates: {
       canonical,
       languages: {
@@ -39,29 +37,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: isArabic
-        ? 'بريمييرا لايف | إنتاج سينمائي وتجارب رقمية في السعودية'
-        : 'Premiera Live | Cinematic Production & Digital Experiences in Saudi Arabia',
+        ? 'بريمييرا لايف | إنتاج أفلام وبث مباشر في السعودية'
+        : 'Premiera Live | Live Streaming & Film Production in Saudi Arabia',
       description: isArabic
-        ? 'بريمييرا لايف شركة إنتاج سينمائي وتجارب رقمية من مقرها في الخبر بالسعودية.'
-        : 'Premiera Live is a cinematic production and digital experiences company based in Al Khobar, Saudi Arabia.',
+        ? 'بريمييرا لايف شركة إنتاج سينمائي وبث مباشر من مقرها في الخبر بالسعودية.'
+        : 'Premiera Live is a live streaming and film production company in Al Khobar producing across Saudi Arabia.',
       url: canonical,
       locale: isArabic ? 'ar_SA' : 'en_SA',
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: isArabic
-        ? 'بريمييرا لايف | إنتاج سينمائي وتجارب رقمية في السعودية'
-        : 'Premiera Live | Cinematic Production & Digital Experiences in Saudi Arabia',
+        ? 'بريمييرا لايف | إنتاج أفلام وبث مباشر في السعودية'
+        : 'Premiera Live | Live Streaming & Film Production in Saudi Arabia',
       description: isArabic
-        ? 'بريمييرا لايف شركة إنتاج سينمائي وتجارب رقمية من مقرها في الخبر بالسعودية.'
-        : 'Premiera Live is a cinematic production and digital experiences company based in Al Khobar, Saudi Arabia.',
+        ? 'بريمييرا لايف شركة إنتاج سينمائي وبث مباشر من مقرها في الخبر بالسعودية.'
+        : 'Premiera Live is a live streaming and film production company in Al Khobar producing across Saudi Arabia.',
     },
   }
 }
 
-export default async function Page({
-  params,
-}: Props) {
+export default async function Page({ params }: Props) {
   const { locale } = await params
   setRequestLocale(locale)
 
