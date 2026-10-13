@@ -35,6 +35,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Film production in Riyadh — city landing under the film production pillar
     { url: `${BASE}/en/film-production-company-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/film-production-company-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // AI websites for real estate — use-case landing under the digital pillar
+    { url: `${BASE}/en/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     ...serviceUrls,
     ...marketingUrls,
   ]
