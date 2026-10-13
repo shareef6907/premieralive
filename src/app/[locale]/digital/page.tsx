@@ -254,6 +254,11 @@ export default async function DigitalPage({
                   </RelatedServiceLink>
                 )
               })}
+            <RelatedServiceLink
+              href={`/${urlLocale}/ai-websites-for-real-estate-saudi-arabia`}
+            >
+              {isArabic ? 'مواقع الذكاء الاصطناعي للعقار' : 'AI websites for real estate'}
+            </RelatedServiceLink>
           </div>
         </div>
       </section>
