@@ -436,6 +436,13 @@ export default async function FilmProductionPage({ params }: Props) {
           >
             {isArabic ? 'إنتاج البودكاست' : 'podcast production'}
           </Link>
+          <span style={{ color: 'var(--color-text-faint)' }}>·</span>
+          <Link
+            href={`/${locale}/services/event-coverage-saudi-arabia`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {isArabic ? 'تغطية الفعاليات' : 'event coverage'}
+          </Link>
         </div>
       </Section>
 
