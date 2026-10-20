@@ -7,7 +7,7 @@
     "bookSession": "Book a Strategy Session"
   },
   "hero": {
-    "eyebrow": "CINEMATIC PRODUCTION \u00b7 DIGITAL EXPERIENCES",
+    "eyebrow": "CINEMATIC PRODUCTION · DIGITAL EXPERIENCES ",
     "headline": "EVERY GREAT BUSINESS DESERVES A GREAT STORY.",
     "sub": "We create cinematic productions and digital experiences that help businesses communicate, launch, and grow.",
     "viewFilms": "View Films",
@@ -30,12 +30,26 @@
     "cinematic": {
       "name": "CINEMATIC PRODUCTION",
       "line": "Films built to be remembered.",
-      "capabilities": ["Commercial Films", "Corporate Films", "Professional Photography", "Event Coverage", "Animation & CGI", "Documentary"]
+      "capabilities": [
+        "Commercial Films",
+        "Corporate Films",
+        "Professional Photography",
+        "Event Coverage",
+        "Animation & CGI",
+        "Documentary"
+      ]
     },
     "digital": {
       "name": "DIGITAL EXPERIENCES",
       "line": "Websites and systems, built from scratch.",
-      "capabilities": ["Business Websites", "Landing Pages", "Booking Systems", "Business Platforms", "Client Portals", "AI Assistants & Automation"]
+      "capabilities": [
+        "Business Websites",
+        "Landing Pages",
+        "Booking Systems",
+        "Business Platforms",
+        "Client Portals",
+        "AI Assistants & Automation"
+      ]
     }
   },
   "featuredProductions": {
@@ -86,6 +100,6 @@
   },
   "footer": {
     "tagline": "Now in Saudi Arabia — serving clients across the Gulf.",
-    "copyright": "\u00a9 2026 Premiera Live"
+    "copyright": "© 2026 Premiera Live"
   }
 }
