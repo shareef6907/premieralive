@@ -1,5 +1,10 @@
 name: content-gate
 
+# Runs on every pull request into main.
+# pull_request_target means this workflow and the check script are always
+# taken from main, never from the PR branch, so a PR cannot edit or disable
+# its own gate. No code from the PR is ever executed here; it is only read
+# as text through the GitHub API.
 on:
   pull_request_target:
     branches: [main]
@@ -23,7 +28,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.base.sha }}
 
-      - name: Fetch PR file list
+      - name: Fetch the PR file list and diff
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}
@@ -31,35 +36,7 @@ jobs:
         run: |
           gh api "repos/$REPO/pulls/$PR/files" --paginate \
             --jq '.[] | [.status, .filename] | @tsv' > "$RUNNER_TEMP/files.tsv"
-          echo "Files: $(wc -l < $RUNNER_TEMP/files.tsv)"
-
-      - name: Fetch diff (git clone + diff; handles large PRs)
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR: ${{ github.event.pull_request.number }}
-          REPO: ${{ github.repository }}
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          DIFF_FILE="$RUNNER_TEMP/pr.diff"
-          
-          # Always use git clone approach for reliability
-          WORKDIR=$(mktemp -d)
-          git clone --bare \
-            "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" "$WORKDIR/repo.git" 2>/dev/null
-          
-          # Generate diff between base and head
-          cd "$WORKDIR/repo.git"
-          git configAdvice.detachedHead false
-          # Dump base and head trees, then diff them
-          {
-            echo "Diff between $BASE_SHA and $HEAD_SHA"
-            echo ""
-            git diff "$BASE_SHA" "$HEAD_SHA" -- ':!node_modules/' ':!package-lock.json' 2>/dev/null || true
-          } > "$DIFF_FILE"
-          
-          echo "diff: $(wc -l < $DIFF_FILE) lines"
-          rm -rf "$WORKDIR"
+          gh pr diff "$PR" --repo "$REPO" > "$RUNNER_TEMP/pr.diff"
 
       - name: Run content rules
         run: bash scripts/content-check.sh "$RUNNER_TEMP/files.tsv" "$RUNNER_TEMP/pr.diff"
