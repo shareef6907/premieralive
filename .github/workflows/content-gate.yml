@@ -28,7 +28,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.base.sha }}
 
-      - name: Fetch the PR file list and diff
+      - name: Fetch the PR file list
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}
@@ -36,7 +36,66 @@ jobs:
         run: |
           gh api "repos/$REPO/pulls/$PR/files" --paginate \
             --jq '.[] | [.status, .filename] | @tsv' > "$RUNNER_TEMP/files.tsv"
-          gh pr diff "$PR" --repo "$REPO" > "$RUNNER_TEMP/pr.diff"
+
+      - name: Fetch diff — handle large PRs via file contents API
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          DIFF_FILE="$RUNNER_TEMP/pr.diff"
+          
+          # Try standard diff first (works for PRs under ~20k diff lines)
+          if gh pr diff "$PR" --repo "$REPO" > "$DIFF_FILE" 2>/dev/null; then
+            echo "diff fetched via gh pr diff"
+          else
+            # Diff too large — generate it from file contents API
+            echo "diff too large; generating from file contents API..."
+            {
+              echo "Generated diff for PR #$PR (base: $BASE_SHA, head: $HEAD_SHA)"
+              echo ""
+            } > "$DIFF_FILE"
+            
+            # Read files that are added or modified (not removed)
+            while IFS=$'\t' read -r status filename; do
+              [ -z "$filename" ] && continue
+              [[ "$status" == "removed" ]] && continue
+              
+              # Get base content (null if file doesn't exist in base)
+              base_content=$(gh api \
+                "repos/$REPO/contents/$filename?ref=$BASE_SHA" \
+                --jq '.encoding == "base64" // .content // empty' 2>/dev/null)
+              
+              # Get head content
+              head_content=$(gh api \
+                "repos/$REPO/contents/$filename?ref=$HEAD_SHA" \
+                --jq '.content // empty' 2>/dev/null)
+              
+              if [ -n "$head_content" ]; then
+                # Decode base64 and output as unified diff
+                head_decoded=$(echo "$head_content" | tr -d '\n ' | base64 -d 2>/dev/null || echo "")
+                if [ -n "$base_content" ]; then
+                  base_decoded=$(echo "$base_content" | tr -d '\n ' | base64 -d 2>/dev/null || echo "")
+                  diff -U0 /dev/null /dev/null 2>/dev/null | head -3
+                  diff -U0 <(echo "$base_decoded") <(echo "$head_decoded") 2>/dev/null \
+                    | sed "s|^--- /dev/fd/|--- a/|; s|^+++ /dev/fd/|+++ b/|" \
+                    | sed "s|^--- $|--- /dev/null|; s|^+++ $|+++ /dev/null|" >> "$DIFF_FILE" || true
+                else
+                  # New file — output all lines as additions
+                  echo "--- /dev/null" >> "$DIFF_FILE"
+                  echo "+++ b/$filename" >> "$DIFF_FILE"
+                  echo "@@ -0,0 +1,$(echo "$head_decoded" | wc -l) @@" >> "$DIFF_FILE"
+                  echo "$head_decoded" | sed 's/^/+/' >> "$DIFF_FILE"
+                fi
+                echo "" >> "$DIFF_FILE"
+              fi
+            done < "$RUNNER_TEMP/files.tsv"
+            
+            line_count=$(wc -l < "$DIFF_FILE")
+            echo "generated diff: $line_count lines" >&2
+          fi
 
       - name: Run content rules
         run: bash scripts/content-check.sh "$RUNNER_TEMP/files.tsv" "$RUNNER_TEMP/pr.diff"
