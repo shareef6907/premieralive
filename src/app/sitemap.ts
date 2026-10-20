@@ -38,6 +38,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // AI websites for real estate — use-case landing under the digital pillar
     { url: `${BASE}/en/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // AI websites for clinics — use-case landing under the digital pillar
+    { url: `${BASE}/en/ai-websites-for-clinics-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/ai-websites-for-clinics-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     ...serviceUrls,
     ...marketingUrls,
   ]
