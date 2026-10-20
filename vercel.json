@@ -1,0 +1,8 @@
+{
+  "crons": [
+    { "path": "/api/keep-alive", "schedule": "0 3 * * *" },
+    { "path": "/api/outbound/send", "schedule": "0 * * * *" },
+    { "path": "/api/outbound/inbox", "schedule": "*/15 * * * *" },
+    { "path": "/api/outbound/discover", "schedule": "0 6 * * 0-4" }
+  ]
+}

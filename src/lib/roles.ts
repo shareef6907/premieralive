@@ -1,0 +1,32 @@
+export type Role = "ceo" | "sales_manager" | "account_manager" | "editor" | "accountant";
+
+export const ROLE_LABEL: Record<Role, string> = {
+  ceo: "CEO",
+  sales_manager: "Sales Manager",
+  account_manager: "Account Manager",
+  editor: "Video / Content Editor",
+  accountant: "Accountant",
+};
+
+// which nav items each role can see
+export const NAV_ACCESS: Record<string, Role[]> = {
+  dashboard:  ["ceo", "sales_manager", "account_manager", "editor", "accountant"],
+  crm:        ["ceo", "sales_manager"],
+  prospects:  ["ceo", "sales_manager"],
+  outbound:   ["ceo", "sales_manager"],
+  whatsapp:   ["ceo", "sales_manager"],
+  replies:    ["ceo", "sales_manager"],
+  clients:    ["ceo", "sales_manager", "account_manager", "editor"],
+  tasks:      ["ceo", "account_manager", "editor"],
+  payments:   ["ceo", "sales_manager"],
+  finance:    ["ceo", "sales_manager"],
+  revenue:    ["ceo"],
+  accounting: ["ceo", "accountant"],
+  team:       ["ceo"],
+  proposals:  ["ceo", "sales_manager"],
+};
+
+export function can(role: Role | null, key: string): boolean {
+  if (!role) return false;
+  return (NAV_ACCESS[key] || []).includes(role);
+}

@@ -1,0 +1,138 @@
+import type { CityContent } from "./cities";
+
+// These cities are appended to CITIES in cities.ts
+export const CITIES_MORE: Record<string, CityContent> = {
+  "al-khobar": {
+    country: "Saudi Arabia", countryAr: "المملكة العربية السعودية",
+    name: "Al Khobar", nameAr: "الخبر",
+    desc: "Al Khobar is the commercial and social heart of Saudi Arabia's Eastern Province, and home to Premiera Live's operating headquarters at Spaces Ajdan Walk, Corniche 5. The city is characterised by its thriving business district, waterfront Corniche, and proximity to major oil and gas operations. Al Khobar is the city where Premiera Live operates from day to day, meaning local clients receive the fastest possible response times for assessments, installations, and ongoing support.",
+    descAr: "الخبر هي القلب التجاري والاجتماعي للمنطقة الشرقية في المملكة العربية السعودية، ومقر عمليات بريمييرا لايف التشغيلي في Spaces Ajdan Walk، الكورنيش 5.",
+    whoWeServe: [
+      { vertical: "Law Firms", verticalAr: "مكاتب المحاماة", emphasis: "Eastern Province legal practices with same-day support availability", emphasisAr: "الممارسات القانونية في المنطقة الشرقية مع توفر الدعم في نفس اليوم" },
+      { vertical: "Clinics & Healthcare", verticalAr: "العيادات والرعاية الصحية", emphasis: "Patient confidentiality for Eastern Province medical centres", emphasisAr: "سرية المرضى لمراكز طبية المنطقة الشرقية" },
+      { vertical: "Trading & Distribution", verticalAr: "التجارة والتوزيع", emphasis: "Supply chain AI for Khobar's commercial business district", emphasisAr: "ذكاء اصطناعي سلسلة التوريد لمنطقة الأعمال التجارية في الخبر" },
+    ],
+    howItWorks: "For Al Khobar clients, we offer the fastest service in our network — assessment and installation can often be scheduled within 1-2 business days. As our base city, Al Khobar clients receive priority support access.",
+    howItWorksAr: "لعملاء الخبر، نقدم أسرع خدمة في شبكتنا — يمكن عادةً جدولة التقييم والتركيب خلال 1-2 أيام عمل. بصفتها مدينتنا الأساسية، يتلقى عملاء الخبر أولوية في الدعم.",
+    faq: [
+      { q: "How quickly can you install in Al Khobar?", qAr: "ما سرعة التركيب في الخبر؟", a: "Al Khobar is our base city. We often offer same-day or next-day installation for local clients.", aAr: "الخبر هي مدينتنا الأساسية. غالبًا ما نقدم التركيب في نفس اليوم أو اليوم التالي للعملاء المحليين." },
+      { q: "Is Al Khobar where Premiera Live is based?", qAr: "هل الخبر هي مقر بريمييرا لايف؟", a: "Yes. Premiera Live operates from Spaces Ajdan Walk, Corniche 5, Al Khobar.", aAr: "نعم. تعمل بريمييرا لايف من Spaces Ajdan Walk، الكورنيش 5، الخبر." },
+      { q: "Can you serve nearby cities from Al Khobar?", qAr: "هل يمكنكم خدمة المدن القريبة من الخبر؟", a: "Yes. We serve the entire Eastern Province from our Al Khobar base including Dammam, Dhahran, Jubail, and Ras Tanura.", aAr: "نعم. نخدم المنطقة الشرقية بأكملها من قاعدتنا في الخبر." },
+    ],
+    cities: ["dammam", "dhahran", "riyadh"],
+  },
+  dhahran: {
+    country: "Saudi Arabia", countryAr: "المملكة العربية السعودية",
+    name: "Dhahran", nameAr: "الظهران",
+    desc: "Dhahran is a major hub in Saudi Arabia's Eastern Province, home to Saudi Aramco and a large ecosystem of energy-sector service companies and contractors. Dhahran-based companies handle enormous volumes of technical documentation, project specifications, and commercial data. Premiera Local AI serves Dhahran companies with installation from our Al Khobar base, typically within 2-3 business days.",
+    descAr: "الظهران هو مركز رئيسي في المنطقة الشرقية للمملكة العربية السعودية، موطن لشركة أرامكو ومجتمع كبير من شركات الخدمات والمقاولين في قطاع الطاقة.",
+    whoWeServe: [
+      { vertical: "Oil & Gas Companies", verticalAr: "شركات النفط والغاز", emphasis: "Technical documentation and engineering specification management", emphasisAr: "إدارة الوثائق التقنية والمواصفات الهندسية" },
+      { vertical: "Engineering Contractors", verticalAr: "مقاولو الهندسة", emphasis: "Project document Q&A and tender specification review", emphasisAr: "الاستعلام من مستندات المشاريع ومراجعة مواصفات المناقصات" },
+      { vertical: "Professional Services", verticalAr: "الخدمات المهنية", emphasis: "Client data protection for Dhahran's professional services firms", emphasisAr: "حماية بيانات العملاء لشركات الخدمات المهنية في الظهران" },
+    ],
+    howItWorks: "We serve Dhahran from our Al Khobar base. Installation visits are typically scheduled within 2-3 business days. The proximity to Al Khobar means Dhahran clients receive fast, responsive service.",
+    howItWorksAr: "نخدم الظهران من قاعدتنا في الخبر. زيارات التركيب عادةً ما تُجدوَل خلال 2-3 أيام عمل. القرب من الخبر يعني أن عملاء الظهران يتلقون خدمة سريعة ومستجيبة.",
+    faq: [
+      { q: "How quickly can you install in Dhahran?", qAr: "ما سرعة التركيب في الظهران؟", a: "We serve Dhahran from our Al Khobar base, typically within 2-3 business days.", aAr: "نخدم الظهران من قاعدتنا في الخبر، عادةً خلال 2-3 أيام عمل." },
+      { q: "Do you work with Saudi Aramco contractors in Dhahran?", qAr: "هل تعملون مع مقاولي أرامكو في الظهران؟", a: "Yes. We have experience working with Saudi Aramco contractors and service companies in Dhahran.", aAr: "نعم. لدينا خبرة في العمل مع مقاولي أرامكو وشركات الخدمات في الظهران." },
+      { q: "Is Dhahran far from your Al Khobar base?", qAr: "هل الظهران بعيد عن قاعدتكم في الخبر؟", a: "No. Dhahran is very close to Al Khobar — typically a 15-20 minute drive.", aAr: "لا. الظهران قريب جدًا من الخبر — عادةً 15-20 دقيقة بالسيارة." },
+    ],
+    cities: ["al-khobar", "dammam", "jubail"],
+  },
+  jubail: {
+    country: "Saudi Arabia", countryAr: "المملكة العربية السعودية",
+    name: "Jubail", nameAr: "الجبيل",
+    desc: "Jubail is Saudi Arabia's major industrial city, home to the world's largest oil-to-chemicals complex and a massive petrochemical industrial zone. The city hosts hundreds of industrial companies, engineering firms, and construction contractors. Premiera Local AI serves Jubail's industrial community with server deployment options suited to large document libraries.",
+    descAr: "الجبيل هي المدينة الصناعية الرئيسية في المملكة العربية السعودية، موطن لأكبر مجمع للزيوت-to-chemicals في العالم ومنطقة صناعية بتروكيماوية ضخمة.",
+    whoWeServe: [
+      { vertical: "Industrial Companies", verticalAr: "الشركات الصناعية", emphasis: "Technical documentation and safety procedure management", emphasisAr: "إدارة الوثائق التقنية وإجراءات السلامة" },
+      { vertical: "Engineering Firms", verticalAr: "مكاتب الهندسة", emphasis: "Engineering specification Q&A and project document review", emphasisAr: "الاستعلام من المواصفات الهندسية ومراجعة مستندات المشاريع" },
+      { vertical: "Construction Contractors", verticalAr: "مقاولو البناء", emphasis: "Tender document analysis and procurement Q&A", emphasisAr: "تحليل وثائق المناقصات والاستعلام من المشتريات" },
+    ],
+    howItWorks: "We serve Jubail as part of our Eastern Province service area. Installation visits from Al Khobar are typically scheduled within 3-5 business days. Server deployment for large industrial document libraries is available with our Business package.",
+    howItWorksAr: "نخدم الجبيل كجزء من منطقتنا الخدمية في المنطقة الشرقية. زيارات التركيب من الخبر عادةً ما تُجدوَل خلال 3-5 أيام عمل. نشر الخادم للمكتبات الوثائقية الصناعية الكبيرة متاح مع باقة الأعمال.",
+    faq: [
+      { q: "How quickly can you install in Jubail?", qAr: "ما سرعة التركيب في الجبيل؟", a: "We serve Jubail from our Al Khobar base, typically within 3-5 business days.", aAr: "نخدم الجبيل من قاعدتنا في الخبر، عادةً خلال 3-5 أيام عمل." },
+      { q: "Do you work with industrial companies in Jubail?", qAr: "هل تعملون مع شركات صناعية في الجبيل؟", a: "Yes. We have experience with Jubail's industrial companies and understand the specific documentation requirements.", aAr: "نعم. لدينا خبرة مع الشركات الصناعية في الجبيل." },
+      { q: "Can the AI handle very large technical document libraries?", qAr: "هل يمكن للذكاء الاصطناعي التعامل مع مكتبات وثائق تقنية كبيرة جدًا؟", a: "Yes. The RAG system is designed for large document collections. We configure chunking and retrieval parameters.", aAr: "نعم. نظام RAG مصمم لمجموعات الوثائق الكبيرة. نُعدّ معلمات التقسيم والاسترجاع." },
+    ],
+    cities: ["dammam", "al-khobar", "dhahran"],
+  },
+  mecca: {
+    country: "Saudi Arabia", countryAr: "المملكة العربية السعودية",
+    name: "Mecca", nameAr: "مكة المكرمة",
+    desc: "Mecca is one of the most visited cities in the world, home to a significant business community serving millions of pilgrims and residents who pass through the city annually. Mecca's business sector includes hotels, restaurants, logistics companies, retail businesses, and professional services firms. Premiera Local AI serves Mecca businesses with installation visits from our Al Khobar team, typically within 7-10 business days.",
+    descAr: "مكة المكرمة هي إحدى أكثر المدن زيارة في العالم، موطن لمجتمع أعمال كبير يخدم ملايين الحجاجResidents الذين يمرون عبر المدينة سنويًا.",
+    whoWeServe: [
+      { vertical: "Hotels & Hospitality", verticalAr: "الفنادق والضيافة", emphasis: "Guest data protection and service documentation management", emphasisAr: "حماية بيانات النزلاء وإدارة وثائق الخدمة" },
+      { vertical: "Retail Businesses", verticalAr: "شركات التجزئة", emphasis: "Customer data protection and inventory management", emphasisAr: "حماية بيانات العملاء وإدارة المخزون" },
+      { vertical: "Professional Services", verticalAr: "الخدمات المهنية", emphasis: "Client confidentiality for Mecca's professional services firms", emphasisAr: "سرية العملاء لشركات الخدمات المهنية في مكة" },
+    ],
+    howItWorks: "We serve Mecca with installation visits typically scheduled within 7-10 business days. Our Al Khobar team travels to Mecca as part of our regular Western Saudi Arabia circuit.",
+    howItWorksAr: "نخدم مكة بزيارات التركيب عادةً ما تُجدوَل خلال 7-10 أيام عمل. يسافر فريقنا من الخبر إلى مكة كجزء من جولتنا الغربية المعتادة في المملكة.",
+    faq: [
+      { q: "How do you handle Mecca installations from Al Khobar?", qAr: "كيف تتعاملون مع تركيبات مكة من الخبر؟", a: "We travel from Al Khobar to Mecca as part of our regular Western Saudi circuit.", aAr: "نسافر من الخبر إلى مكة كجزء من جولتنا الغربية المعتادة." },
+      { q: "Do you work with hotels in Mecca?", qAr: "هل تعملون مع فنادق في مكة؟", a: "Yes. We have experience with Mecca's hospitality sector.", aAr: "نعم. لدينا خبرة مع قطاع الضيافة في مكة." },
+      { q: "How quickly can you install in Mecca?", qAr: "ما سرعة التركيب في مكة؟", a: "Mecca installations are typically scheduled within 7-10 business days.", aAr: "تركيبات مكة عادةً ما تُجدوَل خلال 7-10 أيام عمل." },
+    ],
+    cities: ["jeddah", "riyadh", "medina"],
+  },
+  medina: {
+    country: "Saudi Arabia", countryAr: "المملكة العربية السعودية",
+    name: "Medina", nameAr: "المدينة المنورة",
+    desc: "Medina is one of Islam's holiest cities and a major commercial centre serving millions of residents and pilgrims annually. Medina's business community includes professional services firms, healthcare providers, educational institutions, and commercial businesses. Premiera Local AI serves Medina businesses with installation visits typically scheduled within 7-10 business days from our Al Khobar base.",
+    descAr: "المدينة المنورة هي إحدى أقدس مدن الإسلام ومركز تجاري رئيسي يخدم ملايين السكان والحجاج سنويًا.",
+    whoWeServe: [
+      { vertical: "Healthcare Providers", verticalAr: "مقدمو الرعاية الصحية", emphasis: "Patient confidentiality for Medina's medical centres", emphasisAr: "سرية المرضى لمراكز طبية المدينة" },
+      { vertical: "Educational Institutions", verticalAr: "المؤسسات التعليمية", emphasis: "Student-safe AI for Medina's schools and universities", emphasisAr: "ذكاء اصطناعي آمن للطلاب لمدارس المدينة وجامعاتها" },
+      { vertical: "Professional Services", verticalAr: "الخدمات المهنية", emphasis: "Client confidentiality for businesses serving the Medina population", emphasisAr: "سرية العملاء للشركات التي تخدم سكان المدينة" },
+    ],
+    howItWorks: "We serve Medina with installation visits typically scheduled within 7-10 business days. Our Al Khobar team travels to the Western Region regularly.",
+    howItWorksAr: "نخدم المدينة المنورة بزيارات التركيب عادةً ما تُجدوَل خلال 7-10 أيام عمل. يسافر فريقنا من الخبر إلى المنطقة الغربية بانتظام.",
+    faq: [
+      { q: "How do you handle Medina installations from Al Khobar?", qAr: "كيف تتعاملون مع تركيبات المدينة المنورة من الخبر؟", a: "We travel from Al Khobar to Medina as part of our regular Western Saudi circuit.", aAr: "نسافر من الخبر إلى المدينة المنورة كجزء من جولتنا الغربية المعتادة." },
+      { q: "How quickly can you install in Medina?", qAr: "ما سرعة التركيب في المدينة المنورة؟", a: "Medina installations are typically scheduled within 7-10 business days.", aAr: "تركيبات المدينة المنورة عادةً ما تُجدوَل خلال 7-10 أيام عمل." },
+      { q: "Do you work with healthcare providers in Medina?", qAr: "هل تعملون مع مقدمي الرعاية الصحية في المدينة المنورة؟", a: "Yes. We have experience installing at medical facilities in the Western Region.", aAr: "نعم. لدينا خبرة في التركيب في المرافق الطبية في المنطقة الغربية." },
+    ],
+    cities: ["mecca", "jeddah", "tabuk"],
+  },
+  tabuk: {
+    country: "Saudi Arabia", countryAr: "المملكة العربية السعودية",
+    name: "Tabuk", nameAr: "تبوك",
+    desc: "Tabuk is the capital of Saudi Arabia's Northern Border Region, a strategic city near the Jordanian border and a growing commercial hub for the northern region. The city serves a wide catchment area including military installations, government offices, and a growing private sector. Premiera Local AI serves Tabuk businesses with installation visits from our Al Khobar base, typically within 7-10 business days.",
+    descAr: "تبوك هي عاصمة منطقة الحدود الشمالية للمملكة العربية السعودية، مدينة استراتيجية قرب الحدود الأردنية ومحور تجاري متنامٍ للشمال.",
+    whoWeServe: [
+      { vertical: "Government Offices", verticalAr: "المكاتب الحكومية", emphasis: "Air-gapped AI for government offices in Tabuk", emphasisAr: "ذكاء اصطناعي air-gapped للمكاتب الحكومية في تبوك" },
+      { vertical: "Healthcare Providers", verticalAr: "مقدمو الرعاية الصحية", emphasis: "Patient confidentiality for Northern Region clinics", emphasisAr: "سرية المرضى لعيادات المنطقة الشمالية" },
+      { vertical: "Professional Services", verticalAr: "الخدمات المهنية", emphasis: "Client confidentiality for Tabuk's professional firms", emphasisAr: "سرية العملاء لمكاتب الخدمات المهنية في تبوك" },
+    ],
+    howItWorks: "We serve Tabuk from Al Khobar, typically within 7-10 business days of your assessment. Travel arrangements are included in the quoted price.",
+    howItWorksAr: "نخدم تبوك من الخبر، عادةً خلال 7-10 أيام عمل من تقييمك. الترتيبات السفرية مشمولة في السعر المُسعَّر.",
+    faq: [
+      { q: "How do you handle Tabuk installations?", qAr: "كيف تتعاملون مع تركيبات تبوك؟", a: "We serve Tabuk from Al Khobar, typically within 7-10 business days of your assessment.", aAr: "نخدم تبوك من الخبر، عادةً خلال 7-10 أيام عمل من تقييمك." },
+      { q: "Is travel included for Tabuk?", qAr: "هل السفر مشمول لتبوك؟", a: "Travel arrangements for Tabuk are included in the quoted price.", aAr: "الترتيبات السفرية لتبوك مشمولة في السعر المُسعَّر." },
+      { q: "Do you serve the Northern Border Region?", qAr: "هل تخدمون منطقة الحدود الشمالية؟", a: "We serve Tabuk and the broader Northern Region from our Al Khobar base.", aAr: "نخدم تبوك والمنطقة الشمالية الأوسع من قاعدتنا في الخبر." },
+    ],
+    cities: ["medina", "riyadh", "abha"],
+  },
+  abha: {
+    country: "Saudi Arabia", countryAr: "المملكة العربية السعودية",
+    name: "Abha", nameAr: "أبها",
+    desc: "Abha is the capital of Saudi Arabia's Asir Region, a highland city known for its temperate climate and growing role as a commercial and educational centre for southern Saudi Arabia. The city hosts several universities, healthcare facilities, and a growing business community serving the Asir Region's population. Premiera Local AI serves Abha businesses with installation visits typically scheduled within 7-10 business days from our Al Khobar base.",
+    descAr: "أبها هي عاصمة منطقة عسير في المملكة العربية السعودية، مدينة مرتفعة معروفة بمناخها المعتدل ودورها المتنامي كمركز تجاري وتعليمي لجنوب السعودية.",
+    whoWeServe: [
+      { vertical: "Healthcare Providers", verticalAr: "مقدمو الرعاية الصحية", emphasis: "Patient confidentiality for Asir Region medical centres", emphasisAr: "سرية المرضى لمراكز طبية منطقة عسير" },
+      { vertical: "Educational Institutions", verticalAr: "المؤسسات التعليمية", emphasis: "Student-safe AI for Asir's schools and colleges", emphasisAr: "ذكاء اصطناعي آمن للطلاب لمدارس وكليات عسير" },
+      { vertical: "Government Services", verticalAr: "الخدمات الحكومية", emphasis: "Secure AI for government offices in the Asir Region", emphasisAr: "ذكاء اصطناعي آمن للمكاتب الحكومية في منطقة عسير" },
+    ],
+    howItWorks: "We serve Abha and the Asir Region from Al Khobar, typically within 7-10 business days. Travel arrangements are included in the quoted price for Abha installations.",
+    howItWorksAr: "نخدم أبها ومنطقة عسير من الخبر، عادةً خلال 7-10 أيام عمل. الترتيبات السفرية مشمولة في السعر المُسعَّر لتركيبات أبها.",
+    faq: [
+      { q: "How do you handle Abha installations?", qAr: "كيف تتعاملون مع تركيبات أبها؟", a: "We serve Abha and the Asir Region from Al Khobar, typically within 7-10 business days.", aAr: "نخدم أبها ومنطقة عسير من الخبر، عادةً خلال 7-10 أيام عمل." },
+      { q: "Is Abha in your service area?", qAr: "هل أبها في منطقتك الخدمية؟", a: "Yes. We serve Abha and the broader Asir Region as part of our Western Saudi service area.", aAr: "نعم. نخدم أبها والمنطقة العسيرية الأوسع كجزء من منطقتنا الخدمية الغربية السعودية." },
+      { q: "Do you work with healthcare providers in Abha?", qAr: "هل تعملون مع مقدمي الرعاية الصحية في أبها؟", a: "Yes. We have experience with medical facilities in the Asir Region.", aAr: "نعم. لدينا خبرة مع المرافق الطبية في منطقة عسير." },
+    ],
+    cities: ["medina", "tabuk", "riyadh"],
+  },
+};

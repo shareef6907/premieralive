@@ -1,31 +1,67 @@
-const createNextIntlPlugin = require('next-intl/plugin')
-
-const withNextIntl = createNextIntlPlugin('./src/i18n.ts')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'premiera-live-media.s3.us-east-1.amazonaws.com',
-      },
+  reactStrictMode: true,
+  experimental: {
+    serverComponentsExternalPackages: [
+      '@react-pdf/renderer',
+      'pdfkit',
     ],
+    outputFileTracingIncludes: {
+      '/api/**/*': [
+        './node_modules/pdfkit/js/standard-fonts/**',
+        './node_modules/pdfkit/js/data/**',
+        './node_modules/@react-pdf/**',
+        './public/fonts/**',
+        './public/brand/**',
+      ],
+    },
   },
+  // Redirect old Studio OS page paths to /agency
   async redirects() {
-    return [
-      {
-        source: '/en/services/business-software-development-saudi-arabia',
-        destination: '/en/services/app-development-saudi-arabia',
+    const studioPages = [
+      '/login',
+      '/dashboard',
+      '/crm',
+      '/prospects',
+      '/clients',
+      '/tasks',
+      '/payments',
+      '/finance',
+      '/revenue',
+      '/accounting',
+      '/team',
+      '/whatsapp',
+      '/proposals',
+      '/replies',
+      '/outbound',
+    ];
+    const redirects = [];
+    for (const page of studioPages) {
+      redirects.push({
+        source: page,
+        destination: `/agency${page}`,
         permanent: true,
-      },
-      {
-        source: '/ar/services/business-software-development-saudi-arabia',
-        destination: '/ar/services/app-development-saudi-arabia',
-        permanent: true,
-      },
-    ]
+      });
+      // Nested /proposals routes
+      if (page === '/proposals') {
+        redirects.push({
+          source: '/proposals/new',
+          destination: '/agency/proposals/new',
+          permanent: true,
+        });
+        redirects.push({
+          source: '/proposals/rates',
+          destination: '/agency/proposals/rates',
+          permanent: true,
+        });
+        redirects.push({
+          source: '/proposals/:id',
+          destination: '/agency/proposals/:id',
+          permanent: true,
+        });
+      }
+    }
+    return redirects;
   },
-}
-
-module.exports = withNextIntl(nextConfig)
+};
+module.exports = nextConfig;

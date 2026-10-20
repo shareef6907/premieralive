@@ -1,44 +1,148 @@
-import { MetadataRoute } from 'next'
-import { ALL_SLUGS } from '@/config/services'
-import { MARKETING_SLUGS } from '@/config/marketingServices'
+import type { MetadataRoute } from "next";
+import { BRAND } from "@/content/brand";
 
-const BASE = 'https://www.premieralive.com'
-const now = new Date()
+const PUBLIC_PATHS = [
+  // Home (with trailing slash for locale routes)
+  "/",
+  "/ar/",
+  // Static pages
+  "/pricing",
+  "/ar/pricing",
+  "/how-it-works",
+  "/ar/how-it-works",
+  "/about",
+  "/ar/about",
+  "/contact",
+  "/ar/contact",
+  "/faq",
+  "/ar/faq",
+  "/blog",
+  "/ar/blog",
+];
+
+// Vertical pages
+const VERTICALS = [
+  "law-firms",
+  "clinics",
+  "schools",
+  "real-estate",
+  "accounting-consulting",
+  "trading-companies",
+  "government-contractors",
+];
+
+// City pages
+const CITIES = {
+  bahrain: [
+    "manama",
+    "riffa",
+    "muharraq",
+    "isa-town",
+    "hamad-town",
+    "aali",
+    "saar",
+  ],
+  "saudi-arabia": [
+    "riyadh",
+    "jeddah",
+    "dammam",
+    "al-khobar",
+    "dhahran",
+    "jubail",
+    "mecca",
+    "medina",
+    "tabuk",
+    "abha",
+  ],
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const serviceUrls = ALL_SLUGS.flatMap((slug) => [
-    { url: `${BASE}/en/services/${slug}`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${BASE}/ar/services/${slug}`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-  ])
+  const base = BRAND.domain;
+  const entries: MetadataRoute.Sitemap = [];
 
-  const marketingUrls = MARKETING_SLUGS.flatMap((slug) => [
-    { url: `${BASE}/en/marketing/${slug}`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${BASE}/ar/marketing/${slug}`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 },
-  ])
+  // Home + static pages
+  for (const path of PUBLIC_PATHS) {
+    const isArabic = path.startsWith("/ar");
+    const canonical = isArabic ? path : path;
+    const altEn = isArabic ? path.replace("/ar", "") : path;
+    const altAr = isArabic ? path : `/ar${path}`;
+    entries.push({
+      url: `${base}${path}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: path === "/" ? 1.0 : 0.8,
+      alternates: {
+        languages: {
+          en: altEn,
+          ar: altAr,
+          "x-default": altEn,
+        },
+      },
+    });
+  }
 
-  return [
-    { url: `${BASE}/en`, lastModified: now, changeFrequency: 'weekly', priority: 1 },
-    { url: `${BASE}/ar`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${BASE}/en/digital`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/ar/digital`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/en/services`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${BASE}/ar/services`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/en/marketing`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${BASE}/ar/marketing`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/en/about`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
-    { url: `${BASE}/ar/about`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
-    { url: `${BASE}/en/film-production-company-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.9 },
-    { url: `${BASE}/ar/film-production-company-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    // Podcast pillar — dedicated page at /podcast-production-saudi-arabia (separate route from /services/podcast-filming)
-    { url: `${BASE}/en/podcast-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${BASE}/ar/podcast-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    // Film production in Riyadh — city landing under the film production pillar
-    { url: `${BASE}/en/film-production-company-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${BASE}/ar/film-production-company-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
-    // AI websites for real estate — use-case landing under the digital pillar
-    { url: `${BASE}/en/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${BASE}/ar/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
-    ...serviceUrls,
-    ...marketingUrls,
-  ]
+  // Vertical pages
+  for (const slug of VERTICALS) {
+    entries.push({
+      url: `${base}/for/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `/for/${slug}`,
+          ar: `/ar/for/${slug}`,
+          "x-default": `/for/${slug}`,
+        },
+      },
+    });
+    entries.push({
+      url: `${base}/ar/for/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `/for/${slug}`,
+          ar: `/ar/for/${slug}`,
+          "x-default": `/for/${slug}`,
+        },
+      },
+    });
+  }
+
+  // City pages
+  for (const [country, cities] of Object.entries(CITIES)) {
+    for (const city of cities) {
+      const path = `/${country}/${city}`;
+      entries.push({
+        url: `${base}${path}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.6,
+        alternates: {
+          languages: {
+            en: path,
+            ar: `/ar${path}`,
+            "x-default": path,
+          },
+        },
+      });
+      entries.push({
+        url: `${base}/ar${path}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.6,
+        alternates: {
+          languages: {
+            en: path,
+            ar: `/ar${path}`,
+            "x-default": path,
+          },
+        },
+      });
+    }
+  }
+
+  return entries;
 }
