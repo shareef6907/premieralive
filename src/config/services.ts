@@ -605,8 +605,10 @@ export const SERVICES: ServicePage[] = [
     nameEn: 'App Development in Saudi Arabia',
     nameAr: 'تطوير التطبيقات في السعودية',
     heroImage: SB + 'business-software.jpg',
-    valuePropEn: 'Mobile and web apps, engineered for your business.',
-    valuePropAr: 'نبني تطبيقات جوال وويب مصممة لأعمالك.',
+    valuePropEn: 'Custom mobile and web apps for Saudi businesses — built from scratch on clean code, connected to the systems you already run, and handed over with full ownership of the code, the data, and the roadmap.',
+    valuePropAr: 'تطبيقات جوال وويب مخصصة لأعمال سعودية — نبنيها من الصفر بشيفرة نظيفة، ونربطها بالأنظمة التي تستخدمها بالفعل، ونسلّمك ملكية كاملة للشيفرة والبيانات وخارطة الطريق.',
+    metaDescriptionEn: 'Custom app development in Saudi Arabia — iOS, Android and web apps built from scratch. Clean code, system integrations, and full code ownership.',
+    metaDescriptionAr: 'تطوير تطبيقات مخصصة في السعودية — تطبيقات iOS وAndroid وويب تُبنى من الصفر. شيفرة نظيفة وتكامل مع أنظمتك وملكية كاملة للشيفرة.',
     whatWeDeliverEn: [
       'iOS & Android apps',
       'Web applications',
@@ -639,15 +641,75 @@ export const SERVICES: ServicePage[] = [
       { q: 'Native or cross-platform?', a: 'We recommend the right approach for your case — native iOS/Android when performance is critical, cross-platform (React Native / Flutter) when speed to market matters more.' },
       { q: 'Can you integrate with our existing systems?', a: 'Yes — API integration is part of most projects. We map your existing tools and build the connections before we write any new code.' },
       { q: 'How do you handle data security?', a: 'Security is built into our architecture from the start — including role-based access, encrypted storage, and compliance with Saudi data protection standards.' },
+      { q: 'Who owns the app when the project is finished?', a: 'You do. The source code, the data model, and the accounts behind the services are yours from the start — we build on your infrastructure, not ours, so nothing is held hostage if we part ways.' },
+      { q: 'How long does a custom app take to build?', a: 'It depends on scope. A focused internal tool or a single-user-facing app ships in weeks; a multi-role platform with integrations, roles, and reporting takes longer. We agree the scope and the phases before starting so you can see what lands at each stage.' },
+      { q: 'Will the app work in Arabic and in both directions?', a: 'Yes — bilingual builds are standard for us. We handle right-to-left layout, Arabic typography, Arabic numerals and dates, and proper language versioning across iOS, Android, and the web.' },
     ],
     faqAr: [
       { q: 'هل تطبيقات أصلية أم متعددة المنصات؟', a: 'نرشّح النهج المناسب لكل حالة — التطبيقات الأصلية لـiOS/Android حين يكون الأداء أولوية، والتطبيقات المتعددة المنصات حين تكون سرعة الوصول إلى السوق أهم.' },
       { q: 'هل يمكنكم التكامل مع أنظمتنا القائمة؟', a: 'نعم — التكامل عبر API جزء من معظم المشاريع. نرسم خريطة أدواتك القائمة ونبني الاتصالات قبل كتابة أي كود جديد.' },
       { q: 'كيف تتعاملون مع أمان البيانات؟', a: 'الأمان يُبنى في هندستنا من البداية — بما في ذلك الوصول المستند إلى الأدوار والتشفير والامتثال لمعايير حماية البيانات في المملكة.' },
+      { q: 'من يملك التطبيق بعد انتهاء المشروع؟', a: 'أنت. الشيفرة المصدرية ونموذج البيانات والحسابات الخاصة بالخدمات ملكية لك من البداية — نبني على بنيتك التحتية لا بنتنا، فلا يُحتجز شيء إذا انتهت علاقتنا.' },
+      { q: 'كم يستغرق بناء تطبيق مخصص؟', a: 'يعتمد على النطاق. الأداة الداخلية المركّزة أو التطبيق الذي يستخدمه مستخدم واحد يُسلَّم خلال أسابيع، أما المنصة متعددة الأدوار مع التكاملات والصلاحيات والتقارير فتستغرق وقتاً أطول. نتفق على النطاق والمراحل قبل البدء لتعرف ما يصل في كل مرحلة.' },
+      { q: 'هل يعمل التطبيق بالعربية وبالاتجاهين؟', a: 'نعم — البناء ثنائي اللغة هو معيار لدينا. نتعامل مع تخطيط من اليمين إلى اليسار والخط العربي والأرقام والتواريخ العربية، والإصدار الصحيح للغتين عبر iOS وAndroid والويب.' },
     ],
     ctaMessageEn: 'I\'d like to discuss an app development project.',
     ctaMessageAr: 'أرغب في مناقشة مشروع تطوير تطبيق.',
     relatedSlugs: ['business-website-development-saudi-arabia', 'business-platform-development-saudi-arabia', 'ai-assistants-automation-saudi-arabia'],
+    industriesHeadingEn: 'What we build apps for',
+    industriesHeadingAr: 'ما نبني التطبيقات له',
+    industriesEn: [
+      {
+        name: 'Field operations and service companies',
+        desc: 'Apps that follow technicians and engineers through the day — job assignments, checklists, photo capture, and digital sign-off at the site. Built for teams that already work across Riyadh, the Eastern Province, and remote sites, where the office has no visibility of what happens on the ground.',
+      },
+      {
+        name: 'Logistics, fleet, and delivery networks',
+        desc: 'Live job assignment, route visibility, and proof-of-delivery capture. Designed for the gaps that spreadsheets create — reassignment when a job runs late, status the customer can actually see, and a dispatch record that survives long after the van has left.',
+      },
+      {
+        name: 'Clinics and healthcare operations',
+        desc: 'Patient intake, appointment handling, and internal admin tools that work in Arabic and English side by side. Structured so a front desk can complete a full workflow without asking the patient to switch language mid-conversation.',
+      },
+      {
+        name: 'Retail chains and multi-branch networks',
+        desc: 'One app that behaves correctly across every branch — shared catalogues, branch-specific stock, and reporting that rolls up without each location maintaining its own spreadsheet. Useful for multi-branch businesses in Al Khobar, Dammam, and Abha.',
+      },
+      {
+        name: 'Professional services and consultancies',
+        desc: 'Client-facing portals for engagement status, deliverables, and approvals, connected to the internal tools your delivery team already uses. Clients see progress without staff spending their time chasing updates by hand.',
+      },
+      {
+        name: 'Industrial and safety operations',
+        desc: 'Inspection, permit, and compliance workflows that keep records for inspection — who did what, when, and where, with evidence attached. Built to work on site with intermittent connectivity, in teams that move between project locations.',
+      },
+    ],
+    industriesAr: [
+      {
+        name: 'العمليات الميدانية وشركات الخدمات',
+        desc: 'تطبيقات تتبع الفنيين والمهندسين طوال يوم العمل — المهام وقوائم التحقق والتقاط الصور والاعتماد الرقمي في الموقع. مبنية لفرق تعمل في الرياض والمنطقة الشرقية والمواقع النائية، حيث لا تملك المكشف رؤية لما يجري على الأرض.',
+      },
+      {
+        name: 'الخدمات اللوجستية والأساطيل وشبكات التوصيل',
+        desc: 'إسناد المهام مباشرة ورؤية المسارات وتوثيق التسليم. مصممة لسد الفجوات التي تخلقها جداول البيانات — إعادة الإسناد عند تأخر مهمة، وحالة يستطيع العميل رؤيتها فعلاً، وسجل إسناد يصمد بعد مغادرة المركبة بوقت طويل.',
+      },
+      {
+        name: 'العيادات والعمليات الصحية',
+        desc: 'استقبال المرضى وإدارة المواعيد وأدوات إدارية داخلية تعمل بالعربية والإنجليزية جنباً إلى جنب. مهيكلة ليتمكن موظف الاستقبال من إتمام سير العمل كاملاً دون أن يطلب من المريض تبديل اللغة في منتصف الحوار.',
+      },
+      {
+        name: 'السلاسل التجارية وشبكات الفروع',
+        desc: 'تطبيق واحد يعمل بشكل صحيح في كل فرع — كتالوجات مشتركة ومخزون خاص بكل فرع وتقارير تتجمّع دون أن يحتفظ كل موقع بجدول بيانات خاص به. مفيد للسلاسل المتعددة الفروع في الخبر والدمام وأبها.',
+      },
+      {
+        name: 'الخدمات المهنية والاستشارات',
+        desc: 'بوابات للعملاء تعرض حالة التعاقد والمخرجات والاعتمادات، متصلة بالأدوات الداخلية التي يستخدمها فريق التسليم بالفعل. يرى العملاء التقدم دون أن يضيق وقت الموظفين بمتابعة التحديثات يدوياً.',
+      },
+      {
+        name: 'العمليات الصناعية والسلامة',
+        desc: 'تدفقات التفتيش والتصاريح والامتثال التي تحفظ سجلات جاهزة للرقابة — من نفّذ ماذا ومتى وأين، مع إرفاق الأدلة. مصممة للعمل في الموقع مع ضعف الاتصال، في الفرق التي تنتقل بين مواقع المشاريع.',
+      },
+    ],
   },
   {
     slug: 'landing-page-design-saudi-arabia',
