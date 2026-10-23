@@ -41,6 +41,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // AI websites for clinics — use-case landing under the digital pillar
     { url: `${BASE}/en/ai-websites-for-clinics-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/ai-websites-for-clinics-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // How to brief a film production company — practical guide for Saudi clients
+    { url: `${BASE}/en/how-to-brief-a-film-production-company`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/how-to-brief-a-film-production-company`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     ...serviceUrls,
     ...marketingUrls,
   ]
