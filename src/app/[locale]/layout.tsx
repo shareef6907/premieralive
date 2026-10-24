@@ -29,8 +29,8 @@ export async function generateMetadata({
     ? 'بريمييرا لايف | شركة إنتاج أفلام في السعودية'
     : 'Premiera Live | Film Production Company in Saudi Arabia'
   const desc = isArabic
-    ? 'ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والرسوم المتحركة من الخبر لعملاء في أنحاء السعودية. أكثر من 15 عامًا وأكثر من 1,000 مشروع.'
-    : 'Film production in Al Khobar, Saudi Arabia: commercial films, corporate videos, documentaries, photography, animation, web design. 15+ years, 1,000+ projects.'
+    ? 'ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والرسوم المتحركة من الخبر لعملاء في أنحاء السعودية — مع التصوير الاحترافي وتصميم المواقع والمنصات الرقمية.'
+    : 'Film production in Al Khobar, Saudi Arabia: commercial films, corporate videos, documentaries, photography, animation and web design.'
 
   return {
     title,
