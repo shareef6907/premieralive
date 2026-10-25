@@ -34,6 +34,8 @@ export interface ServicePage {
   valuePropAr: string
   metaDescriptionEn?: string  // overrides valuePropEn in <meta> only; page body uses valuePropEn
   metaDescriptionAr?: string  // overrides valuePropAr in <meta> only; page body uses valuePropAr
+  metaTitleEn?: string  // overrides "<nameEn> | Premiera Live" in <title> only; page body uses nameEn
+  metaTitleAr?: string  // overrides "<nameAr> | Premiera Live" in <title> only; page body uses nameAr
   whatWeDeliverEn: string[]
   whatWeDeliverAr: string[]
   howWeWorkEn: { step: string; desc: string }[]
@@ -119,8 +121,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'corporate-films.jpg',
     valuePropEn: 'Professional corporate video production in Saudi Arabia — Premiera Live produces brand films, training content, and event recaps for organisations across the Gulf.',
     valuePropAr: 'إنتاج احترافي للأفلام المؤسسية في السعودية — تنتج بريمييرا لايف أفلام العلامة ومحتوى التدريب وتلخيصات الفعاليات للمنظمات في أنحاء الخليج.',
-    metaDescriptionEn: 'Corporate video production in Saudi Arabia. Premiera Live in Al Khobar produces brand films, training videos, event recaps, and executive profiles for organisations across the Gulf — in Arabic and English.',
-    metaDescriptionAr: 'إنتاج الأفلام المؤسسية في السعودية. تنتج بريمييرا لايف في الخبر أفلام العلامة التجارية ومقاطع التدريب وتلخيصات الفعاليات وبروفايلات التنفيذيين للشركات في أنحاء الخليج — بالعربية والإنجليزية.',
+    metaDescriptionEn: 'Corporate video production in Saudi Arabia. Premiera Live in Al Khobar produces brand films, training videos, event recaps, and executive profiles.',
+    metaDescriptionAr: 'إنتاج الأفلام المؤسسية في السعودية. تنتج بريمييرا لايف في الخبر أفلام العلامة التجارية ومقاطع التدريب وتلخيصات الفعاليات وبروفايلات التنفيذيين.',
     whatWeDeliverEn: [
       'Brand and message development',
       'Filming with cinema and broadcast-quality cameras',
@@ -221,6 +223,9 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'animation-cgi.jpg',
     valuePropEn: 'Animation and CGI work that makes the unshootable look real — for product visualisation, explainers, idents, and commercial content that needs to stand out.',
     valuePropAr: 'أعمال الرسوم المتحركة والمؤثرات التي تجعل ما لا يُصوَّر حقيقياً — للتصوّر المنتجي والشروحات وهويات الشركات ومحتوى الإعلان الذي يحتاج للتميّز.',
+    metaTitleAr: 'Animation & CGI Studio in Saudi Arabia | Premiera Live',
+    metaDescriptionEn: 'Animation and CGI production in Saudi Arabia. Premiera Live creates product visualisation, explainers, idents, and animated content for brands.',
+    metaDescriptionAr: 'إنتاج الرسوم المتحركة والمؤثرات البصرية في السعودية. تنتج بريمييرا لايف تصويرًا منتجيًا وشروحات وهويات ومحتوى متحركًا للعلامات.',
     whatWeDeliverEn: [
       '3D product visualisation and rendering',
       'Motion graphics and brand animation',
@@ -272,7 +277,7 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'documentary.jpg',
     valuePropEn: 'Documentary filmmaking that earns attention — real stories, real people, structured and shot to hold an audience and communicate something that matters.',
     valuePropAr: 'صناعة الأفلام الوثائقية التي تستحق الانتباه — قصص حقيقية وأشخاص حقيقيون، تُبنى وتُصوَّر لامتصاص الجمهور والتواصل حول شيء يهم.',
-    metaDescriptionEn: 'Documentary production in Saudi Arabia. Premiera Live produces real-story documentaries for clients and organisations across the Kingdom — from Riyadh and Jeddah to Al Khobar and Dammam.',
+    metaDescriptionEn: 'Documentary production in Saudi Arabia. Premiera Live produces real-story documentaries for clients and organisations across the Kingdom.',
     metaDescriptionAr: 'إنتاج الأفلام الوثائقية في السعودية. تنتج بريمييرا لايف أفلاماً وثائقية بقصص حقيقية لعملائها ومنظماتهم في المملكة — من الرياض وجدة إلى الخبر والدمام.',
     whatWeDeliverEn: [
       'Research and narrative development',
@@ -429,10 +434,12 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'podcast.jpg',
     videoWebm: `${MEDIA_BASE}/work/SandwichCase-header.webm`,
     videoMp4: `${MEDIA_BASE}/work/SandwichCase-header.mp4`,
-    valuePropEn: 'We film podcasts at your location — up to 4 Sony 4K cameras, studio audio, lighting, and live switching. Session on a hard drive same day, edited episode in 2–3 days.',
-    valuePropAr: 'نصوّر البودكاست في موقعك — حتى 4 كاميرات Sony بدقة 4K، وصوت استوديو، وإضاءة، وتبديل مباشر. نسلّم الجلسة على قرص صلب في اليوم نفسه، والحلقة المونتجة خلال 2 إلى 3 أيام.',
+    valuePropEn: 'We film podcasts at your location — up to 4 full-frame 4K cameras, studio audio, lighting, and live switching. Session on a hard drive same day, edited episode in 2–3 days.',
+    valuePropAr: 'نصوّر البودكاست في موقعك — حتى 4 كاميرات كاملة الإطار بدقة 4K، وصوت استوديو، وإضاءة، وتبديل مباشر. نسلّم الجلسة على قرص صلب في اليوم نفسه، والحلقة المونتجة خلال 2 إلى 3 أيام.',
+    metaDescriptionEn: 'Podcast filming in Saudi Arabia. We bring a mobile studio to your location — 4 x 4K cameras, studio audio, lighting, and live switching.',
+    metaDescriptionAr: 'تصوير البودكاست في السعودية. نأتي بالاستوديو المتنقل إلى موقعك — 4 كاميرات بدقة 4K وصوت استوديو وإضاءة وتبديل مباشر.',
     whatWeDeliverEn: [
-      'Up to 4 Sony full-frame 4K cameras, matched and graded together.',
+      'Up to 4 full-frame 4K cameras, matched and graded together.',
       '4 podcast microphones — one per speaker, recorded on separate channels.',
       'Studio lighting and backlights — your space lit properly, not by the ceiling.',
       'Video mixer, monitor, and camera switcher — cuts made live as you record.',
@@ -441,7 +448,7 @@ export const SERVICES: ServicePage[] = [
       'Edited episode in 2–3 days — cut, graded, and sound-mixed.',
     ],
     whatWeDeliverAr: [
-      'نصوّر بما يصل إلى 4 كاميرات Sony كاملة الإطار بدقة 4K، متطابقة ومصححة الألوان معًا.',
+      'نصوّر بما يصل إلى 4 كاميرات كاملة الإطار بدقة 4K، متطابقة ومصححة الألوان معًا.',
       'نسجّل بأربعة ميكروفونات بودكاست — ميكروفون لكل متحدث، على قنوات منفصلة.',
       'نضيء المكان بإضاءة استوديو وإضاءة خلفية — لا بإضاءة السقف.',
       'نشغّل وحدة مزج ومونيتور ومبدّل كاميرات — ننفّذ القطع مباشرة أثناء التسجيل.',
@@ -468,7 +475,7 @@ export const SERVICES: ServicePage[] = [
     faqEn: [
       { q: 'Where do you film?', a: 'At your location, always. We bring every piece of equipment and set your space up as a studio for the day.' },
       { q: 'How many people can you record?', a: 'Up to 4 speakers with our standard setup — 4 cameras, 4 microphones.' },
-      { q: 'What cameras do you use?', a: 'Sony full-frame 4K cinema cameras, matched so the cut looks like one camera package.' },
+      { q: 'What cameras do you use?', a: 'Full-frame 4K cinema cameras, matched so the cut looks like one camera package.' },
       { q: 'Do we get the raw files?', a: 'Yes. The complete session goes onto a hard drive before we pack up.' },
       { q: 'How long does the edit take?', a: '2–3 days from the shoot.' },
       { q: 'Do we need our own studio?', a: 'No. That is the point — we bring the lighting, the backdrop lighting, and the audio, and we build the studio in your space.' },
@@ -477,7 +484,7 @@ export const SERVICES: ServicePage[] = [
     faqAr: [
       { q: 'أين تصوّرون؟', a: 'في موقعك دائمًا. نحضر كل المعدات ونجهّز مكانك كاستوديو ليوم كامل.' },
       { q: 'كم شخصًا تستطيعون تسجيله؟', a: 'حتى 4 متحدثين بتجهيزنا القياسي — 4 كاميرات و4 ميكروفونات.' },
-      { q: 'ما الكاميرات التي تستخدمونها؟', a: 'نستخدم كاميرات Sony سينمائية كاملة الإطار بدقة 4K، متطابقة ليبدو المونتاج كأنه من حزمة كاميرات واحدة.' },
+      { q: 'ما الكاميرات التي تستخدمونها؟', a: 'نستخدم كاميرات سينمائية كاملة الإطار بدقة 4K، متطابقة ليبدو المونتاج كأنه من حزمة كاميرات واحدة.' },
       { q: 'هل نستلم الملفات الخام؟', a: 'نعم. تنتقل الجلسة كاملة إلى قرص صلب قبل أن نحزم المعدات.' },
       { q: 'كم يستغرق المونتاج؟', a: 'من 2 إلى 3 أيام بعد التصوير.' },
       { q: 'هل نحتاج إلى استوديو خاص بنا؟', a: 'لا. وهذا جوهر الفكرة — نحضر الإضاءة والإضاءة الخلفية والصوت، ونبني الاستوديو في مكانك.' },
@@ -498,6 +505,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'business-websites.jpg',
     valuePropEn: 'Business websites engineered to perform — fast, bilingual, and connected to the systems that run your operations. Built by a team that understands both design and development.',
     valuePropAr: 'مواقع أعمال مصمّمة للأداء — سريعة وثنائية اللغة ومتصلة بالأنظمة التي تشغّل عملك. يبنيها فريق يفهم التصميم والتطوير معاً.',
+    metaDescriptionEn: 'Business website development in Saudi Arabia. Premiera Live builds fast, bilingual, custom-coded websites connected to the systems you run.',
+    metaDescriptionAr: 'تطوير مواقع الأعمال في السعودية. تبني بريمييرا لايف مواقع سريعة وثنائية اللغة متصلة بأنظمة عملك.',
     whatWeDeliverEn: [
       'Custom design and front-end development',
       'Bilingual Arabic and English builds',
@@ -720,6 +729,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'landing-pages.jpg',
     valuePropEn: 'Landing pages designed to do one thing — convert the visitors you drive to them into leads or customers. Built fast, tested, and optimised around your campaign goals.',
     valuePropAr: 'صفحات هبوط مصممة لهدف واحد — تحويل الزوار الذين يصلون إليها إلى عملاء محتملين أو عملاء. تُبنى بسرعة وتُختبر وتُحسَّن حول أهداف حملتك.',
+    metaDescriptionEn: 'Landing page design in Saudi Arabia. Premiera Live builds fast, tested landing pages focused on turning visitors into leads.',
+    metaDescriptionAr: 'تصميم صفحات الهبوط في السعودية. نبني صفحات هبوط سريعة ومختبرة والمحوّلة للزوار إلى عملاء محتملين.',
     whatWeDeliverEn: [
       'Conversion-focused page design',
       'A/B variant development',
@@ -769,6 +780,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'booking-systems.jpg',
     valuePropEn: 'Booking and reservation systems that your customers actually use — designed around your operation, integrated with your calendar, and built to reduce no-shows and administrative overhead.',
     valuePropAr: 'أنظمة حجز ومواعيد يستخدمها عملاؤك فعلاً — مصممة حول عملياتك ومتصلّة ببياناتك ومبنية لتقليل عدم الحضور والضغط الإداري.',
+    metaDescriptionEn: 'Booking system development in Saudi Arabia. We build reservation systems around your operation, integrated with your existing tools.',
+    metaDescriptionAr: 'تطوير أنظمة الحجز في السعودية. نبني أنظمة مواعيد حول عملياتك ومتكاملة مع أدواتك الحالية.',
     whatWeDeliverEn: [
       'Custom booking flow design and development',
       'Calendar and resource management integration',
@@ -817,9 +830,12 @@ export const SERVICES: ServicePage[] = [
     shortName: 'business-platforms',
     nameEn: 'Business Platform Development in Saudi Arabia',
     nameAr: 'بناء منصات الأعمال في السعودية',
+    metaTitleEn: 'Business Platform Development in Saudi | Premiera Live',
     heroImage: SB + 'business-platforms.jpg',
     valuePropEn: 'Full-scale business platforms — the kind that run operations, serve customers, or create new revenue channels. Built with the architecture that scales with your ambitions.',
     valuePropAr: 'منصات أعمال كاملة النطاق — النوع الذي يشغّل العمليات ويخدم العملاء أو يخلق قنوات إيرادات جديدة. تُبنى بالهندسة التي تنمو مع طموحاتك.',
+    metaDescriptionEn: 'Business platform development in Saudi Arabia. Premiera Live builds platforms that run operations, serve customers, and open new revenue channels.',
+    metaDescriptionAr: 'تطوير منصات الأعمال في السعودية. تبني بريمييرا لايف منصات تشغّل العمليات وتخدم العملاء وتفتح قنوات إيرادات جديدة.',
     whatWeDeliverEn: [
       'Platform architecture and technical specification',
       'Full-stack web application development',
@@ -871,8 +887,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'client-portals.jpg',
     valuePropEn: 'Client portals that replace the WhatsApp chains and email threads — a single place for your clients to access their projects, documents, and communications with your team.',
     valuePropAr: 'بوابات عملاء تحل محل سلاسل واتساب ومواضيع البريد — مكان واحد لعملائك للوصول إلى مشاريعهم ومستنداتهم والتواصل مع فريقك.',
-    metaDescriptionEn: 'Client portal development in Saudi Arabia. Premiera Live builds secure client portals, project management platforms, and document-sharing systems for businesses across the Gulf — replacing WhatsApp chaos with a custom-built portal.',
-    metaDescriptionAr: 'بناء بوابات العملاء في السعودية. تنتج بريمييرا لايف بوابات عملاء آمنة ومنصات إدارة مشاريع ومنظومات مشاركة مستندات للشركات في أنحاء الخليج — استبدل فوضى واتساب بمنصة مخصصة بناها فريقنا.',
+    metaDescriptionEn: 'Client portal development in Saudi Arabia. Premiera Live builds secure client portals, project management platforms, and document-sharing systems.',
+    metaDescriptionAr: 'بناء بوابات العملاء في السعودية. تنتج بريمييرا لايف بوابات عملاء آمنة ومنصات إدارة مشاريع ومنظومات مشاركة مستندات.',
     whatWeDeliverEn: [
       'Secure client-facing portal design and development',
       'Project and document sharing',
@@ -924,6 +940,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'ai-assistants.jpg',
     valuePropEn: 'AI assistants and automation systems that handle the repetitive work — answering questions, qualifying leads, and following up — so your team focuses on what actually requires a person.',
     valuePropAr: 'مساعدون ذكيون وأنظمة أتمتة تتعامل مع العمل المتكرر — الإجابة على الأسئلة وتصنيف العملاء المحتملين والمتابعة — حتى يركز فريقك على ما يحتاج شخص فعلاً.',
+    metaDescriptionEn: 'AI assistants and automation for Saudi businesses. We build systems that answer questions, qualify leads, and follow up without manual work.',
+    metaDescriptionAr: 'مساعدي الذكاء الاصطناعي والأتمتة للشركات السعودية. نبني أنظمة تجيب على الأسئلة وتؤهل العملاء المحتملين وتتابع دون عمل يدوي.',
     whatWeDeliverEn: [
       'Custom-trained AI assistants for your business',
       'WhatsApp and web chat integration',

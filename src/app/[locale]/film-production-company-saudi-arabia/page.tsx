@@ -20,10 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: isArabic
       ? 'شركة إنتاج أفلام وبث مباشر في السعودية | بريمييرا لايف'
-      : 'Film Production Company in Saudi Arabia | Live Streaming & Film Production Services',
+      : 'Film Production Company in Saudi Arabia | Premiera Live',
     description: isArabic
-      ? 'بريمييرا لايف شركة إنتاج أفلام وبث مباشر في الخبر. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير والرسوم المتحركة والبث متعدد الكاميرات في أنحاء السعودية.'
-      : 'Premiera Live is a film production company in Al Khobar offering live streaming, multi-camera broadcasts, commercial films, corporate videos, documentaries, photography, and animation across Saudi Arabia — in-house crew from pre-production to delivery.',
+      ? 'بريمييرا لايف شركة إنتاج أفلام وبث مباشر في الخبر. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير والرسوم المتحركة والبث في السعودية.'
+      : 'Film production company in Al Khobar — commercial films, corporate videos, documentaries, photography, and multi-camera live streaming across Saudi Arabia.',
     alternates: {
       canonical,
       languages: {
@@ -35,10 +35,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: isArabic
         ? 'شركة إنتاج أفلام وبث مباشر في السعودية | بريمييرا لايف'
-        : 'Film Production Company in Saudi Arabia | Live Streaming & Film Production Services',
+        : 'Film Production Company in Saudi Arabia | Premiera Live',
       description: isArabic
-        ? 'بريمييرا لايف شركة إنتاج أفلام وبث مباشر في الخبر. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير والرسوم المتحركة والبث متعدد الكاميرات في أنحاء السعودية.'
-        : 'Premiera Live is a film production company in Al Khobar offering live streaming, multi-camera broadcasts, commercial films, corporate videos, documentaries, photography, and animation across Saudi Arabia.',
+        ? 'بريمييرا لايف شركة إنتاج أفلام وبث مباشر في الخبر. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير والرسوم المتحركة والبث في السعودية.'
+        : 'Film production company in Al Khobar — commercial films, corporate videos, documentaries, photography, and multi-camera live streaming across Saudi Arabia.',
       url: canonical,
       locale: isArabic ? 'ar_SA' : 'en_SA',
     },
@@ -46,10 +46,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: isArabic
         ? 'شركة إنتاج أفلام وبث مباشر في السعودية | بريمييرا لايف'
-        : 'Film Production Company in Saudi Arabia | Live Streaming & Film Production Services',
+        : 'Film Production Company in Saudi Arabia | Premiera Live',
       description: isArabic
-        ? 'بريمييرا لايف شركة إنتاج أفلام وبث مباشر في الخبر. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير والرسوم المتحركة والبث متعدد الكاميرات في أنحاء السعودية.'
-        : 'Premiera Live is a film production company in Al Khobar offering live streaming, multi-camera broadcasts, commercial films, corporate videos, documentaries, photography, and animation across Saudi Arabia.',
+        ? 'بريمييرا لايف شركة إنتاج أفلام وبث مباشر في الخبر. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير والرسوم المتحركة والبث في السعودية.'
+        : 'Film production company in Al Khobar — commercial films, corporate videos, documentaries, photography, and multi-camera live streaming across Saudi Arabia.',
     },
   }
 }
@@ -79,8 +79,8 @@ export default async function FilmProductionPage({ params }: Props) {
   const processHeadingAr = 'كيف يسير الإنتاج'
   const gearHeadingEn = 'What we shoot on'
   const gearHeadingAr = 'بماذا نصوّر'
-  const gearEn = 'Sony cinema-line 4K cameras with prime lenses, professional lighting, dedicated audio, and live multi-camera switching for events and podcasts. The same sensor family trusted on broadcast productions worldwide — and enough of it to field four-camera shoots without renting a single body.'
-  const gearAr = 'نصوّر بكاميرات Sony السينمائية بدقة 4K وعدسات برايم وإضاءة احترافية وصوت مخصص وتبديل مباشر متعدد الكاميرات للفعاليات والبودكاست. عائلة الحساسات نفسها الموثوقة في إنتاجات البث حول العالم — وبعدد يكفي لتشغيل تصوير بأربع كاميرات دون استئجار كاميرا واحدة.'
+  const gearEn = 'Cinema-line 4K cameras with prime lenses, professional lighting, dedicated audio, and live multi-camera switching for events and podcasts. The same sensor family trusted on broadcast productions worldwide — and enough of it to field four-camera shoots without renting a single body.'
+  const gearAr = 'نصوّر بكاميرات سينمائية بدقة 4K وعدسات برايم وإضاءة احترافية وصوت مخصص وتبديل مباشر متعدد الكاميرات للفعاليات والبودكاست. عائلة الحساسات نفسها الموثوقة في إنتاجات البث حول العالم — وبعدد يكفي لتشغيل تصوير بأربع كاميرات دون استئجار كاميرا واحدة.'
   const ctaHeading = isArabic ? 'نبني معًا شيئًا يستحق التذكر.' : "Let's Build Something Remarkable."
   const ctaLabel = isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'
 

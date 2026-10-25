@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? 'إنتاج البودكاست في السعودية | بريمييرا لايف'
       : 'Podcast Production in Saudi Arabia | Premiera Live',
     description: isArabic
-      ? 'ننتج البودكاست في السعودية — نصوّر بأربع كاميرات سوني 4K مع استوديو متنقل في موقعك. حلقات شهر كامل في يوم واحد، والتسليم خلال أسبوع.'
-      : 'Podcast production in Saudi Arabia — we film on 4 x Sony 4K cameras, mobile studio at your location. A month of episodes filmed in a day, delivered in a week.',
+      ? 'ننتج البودكاست في السعودية — نصوّر بأربع كاميرات 4K مع استوديو متنقل في موقعك. حلقات شهر كامل في يوم واحد، والتسليم خلال أسبوع.'
+      : 'Podcast production in Saudi Arabia — we film on 4 x 4K cameras, mobile studio at your location. A month of episodes filmed in a day.',
     alternates: {
       canonical,
       languages: {
@@ -41,8 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ? 'إنتاج البودكاست في السعودية | بريمييرا لايف'
         : 'Podcast Production in Saudi Arabia | Premiera Live',
       description: isArabic
-        ? 'ننتج البودكاست في السعودية — نصوّر بأربع كاميرات سوني 4K مع استوديو متنقل في موقعك. حلقات شهر كامل في يوم واحد، والتسليم خلال أسبوع.'
-        : 'Podcast production in Saudi Arabia — we film on 4 x Sony 4K cameras, mobile studio at your location. A month of episodes filmed in a day, delivered in a week.',
+        ? 'ننتج البودكاست في السعودية — نصوّر بأربع كاميرات 4K مع استوديو متنقل في موقعك. حلقات شهر كامل في يوم واحد، والتسليم خلال أسبوع.'
+        : 'Podcast production in Saudi Arabia — we film on 4 x 4K cameras, mobile studio at your location. A month of episodes filmed in a day.',
       url: canonical,
       locale: isArabic ? 'ar_SA' : 'en_SA',
     },
@@ -57,7 +57,7 @@ const EN = {
   eyebrow: 'PODCAST PRODUCTION',
   h1: 'Podcast Production in Saudi Arabia',
   displayLine: 'A month of episodes. One day of filming.',
-  subline: 'We bring the studio to you — four Sony full-frame 4K cameras, studio audio, and lighting built into your space for the day. Edited episodes and social clips delivered within a week.',
+  subline: 'We bring the studio to you — four full-frame 4K cameras, studio audio, and lighting built into your space for the day. Edited episodes and social clips delivered within a week.',
   ctaWhatsApp: 'WhatsApp us',
   ctaCall: 'Call',
   ctaEmail: 'Email',
@@ -76,7 +76,7 @@ const EN = {
 
   studioHeading: "You don't need a studio. We bring one.",
   studioBody: 'Meeting room, office, warehouse, majlis — we arrive early and build it out. Lighting, backdrop, acoustic treatment, four matched cameras, and a separate microphone channel for every speaker. By the time your guest walks in, the room is a studio.',
-  studioSub: 'Four Sony full-frame 4K cameras, matched and graded as one package — cinematic depth, clean in any light.',
+  studioSub: 'Four full-frame 4K cameras, matched and graded as one package — cinematic depth, clean in any light.',
 
   shootHeading: 'First-time hosts want to know what the day actually looks like. Here it is.',
   shootTimes: [
@@ -125,7 +125,7 @@ const AR = {
   eyebrow: 'إنتاج بودكاست',
   h1: 'إنتاج البودكاست في السعودية',
   displayLine: 'حلقات شهر كامل في يوم تصوير واحد.',
-  subline: 'نأتي إليك بالاستوديو كاملاً — أربع كاميرات سوني 4K فل فريم، وصوت استوديو، وإضاءة نبنيها في مكانك ليوم واحد. نسلّم الحلقات والمقاطع القصيرة خلال أسبوع.',
+  subline: 'نأتي إليك بالاستوديو كاملاً — أربع كاميرات 4K كاملة الإطار، وصوت استوديو، وإضاءة نبنيها في مكانك ليوم واحد. نسلّم الحلقات والمقاطع القصيرة خلال أسبوع.',
   ctaWhatsApp: 'تواصل عبر واتساب',
   ctaCall: 'اتصل بنا',
   ctaEmail: 'راسلنا',
@@ -135,25 +135,25 @@ const AR = {
 
   clipsHeading: 'الحلقة ليست المنتج. المقاطع هي المنتج.',
   clipsBody: 'كاميرا واحدة تعطيك زاوية واحدة ولقطة ثابتة. أربع كاميرات تغطي الزاوية العكسية والواسعة وكل متحدث على حدة — كل ردّ فعل، وكل لحظة تصلح للنشر. يوم تصوير واحد يتحوّل إلى محتوى شهر كامل.',
-  stat4Angles: '٤',
+  stat4Angles: '4',
   stat4Label: 'زوايا تصوير في كل لحظة',
-  stat1Day: '١',
+  stat1Day: '1',
   stat1Label: 'يوم تصوير واحد',
-  stat7Days: '٧',
+  stat7Days: '7',
   stat7Label: 'التسليم خلال أيام',
 
   studioHeading: 'لا تحتاج إلى استوديو. نأتي به إليك.',
   studioBody: 'قاعة اجتماعات أو مكتب أو مجلس — نصل مبكراً ونجهّز المكان بالكامل: إضاءة، وخلفية، ومعالجة صوتية، وأربع كاميرات متطابقة، وميكروفون مستقل لكل متحدث. قبل أن يصل ضيفك، تكون الغرفة استوديو.',
-  studioSub: 'أربع كاميرات سوني 4K فل فريم، متطابقة ومعالجة لوناً كحزمة واحدة — عمق سينمائي ونقاء في أي إضاءة.',
+  studioSub: 'أربع كاميرات 4K كاملة الإطار، متطابقة ومعالجة لوناً كحزمة واحدة — عمق سينمائي ونقاء في أي إضاءة.',
 
   shootHeading: 'من ينتج بودكاست لأول مرة يريد أن يعرف كيف يمر اليوم. إليك التفاصيل.',
   shootTimes: [
-    { time: '٩:٠٠', label: 'وصول الفريق والتجهيز' },
-    { time: '١١:٠٠', label: 'ضبط الإضاءة والصوت ومطابقة الكاميرات' },
-    { time: '١٢:٠٠', label: 'استقبال الضيوف واختبار الصوت' },
-    { time: '١٣:٠٠', label: 'بدء التصوير' },
-    { time: '١٦:٠٠', label: 'الانتهاء وتسليم الجلسة كاملة على قرص صلب قبل المغادرة' },
-    { time: 'خلال ٧ أيام', label: 'تسليم الحلقات المونتَجة والمقاطع القصيرة' },
+    { time: '9:00', label: 'وصول الفريق والتجهيز' },
+    { time: '11:00', label: 'ضبط الإضاءة والصوت ومطابقة الكاميرات' },
+    { time: '12:00', label: 'استقبال الضيوف واختبار الصوت' },
+    { time: '13:00', label: 'بدء التصوير' },
+    { time: '16:00', label: 'الانتهاء وتسليم الجلسة كاملة على قرص صلب قبل المغادرة' },
+    { time: 'خلال 7 أيام', label: 'تسليم الحلقات المونتَجة والمقاطع القصيرة' },
   ],
 
   setup1Title: 'مضيف وضيف',
@@ -248,8 +248,8 @@ export default async function PodcastProductionPage({ params }: Props) {
             serviceType: 'Podcast Production',
             name: isArabic ? 'إنتاج البودكاست | بريمييرا لايف' : 'Podcast Production | Premiera Live',
             description: isArabic
-              ? 'ننتج البودكاست في السعودية — نصوّر بأربع كاميرات سوني 4K مع استوديو متنقل في موقعك.'
-              : 'Podcast production in Saudi Arabia — we film on 4 x Sony 4K cameras, mobile studio at your location.',
+              ? 'ننتج البودكاست في السعودية — نصوّر بأربع كاميرات 4K مع استوديو متنقل في موقعك.'
+              : 'Podcast production in Saudi Arabia — we film on 4 x 4K cameras, mobile studio at your location.',
             provider: {
               '@type': 'Organization',
               name: isArabic ? 'بريمييرا لايف' : 'Premiera Live',
@@ -272,8 +272,8 @@ export default async function PodcastProductionPage({ params }: Props) {
             '@type': 'VideoObject',
             name: isArabic ? 'إنتاج البودكاست | بريمييرا لايف' : 'Podcast Production | Premiera Live',
             description: isArabic
-              ? 'بريمييرا لايف — نصوّر البودكاست في السعودية بأربع كاميرات سوني 4K'
-              : 'Premiera Live podcast production in Saudi Arabia — 4 Sony 4K cameras, mobile studio.',
+              ? 'بريمييرا لايف — نصوّر البودكاست في السعودية بأربع كاميرات 4K'
+              : 'Premiera Live podcast production in Saudi Arabia — 4 x 4K cameras, mobile studio.',
             contentUrl: heroMp4,
             thumbnailUrl: `${DOMAIN}${heroPoster}`,
             uploadDate: '2025-01-01',

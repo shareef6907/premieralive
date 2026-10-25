@@ -35,9 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const metaDesc = isArabic
     ? (service.metaDescriptionAr ?? service.valuePropAr)
     : (service.metaDescriptionEn ?? service.valuePropEn)
+  // metaTitleEn/Ar overrides the <title> only; page body always uses nameEn/nameAr
+  const metaTitle = (isArabic ? service.metaTitleAr : service.metaTitleEn) ?? `${name} | Premiera Live`
 
   return {
-    title: `${name} | Premiera Live`,
+    title: metaTitle,
     description: metaDesc,
     alternates: {
       canonical,
@@ -48,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: `${name} | Premiera Live`,
+      title: metaTitle,
       description: metaDesc,
       url: canonical,
       images: [{ url: service.heroImage, width: 1200, height: 630 }],
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${name} | Premiera Live`,
+      title: metaTitle,
       description: metaDesc,
     },
   }
