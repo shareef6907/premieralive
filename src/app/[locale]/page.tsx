@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
+import { IMAGES } from '@/config/media'
 import HeroSection from '@/components/sections/HeroSection'
 import BrandMarqueeSection from '@/components/sections/BrandMarqueeSection'
 import IdentitySection from '@/components/sections/IdentitySection'
@@ -45,6 +46,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       locale: isArabic ? 'ar_SA' : 'en_SA',
       type: 'website',
+      images: [
+        {
+          url: IMAGES.ogImage,
+          width: 1200,
+          height: 630,
+          alt: isArabic
+            ? 'بريمييرا لايف | إنتاج أفلام وبث مباشر في السعودية'
+            : 'Premiera Live | Live Streaming & Film Production in Saudi Arabia',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -54,6 +65,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: isArabic
         ? 'بريمييرا لايف شركة إنتاج سينمائي وبث مباشر من مقرها في الخبر بالسعودية.'
         : 'Premiera Live is a live streaming and film production company in Al Khobar producing across Saudi Arabia.',
+      images: [IMAGES.ogImage],
     },
   }
 }
