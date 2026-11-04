@@ -69,7 +69,7 @@ export default async function AboutPage({ params }: Props) {
   const ctaHeading = isArabic ? 'نبني معًا شيئًا يستحق التذكر.' : "Let's Build Something Remarkable."
   const ctaLabel = isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'
   const filmHub = isArabic ? 'إنتاج الأفلام — حرفتنا الأساسية' : 'Film production — our core craft'
-  const filmHubBodyEn = 'Commercial films, corporate videos, documentaries, professional photography, animation and CGI, event coverage, multi-cam live streaming, and podcast filming. Shot by our own crew on cinema-line cameras, edited in-house.'
+  const filmHubBodyEn = 'Commercial films, corporate videos, documentaries, professional photography, animation and CGI, event coverage, multi-cam live streaming, and podcast filming. Shot by our own crew on cinema cameras, edited in-house.'
   const filmHubBodyAr = 'ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير الاحترافي والرسوم المتحركة وتغطية الفعاليات والبث المباشر متعدد الكاميرات وتصوير البودكاست. نصوّر بطاقتنا الخاص على كاميرات سينمائية، ونمنتج داخليًا.'
   const webHub = isArabic ? 'المواقع والمنصات' : 'Websites and platforms'
   const webHubBodyEn = 'Custom-coded business websites, apps, booking systems, and client portals — no templates, no page builders. Built by the same company that films your story.'
