@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : 'Film Production Company in Riyadh | Premiera Live',
     description: isArabic
       ? 'نصوّر في الرياض للشركات والوكالات والجهات الحكومية — طاقم داخلي وكاميرات سينمائية ومونتاج داخلي. نسافر من الخبر بكامل المعدات.'
-      : 'Film production in Riyadh for corporates, agencies, and government clients — in-house crew, cinema-line cameras, in-house edit. We travel from Al Khobar.',
+      : 'Film production in Riyadh for corporates, agencies, and government clients — in-house crew, cinema cameras, in-house edit. We travel from Al Khobar.',
     alternates: {
       canonical,
       languages: {
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : 'Film Production Company in Riyadh | Premiera Live',
       description: isArabic
         ? 'نصوّر في الرياض للشركات والوكالات والجهات الحكومية — طاقم داخلي وكاميرات سينمائية ومونتاج داخلي.'
-        : 'Film production in Riyadh for corporates, agencies, and government clients — in-house crew, cinema-line cameras, and in-house edit.',
+        : 'Film production in Riyadh for corporates, agencies, and government clients — in-house crew, cinema cameras, and in-house edit.',
       url: canonical,
       locale: isArabic ? 'ar_SA' : 'en_SA',
     },
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : 'Film Production Company in Riyadh | Premiera Live',
       description: isArabic
         ? 'نصوّر في الرياض للشركات والوكالات والجهات الحكومية — طاقم داخلي وكاميرات سينمائية ومونتاج داخلي.'
-        : 'Film production in Riyadh for corporates, agencies, and government clients — in-house crew, cinema-line cameras, and in-house edit.',
+        : 'Film production in Riyadh for corporates, agencies, and government clients — in-house crew, cinema cameras, and in-house edit.',
     },
   }
 }
@@ -66,7 +66,7 @@ export default async function FilmProductionRiyadhPage({ params }: Props) {
   const h1Ar = 'شركة إنتاج أفلام في الرياض'
 
   const heroEn =
-    'Premiera Live produces films in Riyadh for corporates, agencies, and government clients. Our crew travels from our base in Al Khobar with full equipment — cinema-line cameras, lighting, audio, and an in-house edit suite — and shoots on location across the capital: KAFD, KAFD Tower, Diriyah, King Abdullah Financial District, the diplomatic quarter, and the wider Riyadh region. Every stage from script to final delivery is handled by the same team, with no subcontracted freelancers and no coordination layers in between.'
+    'Premiera Live produces films in Riyadh for corporates, agencies, and government clients. Our crew travels from our base in Al Khobar with full equipment — cinema cameras, lighting, audio, and an in-house edit suite — and shoots on location across the capital: KAFD, KAFD Tower, Diriyah, King Abdullah Financial District, the diplomatic quarter, and the wider Riyadh region. Every stage from script to final delivery is handled by the same team, with no subcontracted freelancers and no coordination layers in between.'
   const heroAr =
     'تنتج بريمييرا لايف الأفلام في الرياض للشركات والوكالات والجهات الحكومية. ينتقل طاقمنا من مقرنا في الخبر بكامل المعدات — كاميرات سينمائية وإضاءة وصوت واستوديو مونتاج داخلي — ويصوّر في مواقع مختلفة في العاصمة: مركز الملك عبدالله المالي والدرعية والحي الدبلوماسي ومناطق الرياض كافة. تتولى المرحلة نفسها من السيناريو حتى التسليم النهائي الفريق نفسه، بلا مصوّرين مستقلين من الباطن وبلا طبقات تنسيق.'
 

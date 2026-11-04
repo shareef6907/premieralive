@@ -119,8 +119,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'corporate-films.jpg',
     valuePropEn: 'Professional corporate video production in Saudi Arabia — Premiera Live produces brand films, training content, and event recaps for organisations across the Gulf.',
     valuePropAr: 'إنتاج احترافي للأفلام المؤسسية في السعودية — تنتج بريمييرا لايف أفلام العلامة ومحتوى التدريب وتلخيصات الفعاليات للمنظمات في أنحاء الخليج.',
-    metaDescriptionEn: 'Corporate video production in Saudi Arabia. Premiera Live in Al Khobar produces brand films, training videos, event recaps, and executive profiles for organisations across the Gulf — in Arabic and English.',
-    metaDescriptionAr: 'إنتاج الأفلام المؤسسية في السعودية. تنتج بريمييرا لايف في الخبر أفلام العلامة التجارية ومقاطع التدريب وتلخيصات الفعاليات وبروفايلات التنفيذيين للشركات في أنحاء الخليج — بالعربية والإنجليزية.',
+    metaDescriptionEn: 'Corporate video production in Saudi Arabia. We produce brand films, training videos, event recaps, and executive profiles — in Arabic and English.',
+    metaDescriptionAr: 'إنتاج الأفلام المؤسسية في السعودية. تنتج بريمييرا لايف أفلام العلامة التجارية ومقاطع التدريب وتلخيصات الفعاليات — بالعربية والإنجليزية.',
     whatWeDeliverEn: [
       'Brand and message development',
       'Filming with cinema and broadcast-quality cameras',
@@ -220,6 +220,7 @@ export const SERVICES: ServicePage[] = [
     nameAr: 'استوديو الرسوم المتحركة والمؤثرات في السعودية',
     heroImage: SB + 'animation-cgi.jpg',
     valuePropEn: 'Animation and CGI work that makes the unshootable look real — for product visualisation, explainers, idents, and commercial content that needs to stand out.',
+    metaDescriptionEn: 'Animation and CGI studio in Saudi Arabia. We create product visualisation, explainers, idents, and commercial animation that has to stand out.',
     valuePropAr: 'أعمال الرسوم المتحركة والمؤثرات التي تجعل ما لا يُصوَّر حقيقياً — للتصوّر المنتجي والشروحات وهويات الشركات ومحتوى الإعلان الذي يحتاج للتميّز.',
     whatWeDeliverEn: [
       '3D product visualisation and rendering',
@@ -272,7 +273,7 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'documentary.jpg',
     valuePropEn: 'Documentary filmmaking that earns attention — real stories, real people, structured and shot to hold an audience and communicate something that matters.',
     valuePropAr: 'صناعة الأفلام الوثائقية التي تستحق الانتباه — قصص حقيقية وأشخاص حقيقيون، تُبنى وتُصوَّر لامتصاص الجمهور والتواصل حول شيء يهم.',
-    metaDescriptionEn: 'Documentary production in Saudi Arabia. Premiera Live produces real-story documentaries for clients and organisations across the Kingdom — from Riyadh and Jeddah to Al Khobar and Dammam.',
+    metaDescriptionEn: 'Documentary production in Saudi Arabia. We produce real-story documentaries for clients and organisations across the Kingdom.',
     metaDescriptionAr: 'إنتاج الأفلام الوثائقية في السعودية. تنتج بريمييرا لايف أفلاماً وثائقية بقصص حقيقية لعملائها ومنظماتهم في المملكة — من الرياض وجدة إلى الخبر والدمام.',
     whatWeDeliverEn: [
       'Research and narrative development',
@@ -429,10 +430,12 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'podcast.jpg',
     videoWebm: `${MEDIA_BASE}/work/SandwichCase-header.webm`,
     videoMp4: `${MEDIA_BASE}/work/SandwichCase-header.mp4`,
-    valuePropEn: 'We film podcasts at your location — up to 4 Sony 4K cameras, studio audio, lighting, and live switching. Session on a hard drive same day, edited episode in 2–3 days.',
-    valuePropAr: 'نصوّر البودكاست في موقعك — حتى 4 كاميرات Sony بدقة 4K، وصوت استوديو، وإضاءة، وتبديل مباشر. نسلّم الجلسة على قرص صلب في اليوم نفسه، والحلقة المونتجة خلال 2 إلى 3 أيام.',
+    valuePropEn: 'Podcast filming in Saudi Arabia — we film at your location with up to 4 full-frame 4K cinema cameras, studio audio, lighting, and live switching. Same-day session handover, edited episode in 2–3 days.',
+    metaDescriptionEn: 'Podcast filming in Saudi Arabia. We bring a mobile studio to your location — cameras, audio, lighting — and deliver the edited episode in 2–3 days.',
+    valuePropAr: 'نصوّر البودكاست في موقعك — حتى 4 كاميرات سينمائية كاملة الإطار بدقة 4K، وصوت استوديو، وإضاءة، وتبديل مباشر. نسلّم الجلسة على قرص صلب في اليوم نفسه، والحلقة المونتجة خلال 2 إلى 3 أيام.',
+    metaDescriptionAr: 'تصوير البودكاست في السعودية. نحضر استوديوًا متنقلًا إلى موقعك بكاميرات وصوت وإضاءة، ونسلّم الحلقة المونتجة خلال 2 إلى 3 أيام.',
     whatWeDeliverEn: [
-      'Up to 4 Sony full-frame 4K cameras, matched and graded together.',
+      'Up to 4 full-frame 4K cinema cameras, matched and graded together.',
       '4 podcast microphones — one per speaker, recorded on separate channels.',
       'Studio lighting and backlights — your space lit properly, not by the ceiling.',
       'Video mixer, monitor, and camera switcher — cuts made live as you record.',
@@ -441,7 +444,7 @@ export const SERVICES: ServicePage[] = [
       'Edited episode in 2–3 days — cut, graded, and sound-mixed.',
     ],
     whatWeDeliverAr: [
-      'نصوّر بما يصل إلى 4 كاميرات Sony كاملة الإطار بدقة 4K، متطابقة ومصححة الألوان معًا.',
+      'نصوّر بما يصل إلى 4 كاميرات سينمائية كاملة الإطار بدقة 4K، متطابقة ومصححة الألوان معًا.',
       'نسجّل بأربعة ميكروفونات بودكاست — ميكروفون لكل متحدث، على قنوات منفصلة.',
       'نضيء المكان بإضاءة استوديو وإضاءة خلفية — لا بإضاءة السقف.',
       'نشغّل وحدة مزج ومونيتور ومبدّل كاميرات — ننفّذ القطع مباشرة أثناء التسجيل.',
@@ -468,7 +471,7 @@ export const SERVICES: ServicePage[] = [
     faqEn: [
       { q: 'Where do you film?', a: 'At your location, always. We bring every piece of equipment and set your space up as a studio for the day.' },
       { q: 'How many people can you record?', a: 'Up to 4 speakers with our standard setup — 4 cameras, 4 microphones.' },
-      { q: 'What cameras do you use?', a: 'Sony full-frame 4K cinema cameras, matched so the cut looks like one camera package.' },
+      { q: 'What camera setup do you bring?', a: 'Up to 4 full-frame 4K cinema cameras, matched and graded as one package so the cut looks like it came from a single rig.' },
       { q: 'Do we get the raw files?', a: 'Yes. The complete session goes onto a hard drive before we pack up.' },
       { q: 'How long does the edit take?', a: '2–3 days from the shoot.' },
       { q: 'Do we need our own studio?', a: 'No. That is the point — we bring the lighting, the backdrop lighting, and the audio, and we build the studio in your space.' },
@@ -477,7 +480,7 @@ export const SERVICES: ServicePage[] = [
     faqAr: [
       { q: 'أين تصوّرون؟', a: 'في موقعك دائمًا. نحضر كل المعدات ونجهّز مكانك كاستوديو ليوم كامل.' },
       { q: 'كم شخصًا تستطيعون تسجيله؟', a: 'حتى 4 متحدثين بتجهيزنا القياسي — 4 كاميرات و4 ميكروفونات.' },
-      { q: 'ما الكاميرات التي تستخدمونها؟', a: 'نستخدم كاميرات Sony سينمائية كاملة الإطار بدقة 4K، متطابقة ليبدو المونتاج كأنه من حزمة كاميرات واحدة.' },
+      { q: 'ما إعداد الكاميرات الذي تحضرونه؟', a: 'حتى 4 كاميرات سينمائية كاملة الإطار بدقة 4K، متطابقة ومعالجة لونها كحزمة واحدة فيبدو المونتاج كأنه صُوّر من كاميرا واحدة.' },
       { q: 'هل نستلم الملفات الخام؟', a: 'نعم. تنتقل الجلسة كاملة إلى قرص صلب قبل أن نحزم المعدات.' },
       { q: 'كم يستغرق المونتاج؟', a: 'من 2 إلى 3 أيام بعد التصوير.' },
       { q: 'هل نحتاج إلى استوديو خاص بنا؟', a: 'لا. وهذا جوهر الفكرة — نحضر الإضاءة والإضاءة الخلفية والصوت، ونبني الاستوديو في مكانك.' },
@@ -497,6 +500,7 @@ export const SERVICES: ServicePage[] = [
     nameAr: 'بناء مواقع الأعمال في السعودية',
     heroImage: SB + 'business-websites.jpg',
     valuePropEn: 'Business websites engineered to perform — fast, bilingual, and connected to the systems that run your operations. Built by a team that understands both design and development.',
+    metaDescriptionEn: 'Business website development in Saudi Arabia. We build fast, bilingual, custom-coded business sites connected to the systems that run your business.',
     valuePropAr: 'مواقع أعمال مصمّمة للأداء — سريعة وثنائية اللغة ومتصلة بالأنظمة التي تشغّل عملك. يبنيها فريق يفهم التصميم والتطوير معاً.',
     whatWeDeliverEn: [
       'Custom design and front-end development',
@@ -719,6 +723,7 @@ export const SERVICES: ServicePage[] = [
     nameAr: 'تصميم صفحات الهبوط في السعودية',
     heroImage: SB + 'landing-pages.jpg',
     valuePropEn: 'Landing pages designed to do one thing — convert the visitors you drive to them into leads or customers. Built fast, tested, and optimised around your campaign goals.',
+    metaDescriptionEn: 'Landing page design in Saudi Arabia. We build fast, tested landing pages built around one goal — turning campaign traffic into leads and customers.',
     valuePropAr: 'صفحات هبوط مصممة لهدف واحد — تحويل الزوار الذين يصلون إليها إلى عملاء محتملين أو عملاء. تُبنى بسرعة وتُختبر وتُحسَّن حول أهداف حملتك.',
     whatWeDeliverEn: [
       'Conversion-focused page design',
@@ -768,6 +773,7 @@ export const SERVICES: ServicePage[] = [
     nameAr: 'بناء أنظمة الحجز في السعودية',
     heroImage: SB + 'booking-systems.jpg',
     valuePropEn: 'Booking and reservation systems that your customers actually use — designed around your operation, integrated with your calendar, and built to reduce no-shows and administrative overhead.',
+    metaDescriptionEn: 'Booking system development in Saudi Arabia. We build reservation systems with calendar integration, automated reminders, deposits, and an admin dashboard.',
     valuePropAr: 'أنظمة حجز ومواعيد يستخدمها عملاؤك فعلاً — مصممة حول عملياتك ومتصلّة ببياناتك ومبنية لتقليل عدم الحضور والضغط الإداري.',
     whatWeDeliverEn: [
       'Custom booking flow design and development',
@@ -790,7 +796,7 @@ export const SERVICES: ServicePage[] = [
       { step: 'Launch', desc: 'Testing with real bookings before go-live, and training for your team.' },
     ],
     howWeWorkAr: [
-      { step: 'الخرائط', desc: 'نفهم عملية الحجز لديك — الموارد والموظفين والخطوات involved — قبل تصميم أي شاشة.' },
+      { step: 'رسم العملية', desc: 'نفهم عملية الحجز لديك — الموارد والموظفين والخطوات المتضمنة — قبل تصميم أي شاشة.' },
       { step: 'التصميم', desc: 'تجربة حجز مبنية لعملائك — بسيطة وواضحة ومتاحة على الهاتف كأساس.' },
       { step: 'البناء', desc: 'تطوير مخصص مع تكامل أدواتك القائمة — التقويم والدفع والرسائل وCRM.' },
       { step: 'الإطلاق', desc: 'اختبار بحجوزات حقيقية قبل التشغيل، وتدريب لفريقك.' },
@@ -815,10 +821,11 @@ export const SERVICES: ServicePage[] = [
     slug: 'business-platform-development-saudi-arabia',
     division: 'digital',
     shortName: 'business-platforms',
-    nameEn: 'Business Platform Development in Saudi Arabia',
+    nameEn: 'Business Platforms in Saudi Arabia',
     nameAr: 'بناء منصات الأعمال في السعودية',
     heroImage: SB + 'business-platforms.jpg',
     valuePropEn: 'Full-scale business platforms — the kind that run operations, serve customers, or create new revenue channels. Built with the architecture that scales with your ambitions.',
+    metaDescriptionEn: 'Business platform development in Saudi Arabia. We build web platforms that run operations, serve customers, and open new revenue channels.',
     valuePropAr: 'منصات أعمال كاملة النطاق — النوع الذي يشغّل العمليات ويخدم العملاء أو يخلق قنوات إيرادات جديدة. تُبنى بالهندسة التي تنمو مع طموحاتك.',
     whatWeDeliverEn: [
       'Platform architecture and technical specification',
@@ -855,7 +862,7 @@ export const SERVICES: ServicePage[] = [
     ],
     faqAr: [
       { q: 'ما نوع المنصات التي تبونها؟', a: 'نبني أي نوع من منصات الويب — من نماذج التجارة الإلكترونية والسوق إلى أدوات التشغيل ومنتجات SaaS وبوابات العملاء.' },
-      { q: 'هل يمكنكم العمل مع فريق التصميم لدينا؟', a: 'نعم — نتعاون غالباً مع فرق التصميم الداخلية أو Agencies، نتولى الهندسة بينما تتحكم في الاتجاه الإبداعي.' },
+      { q: 'هل يمكنكم العمل مع فريق التصميم لدينا؟', a: 'نعم — نتعاون غالباً مع فرق التصميم الداخلية أو وكالات خارجية، نتولى الهندسة بينما تتحكم في الاتجاه الإبداعي.' },
       { q: 'كيف تتعاملون مع أمان منصة الأعمال؟', a: 'هندسة الأمان تُصمّم مسبقاً — تشمل المصادقة وحماية البيانات وضوابط الوصول ومتطلبات الامتثال ذات الصلة بأسواق السعودية والخليج.' },
     ],
     ctaMessageEn: 'I\'d like to discuss building a business platform.',
@@ -871,8 +878,8 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'client-portals.jpg',
     valuePropEn: 'Client portals that replace the WhatsApp chains and email threads — a single place for your clients to access their projects, documents, and communications with your team.',
     valuePropAr: 'بوابات عملاء تحل محل سلاسل واتساب ومواضيع البريد — مكان واحد لعملائك للوصول إلى مشاريعهم ومستنداتهم والتواصل مع فريقك.',
-    metaDescriptionEn: 'Client portal development in Saudi Arabia. Premiera Live builds secure client portals, project management platforms, and document-sharing systems for businesses across the Gulf — replacing WhatsApp chaos with a custom-built portal.',
-    metaDescriptionAr: 'بناء بوابات العملاء في السعودية. تنتج بريمييرا لايف بوابات عملاء آمنة ومنصات إدارة مشاريع ومنظومات مشاركة مستندات للشركات في أنحاء الخليج — استبدل فوضى واتساب بمنصة مخصصة بناها فريقنا.',
+    metaDescriptionEn: 'Client portal development in Saudi Arabia. We build secure client portals, project management platforms, and document-sharing systems for the Gulf.',
+    metaDescriptionAr: 'بناء بوابات العملاء في السعودية. نبني بوابات عملاء آمنة ومنصات إدارة مشاريع وأنظمة مشاركة مستندات — بدل فوضى واتساب.',
     whatWeDeliverEn: [
       'Secure client-facing portal design and development',
       'Project and document sharing',
@@ -885,7 +892,7 @@ export const SERVICES: ServicePage[] = [
       'مشاركة المشاريع والمستندات',
       'الفوترة وتتبع الدفع',
       'الرسائل الفورية أو نظام التذاكر',
-      'خيارات الـ White-label للاستخدام Agencies',
+      'خيارات العلامة البيضاء للاستخدام من الوكالات',
     ],
     howWeWorkEn: [
       { step: 'Define', desc: 'We identify what your clients need to access, what they need to do in the portal, and what communication flows need to be digitised.' },
@@ -909,7 +916,7 @@ export const SERVICES: ServicePage[] = [
     faqAr: [
       { q: 'هل يمكن للبوابة التعامل مع حسابات عملاء متعددة؟', a: 'نعم — هندسة العملاء المتعددين أساسية. كل عميل يرى بياناته ومشاريعه واتصالاته فقط.' },
       { q: 'هل البوابة متاحة بالعربية؟', a: 'نعم — واجهات ثنائية اللغة العربية والإنجليزية أساسية، مع دعم كامل للـ RTL ومعالجة الأحرف العربية.' },
-      { q: 'ما مستوى أمان بوابة العملاء؟', a: 'الأمان جزء أساسي من كل بوابة نبنيها — يشمل نقل البيانات المشفر والمصادقة الآمنة وضوابط الوصول المستند إلى الأدوار المُعدّة لكل عميل.' },
+      { q: 'ما مستوى أمان بوابة العملاء؟', a: 'الأمان جزء أساسي من كل بوابة نبنيها — يشمل نقل البيانات المشفر والمصادقة الآمنة وضوابط الوصول المستندة إلى الأدوار والمعدّة لكل عميل.' },
     ],
     ctaMessageEn: 'I\'d like to discuss a client portal for our business.',
     ctaMessageAr: 'أرغب في مناقشة بوابة عملاء لعمالنا.',
@@ -923,6 +930,7 @@ export const SERVICES: ServicePage[] = [
     nameAr: 'المساعدون الأذكياء والأتمتة في السعودية',
     heroImage: SB + 'ai-assistants.jpg',
     valuePropEn: 'AI assistants and automation systems that handle the repetitive work — answering questions, qualifying leads, and following up — so your team focuses on what actually requires a person.',
+    metaDescriptionEn: 'AI assistants and automation in Saudi Arabia. We build assistants that answer questions, qualify leads, and follow up on your behalf.',
     valuePropAr: 'مساعدون ذكيون وأنظمة أتمتة تتعامل مع العمل المتكرر — الإجابة على الأسئلة وتصنيف العملاء المحتملين والمتابعة — حتى يركز فريقك على ما يحتاج شخص فعلاً.',
     whatWeDeliverEn: [
       'Custom-trained AI assistants for your business',
@@ -1007,7 +1015,7 @@ export const SERVICES: ServicePage[] = [
       { q: 'Can we request content updates as part of the contract?', a: 'Yes — maintenance contracts include a defined number of content update hours per month, with additional hours available as needed.' },
     ],
     faqAr: [
-      { q: 'هل تصونّون فقط المواقع التي بنيتموها؟', a: 'نصونّ أساساً المنصات التي بنيناها — مما позволяет нам العمل بكفاءة ومعرفة قاعدة الكود. للمواقع المبنية في مكان آخر، نقيّم كل حالة على حدة.' },
+      { q: 'هل تصونّون فقط المواقع التي بنيتموها؟', a: 'نصونّ أساساً المنصات التي بنيناها — مما يتيح لنا العمل بكفاءة ومعرفة قاعدة الكود. للمواقع المبنية في مكان آخر، نقيّم كل حالة على حدة.' },
       { q: 'ماذا يحدث في حال حدوث حادث أمني؟', a: 'نستجيب لحوادث الأمان كجزء من عقد الصيانة — تحديد الثغرة وإغلاقها واستعادة أي بيانات متأثرة وتنفيذ إجراءات وقائية.' },
       { q: 'هل يمكننا طلب تحديثات محتوى كجزء من العقد؟', a: 'نعم — عقود الصيانة تشمل عدداً محدداً من ساعات تحديث المحتوى شهرياً، مع ساعات إضافية حسب الحاجة.' },
     ],

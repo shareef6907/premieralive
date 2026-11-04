@@ -63,7 +63,7 @@ export default async function FilmProductionPage({ params }: Props) {
   const cornerstoneLabel = isArabic ? 'شركة إنتاج أفلام في السعودية' : 'Film Production Company in Saudi Arabia'
   const h1En = 'Film Production Company in Saudi Arabia'
   const h1Ar = 'شركة إنتاج أفلام في السعودية'
-  const heroEn = 'Premiera Live is a film production company based in Al Khobar, producing commercial films, corporate videos, documentaries, professional photography, and animation for businesses across Saudi Arabia. Every frame is shot by our own crew, on our own cinema-line cameras, and finished in-house — no subcontracted freelancers, no coordination layers, one team accountable from the first call to the final delivery.'
+  const heroEn = 'Premiera Live is a film production company based in Al Khobar, producing commercial films, corporate videos, documentaries, professional photography, and animation for businesses across Saudi Arabia. Every frame is shot by our own crew, on our own cinema cameras, and finished in-house — no subcontracted freelancers, no coordination layers, one team accountable from the first call to the final delivery.'
   const heroAr = 'تعمل بريمييرا لايف شركةَ إنتاج أفلام من مقرها في الخبر، وننتج الأفلام التجارية وأفلام الشركات والوثائقيات والتصوير الاحترافي والرسوم المتحركة للشركات في أنحاء السعودية. يصوّر طاقمنا كل لقطة بكاميراتنا السينمائية، وننهي كل شيء داخليًا — بلا مصوّرين مستقلين من الباطن، وبلا طبقات تنسيق، وبفريق واحد مسؤول من أول مكالمة حتى التسليم النهائي.'
   const produceHeadingEn = 'What we produce'
   const produceHeadingAr = 'ما الذي ننتجه'
@@ -79,8 +79,8 @@ export default async function FilmProductionPage({ params }: Props) {
   const processHeadingAr = 'كيف يسير الإنتاج'
   const gearHeadingEn = 'What we shoot on'
   const gearHeadingAr = 'بماذا نصوّر'
-  const gearEn = 'Sony cinema-line 4K cameras with prime lenses, professional lighting, dedicated audio, and live multi-camera switching for events and podcasts. The same sensor family trusted on broadcast productions worldwide — and enough of it to field four-camera shoots without renting a single body.'
-  const gearAr = 'نصوّر بكاميرات Sony السينمائية بدقة 4K وعدسات برايم وإضاءة احترافية وصوت مخصص وتبديل مباشر متعدد الكاميرات للفعاليات والبودكاست. عائلة الحساسات نفسها الموثوقة في إنتاجات البث حول العالم — وبعدد يكفي لتشغيل تصوير بأربع كاميرات دون استئجار كاميرا واحدة.'
+  const gearEn = 'Full-frame 4K cinema cameras with prime lenses, professional lighting, dedicated audio, and live multi-camera switching for events and podcasts. A consistent camera body across the kit — and enough of it to field four-camera shoots without renting a single body.'
+  const gearAr = 'نصوّر بكاميرات سينمائية كاملة الإطار بدقة 4K وعدسات برايم وإضاءة احترافية وصوت مخصص وتبديل مباشر متعدد الكاميرات للفعاليات والبودكاست. الكاميرات متجانسة عبر كامل الطقم — وبعدد يكفي لتشغيل تصوير بأربع كاميرات دون استئجار كاميرا واحدة.'
   const ctaHeading = isArabic ? 'نبني معًا شيئًا يستحق التذكر.' : "Let's Build Something Remarkable."
   const ctaLabel = isArabic ? 'اتصل بنا للنقاش' : 'Call to Discuss'
 
