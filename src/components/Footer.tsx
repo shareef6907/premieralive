@@ -139,6 +139,21 @@ export default function Footer() {
             >
               {isArabic ? 'إنتاج البودكاست' : 'Podcast Production'}
             </Link>
+            <Link
+              href={`/${locale}/training-video-production-saudi-arabia`}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                color: 'rgba(245,244,240,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+                lineHeight: 1.6,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+            >
+              {isArabic ? 'إنتاج فيديوهات التدريب' : 'Training Video Production'}
+            </Link>
             {CINEMATIC_SERVICES.map((s) => (
               <Link
                 key={s.slug}
