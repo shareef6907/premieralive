@@ -445,6 +445,13 @@ export default async function FilmProductionPage({ params }: Props) {
           </Link>
           <span style={{ color: 'var(--color-text-faint)' }}>·</span>
           <Link
+            href={`/${locale}/how-to-brief-a-film-production-company`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {isArabic ? 'كيف تكتب بريف إنتاج فيلم' : 'how to brief a production company'}
+          </Link>
+          <span style={{ color: 'var(--color-text-faint)' }}>·</span>
+          <Link
             href={`/${locale}/podcast-production-saudi-arabia`}
             style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
           >
