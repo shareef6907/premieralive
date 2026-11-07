@@ -269,6 +269,11 @@ export default async function DigitalPage({
             >
               {isArabic ? 'مواقع الذكاء الاصطناعي للمطاعم' : 'AI websites for restaurants'}
             </RelatedServiceLink>
+            <RelatedServiceLink
+              href={`/${urlLocale}/ai-websites-for-ecommerce-saudi-arabia`}
+            >
+              {isArabic ? 'مواقع الذكاء الاصطناعي للمتاجر الإلكترونية' : 'AI websites for e-commerce'}
+            </RelatedServiceLink>
           </div>
         </div>
       </section>
