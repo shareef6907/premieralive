@@ -122,6 +122,14 @@ export default async function ServicePage({ params }: Props) {
   const faq = isArabic ? service.faqAr : service.faqEn
   const industries = isArabic ? service.industriesAr : service.industriesEn
   const industriesHeading = isArabic ? service.industriesHeadingAr : service.industriesHeadingEn
+  const sectionHeadings = isArabic ? service.sectionHeadingsAr : service.sectionHeadingsEn
+  const deliverHeading = sectionHeadings?.deliver
+  const deliverBody = sectionHeadings?.deliverBody
+  const processHeading = sectionHeadings?.process
+  const faqHeading = sectionHeadings?.faq
+  const whereHeading = sectionHeadings?.where
+  const relatedPages = isArabic ? (service.relatedPagesAr ?? []) : (service.relatedPagesEn ?? [])
+  const industriesSectionHeading = sectionHeadings?.industries || industriesHeading
   const showCustomCode = [
     'business-website-development-saudi-arabia',
     'app-development-saudi-arabia',
@@ -244,6 +252,27 @@ export default async function ServicePage({ params }: Props) {
         }}>
           {isArabic ? 'ما نقدّمه' : 'WHAT WE DELIVER'}
         </p>
+        {deliverHeading ? (
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+            color: 'var(--color-text)', lineHeight: 1.1,
+            letterSpacing: '0.01em', marginBottom: '1.5rem',
+            maxWidth: '720px',
+          }}>
+            {deliverHeading}
+          </h2>
+        ) : null}
+        {deliverBody ? (
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--body)',
+            color: 'var(--color-text-dim)', lineHeight: 1.8,
+            maxWidth: '72ch', marginBottom: '2.5rem',
+          }}>
+            {deliverBody}
+          </p>
+        ) : null}
         <ul style={{
           listStyle: 'none', padding: 0, margin: 0,
           display: 'grid',
@@ -282,8 +311,19 @@ export default async function ServicePage({ params }: Props) {
             textTransform: 'uppercase', color: 'var(--color-gold)',
             marginBottom: '2rem',
           }}>
-            {industriesHeading || (isArabic ? 'القطاعات' : 'INDUSTRIES')}
+            {isArabic ? 'القطاعات' : 'INDUSTRIES'}
           </p>
+          {industriesSectionHeading ? (
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+              color: 'var(--color-text)', lineHeight: 1.1,
+              letterSpacing: '0.01em', marginBottom: '2rem',
+              maxWidth: '720px',
+            }}>
+              {industriesSectionHeading}
+            </h2>
+          ) : null}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
@@ -355,6 +395,17 @@ export default async function ServicePage({ params }: Props) {
           }}>
             {isArabic ? 'كيف نعمل على هذه الخدمة' : 'HOW WE WORK'}
           </p>
+          {processHeading ? (
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+              color: 'var(--color-text)', lineHeight: 1.1,
+              letterSpacing: '0.01em', marginBottom: '2.5rem',
+              maxWidth: '720px',
+            }}>
+              {processHeading}
+            </h2>
+          ) : null}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
@@ -399,6 +450,17 @@ export default async function ServicePage({ params }: Props) {
         }}>
           {isArabic ? 'أين نعمل' : 'WHERE WE WORK'}
         </p>
+        {whereHeading ? (
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+            color: 'var(--color-text)', lineHeight: 1.1,
+            letterSpacing: '0.01em', marginBottom: '1.5rem',
+            maxWidth: '720px',
+          }}>
+            {whereHeading}
+          </h2>
+        ) : null}
         <p style={{
           fontFamily: 'var(--font-body)', fontSize: 'var(--body)',
           color: 'var(--color-text-dim)', lineHeight: 1.8,
@@ -407,6 +469,38 @@ export default async function ServicePage({ params }: Props) {
           {whereWeWork}
         </p>
       </section>
+
+      {/* ── Related content pages ── */}
+      {relatedPages.length > 0 && (
+        <section style={{
+          padding: '0 clamp(1.25rem, 5vw, 4rem) clamp(4rem, 8vw, 7rem)',
+          maxWidth: '80rem', margin: '0 auto',
+        }}>
+          <div style={{
+            paddingTop: '2rem',
+            borderTop: '1px solid var(--color-card-border)',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'baseline',
+            gap: '0.75rem 1.5rem',
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--body-sm)',
+          }}>
+            <span style={{ color: 'var(--color-text-dim)' }}>
+              {isArabic ? 'اقرأ أيضًا:' : 'also read:'}
+            </span>
+            {relatedPages.map((rp) => (
+              <Link
+                key={rp.href}
+                href={`/${locale}${rp.href}`}
+                style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+              >
+                {rp.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── FAQ ── */}
       {faq.length > 0 && (
@@ -423,6 +517,17 @@ export default async function ServicePage({ params }: Props) {
             }}>
               FAQ
             </p>
+            {faqHeading ? (
+              <h2 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+                color: 'var(--color-text)', lineHeight: 1.1,
+                letterSpacing: '0.01em', marginBottom: '2.5rem',
+                maxWidth: '720px',
+              }}>
+                {faqHeading}
+              </h2>
+            ) : null}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '720px' }}>
               {faq.map((item, i) => (
                 <div key={i} style={{

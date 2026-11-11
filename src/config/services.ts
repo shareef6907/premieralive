@@ -53,6 +53,27 @@ export interface ServicePage {
   industriesHeadingAr?: string
   industriesEn?: { name: string; desc: string }[]
   industriesAr?: { name: string; desc: string }[]
+  // Optional section headings — when present the page renders real <h2>/<h3> elements
+  // instead of label-only paragraphs, and adds an introductory paragraph per section.
+  sectionHeadingsEn?: {
+    deliver?: string
+    deliverBody?: string
+    industries?: string
+    process?: string
+    faq?: string
+    where?: string
+  }
+  sectionHeadingsAr?: {
+    deliver?: string
+    deliverBody?: string
+    industries?: string
+    process?: string
+    faq?: string
+    where?: string
+  }
+  // Optional extra internal links to deeper content pages (city pages, guides, pillars)
+  relatedPagesEn?: { label: string; href: string }[]
+  relatedPagesAr?: { label: string; href: string }[]
 }
 
 const SB = MEDIA_BASE + '/service-headers/'
@@ -172,11 +193,31 @@ export const SERVICES: ServicePage[] = [
     heroImage: SB + 'professional-photography.jpg',
     valuePropEn: 'Professional image-making for brands that understand the difference a great photograph makes — from product and campaign shoots to corporate portraiture.',
     valuePropAr: 'إنتاج صور احترافية للعلامات التي تدرك أثر الصورة الممتازة — من تصوير المنتجات والحملات إلى البورتريه المؤسسي.',
+    metaDescriptionEn: 'Professional photography in Saudi Arabia for products, hospitality interiors, executive portraits, events, and campaigns. Studio and on-location shoots.',
+    metaDescriptionAr: 'تصوير احترافي في السعودية للمنتجات وديكور الضيافة وبورتريه التنفيذيين والفعاليات والحملات. جلسات تصوير في الاستوديو وفي الموقع.',
+    sectionHeadingsEn: {
+      deliver: 'What a photography engagement includes',
+      deliverBody: 'Every shoot is planned as a list of images with a job to do — a catalogue page that has to sell, a menu that has to be ordered from, a lobby that has to look like it belongs to a specific hotel. We shoot toward that list rather than toward a camera roll, and we deliver the files in the formats each channel actually needs.',
+      industries: 'Where we photograph',
+      process: 'How a photography shoot runs',
+      faq: 'Photography questions we are asked most',
+      where: 'Where our photography crew shoots',
+    },
+    sectionHeadingsAr: {
+      deliver: 'ما يشمله مشروع التصوير',
+      deliverBody: 'نخطَّط كل جلسة تصوير كقائمة صور لكل منها مهمة — صفحة كتالوج عليها أن تبيع، أو قائمة طعام عليها أن يُطلب منها، أو بهو يبدو أنه يخص فندقًا بعينه. نصوّر نحو تلك القائمة لا نحو ركام صور، ونسلّم الملفات بالصيغ التي يحتاجها كل قناة فعلًا.',
+      industries: 'أين نتصوّر',
+      process: 'كيف تسير جلسة التصوير',
+      faq: 'أسئلة التصوير التي تُطرح علينا أكثر',
+      where: 'أين يصوّر فريقنا',
+    },
     whatWeDeliverEn: [
       'Product and catalogue photography',
       'Campaign and editorial shoots',
       'Corporate and executive portraiture',
       'Architecture and interior photography',
+      'Food and hospitality photography',
+      'Event and launch photography',
       'Brand and lifestyle content',
     ],
     whatWeDeliverAr: [
@@ -184,34 +225,102 @@ export const SERVICES: ServicePage[] = [
       'جلسات الحملات والتحرير',
       'البورتريه المؤسسي والتنفيذي',
       'تصوير العمارة والداخليات',
+      'تصوير الطعام والضيافة',
+      'تصوير الفعاليات والإطلاقات',
       'محتوى العلامة ونمط الحياة',
     ],
     howWeWorkEn: [
-      { step: 'Concept', desc: 'We define the visual direction that serves your brand and your audience.' },
-      { step: 'Production', desc: 'Professional lighting, camera, and direction on location or in studio.' },
-      { step: 'Post', desc: 'Retouching, colour grading, and delivery in web, print, and social formats.' },
+      { step: 'Brief and shot list', desc: 'We agree what each image has to achieve and who will use it — the product page, the printed catalogue, the campaign, the listing — and build the shot list from that before anything is set up.' },
+      { step: 'Concept and direction', desc: 'We define the visual direction that serves your brand and your audience, including how the work will look alongside the images you already have.' },
+      { step: 'Production', desc: 'Professional lighting, camera, and direction on location or in studio, with the shoot planned so the location is used efficiently and the day is not lost to setup.' },
+      { step: 'Post and delivery', desc: 'Retouching, colour grading, and delivery in web, print, and social formats, with exports organised so your team can find the right file without asking.' },
     ],
     howWeWorkAr: [
-      { step: 'التصوّر', desc: 'نحدد الاتجاه البصري الذي يخدم علامتك وجمهورك.' },
-      { step: 'الإنتاج', desc: 'إضاءة احترافية وكاميرا وتوجيه في الموقع أو الاستوديو.' },
-      { step: 'ما بعد الإنتاج', desc: 'المعالجة اللونية وتعديل الألوان والتسليم بصيغ الويب والطباعة والاجتماع.' },
+      { step: 'الإحاطة وقائمة اللقطات', desc: 'نتفق على ما يجب أن تحققه كل صورة ومن سيستخدمها — صفحة المنتج أو الكتالوج المطبوع أو الحملة أو الإعلان — ونبني قائمة اللقطات من ذلك قبل تجهيز أي شيء.' },
+      { step: 'التصوّر والاتجاه', desc: 'نحدد الاتجاه البصري الذي يخدم علامتك وجمهورك، بما في ذلك كيف سيبدو العمل إلى جانب الصور التي تملكها بالفعل.' },
+      { step: 'الإنتاج', desc: 'نستخدم إضاءة احترافية وكاميرا وتوجيهًا في الموقع أو الاستوديو، مع تخطيط للتصوير يستثمر الموقع بكفاءة ولا يضيع اليوم في التحضير.' },
+      { step: 'ما بعد الإنتاج والتسليم', desc: 'نُجري المعالجة اللونية وتعديل الألوان ونسلم بصيغ الويب والطباعة والاجتماع، مع تنظيم الملفات المصدَّرة ليجد فريقك الملف المناسب دون سؤال.' },
     ],
-    whereWeWorkEn: 'We work with brands and agencies across Saudi Arabia — in Riyadh, Jeddah, Khobar, Dammam, and Jubail — and deliver to clients throughout the Gulf.',
-    whereWeWorkAr: 'نعمل مع العلامات والوكالات في أرجاء السعودية — في الرياض وجدة والخبر والدمام والجبيل — ونسلّم لعملاءنا في مختلف دول الخليج.',
+    whereWeWorkEn: 'Our studio and production base is in Al Khobar, and our crew travels across Saudi Arabia to shoot on location — Riyadh, Jeddah, Dammam, Jubail, and other cities, as well as sites throughout the Gulf. Most hospitality, retail, and product work is shot on location because the room, the light, and the working context are part of what the photograph has to communicate. Clients who need a controlled environment can shoot at our Al Khobar studio instead. We deliver finished, retouched files to clients in Saudi Arabia and the wider Gulf.',
+    whereWeWorkAr: 'نعمل من استوديونا في الخبر، ويتنقّل فريقنا في أنحاء السعودية للتصوير في المواقع — الرياض وجدة والدمام والجبيل ومدن أخرى، إضافة إلى المواقع في مختلف دول الخليج. ومعظم أعمال الضيافة والتجارة والمنتجات تُصوَّر في الموقع لأن الغرفة والإضاءة وسياق العمل جزء مما يجب أن توصله الصورة. ومن يحتاج بيئة مضبوطة يمكنه التصوير في استوديونا بالخبر بدلًا من ذلك. ونسلّم ملفات نهائية معدّلة لعملائنا في السعودية ودول الخليج.',
+    industriesHeadingEn: 'Where we photograph',
+    industriesHeadingAr: 'أين نتصوّر',
+    industriesEn: [
+      {
+        name: 'Retail and product catalogues',
+        desc: 'Consistent product imagery for e-commerce listings, printed catalogues, and showroom displays — shot on a controlled surface with lighting set so the colour on screen matches the colour on the shelf. The same product often needs several crops for different placements, and we plan those at the shoot rather than cropping later.',
+      },
+      {
+        name: 'Hotels, restaurants, and hospitality interiors',
+        desc: 'Rooms, tables, menus, and dishes photographed for direct booking. Restaurant work follows the service hours rather than a studio schedule, so the room is photographed when it is actually full and the food is photographed when it is actually served — which is what a guest is deciding about when they book.',
+      },
+      {
+        name: 'Corporate and professional portraiture',
+        desc: 'Executives, leadership teams, and staff photographed for annual reports, company profiles, and internal communications. The set is styled to match your environment rather than a generic studio backdrop, and the session is planned as a short sequence so the day of an executive is not lost to a long queue.',
+      },
+      {
+        name: 'Events, launches, and activations',
+        desc: 'Brand activations, launches, exhibitions, and conferences photographed for same-day social posting and later campaign use. The work runs alongside our event coverage filming so the moving footage and the stills come from the same crew and the same plan, rather than two suppliers arriving with different assumptions.',
+      },
+      {
+        name: 'Construction, infrastructure, and project sites',
+        desc: 'Progress documentation for contractors and project owners across the Kingdom, including site conditions, installed work, and handover records. These are operational photographs first — legible, dated, and consistent in angle so they hold up as a record rather than as marketing material.',
+      },
+    ],
+    industriesAr: [
+      {
+        name: 'التاجر وكتالوجات المنتجات',
+        desc: 'نصوّر صور منتجات متسقة لإعلانات التجارة الإلكترونية والكتالوجات المطبوعة ومنافذ العرض — تُصوَّر على سطح مضبوط بإضاءة مضبوطة بحيث يتطابق اللون على الشاشة مع اللون على الرف. وكثيرًا ما يحتاج المنتج الواحد نفسه إلى عدة قصّات لأماكن مختلفة، ونخطّطها وقت التصوير لا أن نقصّها لاحقًا.',
+      },
+      {
+        name: 'الفنادق والمطاعم وديكور الضيافة',
+        desc: 'نصوّر الغرف والطاولات وقوائم الطعام والأطباق للحجز المباشر. ويتبع عمل المطاعم ساعات الخدمة لا جدول الاستوديو، فتُصوَّر الغرفة حين تكون ممتلئة فعلًا والطعام حين يُقدَّم فعلًا — وهو ما يقرّره الضيف عند الحجز.',
+      },
+      {
+        name: 'البورتريه المؤسسي والمهني',
+        desc: 'نصوّر التنفيذيين وفرق القيادة والموظفين للتقارير السنوية وشركات التعريف والتواصل الداخلي. يُجهَّز المشهد ليطابق بيئتك بدل خلفية استوديو عامة، وتُخطَّط الجلسة كسلسلة قصيرة كي لا يضيع يوم Executives انتظارًا في طابور طويل.',
+      },
+      {
+        name: 'الفعاليات والإطلاقات والتفعيلات',
+        desc: 'نصوّر تفعيلات العلامات وإطلاقات المنتجات والمعارض والمؤتمرات للنشر الفوري على وسائل التواصل ولاحقًا في الحملات. ويجري العمل بالتوازي مع تصوير تغطيتنا للفعالية، فتأتي اللقطات المتحركة والثابتة من الطاقم نفسه والخطة نفسها، لا من مورّدين اثنين يفترضان أمورًا مختلفة.',
+      },
+      {
+        name: 'مشاريع البناء والبنية التحتية والمواقع',
+        desc: 'نوثّق تقدّم العمل للمقاولين ومالكي المشاريع في أنحاء المملكة، بما في ذلك حالة الموقع والأعمال المركّبة وسجلات التسليم. وهذه صور تشغيلية أولًا — واضحة ومؤرَّخة ومتناسقة في الزاوية، حتى تصمد كسجل لا ك مادة تسويقية.',
+      },
+    ],
     faqEn: [
       { q: 'Do you offer same-day delivery for photography?', a: 'Standard turnaround is three to five business days for edited selects, with express options available depending on project size.' },
-      { q: 'Can you shoot on-location?', a: 'Yes — we bring full studio-quality lighting and equipment to your chosen location anywhere in Saudi Arabia and the Gulf.' },
+      { q: 'Can you shoot on-location?', a: 'Yes — we bring full studio-quality lighting and equipment to your chosen location anywhere in Saudi Arabia and the Gulf. Most of our product, hospitality, and site work is shot on location.' },
       { q: 'What file formats do you deliver?', a: 'We deliver high-resolution JPEG and RAW files, optimised web versions, and format-specific exports for print or digital use.' },
+      { q: 'Can you photograph our team at the office in one session?', a: 'Yes. We plan a short sequence for each person, light the space once, and shoot straight through, so a group session is finished in a single visit without anyone waiting through repeated setups.' },
+              { q: 'Do you also shoot video during the same session?', a: 'Yes. Because our film and photography crews work from the same team, a product shoot or a brand session can be planned to produce stills and motion together. It is often the cheapest way to get a consistent set across both, and it keeps the colour and lighting of the video matching the photography.' },
     ],
     faqAr: [
-      { q: 'هل تقدّمون تسليم الصور في نفس اليوم؟', a: 'المدة المعتادة للتسليم هي ثلاثة إلى خمسة أيام عمل للصور المعدلة، مع خيارات سريعة حسب حجم المشروع.' },
-      { q: 'هل يمكنكم التصوير في الموقع؟', a: 'نعم — نحضر معدات الاستوديو والإضاءة الكاملة إلى موقعكم المختار في أي مكان في السعودية والخليج.' },
+      { q: 'هل تقدّمون تسليم الصور في نفس اليوم؟', a: 'تستغرق المدة المعتادة للتسليم ثلاثة إلى خمسة أيام عمل للصور المعدلة، مع خيارات سريعة حسب حجم المشروع.' },
+      { q: 'هل يمكنكم التصوير في الموقع؟', a: 'نعم — نحضر معدات الاستوديو والإضاءة الكاملة إلى موقعكم المختار في أي مكان في السعودية والخليج. ومعظم أعمالنا في المنتجات والضيافة والمواقع تُصوَّر في الموقع.' },
       { q: 'ما صيغ التسليم؟', a: 'نسلّم ملفات JPEG وRAW عالية الدقة، ونسخ محسّنة للويب، وصيغ مصدّرة مخصصة للطباعة أو الاستخدام الرقمي.' },
+      { q: 'هل يمكنكم تصوير فريقنا في الموقع في جلسة واحدة؟', a: 'نعم. نخطّط تسلسلًا قصيرًا لكل شخص، ونجهّز الإضاءة مرة واحدة، ثم نصوّر بالتتابع، فتُنجز جلسة الفريق في زيارة واحدة دون أن ينتظر أحد تكرار تجهيزات متتالية.' },
+              { q: 'هل تصوّرون فيديو في الجلسة نفسها؟', a: 'نعم. ولأن فريق الأفلام وفريق التصوير لدينا من الفريق نفسه، يمكن تخطيط جلسة منتجات أو جلسة علامة لتنتج صورًا ولقطات متحركة معًا. وغالبًا ما تكون هذه أوفر طريقة للحصول على مجموعة متسقة في الصيغتين، وهي تحافظ على تطابق ألوان الفيديو وإضاءته مع التصوير الفوتوغرافي.' },
     ],
     ctaMessageEn: 'I\'d like to discuss a professional photography project.',
     ctaMessageAr: 'أرغب في مناقشة مشروع تصوير احترافي.',
-    relatedSlugs: ['commercial-film-production-saudi-arabia', 'corporate-video-production-saudi-arabia', 'event-coverage-saudi-arabia'],
-  },
+    relatedSlugs: ['commercial-film-production-saudi-arabia', 'corporate-video-production-saudi-arabia', 'event-coverage-saudi-arabia', 'animation-cgi-studio-saudi-arabia'],
+    relatedPagesEn: [
+      { label: 'Film production in Riyadh', href: '/film-production-company-riyadh' },
+      { label: 'Film production in Jeddah', href: '/film-production-company-jeddah' },
+      { label: 'Film production in Dammam', href: '/film-production-company-dammam' },
+      { label: 'How to brief a film production company', href: '/how-to-brief-a-film-production-company' },
+      { label: 'Commercial film production in Saudi Arabia', href: '/services/commercial-film-production-saudi-arabia' },
+    ],
+    relatedPagesAr: [
+      { label: 'إنتاج الأفلام في الرياض', href: '/film-production-company-riyadh' },
+      { label: 'إنتاج الأفلام في جدة', href: '/film-production-company-jeddah' },
+      { label: 'إنتاج الأفلام في الدمام', href: '/film-production-company-dammam' },
+      { label: 'كيف تُحضّر بريفًا لشركة إنتاج أفلام', href: '/how-to-brief-a-film-production-company' },
+      { label: 'إنتاج الأفلام الإعلانية في السعودية', href: '/services/commercial-film-production-saudi-arabia' },
+    ],
+    },
   {
     division: 'cinematic',
     slug: 'animation-cgi-studio-saudi-arabia',
