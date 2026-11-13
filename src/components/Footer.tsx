@@ -169,6 +169,21 @@ export default function Footer() {
             >
               {isArabic ? 'كيف تكتب بريف إنتاج فيلم' : 'How to Brief a Production Company'}
             </Link>
+            <Link
+              href={`/${locale}/prepare-location-for-film-shoot`}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--body-sm)',
+                color: 'rgba(245,244,240,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+                lineHeight: 1.6,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,244,240,0.55)')}
+            >
+              {isArabic ? 'كيف تجهّز موقعك لتصوير فيلم' : 'How to Prepare a Film Shoot Location'}
+            </Link>
             {CINEMATIC_SERVICES.map((s) => (
               <Link
                 key={s.slug}
