@@ -65,6 +65,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // AI websites for industrial suppliers — use-case landing under the digital pillar
     { url: `${BASE}/en/ai-websites-for-industrial-suppliers-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/ai-websites-for-industrial-suppliers-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // AI websites for hotels and hospitality — use-case landing under the digital pillar
+    { url: `${BASE}/en/ai-websites-for-hotels-hospitality-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/ai-websites-for-hotels-hospitality-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     ...serviceUrls,
     ...marketingUrls,
   ]
