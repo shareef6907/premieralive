@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: isArabic
-      ? 'مواقع ذكاء اصطناعي لموردي الصناعة في السعودية | بريمييرا لايف'
+      ? 'مواقع ذكاء اصطناعي لموردي الصناعة | بريمييرا لايف'
       : 'AI Websites for Industrial Suppliers in Saudi Arabia',
     description: isArabic
       ? 'نبني مواقع ثنائية اللغة لموردي الصناعات في السعودية — بحث في المواصفات، وطلبات عروض فورية، وفريق يرد على استفسارات المشترين.'
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: isArabic
-        ? 'مواقع ذكاء اصطناعي لموردي الصناعة في السعودية | بريمييرا لايف'
+        ? 'مواقع ذكاء اصطناعي لموردي الصناعة | بريمييرا لايف'
         : 'AI Websites for Industrial Suppliers in Saudi Arabia',
       description: isArabic
         ? 'مواقع ثنائية اللغة لموردي الصناعة: بحث في المواصفات، وطلبات عروض فورية، وردود ذكية على استفسارات المشترين.'
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: isArabic
-        ? 'مواقع ذكاء اصطناعي لموردي الصناعة في السعودية | بريمييرا لايف'
+        ? 'مواقع ذكاء اصطناعي لموردي الصناعة | بريمييرا لايف'
         : 'AI Websites for Industrial Suppliers in Saudi Arabia',
       description: isArabic
         ? 'مواقع ثنائية اللغة لموردي الصناعات في السعودية مبنية على المواصفات وطلبات العروض.'

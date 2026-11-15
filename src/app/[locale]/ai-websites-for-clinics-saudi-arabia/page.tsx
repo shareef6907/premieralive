@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : 'AI Websites for Clinics in Saudi Arabia | Premiera Live',
     description: isArabic
       ? 'نبني مواقع عيادات ثنائية اللغة مدعومة بالذكاء الاصطناعي في السعودية — بحث طبيب ذكي وحجز مواعيد وفق التأمين وتوجيه المرضى وأتمتة المحتوى الطبي.'
-      : 'We build bilingual, AI-powered clinic websites in Saudi Arabia — intelligent doctor search, insurance-aware booking, patient triage, and automated medical content built in.',
+      : 'We build bilingual, AI-powered clinic websites in Saudi Arabia — intelligent doctor search, insurance-aware booking, and patient triage.',
     alternates: {
       canonical,
       languages: {

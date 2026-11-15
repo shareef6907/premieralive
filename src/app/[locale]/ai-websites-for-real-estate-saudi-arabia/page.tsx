@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : 'AI Websites for Real Estate in Saudi Arabia | Premiera Live',
     description: isArabic
       ? 'نبني مواقع عقارية ثنائية اللغة مدعومة بالذكاء الاصطناعي لشركات التطوير والوساطة في السعودية — بحث عقاري ذكي وتوصيات ووكلاء محادثة ومحتوى تلقائي.'
-      : 'We build bilingual, AI-powered real estate websites for developers and brokers in Saudi Arabia — intelligent property search, recommendations, automated content, and lead qualification built in.',
+      : 'We build bilingual, AI-powered real estate websites for developers and brokers in Saudi Arabia — intelligent property search and lead qualification.',
     alternates: {
       canonical,
       languages: {
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : 'AI Websites for Real Estate in Saudi Arabia | Premiera Live',
       description: isArabic
         ? 'نبني مواقع عقارية ثنائية اللغة مدعومة بالذكاء الاصطناعي لشركات التطوير والوساطة في السعودية — بحث ذكي ووكلاء محادثة ومحتوى تلقائي.'
-        : 'We build bilingual, AI-powered real estate websites for developers and brokers in Saudi Arabia — intelligent search, chat assistants, and automated property content built in.',
+        : 'We build bilingual, AI-powered real estate websites for developers and brokers in Saudi Arabia — intelligent search and chat assistants.',
       url: canonical,
       locale: isArabic ? 'ar_SA' : 'en_SA',
     },

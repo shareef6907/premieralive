@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: isArabic
       ? 'بريمييرا لايف | إنتاج أفلام وبث مباشر في السعودية'
-      : 'Premiera Live | Live Streaming & Film Production in Saudi Arabia',
+      : 'Premiera Live | Film Production & Streaming in Saudi Arabia',
     description: isArabic
-      ? 'بريمييرا لايف شركة إنتاج سينمائي وبث مباشر من مقرها في الخبر بالسعودية. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والبث متعدد الكاميرات والفعاليات المباشرة.'
-      : 'Premiera Live is a live streaming and film production company in Al Khobar, Saudi Arabia — producing commercial films, corporate videos, documentaries, and multi-camera live broadcasts across the Gulf.',
+      ? 'بريمييرا لايف شركة إنتاج أفلام وبث مباشر من مقرها في الخبر. ننتج الأفلام التجارية وأفلام الشركات والوثائقيات والبث متعدد الكاميرات.'
+      : 'Premiera Live is a film production and live streaming company in Al Khobar, Saudi Arabia — commercial films, corporate videos, and multi-camera broadcasts.',
     alternates: {
       canonical,
       languages: {
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: isArabic
         ? 'بريمييرا لايف | إنتاج أفلام وبث مباشر في السعودية'
-        : 'Premiera Live | Live Streaming & Film Production in Saudi Arabia',
+        : 'Premiera Live | Film Production & Streaming in Saudi Arabia',
       description: isArabic
         ? 'بريمييرا لايف شركة إنتاج سينمائي وبث مباشر من مقرها في الخبر بالسعودية.'
         : 'Premiera Live is a live streaming and film production company in Al Khobar producing across Saudi Arabia.',
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: isArabic
         ? 'بريمييرا لايف | إنتاج أفلام وبث مباشر في السعودية'
-        : 'Premiera Live | Live Streaming & Film Production in Saudi Arabia',
+        : 'Premiera Live | Film Production & Streaming in Saudi Arabia',
       description: isArabic
         ? 'بريمييرا لايف شركة إنتاج سينمائي وبث مباشر من مقرها في الخبر بالسعودية.'
         : 'Premiera Live is a live streaming and film production company in Al Khobar producing across Saudi Arabia.',

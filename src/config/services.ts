@@ -34,6 +34,8 @@ export interface ServicePage {
   valuePropAr: string
   metaDescriptionEn?: string  // overrides valuePropEn in <meta> only; page body uses valuePropEn
   metaDescriptionAr?: string  // overrides valuePropAr in <meta> only; page body uses valuePropAr
+  metaTitleEn?: string        // overrides the <title> only; page body still uses nameEn
+  metaTitleAr?: string        // overrides the <title> only; page body still uses nameAr
   whatWeDeliverEn: string[]
   whatWeDeliverAr: string[]
   howWeWorkEn: { step: string; desc: string }[]
@@ -218,6 +220,7 @@ export const SERVICES: ServicePage[] = [
     shortName: 'animation-cgi',
     nameEn: 'Animation and CGI Studio in Saudi Arabia',
     nameAr: 'استوديو الرسوم المتحركة والمؤثرات في السعودية',
+    metaTitleAr: 'استوديو رسوم متحركة ومؤثرات في السعودية | Premiera Live',
     heroImage: SB + 'animation-cgi.jpg',
     valuePropEn: 'Animation and CGI work that makes the unshootable look real — for product visualisation, explainers, idents, and commercial content that needs to stand out.',
     metaDescriptionEn: 'Animation and CGI studio in Saudi Arabia. We create product visualisation, explainers, idents, and commercial animation that has to stand out.',
