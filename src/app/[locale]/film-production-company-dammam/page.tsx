@@ -243,6 +243,7 @@ export default async function FilmProductionDammamPage({ params }: Props) {
   const linkPillar = isArabic ? 'شركة إنتاج أفلام في السعودية' : 'film production company in Saudi Arabia'
   const linkRiyadh = isArabic ? 'إنتاج الأفلام في الرياض' : 'film production in Riyadh'
   const linkJeddah = isArabic ? 'إنتاج الأفلام في جدة' : 'film production in Jeddah'
+  const linkJubail = isArabic ? 'إنتاج الأفلام في الجبيل' : 'film production in Jubail'
 
   return (
     <>
@@ -527,6 +528,13 @@ export default async function FilmProductionDammamPage({ params }: Props) {
             style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
           >
             {linkJeddah}
+          </Link>
+          <span style={{ color: 'var(--color-text-faint)' }}>·</span>
+          <Link
+            href={`/${locale}/film-production-company-jubail`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {linkJubail}
           </Link>
         </div>
       </Section>

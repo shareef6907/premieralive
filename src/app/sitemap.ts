@@ -41,6 +41,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Film production in Dammam — city landing under the film production pillar
     { url: `${BASE}/en/film-production-company-dammam`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/film-production-company-dammam`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // Film production in Jubail — city landing under the film production pillar
+    { url: `${BASE}/en/film-production-company-jubail`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/film-production-company-jubail`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     // Training video production — service-angle landing under the film production pillar
     { url: `${BASE}/en/training-video-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/training-video-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
