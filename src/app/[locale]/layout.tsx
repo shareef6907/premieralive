@@ -136,7 +136,7 @@ export default async function LocaleLayout({
                     '@type': 'Country',
                     name: 'Saudi Arabia',
                   },
-                  foundingDate: '2017',
+                  foundingDate: '2026',
                   telephone: '+966 50 044 0235',
                   email: 'ceo@premieralive.com',
                   sameAs: [],
