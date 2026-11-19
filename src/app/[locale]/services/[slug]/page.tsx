@@ -106,6 +106,27 @@ function ServiceJsonLd({ locale, slug, name }: { locale: string; slug: string; n
   )
 }
 
+// FAQ JSON-LD — only emitted when the service actually has FAQ entries
+function FaqJsonLd({ locale, slug, faq }: { locale: string; slug: string; faq: { q: string; a: string }[] }) {
+  if (!faq || faq.length === 0) return null
+  const domain = 'https://www.premieralive.com'
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default async function ServicePage({ params }: Props) {
   const { locale, slug } = await params
@@ -122,6 +143,8 @@ export default async function ServicePage({ params }: Props) {
   const faq = isArabic ? service.faqAr : service.faqEn
   const industries = isArabic ? service.industriesAr : service.industriesEn
   const industriesHeading = isArabic ? service.industriesHeadingAr : service.industriesHeadingEn
+  const relatedPages = isArabic ? service.relatedPagesAr : service.relatedPagesEn
+  const relatedPagesHeading = isArabic ? service.relatedPagesHeadingAr : service.relatedPagesHeadingEn
   const showCustomCode = [
     'business-website-development-saudi-arabia',
     'app-development-saudi-arabia',
@@ -145,6 +168,7 @@ export default async function ServicePage({ params }: Props) {
     <>
       <BreadcrumbJsonLd locale={locale} slug={slug} name={name} />
       <ServiceJsonLd locale={locale} slug={slug} name={name} />
+      <FaqJsonLd locale={locale} slug={slug} faq={faq} />
 
       <ScrollToTop />
       {/* ── Breadcrumb ── */}
@@ -447,6 +471,59 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Related landing pages (optional) ── */}
+      {relatedPages && relatedPages.length > 0 && (
+        <section style={{
+          padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem)',
+          maxWidth: '80rem', margin: '0 auto',
+        }}>
+          <p style={{
+            fontFamily: 'var(--font-body)', fontWeight: 500,
+            fontSize: 'var(--eyebrow)', letterSpacing: '0.2em',
+            textTransform: 'uppercase', color: 'var(--color-gold)',
+            marginBottom: '2rem',
+          }}>
+            {relatedPagesHeading || (isArabic ? 'ذات صلة' : 'RELATED')}
+          </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: '1.25rem',
+          }}>
+            {relatedPages.map((rp, i) => (
+              <Link
+                key={i}
+                href={`/${locale}${rp.href}`}
+                style={{
+                  display: 'block', padding: '1.25rem 1.5rem',
+                  background: 'var(--color-card)',
+                  border: '1px solid var(--color-card-border)',
+                  borderRadius: 'var(--radius)',
+                  textDecoration: 'none',
+                }}
+              >
+                <p style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.125rem',
+                  color: 'var(--color-text)',
+                  lineHeight: 1.3,
+                  marginBottom: '0.6rem',
+                  letterSpacing: '0.01em',
+                }}>
+                  {rp.label}
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-body)', fontSize: 'var(--body-sm)',
+                  color: 'var(--color-text-dim)', lineHeight: 1.7,
+                }}>
+                  {rp.desc}
+                </p>
+              </Link>
+            ))}
           </div>
         </section>
       )}

@@ -53,6 +53,12 @@ export interface ServicePage {
   industriesHeadingAr?: string
   industriesEn?: { name: string; desc: string }[]
   industriesAr?: { name: string; desc: string }[]
+  // Optional related landing-page links (paths under the locale root, without the locale prefix)
+  // rendered as an internal-link grid so sub-pages and pillar pages link to each other
+  relatedPagesHeadingEn?: string
+  relatedPagesHeadingAr?: string
+  relatedPagesEn?: { label: string; href: string; desc: string }[]
+  relatedPagesAr?: { label: string; href: string; desc: string }[]
 }
 
 const SB = MEDIA_BASE + '/service-headers/'
@@ -929,9 +935,10 @@ export const SERVICES: ServicePage[] = [
     nameEn: 'AI Assistants and Automation in Saudi Arabia',
     nameAr: 'المساعدون الأذكياء والأتمتة في السعودية',
     heroImage: SB + 'ai-assistants.jpg',
-    valuePropEn: 'AI assistants and automation systems that handle the repetitive work — answering questions, qualifying leads, and following up — so your team focuses on what actually requires a person.',
-    metaDescriptionEn: 'AI assistants and automation in Saudi Arabia. We build assistants that answer questions, qualify leads, and follow up on your behalf.',
-    valuePropAr: 'مساعدون ذكيون وأنظمة أتمتة تتعامل مع العمل المتكرر — الإجابة على الأسئلة وتصنيف العملاء المحتملين والمتابعة — حتى يركز فريقك على ما يحتاج شخص فعلاً.',
+    valuePropEn: 'AI assistants and automation that take the repeat work off your team — answering questions, qualifying leads, and handling follow-up in Arabic and English — so the people you employ spend their day on the work that actually needs them.',
+    metaDescriptionEn: 'AI assistants and automation in Saudi Arabia. Bilingual assistants that answer questions, qualify leads, and handle follow-up for your business.',
+    valuePropAr: 'مساعدون ذكيون وأتمتة ينقلان عن فريقك العمل المتكرر — الإجابة عن الأسئلة، وتصنيف العملاء المحتملين، ومتابعة الطلبات بالعربية والإنجليزية — فيتفرغ من يعمل معك لما يحتاج إنسانًا فعلاً.',
+    metaDescriptionAr: 'مساعدون ذكيون وأتمتة في السعودية. مساعدون ثنائي اللغة يجيبون عن الأسئلة ويصنّفون العملاء المحتملين ويتابعون الطلبات نيابة عن عملك.',
     whatWeDeliverEn: [
       'Custom-trained AI assistants for your business',
       'WhatsApp and web chat integration',
@@ -958,21 +965,99 @@ export const SERVICES: ServicePage[] = [
       { step: 'الاختبار', desc: 'نختبر على نطاق واسع قبل الإطلاق، ونراقب المحادثات المبكرة لتصحيح وتحسين ردود المساعد.' },
       { step: 'التحسين', desc: 'مراجعة وتحسين مستمر — مساعدو الذكاء الاصطناعي يتحسنون مع الوقت مع معالجة المزيد من المحادثات.' },
     ],
-    whereWeWorkEn: 'We deploy AI assistants and automation for businesses across Saudi Arabia — in Riyadh, Jeddah, Khobar, Dammam, and Jubail — and serve clients throughout the Gulf.',
-    whereWeWorkAr: 'ننشر المساعدين الأذكياء والأتمتة للأعمال في أرجاء السعودية — في الرياض وجدة والخبر والدمام والجبيل — ونخدم العملاء في مختلف دول الخليج.',
+    whereWeWorkEn: 'We build and deploy AI assistants and automation for businesses across Saudi Arabia — in Riyadh, Jeddah, Al Khobar, Dammam, and Jubail — with the team travelling to you wherever the project is based, and we serve clients throughout the Gulf.',
+    whereWeWorkAr: 'نبني المساعدين الأذكياء ونشر أنظمة الأتمتة للأعمال في أرجاء السعودية — في الرياض وجدة والخبر والدمام والجبيل — ويصل الفريق إلى موقع المشروع أينما كان، ونخدم العملاء في مختلف دول الخليج.',
     faqEn: [
-      { q: 'What makes an AI assistant work for our business specifically?', a: 'We train it on your business — your services, your processes, your FAQ content. The more specific the training, the more useful the assistant.' },
-      { q: 'Can it handle Arabic and English conversations?', a: 'Yes — bilingual conversation handling is standard. We configure the assistant to switch between languages as needed.' },
-      { q: 'How long does it take to deploy?', a: 'Standard AI assistant deployment is four to six weeks from brief to live, with ongoing refinement in the weeks following launch.' },
+      { q: 'What does the assistant actually take over?', a: 'The repeat work: answering the questions that arrive every day in the same form, qualifying enquiries before they reach a person, chasing the follow-ups that get forgotten, and routing each request to the right part of the team. Anything that needs judgement, a commercial decision, or a personal relationship stays with your people.' },
+      { q: 'How does it handle Arabic and English in the same conversation?', a: 'Arabic and English handling is standard rather than an add-on. We configure the assistant to answer in the language the customer wrote in, switch mid-conversation when the customer switches, and keep the internal records it creates in the language your team actually works in.' },
+      { q: 'What happens when the assistant does not know the answer?', a: 'It says so and hands the conversation over. Every assistant is given a written boundary of what it may answer and what must reach a person, and the handoff carries the customer\'s message and the context gathered so far so the customer does not repeat themselves.' },
+      { q: 'Will it work with the systems we already run?', a: 'Yes. We connect the assistant to the tools you already use — a CRM for lead records, a calendar for bookings, a ticketing system for support, or the messaging channels your customers already message on. The point is to remove the re-typing between systems, not to add another one.' },
+      { q: 'How do you keep it from making things up?', a: 'The assistant answers from your own material — your services, your policies, your written answers and your documents. We test it against the questions your team actually receives, including the awkward ones, and we review early conversations before it goes further out on its own.' },
+      { q: 'How long does it take to deploy?', a: 'It depends on how much of your business the assistant needs to know and how many systems it connects to. We scope that first, agree what it will and will not cover, and release the parts that can start doing work while the rest is still being prepared.' },
     ],
     faqAr: [
-      { q: 'ما الذي يجعل المساعد الذكي يعمل لعمالنا تحديداً؟', a: 'نُدرّبه على عملك — خدماتك وعملياتك ومحتوى الأسئلة الشائعة. كلما كان التدريب أكثر تحديداً، كان المساعد أكثر فائدة.' },
-      { q: 'هل يمكنه التعامل مع المحادثات بالعربية والإنجليزية؟', a: 'نعم — التعامل ثنائي اللغة معيار أساسي. نُعدّ المساعد للتبديل بين اللغتين حسب الحاجة.' },
-      { q: 'كم يستغرق النشر؟', a: 'نشر مساعد ذكي معياري يستغرق أربعة إلى ستة أسابيع من المراجعة إلى التشغيل، مع تحسين مستمر في الأسابيع التي تعقب الإطلاق.' },
+      { q: 'ما الذي يتولاه المساعد فعليًا؟', a: 'العمل المتكرر: الإجابة عن الأسئلة التي تصلك كل يوم بالصيغة نفسها، وتصنيف الاستفسارات قبل أن تصل إلى إنسان، ومتابعة الطلبات التي تُنسى، وتوجيه كل طلب إلى الجهة المناسبة داخل الفريق. وأي ما يحتاج تقديرًا أو قرارًا تجاريًا أو علاقة شخصية يبقى مع من يعمل في مؤسستك.' },
+      { q: 'كيف يتعامل مع العربية والإنجليزية في المحادثة نفسها؟', a: 'التعامل بالعربية والإنجليزية معيار أساسي لدينا لا إضافة اختيارية. نعدّ المساعد ليجيب باللغة التي كتب بها العميل، وأن يتحول في منتصف المحادثة حين يتحول العميل، وأن يحفظ السجلات التي ينشئها باللغة التي يعمل بها فريقك فعليًا.' },
+      { q: 'ماذا يحدث إذا لم يعرف المساعد الإجابة؟', a: 'يقول ذلك ويحوّل المحادثة. لكل مساعد حدّ مكتوب لما يجوز له الإجابة عنه وما يجب أن يصل إلى إنسان، ويصير التحويل مع رسالة العميل والسياق الذي جُمِع حتى لا يضطر العميل إلى إعادة شرح وضعه.' },
+      { q: 'هل يعمل مع الأنظمة التي نستخدمها بالفعل؟', a: 'نعم. نربط المساعد بالأدوات التي تستخدمها اليوم — نظام CRM لتسجيل العملاء، وتقويمًا للحجوزات، ونظام تذاكر للدعم، أو قنوات المراسلة التي يتواصل بها عملاؤك بالفعل. والهدف هو إزالة إعادة الكتابة بين الأنظمة، لا إضافة نظام جديد.' },
+      { q: 'كيف تمنع المساعد من اختلاق إجابات؟', a: 'يجيب المساعد من مادتك أنت — خدماتك وسياساتك وإجاباتك المكتوبة ومستنداتك. ونختبره على الأسئلة التي يصل فريقك فعلًا، بما فيها الأسئلة الصعبة، ونراجع المحادثات المبكرة قبل أن يتوسع في العمل منفردًا.' },
+      { q: 'كم يستغرق النشر؟', a: 'يعتمد على مقدار ما يحتاج المساعد أن يعرفه عن عملك وعلى عدد الأنظمة التي سيتصل بها. نحدد ذلك النطاق أولًا، ونتفق على ما يشمله وما لا يشمله، ونطلق الأجزاء التي تستطيع العمل بينما يكتمل الباقي.' },
     ],
     ctaMessageEn: 'I\'d like to discuss AI assistants and automation for our business.',
     ctaMessageAr: 'أرغب في مناقشة مساعدين أذكياء وأتمتة لعمالنا.',
     relatedSlugs: ['app-development-saudi-arabia', 'business-website-development-saudi-arabia', 'landing-page-design-saudi-arabia'],
+    industriesHeadingEn: 'Where an AI assistant earns its keep',
+    industriesHeadingAr: 'أين يستحق المساعد الذكي مكانه',
+    industriesEn: [
+      {
+        name: 'Clinics, hospitals, and healthcare groups',
+        desc: 'An assistant that answers the questions patients ask before they book — opening hours, which speciality handles a symptom, what to bring, what an appointment involves — in Arabic and English, and passes anything clinical to the people who are qualified to answer it. It is the difference between a call queue that grows and a front desk that stays calm.',
+      },
+      {
+        name: 'Real estate and property developers',
+        desc: 'Site visitors arrive at different moments in the buying cycle, and each one asks a different question: which unit types exist, what the payment schedule looks like, whether an off-plan unit is still available, when the handover date is. An assistant grounded in your current listings and approved answers handles those questions at midnight and passes the qualified buyer to your sales team with the context attached.',
+      },
+      {
+        name: 'Restaurants, cafés, and hospitality venues',
+        desc: 'The questions that arrive most often are the easiest ones to answer well — opening hours, the menu, whether a table can be booked, where to find you. Handling them automatically frees the floor staff to do the part of the job that actually needs a person, and the assistant can hand over a reservation request with the party size and the date already attached.',
+      },
+      {
+        name: 'E-commerce and direct-to-consumer brands',
+        desc: 'Where the buying questions arrive before the buying — sizing, delivery to a particular city, whether an item is in stock, how a return works. An assistant that knows your catalogue and your policies answers those while your team handles the orders, and it routes anything that looks like a problem to a person rather than improvising a solution.',
+      },
+      {
+        name: 'Industrial suppliers and contractors',
+        desc: 'Specification enquiries, lead times, order status, and technical documentation requests arrive in predictable patterns and are answered from material you already publish. The assistant handles those, and connects the enquiry to the right person when the request becomes a quote or a technical question rather than an informational one.',
+      },
+      {
+        name: 'Professional services and consultancies',
+        desc: 'The first contact a firm receives is often a question about scope rather than a request for work. An assistant that explains what the practice does, who it serves, and how an engagement begins lets the firm qualify an enquiry properly, while the partners spend their time on the conversations that need their judgement.',
+      },
+    ],
+    industriesAr: [
+      {
+        name: 'العيادات والمستشفيات ومجموعات الرعاية الصحية',
+        desc: 'مساعد يجيب عن الأسئلة التي يطرحها المرضى قبل حجز موعدهم — مواعيد العمل، والتخصص الذي يتعامل مع العرض، وماذا يحضرون، وما الذي يتضمّنه الموعد — بالعربية والإنجليزية، ويحوّل كل ما له صلة بالجانب الطبي إلى من يملك تأهيله. هذا هو الفرق بين طابور اتصال يكبر وردهة استقبال هادئة.',
+      },
+      {
+        name: 'العقارات والمطوّرون العقاريون',
+        desc: 'يصل زوار الموقع في مراحل مختلفة من دورة الشراء، ولكل منهم سؤال مختلف: ما أنواع الوحدات المتاحة، وكيف يبدو جدول الدفع، وهل ما زالت وحدة على الخارطة متاحة، ومتى موعد التسليم. مساعد يستند إلى قوائمك الحالية وإجاباتك المعتمدة يجيب عن هذه الأسئلة في أي ساعة، ويحوّل المشتري المؤهل إلى فريق المبيعات ومعه السياق.',
+      },
+      {
+        name: 'المطاعم والمقاهي وأماكن الضيافة',
+        desc: 'الأسئلة التي تصلك أكثر هي الأسئلة الأسهل إجابةً — مواعيد العمل، والمنيو، وهل يمكن حجز طاولة، وأين تجدنا. معالجة تلك آليًا تحرر طاقم الصالة لأداء الجزء من العمل الذي يحتاج إنسانًا فعلاً، ويمكن للمساعد أن يسلّم طلب الحجز ومعه عدد الأشخاص والتاريخ.',
+      },
+      {
+        name: 'التجارة الإلكترونية والعلامات المباشرة للمستهلك',
+        desc: 'أسئلة الشراء تصل قبل الشراء — المقاسات، والتوصيل إلى مدينة معينة، وهل الصنف متوفر، وكيف يعمل الإرجاع. مساعد يعرف الكتالوج وسياساتك يجيب عن ذلك بينما يتولى فريقك الطلبات، ويحوّل ما يشبه مشكلة إلى إنسان بدل أن يخترع حلًا من عنده.',
+      },
+      {
+        name: 'موردو الصناعة والمقاولون',
+        desc: 'استفسارات المواصفات، ومدة التوريد، وحالة الطلب، وطلبات الوثائق الفنية، تصل بأنماط متوقعة وتُجاب من مواد تنشرها بالفعل. يتولى المساعد ذلك، ويربط الاستفسار بالشخص المناسب عندما يتحول الطلب من سؤال معلوماتي إلى عرض سعر أو سؤال فني.',
+      },
+      {
+        name: 'الخدمات المهنية والاستشارات',
+        desc: 'أكثر ما يصل إلى المكتب أول مرة سؤال عن نطاق العمل لا طلب لمشروع. مساعد يشرح ما تفعله الممارسة ولمن تخدم وكيف تبدأ العلاقة، يتيح للمكتب تأهيل الاستفسار تأهيلًا صحيحًا، بينما يتفرغ الشركاء للمحادثات التي تحتاج حكمهم.',
+      },
+    ],
+    relatedPagesHeadingEn: 'AI websites we build for Saudi sectors',
+    relatedPagesHeadingAr: 'مواقع الذكاء الاصطناعي التي نبنيها للقطاعات السعودية',
+    relatedPagesEn: [
+      { label: 'AI websites for clinics', href: '/ai-websites-for-clinics-saudi-arabia', desc: 'Patient-facing sites that answer the questions people ask before they book an appointment, in Arabic and English.' },
+      { label: 'AI websites for real estate', href: '/ai-websites-for-real-estate-saudi-arabia', desc: 'Project sites that qualify buyers, explain availability, and hand qualified enquiries to your sales team.' },
+      { label: 'AI websites for restaurants', href: '/ai-websites-for-restaurants-saudi-arabia', desc: 'Menu-led sites that handle opening hours, reservations, and the practical questions diners arrive with.' },
+      { label: 'AI websites for e-commerce', href: '/ai-websites-for-ecommerce-saudi-arabia', desc: 'Storefronts with an assistant that knows the catalogue, the delivery rules, and the returns policy.' },
+      { label: 'AI websites for industrial suppliers', href: '/ai-websites-for-industrial-suppliers-saudi-arabia', desc: 'Bilingual supplier sites built around specifications, lead times, and technical documentation requests.' },
+      { label: 'AI websites for hotels and hospitality', href: '/ai-websites-for-hotels-hospitality-saudi-arabia', desc: 'Hospitality sites that answer booking questions and handle the enquiries that arrive after midnight.' },
+    ],
+    relatedPagesAr: [
+      { label: 'مواقع الذكاء الاصطناعي للعيادات', href: '/ai-websites-for-clinics-saudi-arabia', desc: 'مواقع موجهة للمرضى تجيب عن الأسئلة التي يطرحونها قبل حجز موعدهم، بالعربية والإنجليزية.' },
+      { label: 'مواقع الذكاء الاصطناعي للعقار', href: '/ai-websites-for-real-estate-saudi-arabia', desc: 'مواقع مشاريع تؤهّل المشترين، وتشرح التوافر، وتسلم الاستفسارات المؤهلة لفريق المبيعات.' },
+      { label: 'مواقع الذكاء الاصطناعي للمطاعم', href: '/ai-websites-for-restaurants-saudi-arabia', desc: 'مواقع قائمة على المينيو تتعامل مع مواعيد العمل والحجوزات والأسئلة العملية التي يصل بها الزبائن.' },
+      { label: 'مواقع الذكاء الاصطناعي للمتاجر الإلكترونية', href: '/ai-websites-for-ecommerce-saudi-arabia', desc: 'متاجر إلكترونية يساعد فيها مساعد يعرف الكتالوج وقواعد التوصيل وسياسة الإرجاع.' },
+      { label: 'مواقع الذكاء الاصطناعي لموردي الصناعة', href: '/ai-websites-for-industrial-suppliers-saudi-arabia', desc: 'مواقع موردين ثنائية اللغة مبنية حول المواصفات ومدة التوريد وطلبات الوثائق الفنية.' },
+      { label: 'مواقع الذكاء الاصطناعي للفنادق والضيافة', href: '/ai-websites-for-hotels-hospitality-saudi-arabia', desc: 'مواقع ضيافة تجيب عن أسئلة الحجز وتتعامل مع الاستفسارات التي تصل بعد منتصف الليل.' },
+    ],
   },
   {
     slug: 'website-maintenance-saudi-arabia',
