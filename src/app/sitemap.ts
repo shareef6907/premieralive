@@ -71,6 +71,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // AI websites for law firms — use-case landing under the digital pillar
     { url: `${BASE}/en/ai-websites-for-law-firms-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/ai-websites-for-law-firms-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // How AI changes website projects — practical guide for Saudi clients
+    { url: `${BASE}/en/how-ai-changes-website-projects`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/how-ai-changes-website-projects`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     ...serviceUrls,
     ...marketingUrls,
   ]

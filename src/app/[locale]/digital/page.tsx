@@ -289,6 +289,11 @@ export default async function DigitalPage({
             >
               {isArabic ? 'مواقع الذكاء الاصطناعي لمكاتب المحاماة' : 'AI websites for law firms'}
             </RelatedServiceLink>
+            <RelatedServiceLink
+              href={`/${urlLocale}/how-ai-changes-website-projects`}
+            >
+              {isArabic ? 'كيف يغيّر الذكاء الاصطناعي مشاريع المواقع' : 'How AI changes website projects'}
+            </RelatedServiceLink>
           </div>
         </div>
       </section>

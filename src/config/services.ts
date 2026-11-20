@@ -1049,6 +1049,7 @@ export const SERVICES: ServicePage[] = [
       { label: 'AI websites for e-commerce', href: '/ai-websites-for-ecommerce-saudi-arabia', desc: 'Storefronts with an assistant that knows the catalogue, the delivery rules, and the returns policy.' },
       { label: 'AI websites for industrial suppliers', href: '/ai-websites-for-industrial-suppliers-saudi-arabia', desc: 'Bilingual supplier sites built around specifications, lead times, and technical documentation requests.' },
       { label: 'AI websites for hotels and hospitality', href: '/ai-websites-for-hotels-hospitality-saudi-arabia', desc: 'Hospitality sites that answer booking questions and handle the enquiries that arrive after midnight.' },
+      { label: 'How AI changes website projects', href: '/how-ai-changes-website-projects', desc: 'A practical guide for Saudi businesses on what changes in a website project when an AI assistant is added.' },
     ],
     relatedPagesAr: [
       { label: 'مواقع الذكاء الاصطناعي للعيادات', href: '/ai-websites-for-clinics-saudi-arabia', desc: 'مواقع موجهة للمرضى تجيب عن الأسئلة التي يطرحونها قبل حجز موعدهم، بالعربية والإنجليزية.' },
@@ -1057,6 +1058,7 @@ export const SERVICES: ServicePage[] = [
       { label: 'مواقع الذكاء الاصطناعي للمتاجر الإلكترونية', href: '/ai-websites-for-ecommerce-saudi-arabia', desc: 'متاجر إلكترونية يساعد فيها مساعد يعرف الكتالوج وقواعد التوصيل وسياسة الإرجاع.' },
       { label: 'مواقع الذكاء الاصطناعي لموردي الصناعة', href: '/ai-websites-for-industrial-suppliers-saudi-arabia', desc: 'مواقع موردين ثنائية اللغة مبنية حول المواصفات ومدة التوريد وطلبات الوثائق الفنية.' },
       { label: 'مواقع الذكاء الاصطناعي للفنادق والضيافة', href: '/ai-websites-for-hotels-hospitality-saudi-arabia', desc: 'مواقع ضيافة تجيب عن أسئلة الحجز وتتعامل مع الاستفسارات التي تصل بعد منتصف الليل.' },
+      { label: 'كيف يغيّر الذكاء الاصطناعي مشاريع المواقع', href: '/how-ai-changes-website-projects', desc: 'دليل عملي للشركات السعودية حول ما الذي يتغير في مشروع الموقع حين يُضاف مساعد ذكي.' },
     ],
   },
   {
