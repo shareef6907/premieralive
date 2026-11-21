@@ -241,7 +241,8 @@ export default async function FilmProductionRiyadhPage({ params }: Props) {
   const linkCorporate = isArabic ? 'أفلام الشركات' : 'corporate video'
   const linkCommercial = isArabic ? 'الأفلام الإعلانية' : 'commercial film'
   const linkPillar = isArabic ? 'شركة إنتاج أفلام في السعودية' : 'film production company in Saudi Arabia'
-  const linkPodcast = isArabic ? 'إنتاج البودكاست' : 'podcast production'
+  const linkPodcast = isArabic ? 'إنتاج البودكاست' : 'podcast production';
+  const linkRiyadhWeb = isArabic ? 'مواقع الذكاء الاصطناعي للرياض' : 'AI websites for Riyadh';
 
   return (
     <>
@@ -519,6 +520,13 @@ export default async function FilmProductionRiyadhPage({ params }: Props) {
             style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
           >
             {linkPodcast}
+          </Link>
+          <span style={{ color: 'var(--color-text-faint)' }}>·</span>
+          <Link
+            href={`/${locale}/ai-websites-for-riyadh`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {linkRiyadhWeb}
           </Link>
         </div>
       </Section>
