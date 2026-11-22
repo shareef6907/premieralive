@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: isArabic ? 'عن بريمييرا لايف | شركة إنتاج أفلام في الخبر' : 'About Premiera Live | Film Production Company in Al Khobar',
     description: isArabic
       ? 'تعمل بريمييرا لايف شركةَ إنتاج أفلام من مقرها في الخبر بالسعودية — تأسست على أكثر من 15 عامًا من خبرة الإنتاج في الخليج. أفلام ومواقع وتسويق، كل شيء داخليًا.'
-      : 'Premiera Live is a film production company headquartered in Al Khobar, Saudi Arabia — built on more than 15 years of production experience across the Gulf. Films, websites, and marketing, all in-house.',
+      : 'Premiera Live is a film production company in Al Khobar, Saudi Arabia, with more than 15 years of production experience across the Gulf.',
     alternates: {
       canonical,
       languages: {
