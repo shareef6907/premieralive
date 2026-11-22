@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? 'خدماتنا | إنتاج سينمائي وتجارب رقمية | بريمييرا لايف'
       : 'Our Services | Cinematic Production & Digital Experiences | Premiera Live',
     description: isArabic
-      ? 'كل خدماتنا في الخبر بالسعودية: إنتاج سينمائي (أفلام تجارية، أفلام شركات، تصوير احترافي، رسوم متحركة، وثائقيات، تغطية فعاليات، بث مباشر متعدد الكاميرات، إنتاج بودكاست) وتجارب رقمية (مواقع الأعمال، تطبيقات، صفحات هبوط، أنظمة حجز، منصات أعمال، بوابات عملاء، مساعدون أذكياء وأتمتة، صيانة مواقع).'
-      : 'All our services in Al Khobar, Saudi Arabia: cinematic production (commercial films, corporate videos, professional photography, animation, documentaries, event coverage, multi-camera live streaming, podcast production) and digital experiences (business websites, apps, landing pages, booking systems, business platforms, client portals, AI assistants and automation, website maintenance).',
+      ? 'خدماتنا في الخبر: إنتاج أفلام وتصوير وتغطية فعاليات وبث مباشر، إضافة إلى مواقع وتطبيقات وأنظمة حجز ومساعدات ذكية بالعربية والإنجليزية.'
+      : 'Cinema, photography, event coverage, and live streaming in Al Khobar — plus bilingual websites, apps, booking systems, and AI assistants.',
     alternates: {
       canonical,
       languages: {
