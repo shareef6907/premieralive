@@ -77,6 +77,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // AI websites for Riyadh — city landing under the digital pillar
     { url: `${BASE}/en/ai-websites-for-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/ai-websites-for-riyadh`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // AI websites for government suppliers — use-case landing under the digital pillar
+    { url: `${BASE}/en/ai-websites-for-government-suppliers-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/ai-websites-for-government-suppliers-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     // How AI changes website projects — practical guide for Saudi clients
     { url: `${BASE}/en/how-ai-changes-website-projects`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/how-ai-changes-website-projects`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
