@@ -45,6 +45,13 @@ export default function IdentitySection() {
                 {AR_LINK_TEXT}
               </Link>
               {AR_AFTER}
+{' '}
+              <Link
+                href={`/${locale}/about`}
+                style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+              >
+                {isArabic ? 'عن الشركة' : 'About the company'}
+              </Link>
             </>
           ) : (
             <>
@@ -56,6 +63,13 @@ export default function IdentitySection() {
                 {EN_LINK_TEXT}
               </Link>
               {EN_AFTER}
+{' '}
+              <Link
+                href={`/${locale}/about`}
+                style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+              >
+                {isArabic ? 'عن الشركة' : 'About the company'}
+              </Link>
             </>
           )}
         </p>
