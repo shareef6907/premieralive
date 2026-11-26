@@ -47,6 +47,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Training video production — service-angle landing under the film production pillar
     { url: `${BASE}/en/training-video-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/training-video-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // Corporate film production — service-angle landing under the film production pillar
+    { url: `${BASE}/en/corporate-film-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/corporate-film-production-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     // How to brief a film production company — practical guide for Saudi clients
     { url: `${BASE}/en/how-to-brief-a-film-production-company`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/how-to-brief-a-film-production-company`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
