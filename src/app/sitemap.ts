@@ -56,6 +56,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // How to prepare a location for a film shoot — practical guide for Saudi clients
     { url: `${BASE}/en/prepare-location-for-film-shoot`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/prepare-location-for-film-shoot`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
+    // What affects production timelines — practical guide for Saudi clients
+    { url: `${BASE}/en/production-timeline-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${BASE}/ar/production-timeline-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },
     // AI websites for real estate — use-case landing under the digital pillar
     { url: `${BASE}/en/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${BASE}/ar/ai-websites-for-real-estate-saudi-arabia`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 },

@@ -179,6 +179,7 @@ export default async function PrepareLocationPage({ params }: Props) {
   const relatedLabel = isArabic ? 'ذات صلة:' : 'related:'
   const linkPillar = isArabic ? 'شركة إنتاج أفلام في السعودية' : 'film production company in Saudi Arabia'
   const linkBrief = isArabic ? 'كيف تكتب بريف إنتاج فيلم' : 'how to brief a production company'
+  const linkTimeline = isArabic ? 'ما الذي يؤثّر في مدة إنتاج الفيلم' : 'what affects production timelines'
   const linkCorporate = isArabic ? 'الأفلام المؤسسية' : 'corporate video production'
   const linkEvents = isArabic ? 'تغطية الفعاليات' : 'event coverage'
   const linkServices = isArabic ? 'كل خدمات الإنتاج' : 'all production services'
@@ -425,6 +426,13 @@ export default async function PrepareLocationPage({ params }: Props) {
             style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
           >
             {linkBrief}
+          </Link>
+          <span style={{ color: 'var(--color-text-faint)' }}>·</span>
+          <Link
+            href={`/${locale}/production-timeline-guide`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {linkTimeline}
           </Link>
           <span style={{ color: 'var(--color-text-faint)' }}>·</span>
           <Link

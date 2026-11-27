@@ -473,6 +473,13 @@ export default async function FilmProductionPage({ params }: Props) {
           </Link>
           <span style={{ color: 'var(--color-text-faint)' }}>·</span>
           <Link
+            href={`/${locale}/production-timeline-guide`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {isArabic ? 'ما الذي يؤثّر في مدة إنتاج الفيلم' : 'what affects production timelines'}
+          </Link>
+          <span style={{ color: 'var(--color-text-faint)' }}>·</span>
+          <Link
             href={`/${locale}/podcast-production-saudi-arabia`}
             style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
           >
