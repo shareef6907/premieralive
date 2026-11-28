@@ -300,6 +300,11 @@ export default async function DigitalPage({
               {isArabic ? 'مواقع الذكاء الاصطناعي للرياض' : 'AI websites for Riyadh'}
             </RelatedServiceLink>
             <RelatedServiceLink
+              href={`/${urlLocale}/ai-websites-for-jeddah`}
+            >
+              {isArabic ? 'مواقع الذكاء الاصطناعي لجدة' : 'AI websites for Jeddah'}
+            </RelatedServiceLink>
+            <RelatedServiceLink
               href={`/${urlLocale}/how-ai-changes-website-projects`}
             >
               {isArabic ? 'كيف يغيّر الذكاء الاصطناعي مشاريع المواقع' : 'How AI changes website projects'}

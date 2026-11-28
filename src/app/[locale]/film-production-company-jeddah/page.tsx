@@ -243,6 +243,7 @@ export default async function FilmProductionJeddahPage({ params }: Props) {
   const linkPillar = isArabic ? 'شركة إنتاج أفلام في السعودية' : 'film production company in Saudi Arabia'
   const linkRiyadh = isArabic ? 'إنتاج الأفلام في الرياض' : 'film production in Riyadh'
   const linkEvents = isArabic ? 'تغطية الفعاليات' : 'event coverage'
+  const linkAIJeddah = isArabic ? 'مواقع الذكاء الاصطناعي لجدة' : 'AI websites for Jeddah'
 
   return (
     <>
@@ -527,6 +528,13 @@ export default async function FilmProductionJeddahPage({ params }: Props) {
             style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
           >
             {linkRiyadh}
+          </Link>
+          <span style={{ color: 'var(--color-text-faint)' }}>·</span>
+          <Link
+            href={`/${locale}/ai-websites-for-jeddah`}
+            style={{ color: 'var(--color-gold)', textDecoration: 'none' }}
+          >
+            {linkAIJeddah}
           </Link>
         </div>
       </Section>
